@@ -10,6 +10,7 @@
 - 7 个产品管理 skill 覆盖 JTBD、Story Mapping、OST 等常用方法
 - PM 完成 → 自动派发 Supervisor 审核 → 不通过自动重做的全闭环
 - 产品总监（用户）的调整意见会被自动记录到 `process_record/issues/`，可通过 `/issueReview` 复盘
+- 当前适配 Claude ，后续将扩展至更多 AI Agent
 
 ## 安装
 
