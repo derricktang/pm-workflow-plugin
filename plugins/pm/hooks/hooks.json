@@ -1,0 +1,10 @@
+{
+  "hooks": {
+    "SessionStart": [
+      { "matcher": "*", "hooks": [
+        { "type": "command", "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/pm-workflow/scripts/hooks/session_start_inject.py\"" },
+        { "type": "command", "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/pm-workflow/scripts/hooks/session_start_state_summary.py\"" }
+      ] }
+    ]
+  }
+}
