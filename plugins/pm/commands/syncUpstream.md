@@ -37,7 +37,7 @@
 跑：
 
 ```bash
-bash pm-workflow/scripts/sync_from_upstream.sh $ARGUMENTS
+bash "${CLAUDE_PLUGIN_ROOT}/pm-workflow/scripts/sync_from_upstream.sh" $ARGUMENTS
 ```
 
 `$ARGUMENTS` 是用户在命令后追加的选项（可能为空）。常用选项：

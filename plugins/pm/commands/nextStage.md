@@ -8,7 +8,7 @@
 
 使用 Read 工具读取 `process_record/state.md`，确认当前阶段编号（N）和状态。
 
-> **`[Should]` 未提交 L1 机械兜底（SSOT #79 推论）**：处理阶段推进前跑 `python3 pm-workflow/scripts/check_uncommitted_l1.py`——扫 `outputs/` 是否有本阶段未提交的改动 → 有则 WARN，先 commit（带 issue/SNB 编号）保证每个变更循环干净 commit 边界、git diff 精确归属；退出码恒 0 不阻断。
+> **`[Should]` 未提交 L1 机械兜底（SSOT #79 推论）**：处理阶段推进前跑 `python3 "${CLAUDE_PLUGIN_ROOT}/pm-workflow/scripts/check_uncommitted_l1.py"`——扫 `outputs/` 是否有本阶段未提交的改动 → 有则 WARN，先 commit（带 issue/SNB 编号）保证每个变更循环干净 commit 边界、git diff 精确归属；退出码恒 0 不阻断。
 
 **允许通过的状态：**
 - `🟡 等待产品总监审核` → 用户执行 /nextStage 即代表正式审核通过，将状态更新为 `✅ 已通过`，继续执行

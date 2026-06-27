@@ -32,7 +32,7 @@
    请先完成上一个 CR（终审通过 / 取消 / 拒绝），再启动新 CR。
    ```
    **Why**：CR 串行执行避免 v0.1 期间多 CR 并行致内部版本号 N 递增混乱 + git 冲突 + PM 心型负担；与 SemVer 0.x 开发态语义一致（同一池子内顺序迭代）。
-1.2. **`[Should]` 未提交 L1 机械兜底**：跑 `python3 pm-workflow/scripts/check_uncommitted_l1.py`——扫 `outputs/` 是否有上个变更循环未提交的改动 → 有则 WARN，**先 commit 上批（带 issue/CR/SNB 编号）再启动本 CR**（保证 git diff 精确归属，SSOT #79「变更循环闭环前必提交」推论）；退出码恒 0 不阻断。
+1.2. **`[Should]` 未提交 L1 机械兜底**：跑 `python3 "${CLAUDE_PLUGIN_ROOT}/pm-workflow/scripts/check_uncommitted_l1.py"`——扫 `outputs/` 是否有上个变更循环未提交的改动 → 有则 WARN，**先 commit 上批（带 issue/CR/SNB 编号）再启动本 CR**（保证 git diff 精确归属，SSOT #79「变更循环闭环前必提交」推论）；退出码恒 0 不阻断。
 1.5. **不再读取需求简述和角色规范全文**。后续 Agent prompt 以路径形式传递 `需求简述.md` 和角色规范，由 subagent 自行 Read；若 `需求简述.md` 不存在，则以 state.md 中的需求摘要作为短文本插入 prompt。
 2. **不读取角色规范文件全文**。派发 Agent 时以路径形式传递（详见第二步/第四步），由 subagent 自行 Read。
 3. 生成变更编号：格式为 `CR-[YYYYMMDD]-[两位序号]`。序号确定方式：用 Bash 执行 `date +"%Y%m%d"` 获取今日日期，再 Glob `process_record/changes/CR-[今日日期]-*.md` 统计同日已有变更文件数量，新序号 = 数量 + 1（格式补零至两位，如 `01`）；目录为空或无同日文件则序号为 `01`。

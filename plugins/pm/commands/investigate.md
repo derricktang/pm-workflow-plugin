@@ -19,7 +19,7 @@
 
 ## Step 2 取证（事实配命令，禁推断）
 
-- **大结构化文档**：先 `python3 pm-workflow/scripts/doc_query.py outline|fetch|locate <file>`（SSOT #81 分节读取）—— **禁行数粗估（awk/wc 行数）、禁全文 grep 当结构**（实证：行数把「工作流架构 203 行」误当四阶段循环，真大块是调整意见 SOP ~5.5k tok）
+- **大结构化文档**：先 `python3 "${CLAUDE_PLUGIN_ROOT}/pm-workflow/scripts/doc_query.py" outline|fetch|locate <file>`（SSOT #81 分节读取）—— **禁行数粗估（awk/wc 行数）、禁全文 grep 当结构**（实证：行数把「工作流架构 203 行」误当四阶段循环，真大块是调整意见 SOP ~5.5k tok）
 - **计数**：`grep -o` / `len(re.findall())`，**禁 `grep -c`**（数行 ≠ 数字面）
 - **HTML 嵌套 / 平衡**：`html.parser` / BeautifulSoup，**禁 grep 缩进当 DOM 嵌套**
 - 每个**数字 / 存在性**断言都附可复现命令；产出里分清「**事实**」与「**由事实推出的结论**」，推理链不跳步
