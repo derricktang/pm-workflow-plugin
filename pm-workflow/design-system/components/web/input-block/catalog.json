@@ -1,0 +1,305 @@
+{
+  "schemaVersion": 2,
+  "kind": "component",
+  "name": "input-block",
+  "displayName": "InputBlock",
+  "category": "Base",
+  "type": "COMPONENT_SET",
+  "figmaFileKey": "hxksE13w1AZQivOylmZ9gn",
+  "figmaNodeId": "94:841",
+  "figmaSourceUrl": "https://www.figma.com/file/hxksE13w1AZQivOylmZ9gn/?node-id=94-841",
+  "files": {
+    "html": null,
+    "css": "components/web/input-block/input-block.css",
+    "js": null,
+    "thumb": null,
+    "readme": "components/web/input-block/README.md"
+  },
+  "axes": [
+    {
+      "name": "State",
+      "values": [
+        "Default",
+        "Error",
+        "Readonly"
+      ]
+    },
+    {
+      "name": "必填",
+      "values": [
+        "是",
+        "否"
+      ]
+    },
+    {
+      "name": "帮助",
+      "values": [
+        "有",
+        "无"
+      ]
+    },
+    {
+      "name": "计数",
+      "values": [
+        "有",
+        "无"
+      ]
+    }
+  ],
+  "states": [
+    {
+      "selector": "[data-state=\"error\"]",
+      "description": "Inner Input gets error styling; helper text turns red"
+    },
+    {
+      "selector": "[data-state=\"readonly\"]",
+      "description": "Inner Input becomes readonly"
+    }
+  ],
+  "slots": [
+    {
+      "name": "label",
+      "selector": ".input-block__label-row span:first-child",
+      "description": "Label text"
+    },
+    {
+      "name": "helper",
+      "selector": ".input-block__helper",
+      "description": "Helper/error text below input"
+    },
+    {
+      "name": "counter",
+      "selector": ".input-block__counter",
+      "description": "Character counter (e.g. \"0/100\")"
+    }
+  ],
+  "tokensReferenced": [
+    "--color-light-text-1",
+    "--color-light-text-2",
+    "--color-light-text-3",
+    "--color-light-error",
+    "--color-light-border-2",
+    "--font-source-han"
+  ],
+  "variantCount": 24,
+  "variants": [
+    {
+      "name": "counter",
+      "figmaNodeId": "93:849",
+      "figmaVariantPath": "State=Default, 必填=否, 帮助=无, 计数=有",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"input-block\"><div class=\"input-block__label-row\"><span>Label</span></div><input type=\"text\" class=\"input input-block__input\" placeholder=\"请输入...\"><div class=\"input-block__bottom\"><span class=\"input-block__helper\"></span><span class=\"input-block__counter\">0/100</span></div></div>"
+    },
+    {
+      "name": "default",
+      "figmaNodeId": "93:844",
+      "figmaVariantPath": "State=Default, 必填=否, 帮助=无, 计数=无",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"input-block\"><div class=\"input-block__label-row\"><span>Label</span></div><input type=\"text\" class=\"input input-block__input\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "error",
+      "figmaNodeId": "93:976",
+      "figmaVariantPath": "State=Error, 必填=否, 帮助=无, 计数=无",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"input-block\" data-state=\"error\"><div class=\"input-block__label-row\"><span>Label</span></div><input type=\"text\" class=\"input input-block__input\" placeholder=\"请输入...\" data-state=\"error\"><div class=\"input-block__bottom\"><span class=\"input-block__helper\">错误提示文字</span></div></div>"
+    },
+    {
+      "name": "error-counter",
+      "figmaNodeId": "93:982",
+      "figmaVariantPath": "State=Error, 必填=否, 帮助=无, 计数=有",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"input-block\" data-state=\"error\"><div class=\"input-block__label-row\"><span>Label</span></div><input type=\"text\" class=\"input input-block__input\" placeholder=\"请输入...\" data-state=\"error\"><div class=\"input-block__bottom\"><span class=\"input-block__helper\">错误提示文字</span><span class=\"input-block__counter\">0/100</span></div></div>"
+    },
+    {
+      "name": "error-help",
+      "figmaNodeId": "93:989",
+      "figmaVariantPath": "State=Error, 必填=否, 帮助=有, 计数=无",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"input-block\" data-state=\"error\"><div class=\"input-block__label-row\"><span>Label</span><span class=\"input-block__help-icon\" aria-label=\"help\">?</span></div><input type=\"text\" class=\"input input-block__input\" placeholder=\"请输入...\" data-state=\"error\"><div class=\"input-block__bottom\"><span class=\"input-block__helper\">错误提示文字</span></div></div>"
+    },
+    {
+      "name": "error-help-counter",
+      "figmaNodeId": "93:999",
+      "figmaVariantPath": "State=Error, 必填=否, 帮助=有, 计数=有",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"input-block\" data-state=\"error\"><div class=\"input-block__label-row\"><span>Label</span><span class=\"input-block__help-icon\" aria-label=\"help\">?</span></div><input type=\"text\" class=\"input input-block__input\" placeholder=\"请输入...\" data-state=\"error\"><div class=\"input-block__bottom\"><span class=\"input-block__helper\">错误提示文字</span><span class=\"input-block__counter\">0/100</span></div></div>"
+    },
+    {
+      "name": "error-required",
+      "figmaNodeId": "93:938",
+      "figmaVariantPath": "State=Error, 必填=是, 帮助=无, 计数=无",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"input-block\" data-state=\"error\"><div class=\"input-block__label-row\"><span>Label</span><span class=\"input-block__required\">*</span></div><input type=\"text\" class=\"input input-block__input\" placeholder=\"请输入...\" data-state=\"error\"><div class=\"input-block__bottom\"><span class=\"input-block__helper\">错误提示文字</span></div></div>"
+    },
+    {
+      "name": "error-required-counter",
+      "figmaNodeId": "93:945",
+      "figmaVariantPath": "State=Error, 必填=是, 帮助=无, 计数=有",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"input-block\" data-state=\"error\"><div class=\"input-block__label-row\"><span>Label</span><span class=\"input-block__required\">*</span></div><input type=\"text\" class=\"input input-block__input\" placeholder=\"请输入...\" data-state=\"error\"><div class=\"input-block__bottom\"><span class=\"input-block__helper\">错误提示文字</span><span class=\"input-block__counter\">0/100</span></div></div>"
+    },
+    {
+      "name": "error-required-help",
+      "figmaNodeId": "93:953",
+      "figmaVariantPath": "State=Error, 必填=是, 帮助=有, 计数=无",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"input-block\" data-state=\"error\"><div class=\"input-block__label-row\"><span>Label</span><span class=\"input-block__required\">*</span><span class=\"input-block__help-icon\" aria-label=\"help\">?</span></div><input type=\"text\" class=\"input input-block__input\" placeholder=\"请输入...\" data-state=\"error\"><div class=\"input-block__bottom\"><span class=\"input-block__helper\">错误提示文字</span></div></div>"
+    },
+    {
+      "name": "error-required-help-counter",
+      "figmaNodeId": "93:964",
+      "figmaVariantPath": "State=Error, 必填=是, 帮助=有, 计数=有",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"input-block\" data-state=\"error\"><div class=\"input-block__label-row\"><span>Label</span><span class=\"input-block__required\">*</span><span class=\"input-block__help-icon\" aria-label=\"help\">?</span></div><input type=\"text\" class=\"input input-block__input\" placeholder=\"请输入...\" data-state=\"error\"><div class=\"input-block__bottom\"><span class=\"input-block__helper\">错误提示文字</span><span class=\"input-block__counter\">0/100</span></div></div>"
+    },
+    {
+      "name": "help",
+      "figmaNodeId": "93:855",
+      "figmaVariantPath": "State=Default, 必填=否, 帮助=有, 计数=无",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"input-block\"><div class=\"input-block__label-row\"><span>Label</span><span class=\"input-block__help-icon\" aria-label=\"help\">?</span></div><input type=\"text\" class=\"input input-block__input\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "help-counter",
+      "figmaNodeId": "93:864",
+      "figmaVariantPath": "State=Default, 必填=否, 帮助=有, 计数=有",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"input-block\"><div class=\"input-block__label-row\"><span>Label</span><span class=\"input-block__help-icon\" aria-label=\"help\">?</span></div><input type=\"text\" class=\"input input-block__input\" placeholder=\"请输入...\"><div class=\"input-block__bottom\"><span class=\"input-block__helper\"></span><span class=\"input-block__counter\">0/100</span></div></div>"
+    },
+    {
+      "name": "readonly",
+      "figmaNodeId": "93:1044",
+      "figmaVariantPath": "State=Readonly, 必填=否, 帮助=无, 计数=无",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"input-block\" data-state=\"readonly\"><div class=\"input-block__label-row\"><span>Label</span></div><input type=\"text\" class=\"input input-block__input\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "readonly-counter",
+      "figmaNodeId": "93:1049",
+      "figmaVariantPath": "State=Readonly, 必填=否, 帮助=无, 计数=有",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"input-block\" data-state=\"readonly\"><div class=\"input-block__label-row\"><span>Label</span></div><input type=\"text\" class=\"input input-block__input\" placeholder=\"请输入...\"><div class=\"input-block__bottom\"><span class=\"input-block__helper\"></span><span class=\"input-block__counter\">0/100</span></div></div>"
+    },
+    {
+      "name": "readonly-help",
+      "figmaNodeId": "93:1055",
+      "figmaVariantPath": "State=Readonly, 必填=否, 帮助=有, 计数=无",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"input-block\" data-state=\"readonly\"><div class=\"input-block__label-row\"><span>Label</span><span class=\"input-block__help-icon\" aria-label=\"help\">?</span></div><input type=\"text\" class=\"input input-block__input\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "readonly-help-counter",
+      "figmaNodeId": "93:1064",
+      "figmaVariantPath": "State=Readonly, 必填=否, 帮助=有, 计数=有",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"input-block\" data-state=\"readonly\"><div class=\"input-block__label-row\"><span>Label</span><span class=\"input-block__help-icon\" aria-label=\"help\">?</span></div><input type=\"text\" class=\"input input-block__input\" placeholder=\"请输入...\"><div class=\"input-block__bottom\"><span class=\"input-block__helper\"></span><span class=\"input-block__counter\">0/100</span></div></div>"
+    },
+    {
+      "name": "readonly-required",
+      "figmaNodeId": "93:1010",
+      "figmaVariantPath": "State=Readonly, 必填=是, 帮助=无, 计数=无",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"input-block\" data-state=\"readonly\"><div class=\"input-block__label-row\"><span>Label</span><span class=\"input-block__required\">*</span></div><input type=\"text\" class=\"input input-block__input\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "readonly-required-counter",
+      "figmaNodeId": "93:1016",
+      "figmaVariantPath": "State=Readonly, 必填=是, 帮助=无, 计数=有",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"input-block\" data-state=\"readonly\"><div class=\"input-block__label-row\"><span>Label</span><span class=\"input-block__required\">*</span></div><input type=\"text\" class=\"input input-block__input\" placeholder=\"请输入...\"><div class=\"input-block__bottom\"><span class=\"input-block__helper\"></span><span class=\"input-block__counter\">0/100</span></div></div>"
+    },
+    {
+      "name": "readonly-required-help",
+      "figmaNodeId": "93:1023",
+      "figmaVariantPath": "State=Readonly, 必填=是, 帮助=有, 计数=无",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"input-block\" data-state=\"readonly\"><div class=\"input-block__label-row\"><span>Label</span><span class=\"input-block__required\">*</span><span class=\"input-block__help-icon\" aria-label=\"help\">?</span></div><input type=\"text\" class=\"input input-block__input\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "readonly-required-help-counter",
+      "figmaNodeId": "93:1033",
+      "figmaVariantPath": "State=Readonly, 必填=是, 帮助=有, 计数=有",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"input-block\" data-state=\"readonly\"><div class=\"input-block__label-row\"><span>Label</span><span class=\"input-block__required\">*</span><span class=\"input-block__help-icon\" aria-label=\"help\">?</span></div><input type=\"text\" class=\"input input-block__input\" placeholder=\"请输入...\"><div class=\"input-block__bottom\"><span class=\"input-block__helper\"></span><span class=\"input-block__counter\">0/100</span></div></div>"
+    },
+    {
+      "name": "required",
+      "figmaNodeId": "93:810",
+      "figmaVariantPath": "State=Default, 必填=是, 帮助=无, 计数=无",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"input-block\"><div class=\"input-block__label-row\"><span>Label</span><span class=\"input-block__required\">*</span></div><input type=\"text\" class=\"input input-block__input\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "required-counter",
+      "figmaNodeId": "93:816",
+      "figmaVariantPath": "State=Default, 必填=是, 帮助=无, 计数=有",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"input-block\"><div class=\"input-block__label-row\"><span>Label</span><span class=\"input-block__required\">*</span></div><input type=\"text\" class=\"input input-block__input\" placeholder=\"请输入...\"><div class=\"input-block__bottom\"><span class=\"input-block__helper\"></span><span class=\"input-block__counter\">0/100</span></div></div>"
+    },
+    {
+      "name": "required-help",
+      "figmaNodeId": "93:823",
+      "figmaVariantPath": "State=Default, 必填=是, 帮助=有, 计数=无",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"input-block\"><div class=\"input-block__label-row\"><span>Label</span><span class=\"input-block__required\">*</span><span class=\"input-block__help-icon\" aria-label=\"help\">?</span></div><input type=\"text\" class=\"input input-block__input\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "required-help-counter",
+      "figmaNodeId": "93:833",
+      "figmaVariantPath": "State=Default, 必填=是, 帮助=有, 计数=有",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"input-block\"><div class=\"input-block__label-row\"><span>Label</span><span class=\"input-block__required\">*</span><span class=\"input-block__help-icon\" aria-label=\"help\">?</span></div><input type=\"text\" class=\"input input-block__input\" placeholder=\"请输入...\"><div class=\"input-block__bottom\"><span class=\"input-block__helper\"></span><span class=\"input-block__counter\">0/100</span></div></div>"
+    }
+  ],
+  "generatedAt": "2026-05-12T10:00:00Z",
+  "platform": "web"
+}

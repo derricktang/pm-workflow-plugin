@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "kind": "tokens",
+  "fileName": "不觉组件库",
+  "figmaFileKey": "B1KFmcQrMgQiqKsyppory3",
+  "lastSyncedAt": "2026-05-12T09:00:00Z",
+  "source": "figma-developer-mcp",
+  "totalTokens": 78,
+  "note": "Outbound token catalog for downstream page-generation agents. Each entry maps a CSS custom property (the consumption interface) to its Figma source name, resolved value, and semantic description. CSS files in tokens/ are the runtime artifact; this catalog is the discovery surface — a single `Read tokens/catalog.json` lists every available token without parsing CSS.",
+  "schema": {
+    "categories.<category>[]": {
+      "cssVar":      "string · CSS custom property name (e.g. '--color-light-text-1')",
+      "value":       "string · resolved CSS value the var holds",
+      "displayName": "string · Figma source name (may contain Chinese)",
+      "description": "string · semantic intent / when to use this token",
+      "figmaNode":   "string | null · Figma node id where this token's source value lives"
+    }
+  },
+  "categories": {
+    "colors-light": [
+      { "cssVar": "--color-light-text-1",         "value": "#333333",                  "displayName": "白版/文字 #333",           "description": "正文主色 / 标题",          "figmaNode": "1:2" },
+      { "cssVar": "--color-light-text-2",         "value": "#666666",                  "displayName": "白版/文字 #666",           "description": "次级文字",                "figmaNode": "1:2" },
+      { "cssVar": "--color-light-text-3",         "value": "#999999",                  "displayName": "白版/文字 #999",           "description": "弱化 / 占位",             "figmaNode": "1:2" },
+      { "cssVar": "--color-light-error",          "value": "#E60023",                  "displayName": "白版/错误色 #E60023",      "description": "⚠️ 仅错误 / 危险",        "figmaNode": "1:2" },
+      { "cssVar": "--color-light-disabled",       "value": "#CCCCCC",                  "displayName": "白版/禁用色 #ccc",         "description": "禁用态",                  "figmaNode": "1:2" },
+      { "cssVar": "--color-light-selected-soft",  "value": "#FDE6E9",                  "displayName": "白版/选中色浅 #FDE6E9",    "description": "浅选中底",                "figmaNode": "1:2" },
+      { "cssVar": "--color-light-white",          "value": "#FFFFFF",                  "displayName": "白版/白色 #FFF",           "description": "卡片 / 浮层 / 顶底栏",    "figmaNode": "1:2" },
+      { "cssVar": "--color-light-bg-1",           "value": "#FAFAFA",                  "displayName": "白版/背景色1级",           "description": "极浅底（hover 等）",      "figmaNode": "1:2" },
+      { "cssVar": "--color-light-bg-2",           "value": "#F5F5F5",                  "displayName": "白版/背景色2级 #F5F5F5",   "description": "页面 canvas（推荐）",     "figmaNode": "1:2" },
+      { "cssVar": "--color-light-bg-3",           "value": "#F1F1F1",                  "displayName": "白版/背景色3级",           "description": null,                       "figmaNode": "1:2" },
+      { "cssVar": "--color-light-bg-4",           "value": "#EDEDED",                  "displayName": "白版/背景色4级 #EDEDED",   "description": null,                       "figmaNode": "1:2" },
+      { "cssVar": "--color-light-bg-5",           "value": "#E2E2E2",                  "displayName": "白版/背景色5级 #E2E2E2",   "description": "DualActionButton 左区",   "figmaNode": "1:2" },
+      { "cssVar": "--color-light-border-1",       "value": "#EBEBEB",                  "displayName": "白版/线框色1级 #EBEBEB",   "description": "默认边框",                "figmaNode": "1:2" },
+      { "cssVar": "--color-light-border-2",       "value": "#DBDBDB",                  "displayName": "白版/线框色2级 #DBDBDB",   "description": "强调边框",                "figmaNode": "1:2" },
+      { "cssVar": "--color-light-nav-blur",       "value": "rgba(255,255,255,0.8)",    "displayName": "白版/APP导航栏底部透明度 #FFF 80%", "description": "App 导航栏带模糊背景", "figmaNode": "1:2" }
+    ],
+    "colors-dark": [
+      { "cssVar": "--color-dark-text-1",      "value": "rgba(255,255,255,0.85)", "displayName": "黑板/文字 #FFF 85%",        "description": "暗底正文主色",     "figmaNode": "1:3" },
+      { "cssVar": "--color-dark-text-2",      "value": "rgba(255,255,255,0.65)", "displayName": "黑板/文字 #FFF 65%",        "description": "暗底次级文字",     "figmaNode": "1:3" },
+      { "cssVar": "--color-dark-text-3",      "value": "rgba(255,255,255,0.45)", "displayName": "黑板/文字 #FFF 45%",        "description": "暗底弱化",         "figmaNode": "1:3" },
+      { "cssVar": "--color-dark-disabled",    "value": "rgba(255,255,255,0.25)", "displayName": "黑板/禁用色 #FFF 25%",      "description": "暗底禁用",         "figmaNode": "1:3" },
+      { "cssVar": "--color-dark-border",      "value": "rgba(255,255,255,0.15)", "displayName": "黑板/线框色 #FFF 15%",      "description": "暗底边框",         "figmaNode": "1:3" },
+      { "cssVar": "--color-dark-white-10",    "value": "rgba(255,255,255,0.1)",  "displayName": "黑板/白色 #FFF 10%",        "description": "暗底高亮 hover",   "figmaNode": "1:3" },
+      { "cssVar": "--color-dark-white-8",     "value": "rgba(255,255,255,0.08)", "displayName": "黑板/白色 #FFF 8%",         "description": "暗底叠加",         "figmaNode": "1:3" },
+      { "cssVar": "--color-dark-bg-1",        "value": "#000000",                "displayName": "黑板/背景色1 #000",         "description": "暗底主背景",       "figmaNode": "1:3" },
+      { "cssVar": "--color-dark-bg-2",        "value": "#151515",                "displayName": "黑板/背景色2 #151515",      "description": "暗底次级",         "figmaNode": "1:3" },
+      { "cssVar": "--color-dark-bg-image",    "value": "#1F1F1F",                "displayName": "黑板/图片底部图片预览色",   "description": "图片预览底",       "figmaNode": "1:3" },
+      { "cssVar": "--color-dark-bg-3",        "value": "#2A2A2A",                "displayName": "黑板/背景色3 #2A2A2A",      "description": "暗底卡片",         "figmaNode": "1:3" },
+      { "cssVar": "--color-dark-bg-4",        "value": "#454545",                "displayName": "黑板/背景色4 #454545",      "description": "暗底浮层",         "figmaNode": "1:3" },
+      { "cssVar": "--color-dark-bg-5",        "value": "#545454",                "displayName": "黑板/背景色5 #545454",      "description": "暗底 hover",       "figmaNode": "1:3" },
+      { "cssVar": "--color-dark-label-mask",  "value": "rgba(0,0,0,0.3)",        "displayName": "黑板/标签黑底 #000 30%",    "description": "图片上的标签底",   "figmaNode": "1:3" },
+      { "cssVar": "--color-dark-mask",        "value": "rgba(0,0,0,0.4)",        "displayName": "黑板/遮罩黑 #000 40%",      "description": "弹窗遮罩",         "figmaNode": "1:3" }
+    ],
+    "radii": [
+      { "cssVar": "--radius-0",    "value": "0px",   "displayName": "圆角/0 (无圆角)",   "description": "锐边 / 满屏图片",         "figmaNode": "1:5" },
+      { "cssVar": "--radius-1",    "value": "1px",   "displayName": "圆角/1 (微圆角)",   "description": "极细微 / 小标签",         "figmaNode": "1:5" },
+      { "cssVar": "--radius-4",    "value": "4px",   "displayName": "圆角/4",            "description": "Pad / 手机默认 ★",        "figmaNode": "1:5" },
+      { "cssVar": "--radius-6",    "value": "6px",   "displayName": "圆角/6 (中)",       "description": "4 与 8 之间过渡",         "figmaNode": "1:5" },
+      { "cssVar": "--radius-8",    "value": "8px",   "displayName": "圆角/8",            "description": "Web 默认 ★",              "figmaNode": "1:5" },
+      { "cssVar": "--radius-pill", "value": "100px", "displayName": "圆角/胶囊 100",     "description": "胶囊按钮 / 头像 ★",       "figmaNode": "1:5" }
+    ],
+    "spacing": [
+      { "cssVar": "--space-0",  "value": "0px",  "displayName": "微-0",  "description": "字-图间距 / 列首尾贴边 · 仅控件内部，不可用于模块间距", "figmaNode": "1:5" },
+      { "cssVar": "--space-1",  "value": "1px",  "displayName": "微-1",  "description": "下划线-文字 / hairline 对齐 · 仅控件内部",             "figmaNode": "1:5" },
+      { "cssVar": "--space-2",  "value": "2px",  "displayName": "微-2",  "description": "segmented 容器内 padding · 仅控件内部",                 "figmaNode": "1:5" },
+      { "cssVar": "--space-4",  "value": "4px",  "displayName": "间距/4",  "description": "错误提示 / 卡片内紧贴",                                "figmaNode": "1:5" },
+      { "cssVar": "--space-8",  "value": "8px",  "displayName": "间距/8",  "description": "控件内紧凑 / 图片卡纵向",                              "figmaNode": "1:5" },
+      { "cssVar": "--space-12", "value": "12px", "displayName": "间距/12", "description": "模块间最小 / 字段间",                                 "figmaNode": "1:5" },
+      { "cssVar": "--space-20", "value": "20px", "displayName": "间距/20", "description": "Pad 横向边距 / 标题-内容",                            "figmaNode": "1:5" },
+      { "cssVar": "--space-28", "value": "28px", "displayName": "间距/28", "description": "模块间 (App)",                                        "figmaNode": "1:5" },
+      { "cssVar": "--space-32", "value": "32px", "displayName": "间距/32", "description": "Web 横向边距 / 大卡片",                               "figmaNode": "1:5" }
+    ],
+    "effects": [
+      { "cssVar": "--shadow-card-on-white", "value": "0px 0px 12px 0px rgba(0,0,0,0.06)", "displayName": "白底阴影",     "description": "白底卡片浮在白底之上（最常用）",     "figmaNode": "1:4" },
+      { "cssVar": "--shadow-card-on-gray",  "value": "0px 0px 12px 0px rgba(0,0,0,0.04)", "displayName": "灰底阴影",     "description": "卡片浮在灰底之上（更轻）",           "figmaNode": "1:4" },
+      { "cssVar": "--shadow-popover",       "value": "0px 0px 12px 0px rgba(0,0,0,0.08)", "displayName": "悬浮框阴影",   "description": "弹窗 / 悬浮工具条（最强）",          "figmaNode": "1:4" },
+      { "cssVar": "--blur-strong",          "value": "blur(20px)",                        "displayName": "强模糊 20px",  "description": "浮层背景 / 弹窗模糊 (backdrop-filter)","figmaNode": "1:4" },
+      { "cssVar": "--blur-nav",             "value": "blur(80px)",                        "displayName": "APP导航栏模糊 80px", "description": "App 顶/底导航栏毛玻璃 (backdrop-filter)", "figmaNode": "1:4" }
+    ],
+    "typography": [
+      { "cssVar": "--text-app-title-sm-medium",      "value": "500 14px/21px Source Han Sans CN", "displayName": "App/共享/标题小 - Medium",         "description": "Pad 标题小 / Mobile TAB 选中",          "figmaNode": "1:6" },
+      { "cssVar": "--text-app-title-sm-regular",     "value": "400 14px/21px Source Han Sans CN", "displayName": "App/共享/标题小 - Regular",        "description": "Pad 标题小 / Mobile 标题中",            "figmaNode": "1:6" },
+      { "cssVar": "--text-app-body-lg",              "value": "400 14px/21px Source Han Sans CN", "displayName": "App/共享/正文大/常态 - Normal",    "description": "正文大常态 / Mobile 标题中(N) / TAB 未选中", "figmaNode": "1:6" },
+      { "cssVar": "--text-app-body-lg-input",        "value": "400 14px/24px Source Han Sans CN", "displayName": "App/共享/正文大/输入 - Normal",    "description": "正文大输入（行高 24 利于光标定位）",     "figmaNode": "1:6" },
+      { "cssVar": "--text-app-body-md",              "value": "400 12px/19px Source Han Sans CN", "displayName": "App/共享/正文中/常态 - Normal",    "description": "★ App 默认正文 / Mobile 也作 标题/小(N)", "figmaNode": "1:6" },
+      { "cssVar": "--text-app-body-md-multiline",    "value": "400 12px/21px Source Han Sans CN", "displayName": "App/共享/正文中/多行 - Normal",    "description": "正文中多行",                            "figmaNode": "1:6" },
+      { "cssVar": "--text-app-body-md-input",        "value": "400 12px/24px Source Han Sans CN", "displayName": "App/共享/正文中/输入 - Normal",    "description": "正文中输入",                            "figmaNode": "1:6" },
+      { "cssVar": "--text-app-body-sm",              "value": "400 10px/15px Source Han Sans CN", "displayName": "App/共享/正文小/常态 - Normal",    "description": "正文小 / Mobile 也作 标题/备注",        "figmaNode": "1:6" },
+      { "cssVar": "--text-app-mobile-title-xl",      "value": "400 20px/30px Source Han Sans CN", "displayName": "App/Mobile专属/标题/超大 - Regular", "description": "Mobile 标题超大（Pad 用 Medium）",      "figmaNode": "1:8" },
+      { "cssVar": "--text-app-mobile-title-lg",      "value": "400 16px/24px Source Han Sans CN", "displayName": "App/Mobile专属/标题/大 - Regular",   "description": "Mobile 标题大（Pad 没 16 字号）",      "figmaNode": "1:8" },
+      { "cssVar": "--text-app-mobile-body-md-medium","value": "500 12px/19px Source Han Sans CN", "displayName": "App/Mobile专属/正文中/常态 - Medium","description": "Mobile 12/19 加重（Pad 没此权重）",    "figmaNode": "1:8" },
+      { "cssVar": "--text-app-mobile-body-sm-card",  "value": "400 10px/13px Source Han Sans CN", "displayName": "App/Mobile专属/正文小/分类卡片 - Regular", "description": "Mobile 分类卡片（10/13 紧凑）",  "figmaNode": "1:8" },
+      { "cssVar": "--text-app-mobile-body-xs",       "value": "400 8px/12px Source Han Sans CN",  "displayName": "App/Mobile专属/正文小/极小 8 - Normal",    "description": "Mobile 极小辅助（Pad 不用 8 字号）", "figmaNode": "1:8" },
+      { "cssVar": "--text-web-title-xxxl-medium",    "value": "500 40px/60px Source Han Sans CN", "displayName": "Web/标题/超大 - Medium",            "description": "Web 主标题超大",                       "figmaNode": "1:7" },
+      { "cssVar": "--text-web-title-xl-medium",      "value": "500 20px/30px Source Han Sans CN", "displayName": "Web/标题/大 - Medium",              "description": "Web 二级大标题",                       "figmaNode": "1:7" },
+      { "cssVar": "--text-web-title-xl-multiline",   "value": "500 20px/36px Source Han Sans CN", "displayName": "Web/标题/大两行 - Medium",          "description": "Web 大标题多行版（行高 36）",          "figmaNode": "1:7" },
+      { "cssVar": "--text-web-modal-title-medium",   "value": "500 16px/24px Source Han Sans CN", "displayName": "Web/弹窗标题/Medium",               "description": "Web 弹窗主标题",                       "figmaNode": "1:7" },
+      { "cssVar": "--text-web-modal-title-regular",  "value": "400 16px/24px Source Han Sans CN", "displayName": "Web/弹窗标题/Regular",              "description": "Web 弹窗副标题",                       "figmaNode": "1:7" },
+      { "cssVar": "--text-web-modal-title-normal",   "value": "400 16px/24px Source Han Sans CN", "displayName": "Web/弹窗标题/Normal",               "description": "Web 弹窗正文标题",                     "figmaNode": "1:7" },
+      { "cssVar": "--text-web-body-lg-medium",       "value": "500 14px/21px Source Han Sans CN", "displayName": "Web/正文 14/Medium",                "description": "Web 14 加重",                          "figmaNode": "1:7" },
+      { "cssVar": "--text-web-body-lg-regular",      "value": "400 14px/21px Source Han Sans CN", "displayName": "Web/正文 14/Regular",               "description": "Web 14 标题型",                        "figmaNode": "1:7" },
+      { "cssVar": "--text-web-body-lg-normal",       "value": "400 14px/21px Source Han Sans CN", "displayName": "Web/正文 14/Normal",                "description": "★ Web 默认正文",                       "figmaNode": "1:7" },
+      { "cssVar": "--text-web-body-md-medium",       "value": "500 12px/19px Source Han Sans CN", "displayName": "Web/正文 12/Medium",                "description": "Web 12 加重",                          "figmaNode": "1:7" },
+      { "cssVar": "--text-web-body-md-regular",      "value": "400 12px/19px Source Han Sans CN", "displayName": "Web/正文 12/Regular",               "description": "Web 12 标题型 - Tab/Tag 常用",         "figmaNode": "1:7" },
+      { "cssVar": "--text-web-body-md-normal",       "value": "400 12px/19px Source Han Sans CN", "displayName": "Web/正文 12/Normal",                "description": "Web 次级正文",                         "figmaNode": "1:7" },
+      { "cssVar": "--text-web-caption-regular",      "value": "400 10px/15px Source Han Sans CN", "displayName": "Web/正文 12/辅助 10/Regular",       "description": "Web 辅助文字 10 标题型",               "figmaNode": "1:7" },
+      { "cssVar": "--text-web-caption-normal",       "value": "400 10px/15px Source Han Sans CN", "displayName": "Web/正文 12/辅助 10/Normal",        "description": "Web 辅助文字 10 正文型",               "figmaNode": "1:7" },
+      { "cssVar": "--text-web-micro",                "value": "400 8px/12px Source Han Sans CN",  "displayName": "Web/极小 8/Normal",                 "description": "Web 极小辅助",                         "figmaNode": "1:7" }
+    ]
+  },
+  "consumption": {
+    "cssEntry": "tokens/index.css",
+    "exampleUsage": ".card { padding: var(--space-12); background: var(--color-light-white); color: var(--color-light-text-1); font: var(--text-web-body-lg-normal); }"
+  }
+}

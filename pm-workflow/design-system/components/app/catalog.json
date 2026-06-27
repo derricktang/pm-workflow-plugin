@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "kind": "components-platform-index",
+  "platform": "app",
+  "figmaFileKey": "32xWNWcyKwBl6ElXLG5oFs",
+  "figmaFileName": "不觉 App 组件",
+  "lastSyncedAt": "2026-05-12T14:00:00Z",
+  "totalComponentSets": 3,
+  "totalVariants": 528,
+  "note": "App-platform component sets. Populate by running /build-ui --platform=app <figma-app-url>.",
+  "componentSets": [
+    {
+      "name": "button",
+      "displayName": "Button",
+      "category": "Base",
+      "figmaFileKey": "32xWNWcyKwBl6ElXLG5oFs",
+      "figmaNodeId": "19:630",
+      "variantCount": 384,
+      "catalog": "components/app/button/catalog.json",
+      "files": {
+        "html": null,
+        "css": "components/app/button/button.css",
+        "js": null,
+        "thumb": null,
+        "readme": "components/app/button/README.md"
+      }
+    },
+    {
+      "name": "icon-button",
+      "displayName": "IconButton",
+      "category": "Base",
+      "figmaFileKey": "32xWNWcyKwBl6ElXLG5oFs",
+      "figmaNodeId": "95:1048",
+      "variantCount": 96,
+      "catalog": "components/app/icon-button/catalog.json",
+      "files": {
+        "html": null,
+        "css": "components/app/icon-button/icon-button.css",
+        "js": null,
+        "thumb": null,
+        "readme": "components/app/icon-button/README.md"
+      }
+    },
+    {
+      "name": "loading-button",
+      "displayName": "LoadingButton",
+      "category": "Base",
+      "figmaFileKey": "32xWNWcyKwBl6ElXLG5oFs",
+      "figmaNodeId": "101:1016",
+      "variantCount": 48,
+      "catalog": "components/app/loading-button/catalog.json",
+      "files": {
+        "html": null,
+        "css": "components/app/loading-button/loading-button.css",
+        "js": null,
+        "thumb": null,
+        "readme": "components/app/loading-button/README.md"
+      }
+    }
+  ],
+  "status": {
+    "implemented": [
+      "button",
+      "icon-button",
+      "loading-button"
+    ],
+    "pendingPages": [
+      {
+        "figmaPage": "1:3",
+        "title": "基础 / Input",
+        "componentSets": null,
+        "note": "not yet queried"
+      },
+      {
+        "figmaPage": "1:4",
+        "title": "基础 / Tag",
+        "componentSets": null,
+        "note": "not yet queried"
+      },
+      {
+        "figmaPage": "1:5",
+        "title": "基础 / Tab",
+        "componentSets": null,
+        "note": "not yet queried"
+      },
+      {
+        "figmaPage": "1:6",
+        "title": "卡片 / Card",
+        "componentSets": null,
+        "note": "not yet queried"
+      },
+      {
+        "figmaPage": "1:7",
+        "title": "导航 / NavigationBar",
+        "componentSets": null,
+        "note": "not yet queried"
+      },
+      {
+        "figmaPage": "1:8",
+        "title": "浮层 / BottomSheet",
+        "componentSets": null,
+        "note": "not yet queried (Bottom Sheet 是 App 独有，Web 没有)"
+      },
+      {
+        "figmaPage": "1:9",
+        "title": "浮层 / Modal",
+        "componentSets": null,
+        "note": "not yet queried"
+      },
+      {
+        "figmaPage": "1:10",
+        "title": "表单 / Checkbox · Radio · Switch",
+        "componentSets": null,
+        "note": "not yet queried"
+      }
+    ]
+  },
+  "fileKey": "32xWNWcyKwBl6ElXLG5oFs"
+}

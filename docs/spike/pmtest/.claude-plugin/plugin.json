@@ -1,0 +1,6 @@
+{
+  "name": "pmtest",
+  "description": "scratch probe for CLAUDE_PLUGIN_ROOT expansion + SessionStart->subagent propagation",
+  "version": "0.0.1",
+  "hooks": "./hooks/hooks.json"
+}

@@ -1,0 +1,1209 @@
+{
+  "schemaVersion": 2,
+  "kind": "component",
+  "name": "text-area",
+  "displayName": "TextArea",
+  "category": "Base",
+  "type": "COMPONENT_SET",
+  "figmaFileKey": "hxksE13w1AZQivOylmZ9gn",
+  "figmaNodeId": "102:841",
+  "figmaSourceUrl": "https://www.figma.com/file/hxksE13w1AZQivOylmZ9gn/?node-id=102-841",
+  "files": {
+    "html": null,
+    "css": "components/web/text-area/text-area.css",
+    "js": null,
+    "thumb": null,
+    "readme": "components/web/text-area/README.md"
+  },
+  "axes": [
+    {
+      "name": "State",
+      "values": [
+        "Default",
+        "Error",
+        "Readonly"
+      ]
+    },
+    {
+      "name": "边框",
+      "values": [
+        "1级",
+        "2级"
+      ]
+    },
+    {
+      "name": "背景",
+      "values": [
+        "white",
+        "灰底",
+        "暗底浅",
+        "暗底重",
+        "透明"
+      ]
+    },
+    {
+      "name": "内容",
+      "values": [
+        "空",
+        "已填"
+      ]
+    },
+    {
+      "name": "计数",
+      "values": [
+        "有",
+        "无"
+      ]
+    }
+  ],
+  "states": [
+    {
+      "selector": "[data-state=\"error\"]",
+      "description": "Soft red 3px stroke"
+    },
+    {
+      "selector": "[data-state=\"readonly\"]",
+      "description": "Non-editable"
+    }
+  ],
+  "modifiers": [
+    {
+      "class": "text-area--bg-gray",
+      "axis": "背景",
+      "value": "灰底"
+    },
+    {
+      "class": "text-area--bg-dark-soft",
+      "axis": "背景",
+      "value": "暗底浅"
+    },
+    {
+      "class": "text-area--bg-dark-strong",
+      "axis": "背景",
+      "value": "暗底重"
+    },
+    {
+      "class": "text-area--bg-transparent",
+      "axis": "背景",
+      "value": "透明"
+    },
+    {
+      "class": "text-area--border-2",
+      "axis": "边框",
+      "value": "2级"
+    },
+    {
+      "class": "text-area--error",
+      "axis": "State",
+      "value": "Error"
+    }
+  ],
+  "slots": [
+    {
+      "name": "value",
+      "selector": "textarea",
+      "description": "Textarea content"
+    },
+    {
+      "name": "counter",
+      "selector": ".text-area-wrap__counter",
+      "description": "Optional counter"
+    }
+  ],
+  "tokensReferenced": [
+    "--color-light-white",
+    "--color-light-bg-2",
+    "--color-light-border-1",
+    "--color-light-border-2",
+    "--color-light-text-1",
+    "--color-light-text-3",
+    "--color-light-selected-soft",
+    "--radius-8",
+    "--font-source-han"
+  ],
+  "variantCount": 120,
+  "variants": [
+    {
+      "name": "border-2",
+      "figmaNodeId": "95:861",
+      "figmaVariantPath": "State=Default, 边框=2级, 背景=white, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--border-2\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "border-2-counter",
+      "figmaNodeId": "103:881",
+      "figmaVariantPath": "State=Default, 边框=2级, 背景=white, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--border-2\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "border-2-dark-soft",
+      "figmaNodeId": "95:873",
+      "figmaVariantPath": "State=Default, 边框=2级, 背景=暗底浅, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-soft text-area--border-2\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "border-2-dark-soft-counter",
+      "figmaNodeId": "103:905",
+      "figmaVariantPath": "State=Default, 边框=2级, 背景=暗底浅, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-soft text-area--border-2\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "border-2-dark-soft-filled",
+      "figmaNodeId": "95:875",
+      "figmaVariantPath": "State=Default, 边框=2级, 背景=暗底浅, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-soft text-area--border-2\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "border-2-dark-soft-filled-counter",
+      "figmaNodeId": "103:909",
+      "figmaVariantPath": "State=Default, 边框=2级, 背景=暗底浅, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-soft text-area--border-2\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "border-2-dark-strong",
+      "figmaNodeId": "95:877",
+      "figmaVariantPath": "State=Default, 边框=2级, 背景=暗底重, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-strong text-area--border-2\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "border-2-dark-strong-counter",
+      "figmaNodeId": "103:913",
+      "figmaVariantPath": "State=Default, 边框=2级, 背景=暗底重, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-strong text-area--border-2\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "border-2-dark-strong-filled",
+      "figmaNodeId": "95:879",
+      "figmaVariantPath": "State=Default, 边框=2级, 背景=暗底重, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-strong text-area--border-2\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "border-2-dark-strong-filled-counter",
+      "figmaNodeId": "103:917",
+      "figmaVariantPath": "State=Default, 边框=2级, 背景=暗底重, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-strong text-area--border-2\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "border-2-filled",
+      "figmaNodeId": "95:863",
+      "figmaVariantPath": "State=Default, 边框=2级, 背景=white, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--border-2\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "border-2-filled-counter",
+      "figmaNodeId": "103:885",
+      "figmaVariantPath": "State=Default, 边框=2级, 背景=white, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--border-2\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "border-2-gray",
+      "figmaNodeId": "95:869",
+      "figmaVariantPath": "State=Default, 边框=2级, 背景=灰底, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-gray text-area--border-2\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "border-2-gray-counter",
+      "figmaNodeId": "103:897",
+      "figmaVariantPath": "State=Default, 边框=2级, 背景=灰底, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-gray text-area--border-2\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "border-2-gray-filled",
+      "figmaNodeId": "95:871",
+      "figmaVariantPath": "State=Default, 边框=2级, 背景=灰底, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-gray text-area--border-2\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "border-2-gray-filled-counter",
+      "figmaNodeId": "103:901",
+      "figmaVariantPath": "State=Default, 边框=2级, 背景=灰底, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-gray text-area--border-2\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "border-2-transparent",
+      "figmaNodeId": "95:865",
+      "figmaVariantPath": "State=Default, 边框=2级, 背景=透明, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-transparent text-area--border-2\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "border-2-transparent-counter",
+      "figmaNodeId": "103:889",
+      "figmaVariantPath": "State=Default, 边框=2级, 背景=透明, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-transparent text-area--border-2\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "border-2-transparent-filled",
+      "figmaNodeId": "95:867",
+      "figmaVariantPath": "State=Default, 边框=2级, 背景=透明, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-transparent text-area--border-2\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "border-2-transparent-filled-counter",
+      "figmaNodeId": "103:893",
+      "figmaVariantPath": "State=Default, 边框=2级, 背景=透明, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-transparent text-area--border-2\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "counter",
+      "figmaNodeId": "103:841",
+      "figmaVariantPath": "State=Default, 边框=1级, 背景=white, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "dark-soft",
+      "figmaNodeId": "95:853",
+      "figmaVariantPath": "State=Default, 边框=1级, 背景=暗底浅, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-soft\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "dark-soft-counter",
+      "figmaNodeId": "103:865",
+      "figmaVariantPath": "State=Default, 边框=1级, 背景=暗底浅, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-soft\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "dark-soft-filled",
+      "figmaNodeId": "95:855",
+      "figmaVariantPath": "State=Default, 边框=1级, 背景=暗底浅, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-soft\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "dark-soft-filled-counter",
+      "figmaNodeId": "103:869",
+      "figmaVariantPath": "State=Default, 边框=1级, 背景=暗底浅, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-soft\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "dark-strong",
+      "figmaNodeId": "95:857",
+      "figmaVariantPath": "State=Default, 边框=1级, 背景=暗底重, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-strong\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "dark-strong-counter",
+      "figmaNodeId": "103:873",
+      "figmaVariantPath": "State=Default, 边框=1级, 背景=暗底重, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-strong\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "dark-strong-filled",
+      "figmaNodeId": "95:859",
+      "figmaVariantPath": "State=Default, 边框=1级, 背景=暗底重, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-strong\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "dark-strong-filled-counter",
+      "figmaNodeId": "103:877",
+      "figmaVariantPath": "State=Default, 边框=1级, 背景=暗底重, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-strong\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "default",
+      "figmaNodeId": "95:841",
+      "figmaVariantPath": "State=Default, 边框=1级, 背景=white, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "error",
+      "figmaNodeId": "95:921",
+      "figmaVariantPath": "State=Error, 边框=1级, 背景=white, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--error\" data-state=\"error\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "error-border-2",
+      "figmaNodeId": "95:941",
+      "figmaVariantPath": "State=Error, 边框=2级, 背景=white, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--border-2 text-area--error\" data-state=\"error\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "error-border-2-counter",
+      "figmaNodeId": "103:1041",
+      "figmaVariantPath": "State=Error, 边框=2级, 背景=white, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--border-2 text-area--error\" data-state=\"error\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "error-border-2-dark-soft",
+      "figmaNodeId": "95:953",
+      "figmaVariantPath": "State=Error, 边框=2级, 背景=暗底浅, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-soft text-area--border-2 text-area--error\" data-state=\"error\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "error-border-2-dark-soft-counter",
+      "figmaNodeId": "103:1065",
+      "figmaVariantPath": "State=Error, 边框=2级, 背景=暗底浅, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-soft text-area--border-2 text-area--error\" data-state=\"error\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "error-border-2-dark-soft-filled",
+      "figmaNodeId": "95:955",
+      "figmaVariantPath": "State=Error, 边框=2级, 背景=暗底浅, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-soft text-area--border-2 text-area--error\" data-state=\"error\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "error-border-2-dark-soft-filled-counter",
+      "figmaNodeId": "103:1069",
+      "figmaVariantPath": "State=Error, 边框=2级, 背景=暗底浅, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-soft text-area--border-2 text-area--error\" data-state=\"error\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "error-border-2-dark-strong",
+      "figmaNodeId": "95:957",
+      "figmaVariantPath": "State=Error, 边框=2级, 背景=暗底重, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-strong text-area--border-2 text-area--error\" data-state=\"error\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "error-border-2-dark-strong-counter",
+      "figmaNodeId": "103:1073",
+      "figmaVariantPath": "State=Error, 边框=2级, 背景=暗底重, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-strong text-area--border-2 text-area--error\" data-state=\"error\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "error-border-2-dark-strong-filled",
+      "figmaNodeId": "95:959",
+      "figmaVariantPath": "State=Error, 边框=2级, 背景=暗底重, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-strong text-area--border-2 text-area--error\" data-state=\"error\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "error-border-2-dark-strong-filled-counter",
+      "figmaNodeId": "103:1077",
+      "figmaVariantPath": "State=Error, 边框=2级, 背景=暗底重, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-strong text-area--border-2 text-area--error\" data-state=\"error\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "error-border-2-filled",
+      "figmaNodeId": "95:943",
+      "figmaVariantPath": "State=Error, 边框=2级, 背景=white, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--border-2 text-area--error\" data-state=\"error\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "error-border-2-filled-counter",
+      "figmaNodeId": "103:1045",
+      "figmaVariantPath": "State=Error, 边框=2级, 背景=white, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--border-2 text-area--error\" data-state=\"error\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "error-border-2-gray",
+      "figmaNodeId": "95:949",
+      "figmaVariantPath": "State=Error, 边框=2级, 背景=灰底, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-gray text-area--border-2 text-area--error\" data-state=\"error\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "error-border-2-gray-counter",
+      "figmaNodeId": "103:1057",
+      "figmaVariantPath": "State=Error, 边框=2级, 背景=灰底, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-gray text-area--border-2 text-area--error\" data-state=\"error\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "error-border-2-gray-filled",
+      "figmaNodeId": "95:951",
+      "figmaVariantPath": "State=Error, 边框=2级, 背景=灰底, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-gray text-area--border-2 text-area--error\" data-state=\"error\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "error-border-2-gray-filled-counter",
+      "figmaNodeId": "103:1061",
+      "figmaVariantPath": "State=Error, 边框=2级, 背景=灰底, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-gray text-area--border-2 text-area--error\" data-state=\"error\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "error-border-2-transparent",
+      "figmaNodeId": "95:945",
+      "figmaVariantPath": "State=Error, 边框=2级, 背景=透明, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-transparent text-area--border-2 text-area--error\" data-state=\"error\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "error-border-2-transparent-counter",
+      "figmaNodeId": "103:1049",
+      "figmaVariantPath": "State=Error, 边框=2级, 背景=透明, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-transparent text-area--border-2 text-area--error\" data-state=\"error\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "error-border-2-transparent-filled",
+      "figmaNodeId": "95:947",
+      "figmaVariantPath": "State=Error, 边框=2级, 背景=透明, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-transparent text-area--border-2 text-area--error\" data-state=\"error\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "error-border-2-transparent-filled-counter",
+      "figmaNodeId": "103:1053",
+      "figmaVariantPath": "State=Error, 边框=2级, 背景=透明, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-transparent text-area--border-2 text-area--error\" data-state=\"error\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "error-counter",
+      "figmaNodeId": "103:1001",
+      "figmaVariantPath": "State=Error, 边框=1级, 背景=white, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--error\" data-state=\"error\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "error-dark-soft",
+      "figmaNodeId": "95:933",
+      "figmaVariantPath": "State=Error, 边框=1级, 背景=暗底浅, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-soft text-area--error\" data-state=\"error\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "error-dark-soft-counter",
+      "figmaNodeId": "103:1025",
+      "figmaVariantPath": "State=Error, 边框=1级, 背景=暗底浅, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-soft text-area--error\" data-state=\"error\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "error-dark-soft-filled",
+      "figmaNodeId": "95:935",
+      "figmaVariantPath": "State=Error, 边框=1级, 背景=暗底浅, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-soft text-area--error\" data-state=\"error\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "error-dark-soft-filled-counter",
+      "figmaNodeId": "103:1029",
+      "figmaVariantPath": "State=Error, 边框=1级, 背景=暗底浅, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-soft text-area--error\" data-state=\"error\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "error-dark-strong",
+      "figmaNodeId": "95:937",
+      "figmaVariantPath": "State=Error, 边框=1级, 背景=暗底重, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-strong text-area--error\" data-state=\"error\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "error-dark-strong-counter",
+      "figmaNodeId": "103:1033",
+      "figmaVariantPath": "State=Error, 边框=1级, 背景=暗底重, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-strong text-area--error\" data-state=\"error\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "error-dark-strong-filled",
+      "figmaNodeId": "95:939",
+      "figmaVariantPath": "State=Error, 边框=1级, 背景=暗底重, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-strong text-area--error\" data-state=\"error\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "error-dark-strong-filled-counter",
+      "figmaNodeId": "103:1037",
+      "figmaVariantPath": "State=Error, 边框=1级, 背景=暗底重, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-strong text-area--error\" data-state=\"error\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "error-filled",
+      "figmaNodeId": "95:923",
+      "figmaVariantPath": "State=Error, 边框=1级, 背景=white, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--error\" data-state=\"error\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "error-filled-counter",
+      "figmaNodeId": "103:1005",
+      "figmaVariantPath": "State=Error, 边框=1级, 背景=white, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--error\" data-state=\"error\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "error-gray",
+      "figmaNodeId": "95:929",
+      "figmaVariantPath": "State=Error, 边框=1级, 背景=灰底, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-gray text-area--error\" data-state=\"error\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "error-gray-counter",
+      "figmaNodeId": "103:1017",
+      "figmaVariantPath": "State=Error, 边框=1级, 背景=灰底, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-gray text-area--error\" data-state=\"error\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "error-gray-filled",
+      "figmaNodeId": "95:931",
+      "figmaVariantPath": "State=Error, 边框=1级, 背景=灰底, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-gray text-area--error\" data-state=\"error\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "error-gray-filled-counter",
+      "figmaNodeId": "103:1021",
+      "figmaVariantPath": "State=Error, 边框=1级, 背景=灰底, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-gray text-area--error\" data-state=\"error\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "error-transparent",
+      "figmaNodeId": "95:925",
+      "figmaVariantPath": "State=Error, 边框=1级, 背景=透明, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-transparent text-area--error\" data-state=\"error\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "error-transparent-counter",
+      "figmaNodeId": "103:1009",
+      "figmaVariantPath": "State=Error, 边框=1级, 背景=透明, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-transparent text-area--error\" data-state=\"error\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "error-transparent-filled",
+      "figmaNodeId": "95:927",
+      "figmaVariantPath": "State=Error, 边框=1级, 背景=透明, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-transparent text-area--error\" data-state=\"error\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "error-transparent-filled-counter",
+      "figmaNodeId": "103:1013",
+      "figmaVariantPath": "State=Error, 边框=1级, 背景=透明, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-transparent text-area--error\" data-state=\"error\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "filled",
+      "figmaNodeId": "95:843",
+      "figmaVariantPath": "State=Default, 边框=1级, 背景=white, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "filled-counter",
+      "figmaNodeId": "103:845",
+      "figmaVariantPath": "State=Default, 边框=1级, 背景=white, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "gray",
+      "figmaNodeId": "95:849",
+      "figmaVariantPath": "State=Default, 边框=1级, 背景=灰底, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-gray\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "gray-counter",
+      "figmaNodeId": "103:857",
+      "figmaVariantPath": "State=Default, 边框=1级, 背景=灰底, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-gray\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "gray-filled",
+      "figmaNodeId": "95:851",
+      "figmaVariantPath": "State=Default, 边框=1级, 背景=灰底, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-gray\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "gray-filled-counter",
+      "figmaNodeId": "103:861",
+      "figmaVariantPath": "State=Default, 边框=1级, 背景=灰底, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-gray\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "readonly",
+      "figmaNodeId": "95:961",
+      "figmaVariantPath": "State=Readonly, 边框=1级, 背景=white, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap\" data-state=\"readonly\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "readonly-border-2",
+      "figmaNodeId": "95:981",
+      "figmaVariantPath": "State=Readonly, 边框=2级, 背景=white, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--border-2\" data-state=\"readonly\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "readonly-border-2-counter",
+      "figmaNodeId": "103:1121",
+      "figmaVariantPath": "State=Readonly, 边框=2级, 背景=white, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--border-2\" data-state=\"readonly\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "readonly-border-2-dark-soft",
+      "figmaNodeId": "95:993",
+      "figmaVariantPath": "State=Readonly, 边框=2级, 背景=暗底浅, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-soft text-area--border-2\" data-state=\"readonly\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "readonly-border-2-dark-soft-counter",
+      "figmaNodeId": "103:1145",
+      "figmaVariantPath": "State=Readonly, 边框=2级, 背景=暗底浅, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-soft text-area--border-2\" data-state=\"readonly\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "readonly-border-2-dark-soft-filled",
+      "figmaNodeId": "95:995",
+      "figmaVariantPath": "State=Readonly, 边框=2级, 背景=暗底浅, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-soft text-area--border-2\" data-state=\"readonly\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "readonly-border-2-dark-soft-filled-counter",
+      "figmaNodeId": "103:1149",
+      "figmaVariantPath": "State=Readonly, 边框=2级, 背景=暗底浅, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-soft text-area--border-2\" data-state=\"readonly\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "readonly-border-2-dark-strong",
+      "figmaNodeId": "95:997",
+      "figmaVariantPath": "State=Readonly, 边框=2级, 背景=暗底重, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-strong text-area--border-2\" data-state=\"readonly\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "readonly-border-2-dark-strong-counter",
+      "figmaNodeId": "103:1153",
+      "figmaVariantPath": "State=Readonly, 边框=2级, 背景=暗底重, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-strong text-area--border-2\" data-state=\"readonly\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "readonly-border-2-dark-strong-filled",
+      "figmaNodeId": "95:999",
+      "figmaVariantPath": "State=Readonly, 边框=2级, 背景=暗底重, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-strong text-area--border-2\" data-state=\"readonly\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "readonly-border-2-dark-strong-filled-counter",
+      "figmaNodeId": "103:1157",
+      "figmaVariantPath": "State=Readonly, 边框=2级, 背景=暗底重, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-strong text-area--border-2\" data-state=\"readonly\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "readonly-border-2-filled",
+      "figmaNodeId": "95:983",
+      "figmaVariantPath": "State=Readonly, 边框=2级, 背景=white, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--border-2\" data-state=\"readonly\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "readonly-border-2-filled-counter",
+      "figmaNodeId": "103:1125",
+      "figmaVariantPath": "State=Readonly, 边框=2级, 背景=white, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--border-2\" data-state=\"readonly\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "readonly-border-2-gray",
+      "figmaNodeId": "95:989",
+      "figmaVariantPath": "State=Readonly, 边框=2级, 背景=灰底, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-gray text-area--border-2\" data-state=\"readonly\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "readonly-border-2-gray-counter",
+      "figmaNodeId": "103:1137",
+      "figmaVariantPath": "State=Readonly, 边框=2级, 背景=灰底, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-gray text-area--border-2\" data-state=\"readonly\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "readonly-border-2-gray-filled",
+      "figmaNodeId": "95:991",
+      "figmaVariantPath": "State=Readonly, 边框=2级, 背景=灰底, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-gray text-area--border-2\" data-state=\"readonly\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "readonly-border-2-gray-filled-counter",
+      "figmaNodeId": "103:1141",
+      "figmaVariantPath": "State=Readonly, 边框=2级, 背景=灰底, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-gray text-area--border-2\" data-state=\"readonly\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "readonly-border-2-transparent",
+      "figmaNodeId": "95:985",
+      "figmaVariantPath": "State=Readonly, 边框=2级, 背景=透明, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-transparent text-area--border-2\" data-state=\"readonly\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "readonly-border-2-transparent-counter",
+      "figmaNodeId": "103:1129",
+      "figmaVariantPath": "State=Readonly, 边框=2级, 背景=透明, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-transparent text-area--border-2\" data-state=\"readonly\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "readonly-border-2-transparent-filled",
+      "figmaNodeId": "95:987",
+      "figmaVariantPath": "State=Readonly, 边框=2级, 背景=透明, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-transparent text-area--border-2\" data-state=\"readonly\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "readonly-border-2-transparent-filled-counter",
+      "figmaNodeId": "103:1133",
+      "figmaVariantPath": "State=Readonly, 边框=2级, 背景=透明, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-transparent text-area--border-2\" data-state=\"readonly\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "readonly-counter",
+      "figmaNodeId": "103:1081",
+      "figmaVariantPath": "State=Readonly, 边框=1级, 背景=white, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap\" data-state=\"readonly\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "readonly-dark-soft",
+      "figmaNodeId": "95:973",
+      "figmaVariantPath": "State=Readonly, 边框=1级, 背景=暗底浅, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-soft\" data-state=\"readonly\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "readonly-dark-soft-counter",
+      "figmaNodeId": "103:1105",
+      "figmaVariantPath": "State=Readonly, 边框=1级, 背景=暗底浅, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-soft\" data-state=\"readonly\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "readonly-dark-soft-filled",
+      "figmaNodeId": "95:975",
+      "figmaVariantPath": "State=Readonly, 边框=1级, 背景=暗底浅, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-soft\" data-state=\"readonly\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "readonly-dark-soft-filled-counter",
+      "figmaNodeId": "103:1109",
+      "figmaVariantPath": "State=Readonly, 边框=1级, 背景=暗底浅, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-soft\" data-state=\"readonly\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "readonly-dark-strong",
+      "figmaNodeId": "95:977",
+      "figmaVariantPath": "State=Readonly, 边框=1级, 背景=暗底重, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-strong\" data-state=\"readonly\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "readonly-dark-strong-counter",
+      "figmaNodeId": "103:1113",
+      "figmaVariantPath": "State=Readonly, 边框=1级, 背景=暗底重, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-strong\" data-state=\"readonly\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "readonly-dark-strong-filled",
+      "figmaNodeId": "95:979",
+      "figmaVariantPath": "State=Readonly, 边框=1级, 背景=暗底重, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-strong\" data-state=\"readonly\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "readonly-dark-strong-filled-counter",
+      "figmaNodeId": "103:1117",
+      "figmaVariantPath": "State=Readonly, 边框=1级, 背景=暗底重, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-dark-strong\" data-state=\"readonly\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "readonly-filled",
+      "figmaNodeId": "95:963",
+      "figmaVariantPath": "State=Readonly, 边框=1级, 背景=white, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap\" data-state=\"readonly\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "readonly-filled-counter",
+      "figmaNodeId": "103:1085",
+      "figmaVariantPath": "State=Readonly, 边框=1级, 背景=white, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap\" data-state=\"readonly\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "readonly-gray",
+      "figmaNodeId": "95:969",
+      "figmaVariantPath": "State=Readonly, 边框=1级, 背景=灰底, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-gray\" data-state=\"readonly\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "readonly-gray-counter",
+      "figmaNodeId": "103:1097",
+      "figmaVariantPath": "State=Readonly, 边框=1级, 背景=灰底, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-gray\" data-state=\"readonly\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "readonly-gray-filled",
+      "figmaNodeId": "95:971",
+      "figmaVariantPath": "State=Readonly, 边框=1级, 背景=灰底, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-gray\" data-state=\"readonly\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "readonly-gray-filled-counter",
+      "figmaNodeId": "103:1101",
+      "figmaVariantPath": "State=Readonly, 边框=1级, 背景=灰底, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-gray\" data-state=\"readonly\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "readonly-transparent",
+      "figmaNodeId": "95:965",
+      "figmaVariantPath": "State=Readonly, 边框=1级, 背景=透明, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-transparent\" data-state=\"readonly\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "readonly-transparent-counter",
+      "figmaNodeId": "103:1089",
+      "figmaVariantPath": "State=Readonly, 边框=1级, 背景=透明, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-transparent\" data-state=\"readonly\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "readonly-transparent-filled",
+      "figmaNodeId": "95:967",
+      "figmaVariantPath": "State=Readonly, 边框=1级, 背景=透明, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-transparent\" data-state=\"readonly\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "readonly-transparent-filled-counter",
+      "figmaNodeId": "103:1093",
+      "figmaVariantPath": "State=Readonly, 边框=1级, 背景=透明, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": "readonly"
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-transparent\" data-state=\"readonly\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "transparent",
+      "figmaNodeId": "95:845",
+      "figmaVariantPath": "State=Default, 边框=1级, 背景=透明, 内容=空, 计数=无",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-transparent\"><textarea placeholder=\"请输入...\"></textarea></div>"
+    },
+    {
+      "name": "transparent-counter",
+      "figmaNodeId": "103:849",
+      "figmaVariantPath": "State=Default, 边框=1级, 背景=透明, 内容=空, 计数=有",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-transparent\"><textarea placeholder=\"请输入...\"></textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    },
+    {
+      "name": "transparent-filled",
+      "figmaNodeId": "95:847",
+      "figmaVariantPath": "State=Default, 边框=1级, 背景=透明, 内容=已填, 计数=无",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-transparent\"><textarea placeholder=\"\">内容文字示例。</textarea></div>"
+    },
+    {
+      "name": "transparent-filled-counter",
+      "figmaNodeId": "103:853",
+      "figmaVariantPath": "State=Default, 边框=1级, 背景=透明, 内容=已填, 计数=有",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"text-area-wrap text-area--bg-transparent\"><textarea placeholder=\"\">内容文字示例。</textarea><span class=\"text-area-wrap__counter\">0/100</span></div>"
+    }
+  ],
+  "generatedAt": "2026-05-12T10:00:00Z",
+  "platform": "web"
+}

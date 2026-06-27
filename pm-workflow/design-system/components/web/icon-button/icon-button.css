@@ -1,0 +1,70 @@
+/* IconButton — Web Component Library (Figma 70:2935).
+   480 variants: Style(10) × Size(6: xs/s/m/l/xl/xxl) × State(4) × 圆角(2).
+   Square button containing only an icon (no text).
+
+   Style color logic = Button (re-sampled this session, see button.css header).
+   Size heights match Button's height column. */
+
+@import url("../../tokens/index.css");
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: 0 solid transparent;
+  border-radius: var(--radius-8);
+  cursor: pointer;
+  user-select: none;
+  padding: 0;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+.icon-btn:focus-visible { outline: 2px solid var(--color-light-border-2); outline-offset: 2px; }
+.icon-btn__icon { display: inline-flex; align-items: center; justify-content: center; }
+.icon-btn__icon svg { width: 1em; height: 1em; display: block; }
+
+/* Size — same heights as Button; width = height to make square */
+.icon-btn--xs  { width: 20px; height: 20px; font-size: 12px; }
+.icon-btn--s   { width: 28px; height: 28px; font-size: 14px; }
+.icon-btn--m   { width: 32px; height: 32px; font-size: 18px; }
+.icon-btn--l   { width: 40px; height: 40px; font-size: 20px; }
+.icon-btn--xl  { width: 48px; height: 48px; font-size: 22px; }
+.icon-btn--xxl { width: 56px; height: 56px; font-size: 24px; }
+
+.icon-btn--radius-pill { border-radius: var(--radius-pill); }
+
+/* Style — same as Button (ground-truthed there, IconButton uses identical palette) */
+.icon-btn--black    { background: #333333; color: #FFFFFF; }
+.icon-btn--black30  { background: rgba(0,0,0,0.30); color: #FFFFFF; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+.icon-btn--darkl3   { background: #2A2A2A; color: #FFFFFF; }
+.icon-btn--darkl4   { background: #454545; color: #FFFFFF; }
+.icon-btn--f5       { background: #F5F5F5; color: #333333; }
+.icon-btn--outline1 { background: transparent; color: #333333; border: 1px solid #EBEBEB; }
+.icon-btn--outline2 { background: transparent; color: #333333; border: 1px solid #DBDBDB; }
+.icon-btn--red      { background: #E60023; color: #FFFFFF; }
+.icon-btn--textonly { background: transparent; color: #333333; }
+.icon-btn--white    { background: #FFFFFF; color: #333333; }
+
+/* Hover */
+.icon-btn--black:hover,    .icon-btn--black[data-state="hover"]    { background: #000000; }
+.icon-btn--black30:hover,  .icon-btn--black30[data-state="hover"]  { background: rgba(0,0,0,0.40); }
+.icon-btn--darkl3:hover,   .icon-btn--darkl3[data-state="hover"]   { background: #454545; }
+.icon-btn--darkl4:hover,   .icon-btn--darkl4[data-state="hover"]   { background: #545454; }
+.icon-btn--f5:hover,       .icon-btn--f5[data-state="hover"]       { background: #E2E2E2; }
+.icon-btn--outline1:hover, .icon-btn--outline1[data-state="hover"] { background: #FAFAFA; }
+.icon-btn--outline2:hover, .icon-btn--outline2[data-state="hover"] { background: #F5F5F5; }
+.icon-btn--red:hover,      .icon-btn--red[data-state="hover"]      { background: #B8001B; }
+.icon-btn--textonly:hover, .icon-btn--textonly[data-state="hover"] { background: #FAFAFA; }
+.icon-btn--white:hover,    .icon-btn--white[data-state="hover"]    { background: #F5F5F5; }
+
+.icon-btn:active:not([disabled]) { transform: translateY(0.5px); }
+.icon-btn[data-state="active"] { transform: translateY(0.5px); }
+
+.icon-btn[disabled],
+.icon-btn[data-state="disabled"] {
+  background: #CCCCCC !important;
+  color: #FFFFFF !important;
+  border-color: transparent !important;
+  cursor: not-allowed; pointer-events: none;
+  backdrop-filter: none !important;
+}

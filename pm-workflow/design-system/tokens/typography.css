@@ -1,0 +1,221 @@
+/* Typography tokens — synced from Figma "不觉组件库".
+   Four published text-style groups:
+     · App 共享       (node-id=1:6) · 8  tokens · shared Pad+Mobile
+     · App Mobile 专属  (node-id=1:8) · 5  tokens · Mobile only
+     · Web           (node-id=1:7) · 15 tokens · Web only · default 14/21
+     · App Pad 专属   (node-id=11:2) · TODO not yet synced
+
+   For each token, four sub-property vars are emitted plus a `font`
+   shorthand for convenience. Source family is Source Han Sans CN
+   with web-safe Chinese fallbacks. */
+
+:root {
+  --font-source-han: "Source Han Sans CN", "Noto Sans SC", -apple-system,
+    BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-sans: var(--font-source-han);
+
+  /* App/共享/标题小 - Medium */
+  --text-app-title-sm-medium-family: var(--font-source-han);
+  --text-app-title-sm-medium-size: 14px;
+  --text-app-title-sm-medium-line: 21px;
+  --text-app-title-sm-medium-weight: 500;
+  --text-app-title-sm-medium: 500 14px/21px var(--font-source-han);
+
+  /* App/共享/标题小 - Regular */
+  --text-app-title-sm-regular-family: var(--font-source-han);
+  --text-app-title-sm-regular-size: 14px;
+  --text-app-title-sm-regular-line: 21px;
+  --text-app-title-sm-regular-weight: 400;
+  --text-app-title-sm-regular: 400 14px/21px var(--font-source-han);
+
+  /* App/共享/正文大/常态 - Normal */
+  --text-app-body-lg-family: var(--font-source-han);
+  --text-app-body-lg-size: 14px;
+  --text-app-body-lg-line: 21px;
+  --text-app-body-lg-weight: 400;
+  --text-app-body-lg: 400 14px/21px var(--font-source-han);
+
+  /* App/共享/正文大/输入 - Normal */
+  --text-app-body-lg-input-family: var(--font-source-han);
+  --text-app-body-lg-input-size: 14px;
+  --text-app-body-lg-input-line: 24px;
+  --text-app-body-lg-input-weight: 400;
+  --text-app-body-lg-input: 400 14px/24px var(--font-source-han);
+
+  /* App/共享/正文中/常态 - Normal ★ App 默认正文 */
+  --text-app-body-md-family: var(--font-source-han);
+  --text-app-body-md-size: 12px;
+  --text-app-body-md-line: 19px;
+  --text-app-body-md-weight: 400;
+  --text-app-body-md: 400 12px/19px var(--font-source-han);
+
+  /* App/共享/正文中/多行 - Normal */
+  --text-app-body-md-multiline-family: var(--font-source-han);
+  --text-app-body-md-multiline-size: 12px;
+  --text-app-body-md-multiline-line: 21px;
+  --text-app-body-md-multiline-weight: 400;
+  --text-app-body-md-multiline: 400 12px/21px var(--font-source-han);
+
+  /* App/共享/正文中/输入 - Normal */
+  --text-app-body-md-input-family: var(--font-source-han);
+  --text-app-body-md-input-size: 12px;
+  --text-app-body-md-input-line: 24px;
+  --text-app-body-md-input-weight: 400;
+  --text-app-body-md-input: 400 12px/24px var(--font-source-han);
+
+  /* App/共享/正文小/常态 - Normal */
+  --text-app-body-sm-family: var(--font-source-han);
+  --text-app-body-sm-size: 10px;
+  --text-app-body-sm-line: 15px;
+  --text-app-body-sm-weight: 400;
+  --text-app-body-sm: 400 10px/15px var(--font-source-han);
+
+  /* ── App / Mobile 专属 ─────────────────────────────
+     Mobile-only styles. Pad must not use these (Pad has its own scale
+     in node-id=11:2, not yet synced). */
+
+  /* App/Mobile专属/标题/超大 - Regular */
+  --text-app-mobile-title-xl-family: var(--font-source-han);
+  --text-app-mobile-title-xl-size: 20px;
+  --text-app-mobile-title-xl-line: 30px;
+  --text-app-mobile-title-xl-weight: 400;
+  --text-app-mobile-title-xl: 400 20px/30px var(--font-source-han);
+
+  /* App/Mobile专属/标题/大 - Regular */
+  --text-app-mobile-title-lg-family: var(--font-source-han);
+  --text-app-mobile-title-lg-size: 16px;
+  --text-app-mobile-title-lg-line: 24px;
+  --text-app-mobile-title-lg-weight: 400;
+  --text-app-mobile-title-lg: 400 16px/24px var(--font-source-han);
+
+  /* App/Mobile专属/正文中/常态 - Medium */
+  --text-app-mobile-body-md-medium-family: var(--font-source-han);
+  --text-app-mobile-body-md-medium-size: 12px;
+  --text-app-mobile-body-md-medium-line: 19px;
+  --text-app-mobile-body-md-medium-weight: 500;
+  --text-app-mobile-body-md-medium: 500 12px/19px var(--font-source-han);
+
+  /* App/Mobile专属/正文小/分类卡片 - Regular */
+  --text-app-mobile-body-sm-card-family: var(--font-source-han);
+  --text-app-mobile-body-sm-card-size: 10px;
+  --text-app-mobile-body-sm-card-line: 13px;
+  --text-app-mobile-body-sm-card-weight: 400;
+  --text-app-mobile-body-sm-card: 400 10px/13px var(--font-source-han);
+
+  /* App/Mobile专属/正文小/极小 8 - Normal */
+  --text-app-mobile-body-xs-family: var(--font-source-han);
+  --text-app-mobile-body-xs-size: 8px;
+  --text-app-mobile-body-xs-line: 12px;
+  --text-app-mobile-body-xs-weight: 400;
+  --text-app-mobile-body-xs: 400 8px/12px var(--font-source-han);
+
+  /* ── Web ───────────────────────────────────────────
+     Web-only styles. App must not use these; App has its own 12/19
+     default while Web uses 14/21. Designer-provided canonical token
+     IDs (from Figma desc field) are noted alongside each block. */
+
+  /* Web/标题/超大 - Medium · token(typo.web.title.xxxl.medium) */
+  --text-web-title-xxxl-medium-family: var(--font-source-han);
+  --text-web-title-xxxl-medium-size: 40px;
+  --text-web-title-xxxl-medium-line: 60px;
+  --text-web-title-xxxl-medium-weight: 500;
+  --text-web-title-xxxl-medium: 500 40px/60px var(--font-source-han);
+
+  /* Web/标题/大 - Medium · token(typo.web.title.xl.medium) */
+  --text-web-title-xl-medium-family: var(--font-source-han);
+  --text-web-title-xl-medium-size: 20px;
+  --text-web-title-xl-medium-line: 30px;
+  --text-web-title-xl-medium-weight: 500;
+  --text-web-title-xl-medium: 500 20px/30px var(--font-source-han);
+
+  /* Web/标题/大两行 - Medium · token(typo.web.title.xl.multiline) */
+  --text-web-title-xl-multiline-family: var(--font-source-han);
+  --text-web-title-xl-multiline-size: 20px;
+  --text-web-title-xl-multiline-line: 36px;
+  --text-web-title-xl-multiline-weight: 500;
+  --text-web-title-xl-multiline: 500 20px/36px var(--font-source-han);
+
+  /* Web/弹窗标题/Medium · token(typo.web.modal.title.medium) */
+  --text-web-modal-title-medium-family: var(--font-source-han);
+  --text-web-modal-title-medium-size: 16px;
+  --text-web-modal-title-medium-line: 24px;
+  --text-web-modal-title-medium-weight: 500;
+  --text-web-modal-title-medium: 500 16px/24px var(--font-source-han);
+
+  /* Web/弹窗标题/Regular · token(typo.web.modal.title.regular) */
+  --text-web-modal-title-regular-family: var(--font-source-han);
+  --text-web-modal-title-regular-size: 16px;
+  --text-web-modal-title-regular-line: 24px;
+  --text-web-modal-title-regular-weight: 400;
+  --text-web-modal-title-regular: 400 16px/24px var(--font-source-han);
+
+  /* Web/弹窗标题/Normal · token(typo.web.modal.title.normal) */
+  --text-web-modal-title-normal-family: var(--font-source-han);
+  --text-web-modal-title-normal-size: 16px;
+  --text-web-modal-title-normal-line: 24px;
+  --text-web-modal-title-normal-weight: 400;
+  --text-web-modal-title-normal: 400 16px/24px var(--font-source-han);
+
+  /* Web/正文 14/Medium · token(typo.web.body.l.medium) */
+  --text-web-body-lg-medium-family: var(--font-source-han);
+  --text-web-body-lg-medium-size: 14px;
+  --text-web-body-lg-medium-line: 21px;
+  --text-web-body-lg-medium-weight: 500;
+  --text-web-body-lg-medium: 500 14px/21px var(--font-source-han);
+
+  /* Web/正文 14/Regular · token(typo.web.body.l.regular) */
+  --text-web-body-lg-regular-family: var(--font-source-han);
+  --text-web-body-lg-regular-size: 14px;
+  --text-web-body-lg-regular-line: 21px;
+  --text-web-body-lg-regular-weight: 400;
+  --text-web-body-lg-regular: 400 14px/21px var(--font-source-han);
+
+  /* Web/正文 14/Normal · token(typo.web.body.l.normal) ★ Web 默认正文 */
+  --text-web-body-lg-normal-family: var(--font-source-han);
+  --text-web-body-lg-normal-size: 14px;
+  --text-web-body-lg-normal-line: 21px;
+  --text-web-body-lg-normal-weight: 400;
+  --text-web-body-lg-normal: 400 14px/21px var(--font-source-han);
+
+  /* Web/正文 12/Medium · token(typo.web.body.m.medium) */
+  --text-web-body-md-medium-family: var(--font-source-han);
+  --text-web-body-md-medium-size: 12px;
+  --text-web-body-md-medium-line: 19px;
+  --text-web-body-md-medium-weight: 500;
+  --text-web-body-md-medium: 500 12px/19px var(--font-source-han);
+
+  /* Web/正文 12/Regular · token(typo.web.body.m.regular) - Tab/Tag */
+  --text-web-body-md-regular-family: var(--font-source-han);
+  --text-web-body-md-regular-size: 12px;
+  --text-web-body-md-regular-line: 19px;
+  --text-web-body-md-regular-weight: 400;
+  --text-web-body-md-regular: 400 12px/19px var(--font-source-han);
+
+  /* Web/正文 12/Normal · token(typo.web.body.m.normal) */
+  --text-web-body-md-normal-family: var(--font-source-han);
+  --text-web-body-md-normal-size: 12px;
+  --text-web-body-md-normal-line: 19px;
+  --text-web-body-md-normal-weight: 400;
+  --text-web-body-md-normal: 400 12px/19px var(--font-source-han);
+
+  /* Web/正文 12/辅助 10/Regular · token(typo.web.caption.regular) */
+  --text-web-caption-regular-family: var(--font-source-han);
+  --text-web-caption-regular-size: 10px;
+  --text-web-caption-regular-line: 15px;
+  --text-web-caption-regular-weight: 400;
+  --text-web-caption-regular: 400 10px/15px var(--font-source-han);
+
+  /* Web/正文 12/辅助 10/Normal · token(typo.web.caption.normal) */
+  --text-web-caption-normal-family: var(--font-source-han);
+  --text-web-caption-normal-size: 10px;
+  --text-web-caption-normal-line: 15px;
+  --text-web-caption-normal-weight: 400;
+  --text-web-caption-normal: 400 10px/15px var(--font-source-han);
+
+  /* Web/极小 8/Normal · token(typo.web.micro) */
+  --text-web-micro-family: var(--font-source-han);
+  --text-web-micro-size: 8px;
+  --text-web-micro-line: 12px;
+  --text-web-micro-weight: 400;
+  --text-web-micro: 400 8px/12px var(--font-source-han);
+}

@@ -1,0 +1,108 @@
+#!/usr/bin/env bash
+# pm-workflow pre-commit hook — L1+L2 混合 commit 检测
+#
+# SSOT 真源：`pm-workflow/rules/agent_dispatch_protocol.md`「PM / Supervisor Agent 文件改动权限边界」第 5 条机械兜底
+#
+# 拒绝逻辑：当前 commit 同时含 L1 路径（业务产物 / 过程记录）+ L2 路径（工作流框架文件）时硬拦截，
+#         提示用户拆 commit 或走 workflow-evolution skill 路径独立处理 L2 修订。
+#
+# 安装：`bash pm-workflow/scripts/install_hooks.sh`（首次克隆后执行一次）
+# 临时绕过：`git commit --no-verify`（仅在编排器明确判定 L2 修订独立 commit 时使用，且 commit message 须含 [L2-only]）
+
+set -euo pipefail
+
+# ─ L1 / L2 路径正则（grep -E 兼容）─────────────────────────────────────
+L1_PATTERN='^(outputs/|process_record/)'
+L2_PATTERN='^(pm-workflow/(agents|rules|scripts|skills)/|pm-workflow/[^/]+\.md$|CLAUDE\.md$|\.claude/commands/)'
+
+# ─ 收集本次 commit staged 文件 ─
+staged_files=$(git diff --cached --name-only --diff-filter=ACMRTD)
+
+if [ -z "$staged_files" ]; then
+    exit 0
+fi
+
+l1_hits=$(echo "$staged_files" | grep -E "$L1_PATTERN" || true)
+l2_hits=$(echo "$staged_files" | grep -E "$L2_PATTERN" || true)
+
+if [ -n "$l1_hits" ] && [ -n "$l2_hits" ]; then
+    echo ""
+    echo "✗ pre-commit 拒绝：检测到 L1+L2 混合 commit"
+    echo ""
+    echo "  L1 业务产物 / 过程记录："
+    echo "$l1_hits" | sed 's/^/    /'
+    echo ""
+    echo "  L2 工作流框架文件："
+    echo "$l2_hits" | sed 's/^/    /'
+    echo ""
+    echo "─ 处理建议 ───────────────────────────────────────────────"
+    echo "  情况 A：你在做 L1 业务任务（PRD/spec 生产 / 调整意见整改），不该改 L2"
+    echo "    → 撤销 L2 改动：git restore --staged <L2 文件路径>"
+    echo "    → 若确需修 L2，按 `pm-workflow/rules/agent_dispatch_protocol.md`「PM / Supervisor Agent 文件改动权限边界」第 6 条 NB 上报 SOP 走"
+    echo ""
+    echo "  情况 B：你在做 L2 工作流维护，不该夹带 L1 业务改动"
+    echo "    → 撤销 L1 改动：git restore --staged <L1 文件路径>"
+    echo "    → 拆为两个独立 commit"
+    echo ""
+    echo "  情况 C：编排器走 workflow-evolution skill 独立 L2 commit"
+    echo "    → 临时绕过：git commit --no-verify（commit message 须含 [L2-only] 标识）"
+    echo "─────────────────────────────────────────────────────────"
+    exit 1
+fi
+
+# ─ 模板纯净度检查（防止整改原因注释污染 outputs）─
+# SSOT 真源：`pm-workflow/rules/workflow_maintenance_protocol.md §模板纯净度红线`
+# 触发条件：staged 文件含 5 个模板类文件中的任一
+TEMPLATE_PATTERN='^pm-workflow/rules/(prd_template\.html|tmpl_需求分析\.md|tmpl_功能规划\.md|tmpl_产品定义\.md|task_card_template\.md)$'
+template_hits=$(echo "$staged_files" | grep -E "$TEMPLATE_PATTERN" || true)
+if [ -n "$template_hits" ]; then
+    repo_root=$(git rev-parse --show-toplevel)
+    purity_script="$repo_root/pm-workflow/scripts/precheck_template_purity.py"
+    if [ -f "$purity_script" ]; then
+        if ! python3 "$purity_script" > /dev/null 2>&1; then
+            echo ""
+            echo "✗ pre-commit 拒绝：模板纯净度检查未通过"
+            echo ""
+            echo "  staged 涉及的模板文件："
+            echo "$template_hits" | sed 's/^/    /'
+            echo ""
+            echo "  运行查看详细命中："
+            echo "    python3 pm-workflow/scripts/precheck_template_purity.py"
+            echo ""
+            echo "  修复方向：删除运维痕迹字面（日期 / issue / NB / retro / 复盘根因 / 建议 N 落地）"
+            echo "  规则真源：pm-workflow/rules/workflow_maintenance_protocol.md §模板纯净度红线"
+            echo "─────────────────────────────────────────────────────────"
+            exit 1
+        fi
+    fi
+fi
+
+# ─ SOP 偏离 WARN（/retro 2026-05-13 共性根因 5 防御，不阻断）─
+# SSOT 真源：`pm-workflow/rules/agent_dispatch_protocol.md §第 6 条 PM L2 修订 NB 上报 SOP`
+# 触发条件：单 commit 含 ≥ 3 个 L2 文件改动（典型规范层批量改动）
+# 行为：仅 WARN 提示走 workflow-evolution skill 路径,不阻断 commit
+#
+# 残留 bug 修复（2026-05-14）：grep -c 无匹配时输出 "0" + 退出码 1，原写法 `|| echo 0`
+# 在 set -o pipefail 下会触发兜底产生双输出 "0\n0"，后续 `[ "0\n0" -ge 3 ]` 报
+# "integer expression expected"。改用 `|| true` 让退出码归 0，依赖 grep -c 自身
+# 输出的 "0" 作为计数值，并用 `${var:-0}` 兜底空字符串。
+l2_file_count=$(echo "$staged_files" | grep -cE "$L2_PATTERN" 2>/dev/null || true)
+l2_file_count=${l2_file_count:-0}
+if [ "$l2_file_count" -ge 3 ]; then
+    echo ""
+    echo "ℹ️  SOP 提醒：本次 commit 含 $l2_file_count 个 L2 文件改动"
+    echo "    L2 文件清单（前 5）："
+    # 用 || true 兜底 SIGPIPE(head 截断关闭 stdin → grep 写失败 141 → set -o pipefail 阻断)
+    { echo "$staged_files" | grep -E "$L2_PATTERN" | head -5 | sed 's/^/      /'; } || true
+    echo ""
+    echo "  自检：本次是否走了 workflow-evolution skill 8 步流程？"
+    echo "        是否经 SSOT 同步检查（template.md Step 7 9 项清单）？"
+    echo "        是否查了 architecture_map.md §五 改动影响速查表？"
+    echo "        是否有 L2 改动前置检查 SOP 5 步执行记录？"
+    echo ""
+    echo "  如否，请按 SSOT #31 NB 上报 SOP 由编排器走 skill 路径重做。"
+    echo "  此提示不阻断 commit（WARN，[Should]）。"
+    echo "─────────────────────────────────────────────────────────"
+fi
+
+exit 0

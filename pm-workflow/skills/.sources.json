@@ -1,0 +1,26 @@
+[
+  {
+    "id": "deanpeters-pm-skills",
+    "type": "git",
+    "repo": "https://github.com/deanpeters/Product-Manager-Skills",
+    "branch": "main",
+    "path_prefix": "skills",
+    "fetched_commit": "4aa4196c14873b84f5af7316e7f66328cb6dee4c",
+    "fetched_at": "2026-04-26",
+    "selected": [
+      "proto-persona",
+      "jobs-to-be-done",
+      "problem-statement",
+      "opportunity-solution-tree",
+      "epic-breakdown-advisor",
+      "user-story",
+      "user-story-mapping"
+    ],
+    "local_modifications": {}
+  },
+  {
+    "id": "self-authored",
+    "type": "self_authored",
+    "skills": []
+  }
+]

@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 2,
+  "kind": "component",
+  "name": "list-input",
+  "displayName": "列表项输入框",
+  "category": "Base",
+  "type": "COMPONENT_SET",
+  "figmaFileKey": "hxksE13w1AZQivOylmZ9gn",
+  "figmaNodeId": "129:768",
+  "figmaSourceUrl": "https://www.figma.com/file/hxksE13w1AZQivOylmZ9gn/?node-id=129-768",
+  "files": {
+    "html": null,
+    "css": "components/web/list-input/list-input.css",
+    "js": null,
+    "thumb": null,
+    "readme": "components/web/list-input/README.md"
+  },
+  "axes": [
+    {
+      "name": "State",
+      "values": [
+        "默认",
+        "错误"
+      ]
+    },
+    {
+      "name": "错误提示文字",
+      "values": [
+        "有",
+        "无"
+      ]
+    },
+    {
+      "name": "内容",
+      "values": [
+        "空",
+        "已填"
+      ]
+    }
+  ],
+  "states": [
+    {
+      "selector": "[data-state=\"error\"]",
+      "description": "Soft red 3px stroke on the input box"
+    }
+  ],
+  "modifiers": [
+    {
+      "class": "list-input--error",
+      "axis": "State",
+      "value": "错误"
+    }
+  ],
+  "slots": [
+    {
+      "name": "label",
+      "selector": ".list-input__label",
+      "description": "Label (defaults to \"备注\")"
+    },
+    {
+      "name": "value",
+      "selector": ".list-input__text",
+      "description": "Text input value"
+    },
+    {
+      "name": "error",
+      "selector": ".list-input__error",
+      "description": "Optional inline error message"
+    }
+  ],
+  "tokensReferenced": [
+    "--color-light-white",
+    "--color-light-bg-2",
+    "--color-light-border-1",
+    "--color-light-selected-soft",
+    "--color-light-text-1",
+    "--color-light-text-3",
+    "--color-light-error",
+    "--radius-8",
+    "--font-source-han"
+  ],
+  "variantCount": 8,
+  "variants": [
+    {
+      "name": "default",
+      "figmaNodeId": "128:744",
+      "figmaVariantPath": "State=默认, 错误提示文字=无, 内容=空",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"list-input\"><span class=\"list-input__label\">备注</span><div class=\"list-input__box\"><span class=\"list-input__handle\" aria-label=\"drag\"><svg viewBox=\"0 0 20 20\"><path fill=\"currentColor\" d=\"M6 6h8v1H6zM6 9.5h8v1H6zM6 13h8v1H6z\"/></svg></span><input type=\"text\" class=\"list-input__text\" placeholder=\"请填写备注\"><span class=\"list-input__handle list-input__handle--delete\" aria-label=\"delete\"><svg viewBox=\"0 0 20 20\"><path fill=\"currentColor\" d=\"M5 5l10 10M15 5L5 15\" stroke=\"currentColor\" stroke-width=\"1.5\"/></svg></span></div></div>"
+    },
+    {
+      "name": "error",
+      "figmaNodeId": "128:848",
+      "figmaVariantPath": "State=错误, 错误提示文字=无, 内容=空",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"list-input list-input--error\" data-state=\"error\"><span class=\"list-input__label\">备注</span><div class=\"list-input__box\"><span class=\"list-input__handle\" aria-label=\"drag\"><svg viewBox=\"0 0 20 20\"><path fill=\"currentColor\" d=\"M6 6h8v1H6zM6 9.5h8v1H6zM6 13h8v1H6z\"/></svg></span><input type=\"text\" class=\"list-input__text\" placeholder=\"请填写备注\"><span class=\"list-input__handle list-input__handle--delete\" aria-label=\"delete\"><svg viewBox=\"0 0 20 20\"><path fill=\"currentColor\" d=\"M5 5l10 10M15 5L5 15\" stroke=\"currentColor\" stroke-width=\"1.5\"/></svg></span></div></div>"
+    },
+    {
+      "name": "error-filled",
+      "figmaNodeId": "128:859",
+      "figmaVariantPath": "State=错误, 错误提示文字=无, 内容=已填",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"list-input list-input--error\" data-state=\"error\"><span class=\"list-input__label\">备注</span><div class=\"list-input__box\"><span class=\"list-input__handle\" aria-label=\"drag\"><svg viewBox=\"0 0 20 20\"><path fill=\"currentColor\" d=\"M6 6h8v1H6zM6 9.5h8v1H6zM6 13h8v1H6z\"/></svg></span><input type=\"text\" class=\"list-input__text\" placeholder=\"\" value=\"备注内容\"><span class=\"list-input__handle list-input__handle--delete\" aria-label=\"delete\"><svg viewBox=\"0 0 20 20\"><path fill=\"currentColor\" d=\"M5 5l10 10M15 5L5 15\" stroke=\"currentColor\" stroke-width=\"1.5\"/></svg></span></div></div>"
+    },
+    {
+      "name": "error-helper",
+      "figmaNodeId": "128:870",
+      "figmaVariantPath": "State=错误, 错误提示文字=有, 内容=空",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"list-input list-input--error\" data-state=\"error\"><span class=\"list-input__label\">备注</span><div class=\"list-input__box\"><span class=\"list-input__handle\" aria-label=\"drag\"><svg viewBox=\"0 0 20 20\"><path fill=\"currentColor\" d=\"M6 6h8v1H6zM6 9.5h8v1H6zM6 13h8v1H6z\"/></svg></span><input type=\"text\" class=\"list-input__text\" placeholder=\"请填写备注\"><span class=\"list-input__handle list-input__handle--delete\" aria-label=\"delete\"><svg viewBox=\"0 0 20 20\"><path fill=\"currentColor\" d=\"M5 5l10 10M15 5L5 15\" stroke=\"currentColor\" stroke-width=\"1.5\"/></svg></span></div><div class=\"list-input__error\">! 请填写必填项</div></div>"
+    },
+    {
+      "name": "error-helper-filled",
+      "figmaNodeId": "128:885",
+      "figmaVariantPath": "State=错误, 错误提示文字=有, 内容=已填",
+      "attrs": {
+        "data-state": "error"
+      },
+      "exampleHtml": "<div class=\"list-input list-input--error\" data-state=\"error\"><span class=\"list-input__label\">备注</span><div class=\"list-input__box\"><span class=\"list-input__handle\" aria-label=\"drag\"><svg viewBox=\"0 0 20 20\"><path fill=\"currentColor\" d=\"M6 6h8v1H6zM6 9.5h8v1H6zM6 13h8v1H6z\"/></svg></span><input type=\"text\" class=\"list-input__text\" placeholder=\"\" value=\"备注内容\"><span class=\"list-input__handle list-input__handle--delete\" aria-label=\"delete\"><svg viewBox=\"0 0 20 20\"><path fill=\"currentColor\" d=\"M5 5l10 10M15 5L5 15\" stroke=\"currentColor\" stroke-width=\"1.5\"/></svg></span></div><div class=\"list-input__error\">! 请填写必填项</div></div>"
+    },
+    {
+      "name": "filled",
+      "figmaNodeId": "128:755",
+      "figmaVariantPath": "State=默认, 错误提示文字=无, 内容=已填",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"list-input\"><span class=\"list-input__label\">备注</span><div class=\"list-input__box\"><span class=\"list-input__handle\" aria-label=\"drag\"><svg viewBox=\"0 0 20 20\"><path fill=\"currentColor\" d=\"M6 6h8v1H6zM6 9.5h8v1H6zM6 13h8v1H6z\"/></svg></span><input type=\"text\" class=\"list-input__text\" placeholder=\"\" value=\"备注内容\"><span class=\"list-input__handle list-input__handle--delete\" aria-label=\"delete\"><svg viewBox=\"0 0 20 20\"><path fill=\"currentColor\" d=\"M5 5l10 10M15 5L5 15\" stroke=\"currentColor\" stroke-width=\"1.5\"/></svg></span></div></div>"
+    },
+    {
+      "name": "helper",
+      "figmaNodeId": "128:766",
+      "figmaVariantPath": "State=默认, 错误提示文字=有, 内容=空",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"list-input\"><span class=\"list-input__label\">备注</span><div class=\"list-input__box\"><span class=\"list-input__handle\" aria-label=\"drag\"><svg viewBox=\"0 0 20 20\"><path fill=\"currentColor\" d=\"M6 6h8v1H6zM6 9.5h8v1H6zM6 13h8v1H6z\"/></svg></span><input type=\"text\" class=\"list-input__text\" placeholder=\"请填写备注\"><span class=\"list-input__handle list-input__handle--delete\" aria-label=\"delete\"><svg viewBox=\"0 0 20 20\"><path fill=\"currentColor\" d=\"M5 5l10 10M15 5L5 15\" stroke=\"currentColor\" stroke-width=\"1.5\"/></svg></span></div><div class=\"list-input__error\">! 请填写必填项</div></div>"
+    },
+    {
+      "name": "helper-filled",
+      "figmaNodeId": "128:781",
+      "figmaVariantPath": "State=默认, 错误提示文字=有, 内容=已填",
+      "attrs": {
+        "data-state": null
+      },
+      "exampleHtml": "<div class=\"list-input\"><span class=\"list-input__label\">备注</span><div class=\"list-input__box\"><span class=\"list-input__handle\" aria-label=\"drag\"><svg viewBox=\"0 0 20 20\"><path fill=\"currentColor\" d=\"M6 6h8v1H6zM6 9.5h8v1H6zM6 13h8v1H6z\"/></svg></span><input type=\"text\" class=\"list-input__text\" placeholder=\"\" value=\"备注内容\"><span class=\"list-input__handle list-input__handle--delete\" aria-label=\"delete\"><svg viewBox=\"0 0 20 20\"><path fill=\"currentColor\" d=\"M5 5l10 10M15 5L5 15\" stroke=\"currentColor\" stroke-width=\"1.5\"/></svg></span></div><div class=\"list-input__error\">! 请填写必填项</div></div>"
+    }
+  ],
+  "generatedAt": "2026-05-12T10:00:00Z",
+  "platform": "web"
+}

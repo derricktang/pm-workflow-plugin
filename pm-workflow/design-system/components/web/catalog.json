@@ -1,0 +1,284 @@
+{
+  "schemaVersion": 1,
+  "kind": "components-platform-index",
+  "platform": "web",
+  "figmaFileKey": "hxksE13w1AZQivOylmZ9gn",
+  "figmaFileName": "不觉 Web 组件",
+  "lastSyncedAt": "2026-05-12T13:00:00Z",
+  "totalComponentSets": 11,
+  "totalVariants": 2725,
+  "note": "Web-platform component sets. Each entry points to a per-set catalog with full variant enumeration.",
+  "componentSets": [
+    {
+      "name": "button",
+      "displayName": "Button",
+      "category": "Base",
+      "figmaFileKey": "hxksE13w1AZQivOylmZ9gn",
+      "figmaNodeId": "12:1442",
+      "variantCount": 1000,
+      "catalog": "components/web/button/catalog.json",
+      "files": {
+        "html": "components/web/button/button.html",
+        "css": "components/web/button/button.css",
+        "js": null,
+        "thumb": null,
+        "readme": "components/web/button/README.md"
+      }
+    },
+    {
+      "name": "icon-button",
+      "displayName": "IconButton",
+      "category": "Base",
+      "figmaFileKey": "hxksE13w1AZQivOylmZ9gn",
+      "figmaNodeId": "70:2935",
+      "variantCount": 480,
+      "catalog": "components/web/icon-button/catalog.json",
+      "files": {
+        "html": "components/web/icon-button/icon-button.html",
+        "css": "components/web/icon-button/icon-button.css",
+        "js": null,
+        "thumb": null,
+        "readme": "components/web/icon-button/README.md"
+      }
+    },
+    {
+      "name": "input",
+      "displayName": "Input",
+      "category": "Base",
+      "figmaFileKey": "hxksE13w1AZQivOylmZ9gn",
+      "figmaNodeId": "87:642",
+      "variantCount": 240,
+      "catalog": "components/web/input/catalog.json",
+      "files": {
+        "html": null,
+        "css": "components/web/input/input.css",
+        "js": null,
+        "thumb": null,
+        "readme": "components/web/input/README.md"
+      }
+    },
+    {
+      "name": "input-block",
+      "displayName": "InputBlock",
+      "category": "Base",
+      "figmaFileKey": "hxksE13w1AZQivOylmZ9gn",
+      "figmaNodeId": "94:841",
+      "variantCount": 24,
+      "catalog": "components/web/input-block/catalog.json",
+      "files": {
+        "html": null,
+        "css": "components/web/input-block/input-block.css",
+        "js": null,
+        "thumb": null,
+        "readme": "components/web/input-block/README.md"
+      }
+    },
+    {
+      "name": "list-input",
+      "displayName": "列表项输入框",
+      "category": "Base",
+      "figmaFileKey": "hxksE13w1AZQivOylmZ9gn",
+      "figmaNodeId": "129:768",
+      "variantCount": 8,
+      "catalog": "components/web/list-input/catalog.json",
+      "files": {
+        "html": null,
+        "css": "components/web/list-input/list-input.css",
+        "js": null,
+        "thumb": null,
+        "readme": "components/web/list-input/README.md"
+      }
+    },
+    {
+      "name": "loading-button",
+      "displayName": "LoadingButton",
+      "category": "Base",
+      "figmaFileKey": "hxksE13w1AZQivOylmZ9gn",
+      "figmaNodeId": "75:2950",
+      "variantCount": 70,
+      "catalog": "components/web/loading-button/catalog.json",
+      "files": {
+        "html": "components/web/loading-button/loading-button.html",
+        "css": "components/web/loading-button/loading-button.css",
+        "js": null,
+        "thumb": null,
+        "readme": "components/web/loading-button/README.md"
+      }
+    },
+    {
+      "name": "tag",
+      "displayName": "Tag",
+      "category": "Base",
+      "figmaFileKey": "hxksE13w1AZQivOylmZ9gn",
+      "figmaNodeId": "176:524",
+      "variantCount": 540,
+      "catalog": "components/web/tag/catalog.json",
+      "files": {
+        "html": null,
+        "css": "components/web/tag/tag.css",
+        "js": null,
+        "thumb": null,
+        "readme": "components/web/tag/README.md"
+      }
+    },
+    {
+      "name": "text-area",
+      "displayName": "TextArea",
+      "category": "Base",
+      "figmaFileKey": "hxksE13w1AZQivOylmZ9gn",
+      "figmaNodeId": "102:841",
+      "variantCount": 120,
+      "catalog": "components/web/text-area/catalog.json",
+      "files": {
+        "html": null,
+        "css": "components/web/text-area/text-area.css",
+        "js": null,
+        "thumb": null,
+        "readme": "components/web/text-area/README.md"
+      }
+    },
+    {
+      "name": "tab-underline",
+      "displayName": "Tab/下划线型",
+      "category": "Base",
+      "figmaFileKey": "hxksE13w1AZQivOylmZ9gn",
+      "figmaNodeId": "198:166",
+      "variantCount": 27,
+      "catalog": "components/web/tab-underline/catalog.json",
+      "files": {
+        "html": null,
+        "css": "components/web/tab-underline/tab-underline.css",
+        "js": null,
+        "thumb": null,
+        "readme": "components/web/tab-underline/README.md"
+      }
+    },
+    {
+      "name": "tab-toggle",
+      "displayName": "Tab/胶囊·Toggle",
+      "category": "Base",
+      "figmaFileKey": "hxksE13w1AZQivOylmZ9gn",
+      "figmaNodeId": "199:686",
+      "variantCount": 162,
+      "catalog": "components/web/tab-toggle/catalog.json",
+      "files": {
+        "html": null,
+        "css": "components/web/tab-toggle/tab-toggle.css",
+        "js": null,
+        "thumb": null,
+        "readme": "components/web/tab-toggle/README.md"
+      }
+    },
+    {
+      "name": "tab-segmented",
+      "displayName": "Tab/胶囊·分段容器",
+      "category": "Base",
+      "figmaFileKey": "hxksE13w1AZQivOylmZ9gn",
+      "figmaNodeId": "200:633",
+      "variantCount": 54,
+      "catalog": "components/web/tab-segmented/catalog.json",
+      "files": {
+        "html": null,
+        "css": "components/web/tab-segmented/tab-segmented.css",
+        "js": null,
+        "thumb": null,
+        "readme": "components/web/tab-segmented/README.md"
+      }
+    }
+  ],
+  "status": {
+    "implemented": [
+      "button",
+      "icon-button",
+      "input",
+      "input-block",
+      "list-input",
+      "loading-button",
+      "tab-segmented",
+      "tab-toggle",
+      "tab-underline",
+      "tag",
+      "text-area"
+    ],
+    "pendingPages": [
+      {
+        "figmaPage": "1:6",
+        "title": "卡片 / Card",
+        "note": "8 个 ComponentSets — 3 个稳定可做、5 个 Figma 标紫色虚线 = WIP",
+        "componentSets": [
+          {
+            "figmaNodeId": "303:120",
+            "name": "作品卡片",
+            "variantCount": 40,
+            "axes": "模式(7) × 状态(4 仅平铺白板) × 置顶/锁/锚点(各2 仅平铺白板)",
+            "status": "ready-to-implement",
+            "note": "主\"作品卡片\"组件 — 平铺白/黑、瀑布流白/黑、磨砂、创建白/黑 7 种模式"
+          },
+          {
+            "figmaNodeId": "316:289",
+            "name": "作品详情卡",
+            "variantCount": 32,
+            "axes": "尺寸(大626×352/小309×174) × 封面(有/无) × 置顶/锁/锚点",
+            "status": "ready-to-implement"
+          },
+          {
+            "figmaNodeId": "341:257",
+            "name": "资材展示卡",
+            "variantCount": 4,
+            "axes": "状态(常态/悬停) × 收藏(是/否)",
+            "status": "ready-to-implement"
+          },
+          {
+            "figmaNodeId": "328:259",
+            "name": "资材卡片",
+            "status": "WIP (紫虚线)"
+          },
+          {
+            "figmaNodeId": "333:319",
+            "name": "Component 1",
+            "status": "WIP (紫虚线, 无名)"
+          },
+          {
+            "figmaNodeId": "339:726",
+            "name": "SKU",
+            "status": "WIP (紫虚线)"
+          },
+          {
+            "figmaNodeId": "339:788",
+            "name": "Group 1004",
+            "status": "WIP (紫虚线, 无名)"
+          },
+          {
+            "figmaNodeId": "339:800",
+            "name": "创意版-素材卡",
+            "status": "WIP (紫虚线)"
+          }
+        ]
+      },
+      {
+        "figmaPage": "1:7",
+        "title": "导航 / NavigationBar",
+        "componentSets": [],
+        "note": "Figma 该页面为空，未画"
+      },
+      {
+        "figmaPage": "1:8",
+        "title": "表格 / Table",
+        "componentSets": [],
+        "note": "Figma 该页面为空，未画"
+      },
+      {
+        "figmaPage": "1:9",
+        "title": "弹窗 / Modal",
+        "componentSets": [],
+        "note": "Figma 该页面为空，未画"
+      },
+      {
+        "figmaPage": "1:10",
+        "title": "表单 / Checkbox · Radio · Switch · Dropdown",
+        "componentSets": [],
+        "note": "Figma 该页面为空，未画"
+      }
+    ]
+  }
+}

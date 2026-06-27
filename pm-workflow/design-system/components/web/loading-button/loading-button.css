@@ -1,0 +1,56 @@
+/* LoadingButton — Web Component Library (Figma 75:2950).
+   70 variants: Style(10) × Size(6) × 圆角(2). No State axis — always in loading state.
+
+   Layout: rectangle with two animated dots, no text. Sampled sizes:
+   M=54×32, XS pill=58×20, XL=62×48. Dots use currentColor so they swap
+   tone per Style per Figma note "深底白点浅底文字色点". */
+
+@import url("../../tokens/index.css");
+
+.loading-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  box-sizing: border-box;
+  border: 0 solid transparent;
+  border-radius: var(--radius-8);
+  padding: 0 8px;
+  cursor: progress;
+  user-select: none;
+}
+.loading-btn__dots { display: inline-flex; gap: 4px; }
+.loading-btn__dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: currentColor;
+  animation: loading-btn-pulse 1.2s ease-in-out infinite;
+}
+.loading-btn__dot:nth-child(2) { animation-delay: 0.2s; }
+@keyframes loading-btn-pulse {
+  0%, 80%, 100% { opacity: 0.3; transform: scale(0.85); }
+  40%           { opacity: 1;   transform: scale(1);    }
+}
+
+/* Sizes — M and XL sampled, others scaled */
+.loading-btn--xs  { height: 20px; min-width: 58px;  border-radius: var(--radius-4); }
+.loading-btn--s   { height: 28px; min-width: 48px; }
+.loading-btn--m   { height: 32px; min-width: 54px; }
+.loading-btn--l   { height: 40px; min-width: 60px; }
+.loading-btn--xl  { height: 48px; min-width: 62px; }
+.loading-btn--xxl { height: 56px; min-width: 72px; }
+.loading-btn--xs .loading-btn__dot { width: 4px; height: 4px; }
+.loading-btn--s  .loading-btn__dot { width: 5px; height: 5px; }
+
+.loading-btn--radius-pill { border-radius: var(--radius-pill); }
+
+/* Style colors — same palette as Button */
+.loading-btn--black    { background: #333333; color: #FFFFFF; }
+.loading-btn--black30  { background: rgba(0,0,0,0.30); color: #FFFFFF; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+.loading-btn--darkl3   { background: #2A2A2A; color: #FFFFFF; }
+.loading-btn--darkl4   { background: #454545; color: #FFFFFF; }
+.loading-btn--f5       { background: #F5F5F5; color: #333333; }
+.loading-btn--outline1 { background: transparent; color: #333333; border: 1px solid #EBEBEB; }
+.loading-btn--outline2 { background: transparent; color: #333333; border: 1px solid #DBDBDB; }
+.loading-btn--red      { background: #E60023; color: #FFFFFF; }
+.loading-btn--textonly { background: transparent; color: #333333; }
+.loading-btn--white    { background: #FFFFFF; color: #333333; }

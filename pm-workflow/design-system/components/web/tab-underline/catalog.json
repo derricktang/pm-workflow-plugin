@@ -1,0 +1,398 @@
+{
+  "schemaVersion": 2,
+  "kind": "component",
+  "name": "tab-underline",
+  "displayName": "Tab/下划线型",
+  "category": "Base",
+  "type": "COMPONENT_SET",
+  "platform": "web",
+  "figmaFileKey": "hxksE13w1AZQivOylmZ9gn",
+  "figmaNodeId": "198:166",
+  "figmaSourceUrl": "https://www.figma.com/file/hxksE13w1AZQivOylmZ9gn/?node-id=198-166",
+  "files": {
+    "html": null,
+    "css": "components/web/tab-underline/tab-underline.css",
+    "js": null,
+    "thumb": null,
+    "readme": "components/web/tab-underline/README.md"
+  },
+  "axes": [
+    {
+      "name": "状态",
+      "values": [
+        "Default",
+        "Selected",
+        "Disabled"
+      ]
+    },
+    {
+      "name": "底色",
+      "values": [
+        "白底",
+        "灰底",
+        "黑底"
+      ]
+    },
+    {
+      "name": "图标",
+      "values": [
+        "无",
+        "左",
+        "右"
+      ]
+    }
+  ],
+  "states": [
+    {
+      "selector": ".tab-underline--selected",
+      "description": "选中：text 14/21 Medium + 下方 2px 下划线"
+    },
+    {
+      "selector": ".tab-underline--disabled",
+      "description": "禁用：text 14/21 Normal + 颜色淡化 (text-3 + opacity 0.5)"
+    }
+  ],
+  "modifiers": [
+    {
+      "class": "tab-underline--bg-white",
+      "axis": "底色",
+      "value": "白底"
+    },
+    {
+      "class": "tab-underline--bg-gray",
+      "axis": "底色",
+      "value": "灰底"
+    },
+    {
+      "class": "tab-underline--bg-black",
+      "axis": "底色",
+      "value": "黑底"
+    },
+    {
+      "class": "tab-underline--selected",
+      "axis": "状态",
+      "value": "Selected"
+    },
+    {
+      "class": "tab-underline--disabled",
+      "axis": "状态",
+      "value": "Disabled"
+    },
+    {
+      "class": "tab-underline--icon-left",
+      "axis": "图标",
+      "value": "左"
+    },
+    {
+      "class": "tab-underline--icon-right",
+      "axis": "图标",
+      "value": "右"
+    }
+  ],
+  "slots": [
+    {
+      "name": "icon",
+      "selector": ".tab-underline__icon",
+      "description": "Optional inline icon"
+    },
+    {
+      "name": "label",
+      "selector": ".tab-underline__label",
+      "description": "Tab text label"
+    }
+  ],
+  "tokensReferenced": [
+    "--color-dark-border",
+    "--color-light-bg-2",
+    "--color-light-bg-4",
+    "--color-light-text-1",
+    "--color-light-text-3",
+    "--color-light-white",
+    "--font-source-han",
+    "--radius-4",
+    "--radius-pill"
+  ],
+  "variantCount": 27,
+  "variants": [
+    {
+      "name": "gray-icon-right",
+      "figmaNodeId": "198:33",
+      "figmaVariantPath": "状态=Default, 底色=灰底, 图标=右",
+      "modifiers": [
+        "tab-underline--bg-gray",
+        "tab-underline--icon-right"
+      ],
+      "exampleHtml": "<div class=\"tab-underline tab-underline--bg-gray tab-underline--icon-right\"><span class=\"tab-underline__row\"><span class=\"tab-underline__label\">标签</span><span class=\"tab-underline__icon\" aria-hidden=\"true\">▸</span></span><span class=\"tab-underline__line\"></span></div>"
+    },
+    {
+      "name": "gray-icon-left",
+      "figmaNodeId": "198:26",
+      "figmaVariantPath": "状态=Default, 底色=灰底, 图标=左",
+      "modifiers": [
+        "tab-underline--bg-gray",
+        "tab-underline--icon-left"
+      ],
+      "exampleHtml": "<div class=\"tab-underline tab-underline--bg-gray tab-underline--icon-left\"><span class=\"tab-underline__row\"><span class=\"tab-underline__icon\" aria-hidden=\"true\">▸</span><span class=\"tab-underline__label\">标签</span></span><span class=\"tab-underline__line\"></span></div>"
+    },
+    {
+      "name": "gray",
+      "figmaNodeId": "198:22",
+      "figmaVariantPath": "状态=Default, 底色=灰底, 图标=无",
+      "modifiers": [
+        "tab-underline--bg-gray"
+      ],
+      "exampleHtml": "<div class=\"tab-underline tab-underline--bg-gray\"><span class=\"tab-underline__row\"><span class=\"tab-underline__label\">标签</span></span><span class=\"tab-underline__line\"></span></div>"
+    },
+    {
+      "name": "white-icon-right",
+      "figmaNodeId": "198:15",
+      "figmaVariantPath": "状态=Default, 底色=白底, 图标=右",
+      "modifiers": [
+        "tab-underline--bg-white",
+        "tab-underline--icon-right"
+      ],
+      "exampleHtml": "<div class=\"tab-underline tab-underline--bg-white tab-underline--icon-right\"><span class=\"tab-underline__row\"><span class=\"tab-underline__label\">标签</span><span class=\"tab-underline__icon\" aria-hidden=\"true\">▸</span></span><span class=\"tab-underline__line\"></span></div>"
+    },
+    {
+      "name": "white-icon-left",
+      "figmaNodeId": "198:8",
+      "figmaVariantPath": "状态=Default, 底色=白底, 图标=左",
+      "modifiers": [
+        "tab-underline--bg-white",
+        "tab-underline--icon-left"
+      ],
+      "exampleHtml": "<div class=\"tab-underline tab-underline--bg-white tab-underline--icon-left\"><span class=\"tab-underline__row\"><span class=\"tab-underline__icon\" aria-hidden=\"true\">▸</span><span class=\"tab-underline__label\">标签</span></span><span class=\"tab-underline__line\"></span></div>"
+    },
+    {
+      "name": "white",
+      "figmaNodeId": "198:4",
+      "figmaVariantPath": "状态=Default, 底色=白底, 图标=无",
+      "modifiers": [
+        "tab-underline--bg-white"
+      ],
+      "exampleHtml": "<div class=\"tab-underline tab-underline--bg-white\"><span class=\"tab-underline__row\"><span class=\"tab-underline__label\">标签</span></span><span class=\"tab-underline__line\"></span></div>"
+    },
+    {
+      "name": "black-icon-right",
+      "figmaNodeId": "198:51",
+      "figmaVariantPath": "状态=Default, 底色=黑底, 图标=右",
+      "modifiers": [
+        "tab-underline--bg-black",
+        "tab-underline--icon-right"
+      ],
+      "exampleHtml": "<div class=\"tab-underline tab-underline--bg-black tab-underline--icon-right\"><span class=\"tab-underline__row\"><span class=\"tab-underline__label\">标签</span><span class=\"tab-underline__icon\" aria-hidden=\"true\">▸</span></span><span class=\"tab-underline__line\"></span></div>"
+    },
+    {
+      "name": "black-icon-left",
+      "figmaNodeId": "198:44",
+      "figmaVariantPath": "状态=Default, 底色=黑底, 图标=左",
+      "modifiers": [
+        "tab-underline--bg-black",
+        "tab-underline--icon-left"
+      ],
+      "exampleHtml": "<div class=\"tab-underline tab-underline--bg-black tab-underline--icon-left\"><span class=\"tab-underline__row\"><span class=\"tab-underline__icon\" aria-hidden=\"true\">▸</span><span class=\"tab-underline__label\">标签</span></span><span class=\"tab-underline__line\"></span></div>"
+    },
+    {
+      "name": "black",
+      "figmaNodeId": "198:40",
+      "figmaVariantPath": "状态=Default, 底色=黑底, 图标=无",
+      "modifiers": [
+        "tab-underline--bg-black"
+      ],
+      "exampleHtml": "<div class=\"tab-underline tab-underline--bg-black\"><span class=\"tab-underline__row\"><span class=\"tab-underline__label\">标签</span></span><span class=\"tab-underline__line\"></span></div>"
+    },
+    {
+      "name": "disabled-gray-icon-right",
+      "figmaNodeId": "198:141",
+      "figmaVariantPath": "状态=Disabled, 底色=灰底, 图标=右",
+      "modifiers": [
+        "tab-underline--bg-gray",
+        "tab-underline--disabled",
+        "tab-underline--icon-right"
+      ],
+      "exampleHtml": "<div class=\"tab-underline tab-underline--bg-gray tab-underline--disabled tab-underline--icon-right\"><span class=\"tab-underline__row\"><span class=\"tab-underline__label\">标签</span><span class=\"tab-underline__icon\" aria-hidden=\"true\">▸</span></span><span class=\"tab-underline__line\"></span></div>"
+    },
+    {
+      "name": "disabled-gray-icon-left",
+      "figmaNodeId": "198:134",
+      "figmaVariantPath": "状态=Disabled, 底色=灰底, 图标=左",
+      "modifiers": [
+        "tab-underline--bg-gray",
+        "tab-underline--disabled",
+        "tab-underline--icon-left"
+      ],
+      "exampleHtml": "<div class=\"tab-underline tab-underline--bg-gray tab-underline--disabled tab-underline--icon-left\"><span class=\"tab-underline__row\"><span class=\"tab-underline__icon\" aria-hidden=\"true\">▸</span><span class=\"tab-underline__label\">标签</span></span><span class=\"tab-underline__line\"></span></div>"
+    },
+    {
+      "name": "disabled-gray",
+      "figmaNodeId": "198:130",
+      "figmaVariantPath": "状态=Disabled, 底色=灰底, 图标=无",
+      "modifiers": [
+        "tab-underline--bg-gray",
+        "tab-underline--disabled"
+      ],
+      "exampleHtml": "<div class=\"tab-underline tab-underline--bg-gray tab-underline--disabled\"><span class=\"tab-underline__row\"><span class=\"tab-underline__label\">标签</span></span><span class=\"tab-underline__line\"></span></div>"
+    },
+    {
+      "name": "disabled-white-icon-right",
+      "figmaNodeId": "198:123",
+      "figmaVariantPath": "状态=Disabled, 底色=白底, 图标=右",
+      "modifiers": [
+        "tab-underline--bg-white",
+        "tab-underline--disabled",
+        "tab-underline--icon-right"
+      ],
+      "exampleHtml": "<div class=\"tab-underline tab-underline--bg-white tab-underline--disabled tab-underline--icon-right\"><span class=\"tab-underline__row\"><span class=\"tab-underline__label\">标签</span><span class=\"tab-underline__icon\" aria-hidden=\"true\">▸</span></span><span class=\"tab-underline__line\"></span></div>"
+    },
+    {
+      "name": "disabled-white-icon-left",
+      "figmaNodeId": "198:116",
+      "figmaVariantPath": "状态=Disabled, 底色=白底, 图标=左",
+      "modifiers": [
+        "tab-underline--bg-white",
+        "tab-underline--disabled",
+        "tab-underline--icon-left"
+      ],
+      "exampleHtml": "<div class=\"tab-underline tab-underline--bg-white tab-underline--disabled tab-underline--icon-left\"><span class=\"tab-underline__row\"><span class=\"tab-underline__icon\" aria-hidden=\"true\">▸</span><span class=\"tab-underline__label\">标签</span></span><span class=\"tab-underline__line\"></span></div>"
+    },
+    {
+      "name": "disabled-white",
+      "figmaNodeId": "198:112",
+      "figmaVariantPath": "状态=Disabled, 底色=白底, 图标=无",
+      "modifiers": [
+        "tab-underline--bg-white",
+        "tab-underline--disabled"
+      ],
+      "exampleHtml": "<div class=\"tab-underline tab-underline--bg-white tab-underline--disabled\"><span class=\"tab-underline__row\"><span class=\"tab-underline__label\">标签</span></span><span class=\"tab-underline__line\"></span></div>"
+    },
+    {
+      "name": "disabled-black-icon-right",
+      "figmaNodeId": "198:159",
+      "figmaVariantPath": "状态=Disabled, 底色=黑底, 图标=右",
+      "modifiers": [
+        "tab-underline--bg-black",
+        "tab-underline--disabled",
+        "tab-underline--icon-right"
+      ],
+      "exampleHtml": "<div class=\"tab-underline tab-underline--bg-black tab-underline--disabled tab-underline--icon-right\"><span class=\"tab-underline__row\"><span class=\"tab-underline__label\">标签</span><span class=\"tab-underline__icon\" aria-hidden=\"true\">▸</span></span><span class=\"tab-underline__line\"></span></div>"
+    },
+    {
+      "name": "disabled-black-icon-left",
+      "figmaNodeId": "198:152",
+      "figmaVariantPath": "状态=Disabled, 底色=黑底, 图标=左",
+      "modifiers": [
+        "tab-underline--bg-black",
+        "tab-underline--disabled",
+        "tab-underline--icon-left"
+      ],
+      "exampleHtml": "<div class=\"tab-underline tab-underline--bg-black tab-underline--disabled tab-underline--icon-left\"><span class=\"tab-underline__row\"><span class=\"tab-underline__icon\" aria-hidden=\"true\">▸</span><span class=\"tab-underline__label\">标签</span></span><span class=\"tab-underline__line\"></span></div>"
+    },
+    {
+      "name": "disabled-black",
+      "figmaNodeId": "198:148",
+      "figmaVariantPath": "状态=Disabled, 底色=黑底, 图标=无",
+      "modifiers": [
+        "tab-underline--bg-black",
+        "tab-underline--disabled"
+      ],
+      "exampleHtml": "<div class=\"tab-underline tab-underline--bg-black tab-underline--disabled\"><span class=\"tab-underline__row\"><span class=\"tab-underline__label\">标签</span></span><span class=\"tab-underline__line\"></span></div>"
+    },
+    {
+      "name": "selected-gray-icon-right",
+      "figmaNodeId": "198:87",
+      "figmaVariantPath": "状态=Selected, 底色=灰底, 图标=右",
+      "modifiers": [
+        "tab-underline--bg-gray",
+        "tab-underline--selected",
+        "tab-underline--icon-right"
+      ],
+      "exampleHtml": "<div class=\"tab-underline tab-underline--bg-gray tab-underline--selected tab-underline--icon-right\"><span class=\"tab-underline__row\"><span class=\"tab-underline__label\">标签</span><span class=\"tab-underline__icon\" aria-hidden=\"true\">▸</span></span><span class=\"tab-underline__line\"></span></div>"
+    },
+    {
+      "name": "selected-gray-icon-left",
+      "figmaNodeId": "198:80",
+      "figmaVariantPath": "状态=Selected, 底色=灰底, 图标=左",
+      "modifiers": [
+        "tab-underline--bg-gray",
+        "tab-underline--selected",
+        "tab-underline--icon-left"
+      ],
+      "exampleHtml": "<div class=\"tab-underline tab-underline--bg-gray tab-underline--selected tab-underline--icon-left\"><span class=\"tab-underline__row\"><span class=\"tab-underline__icon\" aria-hidden=\"true\">▸</span><span class=\"tab-underline__label\">标签</span></span><span class=\"tab-underline__line\"></span></div>"
+    },
+    {
+      "name": "selected-gray",
+      "figmaNodeId": "198:76",
+      "figmaVariantPath": "状态=Selected, 底色=灰底, 图标=无",
+      "modifiers": [
+        "tab-underline--bg-gray",
+        "tab-underline--selected"
+      ],
+      "exampleHtml": "<div class=\"tab-underline tab-underline--bg-gray tab-underline--selected\"><span class=\"tab-underline__row\"><span class=\"tab-underline__label\">标签</span></span><span class=\"tab-underline__line\"></span></div>"
+    },
+    {
+      "name": "selected-white-icon-right",
+      "figmaNodeId": "198:69",
+      "figmaVariantPath": "状态=Selected, 底色=白底, 图标=右",
+      "modifiers": [
+        "tab-underline--bg-white",
+        "tab-underline--selected",
+        "tab-underline--icon-right"
+      ],
+      "exampleHtml": "<div class=\"tab-underline tab-underline--bg-white tab-underline--selected tab-underline--icon-right\"><span class=\"tab-underline__row\"><span class=\"tab-underline__label\">标签</span><span class=\"tab-underline__icon\" aria-hidden=\"true\">▸</span></span><span class=\"tab-underline__line\"></span></div>"
+    },
+    {
+      "name": "selected-white-icon-left",
+      "figmaNodeId": "198:62",
+      "figmaVariantPath": "状态=Selected, 底色=白底, 图标=左",
+      "modifiers": [
+        "tab-underline--bg-white",
+        "tab-underline--selected",
+        "tab-underline--icon-left"
+      ],
+      "exampleHtml": "<div class=\"tab-underline tab-underline--bg-white tab-underline--selected tab-underline--icon-left\"><span class=\"tab-underline__row\"><span class=\"tab-underline__icon\" aria-hidden=\"true\">▸</span><span class=\"tab-underline__label\">标签</span></span><span class=\"tab-underline__line\"></span></div>"
+    },
+    {
+      "name": "selected-white",
+      "figmaNodeId": "198:58",
+      "figmaVariantPath": "状态=Selected, 底色=白底, 图标=无",
+      "modifiers": [
+        "tab-underline--bg-white",
+        "tab-underline--selected"
+      ],
+      "exampleHtml": "<div class=\"tab-underline tab-underline--bg-white tab-underline--selected\"><span class=\"tab-underline__row\"><span class=\"tab-underline__label\">标签</span></span><span class=\"tab-underline__line\"></span></div>"
+    },
+    {
+      "name": "selected-black-icon-right",
+      "figmaNodeId": "198:105",
+      "figmaVariantPath": "状态=Selected, 底色=黑底, 图标=右",
+      "modifiers": [
+        "tab-underline--bg-black",
+        "tab-underline--selected",
+        "tab-underline--icon-right"
+      ],
+      "exampleHtml": "<div class=\"tab-underline tab-underline--bg-black tab-underline--selected tab-underline--icon-right\"><span class=\"tab-underline__row\"><span class=\"tab-underline__label\">标签</span><span class=\"tab-underline__icon\" aria-hidden=\"true\">▸</span></span><span class=\"tab-underline__line\"></span></div>"
+    },
+    {
+      "name": "selected-black-icon-left",
+      "figmaNodeId": "198:98",
+      "figmaVariantPath": "状态=Selected, 底色=黑底, 图标=左",
+      "modifiers": [
+        "tab-underline--bg-black",
+        "tab-underline--selected",
+        "tab-underline--icon-left"
+      ],
+      "exampleHtml": "<div class=\"tab-underline tab-underline--bg-black tab-underline--selected tab-underline--icon-left\"><span class=\"tab-underline__row\"><span class=\"tab-underline__icon\" aria-hidden=\"true\">▸</span><span class=\"tab-underline__label\">标签</span></span><span class=\"tab-underline__line\"></span></div>"
+    },
+    {
+      "name": "selected-black",
+      "figmaNodeId": "198:94",
+      "figmaVariantPath": "状态=Selected, 底色=黑底, 图标=无",
+      "modifiers": [
+        "tab-underline--bg-black",
+        "tab-underline--selected"
+      ],
+      "exampleHtml": "<div class=\"tab-underline tab-underline--bg-black tab-underline--selected\"><span class=\"tab-underline__row\"><span class=\"tab-underline__label\">标签</span></span><span class=\"tab-underline__line\"></span></div>"
+    }
+  ],
+  "generatedAt": "2026-05-12T12:00:00Z"
+}

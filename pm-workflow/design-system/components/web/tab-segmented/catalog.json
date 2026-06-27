@@ -1,0 +1,716 @@
+{
+  "schemaVersion": 2,
+  "kind": "component",
+  "name": "tab-segmented",
+  "displayName": "Tab/胶囊·分段容器",
+  "category": "Base",
+  "type": "COMPONENT_SET",
+  "platform": "web",
+  "figmaFileKey": "hxksE13w1AZQivOylmZ9gn",
+  "figmaNodeId": "200:633",
+  "figmaSourceUrl": "https://www.figma.com/file/hxksE13w1AZQivOylmZ9gn/?node-id=200-633",
+  "files": {
+    "html": null,
+    "css": "components/web/tab-segmented/tab-segmented.css",
+    "js": null,
+    "thumb": null,
+    "readme": "components/web/tab-segmented/README.md"
+  },
+  "axes": [
+    {
+      "name": "底色",
+      "values": [
+        "白底",
+        "灰底",
+        "黑底"
+      ]
+    },
+    {
+      "name": "高度",
+      "values": [
+        "32",
+        "36",
+        "40"
+      ]
+    },
+    {
+      "name": "圆角",
+      "values": [
+        "4",
+        "100"
+      ]
+    },
+    {
+      "name": "选中",
+      "values": [
+        "Tab 1",
+        "Tab 2",
+        "Tab 3"
+      ]
+    }
+  ],
+  "states": [
+    {
+      "selector": "[data-active=\"N\"]",
+      "description": "激活第 N 个 tab（1/2/3）"
+    }
+  ],
+  "modifiers": [
+    {
+      "class": "tab-segmented--bg-white",
+      "axis": "底色",
+      "value": "白底"
+    },
+    {
+      "class": "tab-segmented--bg-gray",
+      "axis": "底色",
+      "value": "灰底"
+    },
+    {
+      "class": "tab-segmented--bg-black",
+      "axis": "底色",
+      "value": "黑底"
+    },
+    {
+      "class": "tab-segmented--h-32",
+      "axis": "高度",
+      "value": "32"
+    },
+    {
+      "class": "tab-segmented--h-36",
+      "axis": "高度",
+      "value": "36"
+    },
+    {
+      "class": "tab-segmented--h-40",
+      "axis": "高度",
+      "value": "40"
+    },
+    {
+      "class": "tab-segmented--r-4",
+      "axis": "圆角",
+      "value": "4"
+    },
+    {
+      "class": "tab-segmented--r-pill",
+      "axis": "圆角",
+      "value": "100"
+    }
+  ],
+  "slots": [
+    {
+      "name": "tabs",
+      "selector": ".tab-segmented__tab",
+      "description": "3 个内嵌 tab span"
+    }
+  ],
+  "tokensReferenced": [
+    "--color-dark-border",
+    "--color-light-bg-2",
+    "--color-light-bg-4",
+    "--color-light-text-1",
+    "--color-light-text-3",
+    "--color-light-white",
+    "--font-source-han",
+    "--radius-4",
+    "--radius-pill"
+  ],
+  "variantCount": 54,
+  "variants": [
+    {
+      "name": "gray-h32-r100-active1",
+      "figmaNodeId": "200:402",
+      "figmaVariantPath": "底色=灰底, 高度=32, 圆角=100, 选中=Tab 1",
+      "modifiers": [
+        "tab-segmented--bg-gray",
+        "tab-segmented--h-32",
+        "tab-segmented--r-pill"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-gray tab-segmented--h-32 tab-segmented--r-pill\" data-active=\"1\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "gray-h32-r100-active2",
+      "figmaNodeId": "200:409",
+      "figmaVariantPath": "底色=灰底, 高度=32, 圆角=100, 选中=Tab 2",
+      "modifiers": [
+        "tab-segmented--bg-gray",
+        "tab-segmented--h-32",
+        "tab-segmented--r-pill"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-gray tab-segmented--h-32 tab-segmented--r-pill\" data-active=\"2\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "gray-h32-r100-active3",
+      "figmaNodeId": "200:416",
+      "figmaVariantPath": "底色=灰底, 高度=32, 圆角=100, 选中=Tab 3",
+      "modifiers": [
+        "tab-segmented--bg-gray",
+        "tab-segmented--h-32",
+        "tab-segmented--r-pill"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-gray tab-segmented--h-32 tab-segmented--r-pill\" data-active=\"3\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "gray-h32-r4-active1",
+      "figmaNodeId": "200:381",
+      "figmaVariantPath": "底色=灰底, 高度=32, 圆角=4, 选中=Tab 1",
+      "modifiers": [
+        "tab-segmented--bg-gray",
+        "tab-segmented--h-32",
+        "tab-segmented--r-4"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-gray tab-segmented--h-32 tab-segmented--r-4\" data-active=\"1\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "gray-h32-r4-active2",
+      "figmaNodeId": "200:388",
+      "figmaVariantPath": "底色=灰底, 高度=32, 圆角=4, 选中=Tab 2",
+      "modifiers": [
+        "tab-segmented--bg-gray",
+        "tab-segmented--h-32",
+        "tab-segmented--r-4"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-gray tab-segmented--h-32 tab-segmented--r-4\" data-active=\"2\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "gray-h32-r4-active3",
+      "figmaNodeId": "200:395",
+      "figmaVariantPath": "底色=灰底, 高度=32, 圆角=4, 选中=Tab 3",
+      "modifiers": [
+        "tab-segmented--bg-gray",
+        "tab-segmented--h-32",
+        "tab-segmented--r-4"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-gray tab-segmented--h-32 tab-segmented--r-4\" data-active=\"3\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "gray-h36-r100-active1",
+      "figmaNodeId": "200:444",
+      "figmaVariantPath": "底色=灰底, 高度=36, 圆角=100, 选中=Tab 1",
+      "modifiers": [
+        "tab-segmented--bg-gray",
+        "tab-segmented--h-36",
+        "tab-segmented--r-pill"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-gray tab-segmented--h-36 tab-segmented--r-pill\" data-active=\"1\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "gray-h36-r100-active2",
+      "figmaNodeId": "200:451",
+      "figmaVariantPath": "底色=灰底, 高度=36, 圆角=100, 选中=Tab 2",
+      "modifiers": [
+        "tab-segmented--bg-gray",
+        "tab-segmented--h-36",
+        "tab-segmented--r-pill"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-gray tab-segmented--h-36 tab-segmented--r-pill\" data-active=\"2\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "gray-h36-r100-active3",
+      "figmaNodeId": "200:458",
+      "figmaVariantPath": "底色=灰底, 高度=36, 圆角=100, 选中=Tab 3",
+      "modifiers": [
+        "tab-segmented--bg-gray",
+        "tab-segmented--h-36",
+        "tab-segmented--r-pill"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-gray tab-segmented--h-36 tab-segmented--r-pill\" data-active=\"3\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "gray-h36-r4-active1",
+      "figmaNodeId": "200:423",
+      "figmaVariantPath": "底色=灰底, 高度=36, 圆角=4, 选中=Tab 1",
+      "modifiers": [
+        "tab-segmented--bg-gray",
+        "tab-segmented--h-36",
+        "tab-segmented--r-4"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-gray tab-segmented--h-36 tab-segmented--r-4\" data-active=\"1\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "gray-h36-r4-active2",
+      "figmaNodeId": "200:430",
+      "figmaVariantPath": "底色=灰底, 高度=36, 圆角=4, 选中=Tab 2",
+      "modifiers": [
+        "tab-segmented--bg-gray",
+        "tab-segmented--h-36",
+        "tab-segmented--r-4"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-gray tab-segmented--h-36 tab-segmented--r-4\" data-active=\"2\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "gray-h36-r4-active3",
+      "figmaNodeId": "200:437",
+      "figmaVariantPath": "底色=灰底, 高度=36, 圆角=4, 选中=Tab 3",
+      "modifiers": [
+        "tab-segmented--bg-gray",
+        "tab-segmented--h-36",
+        "tab-segmented--r-4"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-gray tab-segmented--h-36 tab-segmented--r-4\" data-active=\"3\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "gray-h40-r100-active1",
+      "figmaNodeId": "200:486",
+      "figmaVariantPath": "底色=灰底, 高度=40, 圆角=100, 选中=Tab 1",
+      "modifiers": [
+        "tab-segmented--bg-gray",
+        "tab-segmented--h-40",
+        "tab-segmented--r-pill"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-gray tab-segmented--h-40 tab-segmented--r-pill\" data-active=\"1\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "gray-h40-r100-active2",
+      "figmaNodeId": "200:493",
+      "figmaVariantPath": "底色=灰底, 高度=40, 圆角=100, 选中=Tab 2",
+      "modifiers": [
+        "tab-segmented--bg-gray",
+        "tab-segmented--h-40",
+        "tab-segmented--r-pill"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-gray tab-segmented--h-40 tab-segmented--r-pill\" data-active=\"2\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "gray-h40-r100-active3",
+      "figmaNodeId": "200:500",
+      "figmaVariantPath": "底色=灰底, 高度=40, 圆角=100, 选中=Tab 3",
+      "modifiers": [
+        "tab-segmented--bg-gray",
+        "tab-segmented--h-40",
+        "tab-segmented--r-pill"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-gray tab-segmented--h-40 tab-segmented--r-pill\" data-active=\"3\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "gray-h40-r4-active1",
+      "figmaNodeId": "200:465",
+      "figmaVariantPath": "底色=灰底, 高度=40, 圆角=4, 选中=Tab 1",
+      "modifiers": [
+        "tab-segmented--bg-gray",
+        "tab-segmented--h-40",
+        "tab-segmented--r-4"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-gray tab-segmented--h-40 tab-segmented--r-4\" data-active=\"1\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "gray-h40-r4-active2",
+      "figmaNodeId": "200:472",
+      "figmaVariantPath": "底色=灰底, 高度=40, 圆角=4, 选中=Tab 2",
+      "modifiers": [
+        "tab-segmented--bg-gray",
+        "tab-segmented--h-40",
+        "tab-segmented--r-4"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-gray tab-segmented--h-40 tab-segmented--r-4\" data-active=\"2\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "gray-h40-r4-active3",
+      "figmaNodeId": "200:479",
+      "figmaVariantPath": "底色=灰底, 高度=40, 圆角=4, 选中=Tab 3",
+      "modifiers": [
+        "tab-segmented--bg-gray",
+        "tab-segmented--h-40",
+        "tab-segmented--r-4"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-gray tab-segmented--h-40 tab-segmented--r-4\" data-active=\"3\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "white-h32-r100-active1",
+      "figmaNodeId": "200:276",
+      "figmaVariantPath": "底色=白底, 高度=32, 圆角=100, 选中=Tab 1",
+      "modifiers": [
+        "tab-segmented--bg-white",
+        "tab-segmented--h-32",
+        "tab-segmented--r-pill"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-white tab-segmented--h-32 tab-segmented--r-pill\" data-active=\"1\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "white-h32-r100-active2",
+      "figmaNodeId": "200:283",
+      "figmaVariantPath": "底色=白底, 高度=32, 圆角=100, 选中=Tab 2",
+      "modifiers": [
+        "tab-segmented--bg-white",
+        "tab-segmented--h-32",
+        "tab-segmented--r-pill"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-white tab-segmented--h-32 tab-segmented--r-pill\" data-active=\"2\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "white-h32-r100-active3",
+      "figmaNodeId": "200:290",
+      "figmaVariantPath": "底色=白底, 高度=32, 圆角=100, 选中=Tab 3",
+      "modifiers": [
+        "tab-segmented--bg-white",
+        "tab-segmented--h-32",
+        "tab-segmented--r-pill"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-white tab-segmented--h-32 tab-segmented--r-pill\" data-active=\"3\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "white-h32-r4-active1",
+      "figmaNodeId": "200:255",
+      "figmaVariantPath": "底色=白底, 高度=32, 圆角=4, 选中=Tab 1",
+      "modifiers": [
+        "tab-segmented--bg-white",
+        "tab-segmented--h-32",
+        "tab-segmented--r-4"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-white tab-segmented--h-32 tab-segmented--r-4\" data-active=\"1\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "white-h32-r4-active2",
+      "figmaNodeId": "200:262",
+      "figmaVariantPath": "底色=白底, 高度=32, 圆角=4, 选中=Tab 2",
+      "modifiers": [
+        "tab-segmented--bg-white",
+        "tab-segmented--h-32",
+        "tab-segmented--r-4"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-white tab-segmented--h-32 tab-segmented--r-4\" data-active=\"2\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "white-h32-r4-active3",
+      "figmaNodeId": "200:269",
+      "figmaVariantPath": "底色=白底, 高度=32, 圆角=4, 选中=Tab 3",
+      "modifiers": [
+        "tab-segmented--bg-white",
+        "tab-segmented--h-32",
+        "tab-segmented--r-4"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-white tab-segmented--h-32 tab-segmented--r-4\" data-active=\"3\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "white-h36-r100-active1",
+      "figmaNodeId": "200:318",
+      "figmaVariantPath": "底色=白底, 高度=36, 圆角=100, 选中=Tab 1",
+      "modifiers": [
+        "tab-segmented--bg-white",
+        "tab-segmented--h-36",
+        "tab-segmented--r-pill"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-white tab-segmented--h-36 tab-segmented--r-pill\" data-active=\"1\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "white-h36-r100-active2",
+      "figmaNodeId": "200:325",
+      "figmaVariantPath": "底色=白底, 高度=36, 圆角=100, 选中=Tab 2",
+      "modifiers": [
+        "tab-segmented--bg-white",
+        "tab-segmented--h-36",
+        "tab-segmented--r-pill"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-white tab-segmented--h-36 tab-segmented--r-pill\" data-active=\"2\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "white-h36-r100-active3",
+      "figmaNodeId": "200:332",
+      "figmaVariantPath": "底色=白底, 高度=36, 圆角=100, 选中=Tab 3",
+      "modifiers": [
+        "tab-segmented--bg-white",
+        "tab-segmented--h-36",
+        "tab-segmented--r-pill"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-white tab-segmented--h-36 tab-segmented--r-pill\" data-active=\"3\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "white-h36-r4-active1",
+      "figmaNodeId": "200:297",
+      "figmaVariantPath": "底色=白底, 高度=36, 圆角=4, 选中=Tab 1",
+      "modifiers": [
+        "tab-segmented--bg-white",
+        "tab-segmented--h-36",
+        "tab-segmented--r-4"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-white tab-segmented--h-36 tab-segmented--r-4\" data-active=\"1\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "white-h36-r4-active2",
+      "figmaNodeId": "200:304",
+      "figmaVariantPath": "底色=白底, 高度=36, 圆角=4, 选中=Tab 2",
+      "modifiers": [
+        "tab-segmented--bg-white",
+        "tab-segmented--h-36",
+        "tab-segmented--r-4"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-white tab-segmented--h-36 tab-segmented--r-4\" data-active=\"2\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "white-h36-r4-active3",
+      "figmaNodeId": "200:311",
+      "figmaVariantPath": "底色=白底, 高度=36, 圆角=4, 选中=Tab 3",
+      "modifiers": [
+        "tab-segmented--bg-white",
+        "tab-segmented--h-36",
+        "tab-segmented--r-4"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-white tab-segmented--h-36 tab-segmented--r-4\" data-active=\"3\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "white-h40-r100-active1",
+      "figmaNodeId": "200:360",
+      "figmaVariantPath": "底色=白底, 高度=40, 圆角=100, 选中=Tab 1",
+      "modifiers": [
+        "tab-segmented--bg-white",
+        "tab-segmented--h-40",
+        "tab-segmented--r-pill"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-white tab-segmented--h-40 tab-segmented--r-pill\" data-active=\"1\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "white-h40-r100-active2",
+      "figmaNodeId": "200:367",
+      "figmaVariantPath": "底色=白底, 高度=40, 圆角=100, 选中=Tab 2",
+      "modifiers": [
+        "tab-segmented--bg-white",
+        "tab-segmented--h-40",
+        "tab-segmented--r-pill"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-white tab-segmented--h-40 tab-segmented--r-pill\" data-active=\"2\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "white-h40-r100-active3",
+      "figmaNodeId": "200:374",
+      "figmaVariantPath": "底色=白底, 高度=40, 圆角=100, 选中=Tab 3",
+      "modifiers": [
+        "tab-segmented--bg-white",
+        "tab-segmented--h-40",
+        "tab-segmented--r-pill"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-white tab-segmented--h-40 tab-segmented--r-pill\" data-active=\"3\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "white-h40-r4-active1",
+      "figmaNodeId": "200:339",
+      "figmaVariantPath": "底色=白底, 高度=40, 圆角=4, 选中=Tab 1",
+      "modifiers": [
+        "tab-segmented--bg-white",
+        "tab-segmented--h-40",
+        "tab-segmented--r-4"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-white tab-segmented--h-40 tab-segmented--r-4\" data-active=\"1\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "white-h40-r4-active2",
+      "figmaNodeId": "200:346",
+      "figmaVariantPath": "底色=白底, 高度=40, 圆角=4, 选中=Tab 2",
+      "modifiers": [
+        "tab-segmented--bg-white",
+        "tab-segmented--h-40",
+        "tab-segmented--r-4"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-white tab-segmented--h-40 tab-segmented--r-4\" data-active=\"2\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "white-h40-r4-active3",
+      "figmaNodeId": "200:353",
+      "figmaVariantPath": "底色=白底, 高度=40, 圆角=4, 选中=Tab 3",
+      "modifiers": [
+        "tab-segmented--bg-white",
+        "tab-segmented--h-40",
+        "tab-segmented--r-4"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-white tab-segmented--h-40 tab-segmented--r-4\" data-active=\"3\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "black-h32-r100-active1",
+      "figmaNodeId": "200:528",
+      "figmaVariantPath": "底色=黑底, 高度=32, 圆角=100, 选中=Tab 1",
+      "modifiers": [
+        "tab-segmented--bg-black",
+        "tab-segmented--h-32",
+        "tab-segmented--r-pill"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-black tab-segmented--h-32 tab-segmented--r-pill\" data-active=\"1\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "black-h32-r100-active2",
+      "figmaNodeId": "200:535",
+      "figmaVariantPath": "底色=黑底, 高度=32, 圆角=100, 选中=Tab 2",
+      "modifiers": [
+        "tab-segmented--bg-black",
+        "tab-segmented--h-32",
+        "tab-segmented--r-pill"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-black tab-segmented--h-32 tab-segmented--r-pill\" data-active=\"2\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "black-h32-r100-active3",
+      "figmaNodeId": "200:542",
+      "figmaVariantPath": "底色=黑底, 高度=32, 圆角=100, 选中=Tab 3",
+      "modifiers": [
+        "tab-segmented--bg-black",
+        "tab-segmented--h-32",
+        "tab-segmented--r-pill"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-black tab-segmented--h-32 tab-segmented--r-pill\" data-active=\"3\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "black-h32-r4-active1",
+      "figmaNodeId": "200:507",
+      "figmaVariantPath": "底色=黑底, 高度=32, 圆角=4, 选中=Tab 1",
+      "modifiers": [
+        "tab-segmented--bg-black",
+        "tab-segmented--h-32",
+        "tab-segmented--r-4"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-black tab-segmented--h-32 tab-segmented--r-4\" data-active=\"1\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "black-h32-r4-active2",
+      "figmaNodeId": "200:514",
+      "figmaVariantPath": "底色=黑底, 高度=32, 圆角=4, 选中=Tab 2",
+      "modifiers": [
+        "tab-segmented--bg-black",
+        "tab-segmented--h-32",
+        "tab-segmented--r-4"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-black tab-segmented--h-32 tab-segmented--r-4\" data-active=\"2\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "black-h32-r4-active3",
+      "figmaNodeId": "200:521",
+      "figmaVariantPath": "底色=黑底, 高度=32, 圆角=4, 选中=Tab 3",
+      "modifiers": [
+        "tab-segmented--bg-black",
+        "tab-segmented--h-32",
+        "tab-segmented--r-4"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-black tab-segmented--h-32 tab-segmented--r-4\" data-active=\"3\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "black-h36-r100-active1",
+      "figmaNodeId": "200:570",
+      "figmaVariantPath": "底色=黑底, 高度=36, 圆角=100, 选中=Tab 1",
+      "modifiers": [
+        "tab-segmented--bg-black",
+        "tab-segmented--h-36",
+        "tab-segmented--r-pill"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-black tab-segmented--h-36 tab-segmented--r-pill\" data-active=\"1\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "black-h36-r100-active2",
+      "figmaNodeId": "200:577",
+      "figmaVariantPath": "底色=黑底, 高度=36, 圆角=100, 选中=Tab 2",
+      "modifiers": [
+        "tab-segmented--bg-black",
+        "tab-segmented--h-36",
+        "tab-segmented--r-pill"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-black tab-segmented--h-36 tab-segmented--r-pill\" data-active=\"2\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "black-h36-r100-active3",
+      "figmaNodeId": "200:584",
+      "figmaVariantPath": "底色=黑底, 高度=36, 圆角=100, 选中=Tab 3",
+      "modifiers": [
+        "tab-segmented--bg-black",
+        "tab-segmented--h-36",
+        "tab-segmented--r-pill"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-black tab-segmented--h-36 tab-segmented--r-pill\" data-active=\"3\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "black-h36-r4-active1",
+      "figmaNodeId": "200:549",
+      "figmaVariantPath": "底色=黑底, 高度=36, 圆角=4, 选中=Tab 1",
+      "modifiers": [
+        "tab-segmented--bg-black",
+        "tab-segmented--h-36",
+        "tab-segmented--r-4"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-black tab-segmented--h-36 tab-segmented--r-4\" data-active=\"1\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "black-h36-r4-active2",
+      "figmaNodeId": "200:556",
+      "figmaVariantPath": "底色=黑底, 高度=36, 圆角=4, 选中=Tab 2",
+      "modifiers": [
+        "tab-segmented--bg-black",
+        "tab-segmented--h-36",
+        "tab-segmented--r-4"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-black tab-segmented--h-36 tab-segmented--r-4\" data-active=\"2\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "black-h36-r4-active3",
+      "figmaNodeId": "200:563",
+      "figmaVariantPath": "底色=黑底, 高度=36, 圆角=4, 选中=Tab 3",
+      "modifiers": [
+        "tab-segmented--bg-black",
+        "tab-segmented--h-36",
+        "tab-segmented--r-4"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-black tab-segmented--h-36 tab-segmented--r-4\" data-active=\"3\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "black-h40-r100-active1",
+      "figmaNodeId": "200:612",
+      "figmaVariantPath": "底色=黑底, 高度=40, 圆角=100, 选中=Tab 1",
+      "modifiers": [
+        "tab-segmented--bg-black",
+        "tab-segmented--h-40",
+        "tab-segmented--r-pill"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-black tab-segmented--h-40 tab-segmented--r-pill\" data-active=\"1\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "black-h40-r100-active2",
+      "figmaNodeId": "200:619",
+      "figmaVariantPath": "底色=黑底, 高度=40, 圆角=100, 选中=Tab 2",
+      "modifiers": [
+        "tab-segmented--bg-black",
+        "tab-segmented--h-40",
+        "tab-segmented--r-pill"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-black tab-segmented--h-40 tab-segmented--r-pill\" data-active=\"2\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "black-h40-r100-active3",
+      "figmaNodeId": "200:626",
+      "figmaVariantPath": "底色=黑底, 高度=40, 圆角=100, 选中=Tab 3",
+      "modifiers": [
+        "tab-segmented--bg-black",
+        "tab-segmented--h-40",
+        "tab-segmented--r-pill"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-black tab-segmented--h-40 tab-segmented--r-pill\" data-active=\"3\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "black-h40-r4-active1",
+      "figmaNodeId": "200:591",
+      "figmaVariantPath": "底色=黑底, 高度=40, 圆角=4, 选中=Tab 1",
+      "modifiers": [
+        "tab-segmented--bg-black",
+        "tab-segmented--h-40",
+        "tab-segmented--r-4"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-black tab-segmented--h-40 tab-segmented--r-4\" data-active=\"1\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "black-h40-r4-active2",
+      "figmaNodeId": "200:598",
+      "figmaVariantPath": "底色=黑底, 高度=40, 圆角=4, 选中=Tab 2",
+      "modifiers": [
+        "tab-segmented--bg-black",
+        "tab-segmented--h-40",
+        "tab-segmented--r-4"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-black tab-segmented--h-40 tab-segmented--r-4\" data-active=\"2\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    },
+    {
+      "name": "black-h40-r4-active3",
+      "figmaNodeId": "200:605",
+      "figmaVariantPath": "底色=黑底, 高度=40, 圆角=4, 选中=Tab 3",
+      "modifiers": [
+        "tab-segmented--bg-black",
+        "tab-segmented--h-40",
+        "tab-segmented--r-4"
+      ],
+      "exampleHtml": "<div class=\"tab-segmented tab-segmented--bg-black tab-segmented--h-40 tab-segmented--r-4\" data-active=\"3\"><span class=\"tab-segmented__tab\">Tab 1</span><span class=\"tab-segmented__tab\">Tab 2</span><span class=\"tab-segmented__tab\">Tab 3</span></div>"
+    }
+  ],
+  "generatedAt": "2026-05-12T12:00:00Z"
+}

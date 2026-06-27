@@ -1,0 +1,28 @@
+/* Spacing & radius tokens — synced from Figma "不觉组件库" page
+   "◉ 圆角 + 间距 变量". Values are extracted from labeled swatches
+   on the page (the source file does not publish Figma Variables). */
+
+:root {
+  /* ── Radius ★ main: 4 / 8 / 100 ──────────────────── */
+  --radius-0: 0px;          /* 锐边 / 满屏图片 */
+  --radius-1: 1px;          /* 极细微 / 小标签 */
+  --radius-4: 4px;          /* Pad / 手机默认 ★ */
+  --radius-6: 6px;          /* 4 与 8 之间过渡 */
+  --radius-8: 8px;          /* Web 默认 ★ */
+  --radius-pill: 100px;     /* 胶囊按钮 / 头像 ★ */
+
+  /* ── Spacing main scale: 4 / 8 / 12 / 20 / 28 / 32 ★ ─ */
+  --space-4: 4px;           /* 错误提示 / 卡片内紧贴 */
+  --space-8: 8px;           /* 控件内紧凑 / 图片卡纵向 */
+  --space-12: 12px;         /* 模块间最小 / 字段间 */
+  --space-20: 20px;         /* Pad 横向边距 / 标题-内容 */
+  --space-28: 28px;         /* 模块间 (App) */
+  --space-32: 32px;         /* Web 横向边距 / 大卡片 */
+
+  /* ── Spacing micro: 0 / 1 / 2 (control-internal only) ─
+     ⚠️ Do NOT use for module-gap or page-gap; only single-control
+     internal alignment. */
+  --space-0: 0px;           /* 字-图间距 / 列首尾贴边 */
+  --space-1: 1px;           /* 下划线-文字 / hairline 对齐 */
+  --space-2: 2px;           /* segmented 容器内 padding */
+}

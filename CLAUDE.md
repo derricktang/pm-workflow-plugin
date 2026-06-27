@@ -1,0 +1,484 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## 项目性质
+
+这是一个 **AI 产品工作流项目**，不含可执行代码。所有工作均以 Markdown 文件驱动，由 Claude Code 扮演编排器，协调两个 AI Agent（产品经理、产品主管）完成产品文档的全流程生产与审核。
+
+---
+
+## Setup（**clone 后必跑一次**）
+
+```bash
+bash pm-workflow/scripts/install_hooks.sh
+```
+
+`[Must]` clone 仓库后**第一时间**执行此脚本安装 git pre-commit hook。hook 用于阻止 L1（产品业务产物 `outputs/` / `process_record/`）+ L2（工作流框架文件 `pm-workflow/agents|rules|scripts|skills/*` / `CLAUDE.md` / `.claude/commands/*`）混合提交,是 SSOT 双锚 #31「PM L2 修订诉求 NB 上报 SOP」的机械兜底层。**未装 hook → SSOT #31 第 5 要素失效 → L1/L2 边界退化为单层自觉防御**。
+
+> **关于 [Must] 强度 vs 机械化兜底缺口的说明**（2026-05-31 L2 矛盾审计 #29 澄清）：[Must] 是**行为期望**（"clone 后必须装"），但**无强制机制能在 hook 安装前拦截 commit**——这是 chicken-and-egg 限制（hook 还没装，自然无法用 hook 拦截"未装 hook"）。下方"兜底兜底"是当前可行的最近防御。
+
+详细机制见 `pm-workflow/rules/agent_dispatch_protocol.md`「PM / Supervisor Agent 文件改动权限边界」第 5 条 + `pm-workflow/rules/ssot_anchors.md` #31。
+
+> **兜底兜底**：四个 precheck 脚本（`precheck_stage1/2/3/4.py`）启动时会检测 hook 是否安装,未装会 WARN 提示——但仍不替代 setup 的必要性（precheck 仅在 PM 自审时触发,非 commit 必经）。**WARN 不升 FAIL 的理由**：若 precheck 因未装 hook 直接 FAIL，会阻塞首次 clone 后 PM 测试 / 学习场景；保留 WARN + setup 自觉是当前 ROI 最佳的平衡（未来若实测漏装事故 ≥ 2 次再升 FAIL）。
+
+---
+
+## 斜杠命令
+
+| 命令 | 说明 |
+|------|------|
+| `/newRequirement <需求文件或文字>` | 启动新需求工作流，从需求分析开始执行全四阶段 |
+| `/nextStage` | 产品总监正式通过当前阶段，推进至下一阶段 |
+| `/projectStatus` | 查看当前工作流进度简报 |
+| `/changeRequest` | 启动需求变更工作流 |
+| `/retro` | 问题复盘：分析最新未分析的调整意见文件，找共性根因 + 提机制改进（避免同类问题再次发生），等产品总监确认后再标记为已分析 |
+| `/investigate` | 调查分析指令：对非平凡的调查 / 排查 / 评估 / 审计 / 逻辑缺陷检查走标准化三步（选执行者 → 取证 doc_query+命令实证 → 呈现前对抗 pass 5 段 checklist），杜绝单遍自评漏判。编排器给非平凡结论前亦自走 |
+| `/syncUpstream`（下游仓适用）| 从上游 claude-code-pm-workflow 拉取最新 L2 升级到当前下游产品仓；调用 `pm-workflow/scripts/sync_from_upstream.sh` 透传选项（`--dry-run` / `--no-commit` / `--no-push` / `--upstream-url` 等）|
+
+命令定义在 `.claude/commands/` 目录下，每个命令是一个 Markdown 文件。
+
+### `[Must]` /changeRequest vs 调整意见 判定对照表（议题 29 防误读，议题 26 §1.D 同型延续）
+
+下游 PM 易把"PM 实现整改"误当"业务需求变更"启动 /changeRequest（实证：下游误用 /changeRequest 处理 UI 表达层重组）。本对照表 [Must] 在判定时 grep 命中即用，禁推断。
+
+| 维度 | /changeRequest 适用 | 调整意见 / PM 实现整改 适用 |
+|---|---|---|
+| **触发性质** | 客户/产品总监对**业务功能层**的新增/变更/废弃诉求 | PM 在某阶段对**实现表达方式**的选择不优 |
+| **业务需求** | ✅ 变更 | ❌ 不变 |
+| **流程载体** | `process_record/changes/CR-XXX_*.md` + 串行约束（CR 必须闭环才能启动下一个）| `process_record/issues/YYYY-MM-DD_HHMM.md`（按本文件 §「调整意见自动记录规则」4 步流程）|
+| **版本号** | 主版本 +1 / 次版本归零（v0.1→v1.0 / v1.x→v2.0）| **不动版本号 + 不入变更记录表**（产品阶段内部循环不暴露下游，G-02 派生）|
+| **典型场景** | 新需求加章节 / 删除功能 / 客户决策变更架构 / 业务规则改变 | PM 优化 UI 表达 / 重组页面承载（如 P06 独立路由 → P01 卡片子态） / 整改 PRD 字面 / 修复 spec 缺漏 |
+| **反 pattern**（议题 26 §1.D 对立字面自检）| ❌ 误把 PM 实现整改当业务变更 → 误启动 /changeRequest 触发 CR 串行 + 升版本号 + 下游误感知伪 release | ❌ 误把业务需求变更当调整意见 → 不入 CR 链路 + 下游无感知真业务变化 |
+
+**判定 SOP（PM 自检 3 步，禁推断）**：
+
+1. **业务需求是否变？**（管理员/客户/系统行为意图是否改变）— 是 → /changeRequest；否 → 调整意见
+2. **变更承载在哪？**（业务功能/规则/状态/数据流 vs UI 表达/页面组织/字面表达）— 业务层 → /changeRequest；表达层 → 调整意见
+3. **下游消费方是否需感知？**（外部 release 需感知版本变化 vs 内部循环不暴露）— 需感知 → /changeRequest；不需感知 → 调整意见
+
+**详细参考**（议题 26 §1.D 对立字面互引）：
+- /changeRequest 流程定义 → `.claude/commands/changeRequest.md`
+- 调整意见流程定义 → 本文件 §「调整意见自动记录规则」
+- 版本号纪律 → 本文件 §「文件命名规范」L412（PM 自审整改不动版本号 + 阶段 4 G-02 SemVer 触发点）
+
+### 下游仓 sync 上游 L2 的自然语义触发
+
+`[Recommended]` 用户在下游仓内说「同步上游 / sync upstream / 同步 L2 / sync L2 / 拉取 L2 / 拉取上游 / 更新工作流」等自然语言指令时，编排器视同 `/syncUpstream` 命令执行 — 详 `.claude/commands/syncUpstream.md`（真源含完整自然语义变体清单 + 执行步骤 + 选项透传 + 仓属性判定）。
+
+`[Must]` **上下游脚本归属区分（防错调）**：
+
+| 角色 | 仓 | 脚本 / 函数 | 方向 |
+|------|----|------------|------|
+| **下游**（产品仓）| bujue-business-circle / payment-module / private-domain-homepage-module / quotation-tool 等 | `bash pm-workflow/scripts/sync_from_upstream.sh` | pull from upstream |
+| **上游**（工作流框架仓）| claude-code-pm-workflow | `sync_l2_all` / `sync_l2` shell function（`~/.bash_functions`）| push to downstream |
+
+判定当前是上游还是下游：`git remote get-url origin` URL 含 `claude-code-pm-workflow` → 上游；含产品名 → 下游。
+
+**与上游同步约定对偶**：上游 L2 commit 后不再主动跑 `sync_l2_all` 推下游（除非用户显式指令）— 由下游主动用本命令 / 自然语义变体拉，给下游 PM 接入时机的自主权。详 memory `feedback_no_active_downstream_sync`（上游约定真源）。
+
+---
+
+## 目录结构
+
+```
+pm-workflow/     # 工作流框架资源（AI 角色规范 + 输出模板，人类 PM 勿手动修改）
+  agents/
+    AI产品经理_Agent.md     # PM 执行规范（阶段任务、分步规则、自审清单）
+    AI产品主管_Agent.md     # Supervisor 审核规范（检查项、整改反馈格式）
+  rules/
+    # tmpl_ 阶段输出模板（PM 生产各阶段成果的格式规范）
+    tmpl_需求分析.md
+    tmpl_功能规划.md
+    tmpl_产品定义.md
+
+    # rule_ 硬约束规则（PM / Supervisor 全程执行的红线清单）
+    rule_hard_constraints.md
+
+    # proto_ 原型交付规范（stage 4 生成 prd.html + spec.md 的规则）
+    proto_contract.md          # 全局约束（两份产出一致性、触点编号、状态枚举）[必传]
+    prd_expression_standard.md # PRD 文档表达规范（文档结构、版块布局、标准区块）
+    prd_template.html          # PRD 主模板（规划阶段直接 fork）
+    proto_spec_md.md           # spec.md 生成规范（结构化格式、各区块模板）
+    task_card_template.md      # 阶段四模块任务卡标准格式（模块 Agent 任务单）
+    proto_platform_app.md      # APP 端帧规范（手机 + PAD，iOS / Android）
+    proto_platform_desktop.md  # 桌面 Web 端帧规范
+    proto_platform_miniprogram.md  # 微信小程序帧规范
+    proto_platform_h5.md       # 手机 H5 帧规范
+    proto_cross_platform.md    # 跨端规范（多端覆盖、骨架屏引用、移动端操作布局、弹框规范）
+    proto_data_display_selection.md  # 数据展示方式选型决策路径（列表/详情/异常态/海量,按需 Read,非必读）
+    proto_spec_legacy.md       # 已拆分的原始规范，保留备查
+  scripts/
+    gen_scaffold.py            # 骨架生成脚本：读 scaffold.json → 输出 spec/prd 骨架文件
+    assemble.py                # 拼装脚本：assemble.py spec | prd → 合并草稿至最终文件
+
+outputs/                  # 各阶段最新成果（*_latest.md / *_latest.html）
+
+process_record/           # 工作流执行过程中间记录，不建议删除
+  state.md                # 当前工作流活动态（必读，含当前阶段、产物路径、当前阶段 ⏳ 开放问题清单）
+  decisions_ledger.md     # 已决策清单权威（SSOT #18 真源，append-only；所有 ✅已解答/✅已决策 条目，PM/Supervisor 派发必读）
+  versions/               # 历史归档版本
+  progress/               # 各阶段分步进度文件（stage[N]_[产品名]_plan.md / _review_plan.md）
+  reviews/                # 主管审核报告（stage[N]_review.md）
+  issues/                 # 产品总监调整意见记录（按日期时间命名，状态：未分析/已分析）
+  changes/                # 需求变更记录（每次 /changeRequest 生成）
+  tasks/                  # 阶段四任务卡（task_M[XX]_[模块名].md + scaffold.json），任务规划阶段生成
+                          #   .scaffold.lock — gen_scaffold.py 写入的本地编号锁（已纳入 .gitignore，不入 git）
+  drafts/                 # 阶段四模块草稿（spec_M[XX]_draft.md + prd_M[XX]_draft.html）；assemble.py 不会自动删除，建议在主管审核通过后由编排器手动清理
+
+需求简述.md      # 当前项目的原始需求输入
+```
+
+---
+
+## 工作流架构
+
+### 四阶段流程
+
+```
+阶段1 需求分析 → 阶段2 功能规划 → 阶段3 产品定义 → 阶段4 交付文档
+```
+
+每个阶段的执行循环：
+1. **编排器**按下方「Agent 调用规范」以路径清单形式派发 PM Agent 执行（编排器自身不 Read 角色规范文件，由 PM subagent 自行 Read）
+2. PM 完成主体内容后**先跑机械检查脚本**（`precheck_stage[N].py`，N = 1/2/3/4），FAIL 则进入"PM 整改 → 重跑 → PASS"循环（这是 PM 自检第一步，不计入终审 3 次重做额度）；PASS 后再进行后续人工自审清单
+3. PM 自审完成后，**编排器立即**（无需用户确认）派发 Supervisor 审核
+4. 审核不通过 → **编排器立即**派发 PM 整改 → 再次自动派发审核，循环直至通过（最多3次；**重做计数边界（详见 `rule_hard_constraints.md §G-08` 三层独立循环）**：仅 L3 Supervisor 整改循环（PM 重执行完整阶段 = 1 次重做）计入额度;L1 precheck 反复 / L2 自审清单局部修均**不计**;超 3 次须升级处理策略,禁止继续相同思路反复）
+5. 审核通过后展示终审提交信息给产品总监，**等待** `/nextStage`
+
+**precheck 触发点**（每阶段一致）：
+- 阶段 1 → `precheck_stage1.py`（对照 `tmpl_需求分析.md`）
+- 阶段 2 → `precheck_stage2.py`（对照 `tmpl_功能规划.md`）
+- 阶段 3 → `precheck_stage3.py`（对照 `tmpl_产品定义.md` 含 issue #5 Tier 2 修订）
+- 阶段 4 → `precheck_stage4.py`（在 Step 6.5 由编排器执行；详见下方阶段 4 模块化派发规范）
+
+阶段 1-3 的 precheck 由 PM 在自审清单顶部自动调用（详见 `AI产品经理_Agent.md §五.1/§五.2/§五.3`）；阶段 4 的 precheck 由编排器在 Step 6.5 调用。
+
+### 关键自动化规则（来自用户反馈）
+
+- PM 完成任何阶段后（首次、重做、临时任务），**立即自动**派发 Supervisor 审核，不得询问用户
+- Supervisor 审核不通过后，**立即自动**派发 PM 整改，不得询问用户
+- 向产品总监提交终审时，**必须按重要程度列举前三个问题**重点关注
+- 若同一问题经过3次整改仍未通过，PM 不得继续重复相同思路，须升级处理策略（如拆分问题、提出多套候选方案、列明根本矛盾请产品总监裁决）后继续推进，而非直接暂停等待
+
+### 调整意见自动记录规则（硬性要求）
+
+产品总监（用户）在任何对话中提出修改意见时，**必须按以下顺序执行，不得跳过任何步骤**。适用场景包括：**阶段终审时回复修改意见**（路径A，nextStage.md 步骤F）和**对话中随时提出的调整**（路径B，CLAUDE.md 本规则全流程），两条路径均须执行第一步记录。路径A 第二到四步由 nextStage.md 自动处理，无需重复执行：
+
+> **`[Must]` issues/ 语义边界硬约束**：`process_record/issues/` 仅承载**产品总监对成果文件的修改意见 / 审阅反馈**。以下类型 **一律禁追加 issues/**，各自有专属载体：
+> - L2 sync 派生跟进任务 → `process_record/progress/stage[N]_[产品名]_l2sync_[commit_short]_plan.md`（`workflow_maintenance_protocol.md §L2 sync 后 L1 影响主动评估 SOP`）
+> - PM / Supervisor 自循环整改 → `process_record/progress/stage[N]_[产品名]_plan.md`
+> - precheck FAIL 整改 → `process_record/reviews/stage[N]_review.md` + 配套 progress
+> - /changeRequest 变更 → `process_record/changes/CR-XXX_*.md`
+
+#### 第零步：下游 PM 反馈接收前置确认（最严重元错型 2026-06-02 落地，治"编排器自身核查/派送错样本"根因）
+
+`[Must]`（**仅下游反馈场景适用**：当前在上游仓且意见来自产品总监直接对 L2 提出时，无"反馈源仓"概念，本步跳过、直接走 workflow-evolution）编排器接收下游 PM 上报的 L2 反馈（含 SNB / NB / N 项 P0 critical / 提议升 L2 / 状态汇报等任何提到下游产品/仓的反馈）前，**必须先 AskUserQuestion 明示反馈源仓**（除非用户原话已含明确 product/repo 锚词，grep 产品名命中可豁免确认）。
+
+按下游仓**是否本地可访问**分二元场景处理：
+
+**场景 A（下游仓本地可访问）**：编排器自主核查 + 派 Explore + 派送 feedback 文件
+- AskUserQuestion 模板：「本次反馈来自哪个产品/仓？business-circle / payment-module / quotation-tool / private-domain-homepage-module / 其他」
+- 后续 Explore prompt 必含确认结果（详 `agent_dispatch_protocol.md §调研 + 计划制定 subagent 派发规范`）
+- 后续派送 feedback 文件须实证目标仓真有该问题（详本规则第四步「派送 PM Agent 执行调整」自检 2 步）
+
+**场景 B（下游仓不在本地）**：用户直接提供完整问题分析报告 → 编排器基于该报告处理
+- 用户已在反馈消息中提供：现象实证 + 行号 + grep 输出 + 根因推断（无需编排器去远程仓 grep 验证）
+- 后续 Explore prompt 仅核查上游 L2 真源（不去远程仓实证 — 因不可访问）+ 与用户提供报告 cross-check
+- 后续派送 feedback 通过**对话回复**给用户（用户传达给远程 PM/团队），**不派送 process_record/upstream_feedback 文件**（远程仓无文件落盘必要）
+
+**禁止**：编排器凭"最近最活跃 PM 仓 = X"等启发式偏见判定反馈源；凭"下游 PM"模糊词派 Explore 而不锚定具体仓。
+
+**违反信号**：本会话 6-02 早晨 + 下午连续踩 2 次（issues #41/#42 误判私域反馈为 quotation-tool），导致 Explore 核查错样本 + 误派 2 个 feedback 文件 + memory 错误升级 PM 错型（已 commit `e043606` 回滚 + 元错型记账）。
+
+`[Recommended]` **下游报 L2 缺口 → 跨产品共性前置评估（retro 2026-06-04_1539 C6 根因治本）**：确认反馈源仓 + 核实根因后，若反馈指向 **L2 框架缺口**（非该产品特有的业务内容问题），编排器**评估「是否跨产品共性」**再定治理范围：
+- **跨产品共性**（规范/派生/脚本缺口，任意产品仓复用本工作流都会撞 — 如 sidebar nav / split 启发式 / 业务流程图 / 版本标记）→ **一次 L2 治本 + CHANGELOG_L2 告知全下游**，禁逐仓单独修（避免同缺口多仓复发，C6 实证 #7/#8/#22/#24 同型）。
+- **产品特定**（仅该产品业务内容 / proj 组件 / 该仓 L1 数据）→ 局部处理，不升 L2。
+- **判定线索**：缺口落在 `pm-workflow/*` / `CLAUDE.md` / 派生脚本 = 大概率跨产品；落在 `outputs/` 业务内容 = 产品特定。SSOT #70 业务流程图（多仓泛泛质疑 → 一次 L2 治本入 A 组）是本评估的实践先例。
+
+#### 第一步：记录意见
+
+1. **检查未分析文件**：Glob `process_record/issues/*.md`，文件名**不含** `_analyzed` 后缀的为未分析文件
+   - 存在未分析文件 → 将新意见追加到该文件的调整意见表末尾
+   - 不存在未分析文件（目录为空或所有文件均含 `_analyzed`）→ 用 Bash 执行 `date +"%Y-%m-%d_%H%M"` 获取当前系统时间，创建新文件 `YYYY-MM-DD_HHMM.md`，并按下方规定的格式写入文件头 + 表头 + 新条目
+   - **新文件格式（必须遵循，否则 `/retro` 第 5b 步会因找不到状态字段而失败）**：
+
+     ```markdown
+     # 调整意见 — YYYY-MM-DD HH:MM
+
+     状态：未分析
+
+     | # | 完整描述 | 影响成果文件 | 业务 | 功能逻辑 |
+     |---|---------|-------------|------|---------|
+     | 1 | ... | ... | ... | ... |
+     ```
+2. **拆分规则**：若用户一次性描述了多个独立问题，**每个问题单独一行**，禁止合并为一条记录
+3. **记录格式**：每条意见一行，列：`# | 完整描述 | 影响成果文件 | 业务 | 功能逻辑`
+4. **排查类条目**：若意见为「全面检查是否存在同类问题」等排查指令（非具体修改要求），记录时在「完整描述」列开头标注 `【排查指令】`；`/retro` 处理时会将其分类为「范围界定」，说明该排查已在产品总监反馈时完成，不派发 PM 执行修改。
+
+#### 第二步：梳理调整范围
+
+记录完成后，在对话中明确列出本次调整涉及的：
+- 影响文件（具体文件路径）
+- 影响位置（页面/章节/函数/行号等）
+- 影响程度（仅局部修改 / 涉及多处联动 / 需同步更新其他文件）
+
+**`[Must]` 调整层次分类 + 影响阶段推导（SSOT #54，2026-05-30 落地，G 方案 G.1）**
+
+PM Agent 在范围评估前必须以显式三段写入评估报告 §0（任一段缺失 → 评估报告 FAIL，Supervisor 一票否决）：
+
+**A. 调整层次性质判定**（四选一或多选）：
+- □ 业务逻辑层（规则 / 状态机 / 算法 / 数据流 / NB 决策）
+- □ UI/UX 表达层（视觉 / 文案 / 反馈 / 交互细节）
+- □ Schema 层（字段 / 实体 / 接口 schema）
+- □ 跨层综合（同时含多层）
+
+**B. forward-only 因果链推导影响阶段**（不反向推导）：
+- 业务逻辑层 → 必影响 阶段 1 ∪ 2 ∪ 3 ∪ 4（全链路同步）
+- Schema 层 → 必影响 阶段 3 ∪ 4
+- UI/UX 表达层 → 主要影响 阶段 4；阶段 3 可能影响（描述层）；阶段 1/2 仅当承载客户原始诉求 UI 时影响（详 G.2 反查路径）
+- 跨层 → 各子层并集
+
+**C. 反向不可推导声明**：
+- 靠前阶段含某 UI 字面 ≠ 该处属底层逻辑
+- 必须走 G.2 上游粒度污染反查三分类后再裁定（触发条件：分类 = UI/UX 表达层 + 靠前阶段 1/2/3 命中字面 → 派 Explore subagent 反向定位 + 来源辨识 → 按【来源：…】标注分类 ①客户原始诉求 UI 走 c2 就地同步 / ② PM 推导粒度污染走 c1 清回业务粒度 / ③ 未标注 / 模糊待 PM Agent 评估归类）
+
+**Why（治"反向不成立"盲区根因）**：靠前阶段含 UI 字面有两种合法承载——客户原始诉求（合法）vs PM 推导粒度污染（违规）。简单 grep 关键词将两者混在一起 → 错诊。G.1+G.2 双层治本：A/B/C 三段强制 forward-only + 反向触发 G.2 三分类。详 `pm-workflow/agents/AI产品经理_Agent.md` §调整意见处理 + `tmpl_需求分析.md / tmpl_功能规划.md / tmpl_产品定义.md` 阶段分层粒度纪律。
+
+**`[Must]` 范围评估必须由 PM Agent 或 Explore subagent 完成,编排器禁止自审范围**
+
+- **判定路径（二元强制）**：
+  - 排查类意见（含【排查指令】标注 / 用"检查/确认/是否/可能"等不确定措辞 / 涉及"全面检查 / 一致性扫描 / 可能存在"等开放性目标）→ **必派 Explore subagent** 扫描诊断 → 输出范围聚焦报告 → 再制定调整计划
+  - 明确改动意见（"把 X 改为 Y" / "在 file:line 加 Z"）→ **必派 PM Agent** 评估范围 + 执行;编排器仅做"调度判断"（读 state.md 决策 → 派发路径清单）,不 Read 成果文件本身
+
+- **为什么是 [Must] 而非 [Should]**：范围评估涉及读多文件 + grep 跨文件一致性 + 判定影响位置 — 与「Agent 调用规范」编排器读文件边界硬约束冲突。编排器自己做会：①违反"传路径而非传内容",把规范/成果文件 Read 进主对话造成 token 浪费;②混淆范围评估（基于全量扫描）与调度判断（基于 state.md 等小文件）;③绕过 subagent 隔离,把范围评估错误沉淀进主对话。
+
+- **编排器越界信号（任一触发即违反本规则）**：
+  1. 主对话中出现 ≥ 5 个 Bash grep 跨文件扫描（应派 Explore）
+  2. 编排器 Read outputs/ 或 pm-workflow/rules/ 下文件超出「编排器读文件边界硬约束」清单
+  3. 用户问"哪些文件需改 / 影响哪些 / 是否一致"时编排器直接答而不派 Explore
+  4. 排查/分析任务对话中编排器自己写 grep 报告 > 200 字
+
+- **唯一豁免**：极简场景（单文件 + 单行修改 + 用户已显式给出 file:line）→ 编排器可直接 Edit 而无需派发评估;但此豁免**不适用**于"检查 / 排查 / 分析 / 是否一致 / 是否漂移"等任何排查类意图。
+
+#### 第三步：制定调整计划
+
+在对话中输出具体的执行步骤列表（每步说明操作内容），**经用户确认或无异议后**再开始执行。
+
+#### 第四步：派发 PM Agent 执行调整
+
+**编排器本身不直接修改任何成果文件。** 调整计划确认后，必须：
+0. **`[Should]` 派发前跑机械兜底** `python3 pm-workflow/scripts/check_uncommitted_l1.py`：扫 `outputs/` 是否有上个变更循环未提交的改动 → 有则 WARN，**先 commit 上批（带 issue/SNB 编号）再派发本轮**（保证 git diff 精确归属，SSOT #79 推论）；退出码恒 0 不阻断
+1. 按下方「Agent 调用规范」以路径清单形式派发 PM Agent 执行调整（编排器自身**不 Read** 角色规范、前序成果等文件，由 PM subagent 自行 Read；prompt 中只列路径 + 调整要求）
+2. PM 完成后，**立即自动**派发 Supervisor Agent 审核调整结果（同阶段正式流程规则一致）
+3. 审核不通过 → 立即派发 PM 整改 → 再次审核，循环至通过
+4. 审核通过后，向产品总监汇报完成情况
+5. **`[Must]` 提交本轮变更（开始下一变更循环的前置，SSOT #79 git-diff 替代纪律）**：审核通过后、**开始下一个调整意见 / CR 前**，编排器**必须**先把本轮 L1 改动提交（commit message 带 issue/SNB 编号）。**目的**：让"查版本差异用 `git diff`"可信——每个变更循环一个干净 commit 边界，`git log -- outputs/` 精确归属每次变更，从而无需在正文写内联标记追踪。**粒度 = 变更循环**（一个调整意见内改多文件是一个变更、一起提交；**不同**调整意见 / CR 不得堆在一起未提交）。详 §「文件命名规范」下方 git-diff 原则旁「变更循环闭环前必提交」推论。
+
+**`[Must]` 阶段 4 outputs 派生链路硬约束**：调整意见涉及 `outputs/prd_*_latest.html` 或 `outputs/spec_*_latest.md`（阶段 4 派生产物）改动时，派发 prompt **必须显式注入以下链路约束**，否则 PM 整改可能直 Edit outputs，下次重 assemble 时 PM 改动全丢：
+
+1. **禁直 Edit `outputs/prd_*_latest.html` / `outputs/spec_*_latest.md`** — 这两文件由 `assemble.py` 从 drafts 派生
+2. **必经 drafts 源头**：
+   - PRD 改动 → 改 `process_record/drafts/prd_M[XX]_draft.html`（对应模块草稿）
+   - spec 改动 → 改 `process_record/drafts/spec_M[XX]_draft.md`（对应模块草稿）
+   - 跨多模块改动 → 各模块 drafts 分别改
+3. **改完 drafts 必跑** `python3 pm-workflow/scripts/assemble.py prd --force-overwrite`（或 `spec --force-overwrite`）让 outputs 重生
+4. **路径清单 [Must] 加** `process_record/drafts/` 对应模块草稿路径
+
+**`[Must]` 区域 → 真源层对照表（改对地方，SSOT #80）**：prd 不同区域真源层不同，改错层 → 重装 / 重 scaffold 时被覆盖回退（私域主页实证：force-rescaffold 冲掉前几天积累 prd 调整）。改前先查本表定位真源层：
+
+| prd 区域 | 真源层（改这里）| 改完操作 |
+|---|---|---|
+| FRAME 页面交互内容 | `process_record/drafts/prd_M[XX]_draft.html` | `assemble.py prd --force-overwrite` |
+| **C-4 业务契约（业务规则/数据规模/验收）、A-05 功能索引** | **`process_record/drafts/spec_M[XX]_draft.md` 的 `.4B/.5B/.7` 段** —— 这两区由 assemble **从 spec 派生注入**（幂等标记只护外壳不护内容），**prd draft / outputs 改了必被重装盖回** | **先 `assemble.py spec` 重组 spec → 再 `assemble.py prd`**（C-4/A-05 自动派生下来）|
+| sitemap / PAGE-SKELETON / 范式骨架 | `scaffold.json` / `spec_foundation_draft.md` | 改源 → gen_scaffold / 重 assemble |
+| 产品规格区 A-01~A-08（Foundation 保留区）| Foundation 草稿 | 非 assemble 刷新区，prd FRAME 重装不覆盖 |
+
+**完整链路（spec-注入区域 [Must] 走全四步，治"只改 prd"根因）**：改 spec draft → 重组 spec（`assemble.py spec`）→ 据新 spec 改 prd draft（仅非注入区）→ 重装 prd（`assemble.py prd`）。**禁**只改 prd draft 的 C-4/A-05。
+
+**`[Must]` `gen_scaffold --force-rescaffold` 是破坏性操作**：它会**覆盖已填的 module drafts**（`generate_module_drafts force=True` 跳过"避免覆盖 PM 已填"保护，`gen_scaffold.py:1522-1525`）—— 把 PM 积累的 draft **源层**擦回空骨架，重装也救不回。**仅结构级变更（/changeRequest 致 scaffold 编号变更）才用**，用前确认 drafts 已 commit。
+
+**机械兜底（SSOT #80，B1+B2）**：① `assemble --force-overwrite` 覆盖 outputs 前、`gen_scaffold --force-rescaffold` 覆盖 drafts 前，**自动快照**到 `process_record/versions/.assemble_backups/<时间戳>_<tag>/`（冲掉也能找回）；② `--force-overwrite` 检测到手改不再静默，**列出将被覆盖的刷新区** + 指向备份。**备份是兜底非免责**——首要仍是按本对照表改对真源层。
+
+**例外**：调整意见**纯涉及非派生 outputs**（如 `outputs/components_[产品名]_latest.md` 产品 proj 组件清单 / 阶段 1-3 markdown 等）不在本约束范围，PM 可直接 Edit。但阶段 4 prd.html + spec.md（assemble 派生层）**一律走 drafts → assemble 链路**。
+
+**违反信号**：PM 直 Edit outputs/prd 应对总监调整 → 编排器或 PM 跑 `assemble.py prd --force-overwrite` 重生时 PM 改动全丢；或 PM 在 prd draft 改 C-4/A-05（spec 注入区）→ 重装盖回。fingerprint 仍在 `--force-overwrite` 路径下被绕过（教育层为主），但 SSOT #80 已加**覆盖前自动备份**兜底（找得回）+ **去静默警告**（看得见）。详 PM Agent 执行细则见 `pm-workflow/agents/AI产品经理_Agent.md` §三.5 G.0 outputs 派生链路前置判定 + 区域→真源对照表。
+
+**`[Must]` 派送 upstream_feedback 文件前 2 步自检（2026-06-02 元错型治本）**：编排器派送 `process_record/upstream_feedback_*.md` 文件到下游仓前，必跑下方 2 步自检（治"派送错样本"元错型）：
+
+| 自检项 | 场景 A（本地可访问）| 场景 B（远程，用户提供报告）|
+|--------|---------------------|-------------------------|
+| **① 目标仓确认** | 与第零步 AskUserQuestion 已确认的反馈源仓**一致**（非凭"active PM 仓"偏见）| **不派送文件** — 通过对话回复用户（用户传达远程 PM/团队）|
+| **② 实证目标仓真有该问题** | grep / Read 目标仓真有 PM 报的现象（如 "L8-L18 真含 ## 机械检查结果" 必先 `sed -n '8,18p' <目标仓 spec>` 实证后再派送）| 与用户提供的问题分析报告 cross-check + 上游 L2 真源核查结论一致 |
+
+**禁止**：派送 feedback 到未实证仓（本会话 6-02 连续踩 2 次误派 quotation-tool，已 commit `e043606` 删除误派 + 派送正确回告私域）。
+
+**违反信号**：本会话 6-02 早晨 + 下午派送 2 个 feedback 文件到 quotation-tool（误判反馈源）→ 后续重新核查发现真反馈源是 private-domain-homepage-module → 删除误派 + 派送正确回告。
+
+**典型路径清单（按调整涉及阶段挑选组合）：**
+- **必列**：`pm-workflow/rules/agent_methodology.md` + `pm-workflow/rules/agent_parameters.md` + `pm-workflow/agents/AI产品经理_Agent.md`（**分节读取**：通用行 + 调整意见 PM 行 + 受影响阶段行）+ `pm-workflow/rules/rule_hard_constraints.md`（**分节读取**：通用行 + 受影响阶段行）+ `process_record/state.md` + 受影响阶段成果路径（从 state.md 读取）。分节 fetch 命令从 `agent_dispatch_protocol.md §大文件分节读取规范` 清单表复制
+- **调整涉及阶段1** → 加 `pm-workflow/rules/tmpl_需求分析.md`
+- **调整涉及阶段2** → 加 `pm-workflow/rules/tmpl_功能规划.md`
+- **调整涉及阶段3** → 加 `pm-workflow/rules/tmpl_产品定义.md`
+- **调整涉及阶段4** → 按「阶段4规范文件传入策略」表严格按需列入规范路径；涉及模块任务卡/草稿时加对应 `process_record/tasks/task_M[XX]_*.md` 和 `process_record/drafts/spec_M[XX]_draft.md` / `prd_M[XX]_draft.html`
+
+> **注意**：临时调整同样适用"PM完成→立即审核→循环整改"的全自动闭环规则，不因为是小改动而跳过审核。
+
+**文件命名规范**：
+- 未分析：`YYYY-MM-DD_HHMM.md`（时间必须来自系统 `date` 命令，禁止估算）
+- 已分析：`YYYY-MM-DD_HHMM_analyzed.md`（由 `/retro` 命令执行重命名）
+
+### 分步执行规范（硬性要求）
+
+PM 和 Supervisor 在执行时必须维护进度文件（`process_record/progress/`），**每完成一个步骤立即将 `[ ]` 改为 `[x]`，严禁批量完成后统一更新**。进度文件用于支持中断后恢复。
+
+---
+
+## 当前项目状态
+
+运行 `/projectStatus` 或直接读取 `process_record/state.md` 获取最新状态。
+
+恢复工作时**必须先读取** `process_record/state.md`，从中获取：
+- 当前阶段和状态
+- 各阶段产物的实际文件路径和版本号
+- 当前阶段「阻塞性问题清单」/「非阻塞性问题清单」中的 ⏳ 开放问题（活动态，尚待决策）
+
+并 **Read `process_record/decisions_ledger.md`** 获取所有已解答/已决策内容（**执行时不得忽略**）—— 这是 **SSOT 双锚 #18**（已决策清单权威，B1 拆分 2026-05-23 后真源在 ledger 而非 state.md）;PM/Supervisor 派发 prompt 中已含 `decisions_ledger.md` + `state.md` 必读指引（详见 `pm-workflow/rules/agent_dispatch_protocol.md` PM Agent 派发清单第 6 项 + Supervisor 派发清单第 7 项）
+
+---
+
+## 会话管理建议（应对 context rot）
+
+本工作流已通过「subagent 隔离 + 路径传递 + state.md 落盘」在架构上规避了大部分长上下文衰减问题。但编排器自身的对话历史仍会随以下场景累积，建议用户在合适时机主动重启会话：
+
+**推荐执行 `/clear` 重启的时机（非强制）**：
+- 每次 `/nextStage` 通过、进入下一阶段之前
+- 阶段4 拼装完成（Step 4 spec 拼装后、Step 6 prd 拼装后）
+- 连续处理 3 条及以上 `/retro` 之后
+- 单次 `/changeRequest` 闭环完成之后
+- 感知到编排器出现「遗忘前文决策」「重复询问已解答问题」等疑似 rot 症状时
+
+**重启后恢复工作的标准指令**：
+
+> 继续工作流，请先 Read `process_record/state.md`（当前阶段 / 产物路径 / 当前阶段 ⏳ 开放问题）+ `process_record/decisions_ledger.md`（已解答/已决策清单，SSOT #18），然后告诉我下一步该做什么。
+
+**自动状态摘要**（已配置 SessionStart hook，借鉴 superpowers 模式）：每次新会话启动时,`.claude/settings.json` 会自动调用 `pm-workflow/scripts/hooks/session_start_state_summary.py` 读 `state.md` 注入摘要（产品名 / 当前阶段 / 当前阶段开放问题数 / 产物路径 / 最近 commit）到上下文。**这只是预览**——执行任务前仍须 Read 完整 `state.md`（活动态）+ `decisions_ledger.md` 同步已决策清单（SSOT #18）;摘要不替代真源。文件不存在时 hook 静默跳过,不阻断会话启动。
+
+**为什么可以放心重启**：
+- `state.md`（活动态：阶段状态 / 产物路径 / 当前阶段开放问题）+ `decisions_ledger.md`（已决策条目，SSOT #18）——二者合起来是**无损的上下文锚点**
+- `process_record/progress/` 保留了未完成步骤的断点
+- `process_record/reviews/` 保留了整改意见原文
+- 相比 `/compact` 的有损摘要，从 state.md 重新加载是更精确、更可控的恢复方式
+
+**不建议的做法**：
+- ❌ 依赖 `/compact` 代替落盘——摘要后丢失的决策无法从对话里找回
+- ❌ 在一次会话里跑完全部 4 个阶段 + 多轮变更——尾部指令遵循度会明显下降
+- ❌ 重启后跳过读 state.md 直接凭记忆继续——这是最常见的 rot 事故源
+
+---
+
+## Agent 调用规范
+
+> **详细规范见 `pm-workflow/rules/agent_dispatch_protocol.md`**（本文件保留 L1/L2 二元判定速查 + 编排器读文件边界硬约束）
+>
+> **临时调研 + 计划制定派发**：除业务执行型 PM/Supervisor 派发外，编排器派发临时调研角色（审计员/排查员/架构梳理员）+ 计划制定角色时按 `agent_dispatch_protocol.md §调研 + 计划制定 subagent 派发规范`，含判定决策树 + 选型表 + prompt 7 要素 + 反 pattern + 输出验收。**关键约束**：① L1 业务计划制定 [Must] 派 PM Agent（禁用 Plan agent — 不懂业务）② Explore 仅用于"找文件 / grep symbol"轻量定位（不适合 audit / 开放式分析）③ Plan agent 在本工作流罕用。
+
+### 派发路径选择（L1/L2 二元判定速查）
+
+`[Must]` 编排器收到任务后，**按修改文件归属 L1/L2 二元判定路径**：
+
+| 修改文件归属 | 路径 |
+|-------------|------|
+| **L2 文件**（任一）：`pm-workflow/agents/*` / `pm-workflow/rules/*` / `pm-workflow/scripts/*` / `pm-workflow/skills/*` / `CLAUDE.md` / `agent_methodology.md`（属 `pm-workflow/rules/`，单列强调）/ `agent_parameters.md`（属 `pm-workflow/rules/`，单列强调）/ `.claude/commands/*` | **走 `workflow-evolution` skill**（编排器直做）|
+| **L1 文件**：`outputs/`（PRD/spec/阶段产物）/ `process_record/state.md` / `process_record/tasks/` | 派 PM Agent + Supervisor Agent |
+| **混合任务** | L2 部分走 skill / L1 部分派 Agent（拆分执行）|
+
+**走 skill 路径时**：编排器 Read `pm-workflow/skills/workflow-evolution/SKILL.md` 按其 8 步流程执行。
+
+**走 Agent 路径时**：按 `pm-workflow/rules/agent_dispatch_protocol.md` 完整规范派发（含 PM Agent 路径清单 + 第 6 条 PM L2 修订诉求 NB 上报 SOP + 阶段 4 模块化派发 7 步 + scaffold v2.0 schema + 整改回退决策表 + Supervisor 派发模板）。
+
+### 编排器读文件边界（硬约束保留在主文件）
+
+`[Must]` 编排器只能 Read 以下文件用于调度判断：①`process_record/state.md`；②`process_record/progress/` 下的进度文件；③`process_record/tasks/scaffold.json`；④`process_record/reviews/` 下的审核报告；⑤`outputs/` 下成果文件的**文件头**（≤ 30 行）。其他所有文件（角色规范、阶段模板、规范文件、前序成果、任务卡等）**一律不得由编排器 Read**，必须通过路径由 subagent 自行 Read。
+
+`[Must]` **传路径而非传内容**：派发 Agent 的 prompt 必须使用**文件路径 + Read 指令**模式，**禁止**把规范文件、角色文件、前序成果文件的完整内容粘贴进 prompt。
+
+`[Must]` **派发 prompt 自检 3 项**（2026-06-02 治"违反传路径硬规则"根因）：编排器写完派发 prompt 前必跑下方 3 项自检（违反任一项 → 改写 prompt 后重跑）：
+1. **grep 规范字面**：prompt 中**禁含**规范文件具体内容字面（如 "5 维分点 / 业务定位 / 区域 / 组件" / "7 必填子块 .1 .2 .2A .3 .3A .4 .5 .6 .7 .8" / "4 元素白名单 区域 组件 字段回显 触发态" / "Gherkin 三段式 Given/When/Then" 等规范正文 / 表头列名 / 模板填充字段 — 这些应让 subagent Read 规范自取，**禁止**编排器复述）
+2. **总长 ≤ 500 字**：派发 prompt 总长 > 500 字几乎必然违反"传路径"原则（除非任务复杂度真需要 — 需明示理由）；典型派发 prompt = 任务 1 句 + 必读路径 8-10 行 + 验收 1 句 = 150-200 字
+3. **必读路径完整**：路径列表覆盖任务所需所有规范（缺漏 → subagent 无法自取就要么伪造要么报错）。检查：①PM Agent 标准 6 路径必列（agent_methodology / agent_parameters / AI产品经理 / rule_hard_constraints / state.md / decisions_ledger）②阶段相关 tmpl 必列 ③SSOT 锚号涉及时 ssot_anchors.md 必列
+
+**违反信号**：本会话 6-02 给出 2000 字下游落盘指令复述大量规范（§5.4 5 项 / §三.5 7 子块 / 4 元素白名单 / Gherkin 模板等），被用户提醒"在现有工作流框架下需要这么复杂吗" → 重写为 ~150 字极简版（仅 8 路径 + 任务 1 句 + 工作流 6 步）。
+
+`[Must]` **subagent 开工第一步**：所有 PM / Supervisor subagent 收到 prompt 后，必须先逐个 Read 路径列表中的所有文件，读完后再制定分步计划、再动手生产内容。**分节读取例外（SSOT #81）**：路径清单中标注「分节读取」的大文件（**纳管清单见 `agent_dispatch_protocol.md §大文件分节读取规范` SECTION-MAP 表**——动态扩展，当前含两角色规范 / rule_hard / prd_expression_standard / proto_spec_md）不 Read 全文——先 `doc_query.py outline` 看架构，再按 prompt 给出的 fetch 命令取必读章节（章节清单真源 + 防漏读元测试同上）；清单是下限，任务涉及清单外章节先 outline 再补 fetch。
+
+`[Must]` **PM progress 自报 sha 一致性审计**（commit 流程实证）：PM 在 `process_record/progress/` 自报"本步落地"涉及文件级 sha 字面时，**必须配套** `sha256sum` 实测前缀（禁口述）；编排器 commit 前比对 PM 自报 sha 与工作树 sha 一致 + commit 后再跑 `git show <commit>:<file> | sha256sum` 三方对账，不一致即暂停 + 排查（治"自报 sha 在 git 历史不存在 + 时序上下棒不可能覆盖"事故根因）。详见 `pm-workflow/rules/agent_dispatch_protocol.md`「PM progress 自报 sha 一致性审计」段。
+
+`[Must]` **范围评估必须派 subagent**：调整意见 / 排查任务的"范围评估"工作（扫多文件 / grep 跨文件一致性 / 判定影响位置）一律由 PM Agent 或 Explore subagent 完成,编排器禁止自审范围。详见 §「调整意见自动记录规则」第二步硬约束（含越界信号清单 + 唯一豁免）。
+
+### PM / Supervisor Agent 文件改动权限边界（速查）
+
+详细规则与 NB 上报 SOP 见 `pm-workflow/rules/agent_dispatch_protocol.md`「PM / Supervisor Agent 文件改动权限边界」+「第 6 条 PM L2 修订诉求 NB 上报标准 SOP」。L1 业务任务期间**禁止修改 L2 工作流维护层文件**——git pre-commit hook 硬拦截。
+
+## 工作流维护守则
+
+> **架构地图速查（L2 改动前必看）**：`pm-workflow/rules/workflow_architecture_map.md` —— 含全景 mermaid + 4 阶段执行链路 + 文件分组功能表 + **改动影响速查表（改 X → 同步 Y）** + 关键边界。每次 L2 改动前查 §五 评估影响范围。
+
+> **组件库二元边界**（2026-05-31 L2 矛盾审计 #8 修复——固定 "pub 库" 单一指代「当前阶段 `bujue-design-system/`」，原"正式组件库"措辞与下文"正式 pub 库接入"语义冲突已消歧；术语权威源详 `workflow_architecture_map.md §六`）：
+>
+> **pub 库**（产品名：不觉设计系统）当前为**单库**——`pm-workflow/rules/bujue-design-system/`（**当前阶段唯一 pub 源**，即历史所称「内建兜底库」，工作流自带，git 跟踪长期保留，可走 `workflow-evolution` skill **直改**）。编排器派发 PM 阶段 4 时统一传 `bujue-design-system/` 索引（无并列目录 / 无 `pub-official/` / 无存在性判优先级）。
+>
+> **远端 pub 库接入 = 后续工作**：终态由独立仓 `pm-group/bujue-design-system`（本机 `/home/tangjun/Documents/bujue-design-system`）经 **skill/CLI 消费**（纯 Python CLI + 显式 `--root`，PM subagent Bash 调用，非 Read plugin —— 故 2026-05-15「不走 skill / git vendor 双目录」论据已推翻作废，论证见 memory `pub_library_distribution_decision`）。接入后本内建库降为离线 fallback。
+>
+> **proj 库（项目级临时组件库）**：阶段 4 PM 自主维护，位于产品仓库 `outputs/components_[产品名]_latest.md`，生命周期绑定产品仓库，无跨产品复用 / 无升级 pub 流程（升级判定属远端 pub 库职责）。详 `workflow_architecture_map.md §六`。
+>
+> **详细规则见 `pm-workflow/rules/workflow_maintenance_protocol.md`**（含重大升级 / Schema 变更同步检查清单 / 模板规范描述粒度原则 / 消费者视角对偶 / 文档层↔视觉层对偶 / 编排器决策点红线自检清单 / 新对象入库对照清单 / 机械兜底必要性 ROI 决策标准）
+>
+> **SSOT 双向引用 5 要素 + 项目内已识别的 SSOT 双锚清单（动态计数，基数以该文件头部为准；A/B/C 组完备度分组）见 `pm-workflow/rules/ssot_anchors.md` 头部**
+
+工作流框架文件本身（CLAUDE.md / 角色规范 / 模板 / 命令文件 / 兜底脚本 / 索引文件）的维护纪律——按上述两文件执行。每次 schema 升级 / 双锚关系新增 / 双锚关系组内升降级时,须按 `ssot_anchors.md` 5 要素 + ROI 排序原则更新；编排器在 `workflow-evolution` skill 流程中作为强制 SSOT 同步检查项（见 `pm-workflow/skills/workflow-evolution/SKILL.md` Step 7）。
+
+
+---
+
+## 文件命名规范
+
+| 类型 | 命名格式 | 示例 |
+|------|---------|------|
+| 阶段1-2成果 | `[阶段名]_[产品名]_latest.md` | `功能规划_报价工具_latest.md` |
+| 阶段3产物 | `产品定义_[产品名]_latest.md` | `产品定义_报价工具_latest.md` |
+| 阶段4人类交付 | `prd_[产品名]_latest.html` | `prd_报价工具_latest.html` |
+| 阶段4AI交付 | `spec_[产品名]_latest.md` | `spec_报价工具_latest.md` |
+| 归档版本 | `[阶段名]_[产品名]_v[主版本].[次版本]_[YYYYMMDD].md` | `功能规划_报价工具_v1.4_20260413.md` |
+| 执行进度 | `stage[N]_[产品名]_plan.md` | `stage2_报价工具_plan.md` |
+| 审核进度 | `stage[N]_[产品名]_review_plan.md` | `stage2_报价工具_review_plan.md` |
+| 审核报告 | `stage[N]_review.md` | `stage2_review.md` |
+
+**版本号规则**（阶段 1-3 vs 阶段 4 二元规则）：
+
+- **阶段 1-3（过程成果，允许迭代跟踪修改痕迹）**：初创 v1.0；**主管退回整改**次版本 +1（如 v1.0→v1.1）；变更请求（/changeRequest）触发主版本 +1，次版本归零（v1.x→v2.0）。**PM 自审整改不动版本号**（与阶段 4 G-02 思想一致——产品阶段内部循环不暴露下游；2026-05-31 L2 矛盾审计 #28 与 `rule_hard_constraints.md L49` 严格触发点对齐，原"每次修改"宽语义已消歧）。
+
+- **阶段 4（终交付，SemVer 化；变更记录表仅记需求变更）**：仅 **3 种对外可见版本变更触发点**：
+  - 阶段 4 启动 → **v0.1**（未交付态信号；assemble 自动生成 + 追加初始表行）
+  - 产品总监 `/nextStage` **首次**终审通过 → **v0.1 → v1.0**（首次正式 release + 追加 v1.0 表行；**无论 v0.1 期间经过多少次 /changeRequest 内部大改，首次终审通过都是 v1.0**）
+  - **v1.0 之后** `/changeRequest` 触发后总监通过 → **主版本 +1 次版本归零 vX.0**（v1.0 → v2.0 → v3.0... + 追加 vX.0 表行）
+
+  **其他所有场景均不动版本号 + 不追加变更记录表行**——含：
+  - PM 自审整改 / Supervisor 退回整改 / Step 1-7 完成
+  - **v0.1 期间产品总监走 /changeRequest 提大需求变更**（仍未对外 release，所有变更都是开发态内部迭代，与 SemVer 0.x 标准语义一致）
+  - **v1.0 后产品总监给修改意见整改通过**、polish、补遗漏
+
+  这些是**产品阶段内部问题**（PM/Supervisor/产品总监三方内部循环），**不应暴露给下游**。**v1.x 序列取消**——v1.0 之后直接进 v2.0（v1.0 后 /changeRequest）。
+
+**变更记录表行新增时机**（G-02 派生）：**仅 3 种需求变更触发点追加表行**（v0.1 初始 / v1.0 首次 release / vX.0 changeRequest 主版本）。**所有其他变更禁追加表行**。Supervisor §4.0.4 终审收尾扫描捕获违规追加。
+
+**非需求变更的内部记录入口**（PM/Supervisor/产品总监三方可查，**下游不消费**）：
+- 产品总监原始意见 → `process_record/issues/YYYY-MM-DD_HHMM.md`（CLAUDE.md「调整意见自动记录规则」第一步自动记入）
+- PM 整改进度 → `process_record/progress/stage4_[产品名]_plan.md`（PM 各轮整改的 atomic step + 完成标记）
+- 文件级 diff 客观痕迹 → `git log -- outputs/spec_*.md outputs/prd_*.html`（commit message 注明涉及 issue/SNB 编号）
+
+`outputs/`（下游可见交付物）**不暴露非需求变更**——下游消费 spec/prd 时仅看到需求变更日志，避免被产品内部循环细节污染。
+
+> **`[Must]` 全阶段产物正文禁内联变更标记（SSOT #79 / S4-68，跨阶段）**：阶段 1/2/3/4 **任何产物正文**禁写 `【vN.N 新增】`/`【历史留痕…】`/含 `CR-…`/`议题 #…`/`SSOT #…` 的圆括号等内联版本 / 变更标记。**如需检查版本差异，请用 `git diff` 命令**（变更历史只走变更记录表 + git）——内联标记会顺前序阶段被搬进交付 spec/prd 污染下游阅读（实证私域各阶段标记数 需求 478 / 功能 508 / 产品定义 618 / spec 589）。`precheck_stage1/2/3/4` 各 `check_no_inline_change_markers` WARN；存量定位用 `pm-workflow/scripts/strip_inline_change_markers.py`（**只读报告**，按 version/pure_ref/mixed 分类列出，**删除 PM 手动做**——机械删除会损伤语义）。schema 标记 + `（来源：…）` + `【✅ PM 自审完成…】` workflow 信号豁免。
+
+> **`[Must]` 变更循环闭环前必提交（git-diff 替代纪律的前置，SSOT #79 推论）**：上一条"查版本差异用 `git diff`"要成立，前提是**每个变更循环有干净的 commit 边界**。故：**开始一个新变更循环（调整意见 / CR / nextStage）前，上一个循环的 L1 改动必须已提交**（commit message 带 issue / CR / SNB 编号）。**粒度 = 变更循环**（一个调整意见内改多文件是一个变更、一起提交；**不同**循环不得堆在一起未提交）。否则 `git diff` 把多个变更混成一团、`git log -- outputs/` 无法精确归属，PM 就会退回正文内联标记追踪（即本规则要根治的）。与现有"变更记录表记 commit hash"（nextStage / changeRequest）+ "CR 串行约束"一致——本条把隐含假设升为明文。落地步骤详 §「调整意见自动记录规则」第四步 step 5。**机械兜底（[Should] WARN）**：开始新变更循环（调整意见 / CR / nextStage）前，编排器运行 `python3 pm-workflow/scripts/check_uncommitted_l1.py`——扫 `outputs/` 是否有未提交改动（上个循环没提交）→ 有则 WARN 列出 + 提示先 commit；退出码恒 0 不阻断（合理批处理 / 首次循环可忽略）。

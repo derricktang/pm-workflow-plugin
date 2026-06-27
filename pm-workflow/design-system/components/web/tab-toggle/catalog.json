@@ -1,0 +1,2157 @@
+{
+  "schemaVersion": 2,
+  "kind": "component",
+  "name": "tab-toggle",
+  "displayName": "Tab/胶囊·Toggle",
+  "category": "Base",
+  "type": "COMPONENT_SET",
+  "platform": "web",
+  "figmaFileKey": "hxksE13w1AZQivOylmZ9gn",
+  "figmaNodeId": "199:686",
+  "figmaSourceUrl": "https://www.figma.com/file/hxksE13w1AZQivOylmZ9gn/?node-id=199-686",
+  "files": {
+    "html": null,
+    "css": "components/web/tab-toggle/tab-toggle.css",
+    "js": null,
+    "thumb": null,
+    "readme": "components/web/tab-toggle/README.md"
+  },
+  "axes": [
+    {
+      "name": "状态",
+      "values": [
+        "Default",
+        "Selected",
+        "Disabled"
+      ]
+    },
+    {
+      "name": "底色",
+      "values": [
+        "白底",
+        "灰底",
+        "黑底"
+      ]
+    },
+    {
+      "name": "图标",
+      "values": [
+        "无",
+        "左",
+        "右"
+      ]
+    },
+    {
+      "name": "高度",
+      "values": [
+        "32",
+        "36",
+        "40"
+      ]
+    },
+    {
+      "name": "圆角",
+      "values": [
+        "4",
+        "100"
+      ]
+    }
+  ],
+  "states": [
+    {
+      "selector": ".tab-toggle--selected",
+      "description": "白/灰底用 #333 深选中底；黑底用 rgba(255,255,255,0.25)"
+    },
+    {
+      "selector": ".tab-toggle--disabled",
+      "description": "禁用淡化"
+    }
+  ],
+  "modifiers": [
+    {
+      "class": "tab-toggle--bg-white",
+      "axis": "底色",
+      "value": "白底"
+    },
+    {
+      "class": "tab-toggle--bg-gray",
+      "axis": "底色",
+      "value": "灰底"
+    },
+    {
+      "class": "tab-toggle--bg-black",
+      "axis": "底色",
+      "value": "黑底"
+    },
+    {
+      "class": "tab-toggle--h-32",
+      "axis": "高度",
+      "value": "32"
+    },
+    {
+      "class": "tab-toggle--h-36",
+      "axis": "高度",
+      "value": "36"
+    },
+    {
+      "class": "tab-toggle--h-40",
+      "axis": "高度",
+      "value": "40"
+    },
+    {
+      "class": "tab-toggle--r-4",
+      "axis": "圆角",
+      "value": "4"
+    },
+    {
+      "class": "tab-toggle--r-pill",
+      "axis": "圆角",
+      "value": "100"
+    },
+    {
+      "class": "tab-toggle--selected",
+      "axis": "状态",
+      "value": "Selected"
+    },
+    {
+      "class": "tab-toggle--disabled",
+      "axis": "状态",
+      "value": "Disabled"
+    },
+    {
+      "class": "tab-toggle--icon-left",
+      "axis": "图标",
+      "value": "左"
+    },
+    {
+      "class": "tab-toggle--icon-right",
+      "axis": "图标",
+      "value": "右"
+    }
+  ],
+  "slots": [
+    {
+      "name": "icon",
+      "selector": ".tab-toggle__icon",
+      "description": "Optional inline icon"
+    },
+    {
+      "name": "label",
+      "selector": null,
+      "description": "Tab text (default text node)"
+    }
+  ],
+  "tokensReferenced": [
+    "--color-dark-border",
+    "--color-light-bg-2",
+    "--color-light-bg-4",
+    "--color-light-text-1",
+    "--color-light-text-3",
+    "--color-light-white",
+    "--font-source-han",
+    "--radius-4",
+    "--radius-pill"
+  ],
+  "variantCount": 162,
+  "variants": [
+    {
+      "name": "gray-h32-r100-icon-right",
+      "figmaNodeId": "199:157",
+      "figmaVariantPath": "状态=Default, 底色=灰底, 图标=右, 高度=32, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-32",
+        "tab-toggle--r-pill",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-32 tab-toggle--r-pill tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "gray-h32-r4-icon-right",
+      "figmaNodeId": "199:152",
+      "figmaVariantPath": "状态=Default, 底色=灰底, 图标=右, 高度=32, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-32",
+        "tab-toggle--r-4",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-32 tab-toggle--r-4 tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "gray-h36-r100-icon-right",
+      "figmaNodeId": "199:167",
+      "figmaVariantPath": "状态=Default, 底色=灰底, 图标=右, 高度=36, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-36",
+        "tab-toggle--r-pill",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-36 tab-toggle--r-pill tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "gray-h36-r4-icon-right",
+      "figmaNodeId": "199:162",
+      "figmaVariantPath": "状态=Default, 底色=灰底, 图标=右, 高度=36, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-36",
+        "tab-toggle--r-4",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-36 tab-toggle--r-4 tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "gray-h40-r100-icon-right",
+      "figmaNodeId": "199:177",
+      "figmaVariantPath": "状态=Default, 底色=灰底, 图标=右, 高度=40, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-40",
+        "tab-toggle--r-pill",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-40 tab-toggle--r-pill tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "gray-h40-r4-icon-right",
+      "figmaNodeId": "199:172",
+      "figmaVariantPath": "状态=Default, 底色=灰底, 图标=右, 高度=40, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-40",
+        "tab-toggle--r-4",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-40 tab-toggle--r-4 tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "gray-h32-r100-icon-left",
+      "figmaNodeId": "199:127",
+      "figmaVariantPath": "状态=Default, 底色=灰底, 图标=左, 高度=32, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-32",
+        "tab-toggle--r-pill",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-32 tab-toggle--r-pill tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "gray-h32-r4-icon-left",
+      "figmaNodeId": "199:122",
+      "figmaVariantPath": "状态=Default, 底色=灰底, 图标=左, 高度=32, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-32",
+        "tab-toggle--r-4",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-32 tab-toggle--r-4 tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "gray-h36-r100-icon-left",
+      "figmaNodeId": "199:137",
+      "figmaVariantPath": "状态=Default, 底色=灰底, 图标=左, 高度=36, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-36",
+        "tab-toggle--r-pill",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-36 tab-toggle--r-pill tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "gray-h36-r4-icon-left",
+      "figmaNodeId": "199:132",
+      "figmaVariantPath": "状态=Default, 底色=灰底, 图标=左, 高度=36, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-36",
+        "tab-toggle--r-4",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-36 tab-toggle--r-4 tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "gray-h40-r100-icon-left",
+      "figmaNodeId": "199:147",
+      "figmaVariantPath": "状态=Default, 底色=灰底, 图标=左, 高度=40, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-40",
+        "tab-toggle--r-pill",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-40 tab-toggle--r-pill tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "gray-h40-r4-icon-left",
+      "figmaNodeId": "199:142",
+      "figmaVariantPath": "状态=Default, 底色=灰底, 图标=左, 高度=40, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-40",
+        "tab-toggle--r-4",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-40 tab-toggle--r-4 tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "gray-h32-r100",
+      "figmaNodeId": "199:112",
+      "figmaVariantPath": "状态=Default, 底色=灰底, 图标=无, 高度=32, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-32",
+        "tab-toggle--r-pill"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-32 tab-toggle--r-pill\">标签</span>"
+    },
+    {
+      "name": "gray-h32-r4",
+      "figmaNodeId": "199:110",
+      "figmaVariantPath": "状态=Default, 底色=灰底, 图标=无, 高度=32, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-32",
+        "tab-toggle--r-4"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-32 tab-toggle--r-4\">标签</span>"
+    },
+    {
+      "name": "gray-h36-r100",
+      "figmaNodeId": "199:116",
+      "figmaVariantPath": "状态=Default, 底色=灰底, 图标=无, 高度=36, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-36",
+        "tab-toggle--r-pill"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-36 tab-toggle--r-pill\">标签</span>"
+    },
+    {
+      "name": "gray-h36-r4",
+      "figmaNodeId": "199:114",
+      "figmaVariantPath": "状态=Default, 底色=灰底, 图标=无, 高度=36, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-36",
+        "tab-toggle--r-4"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-36 tab-toggle--r-4\">标签</span>"
+    },
+    {
+      "name": "gray-h40-r100",
+      "figmaNodeId": "199:120",
+      "figmaVariantPath": "状态=Default, 底色=灰底, 图标=无, 高度=40, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-40",
+        "tab-toggle--r-pill"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-40 tab-toggle--r-pill\">标签</span>"
+    },
+    {
+      "name": "gray-h40-r4",
+      "figmaNodeId": "199:118",
+      "figmaVariantPath": "状态=Default, 底色=灰底, 图标=无, 高度=40, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-40",
+        "tab-toggle--r-4"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-40 tab-toggle--r-4\">标签</span>"
+    },
+    {
+      "name": "white-h32-r100-icon-right",
+      "figmaNodeId": "199:85",
+      "figmaVariantPath": "状态=Default, 底色=白底, 图标=右, 高度=32, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-32",
+        "tab-toggle--r-pill",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-32 tab-toggle--r-pill tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "white-h32-r4-icon-right",
+      "figmaNodeId": "199:80",
+      "figmaVariantPath": "状态=Default, 底色=白底, 图标=右, 高度=32, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-32",
+        "tab-toggle--r-4",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-32 tab-toggle--r-4 tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "white-h36-r100-icon-right",
+      "figmaNodeId": "199:95",
+      "figmaVariantPath": "状态=Default, 底色=白底, 图标=右, 高度=36, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-36",
+        "tab-toggle--r-pill",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-36 tab-toggle--r-pill tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "white-h36-r4-icon-right",
+      "figmaNodeId": "199:90",
+      "figmaVariantPath": "状态=Default, 底色=白底, 图标=右, 高度=36, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-36",
+        "tab-toggle--r-4",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-36 tab-toggle--r-4 tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "white-h40-r100-icon-right",
+      "figmaNodeId": "199:105",
+      "figmaVariantPath": "状态=Default, 底色=白底, 图标=右, 高度=40, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-40",
+        "tab-toggle--r-pill",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-40 tab-toggle--r-pill tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "white-h40-r4-icon-right",
+      "figmaNodeId": "199:100",
+      "figmaVariantPath": "状态=Default, 底色=白底, 图标=右, 高度=40, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-40",
+        "tab-toggle--r-4",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-40 tab-toggle--r-4 tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "white-h32-r100-icon-left",
+      "figmaNodeId": "199:55",
+      "figmaVariantPath": "状态=Default, 底色=白底, 图标=左, 高度=32, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-32",
+        "tab-toggle--r-pill",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-32 tab-toggle--r-pill tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "white-h32-r4-icon-left",
+      "figmaNodeId": "199:50",
+      "figmaVariantPath": "状态=Default, 底色=白底, 图标=左, 高度=32, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-32",
+        "tab-toggle--r-4",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-32 tab-toggle--r-4 tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "white-h36-r100-icon-left",
+      "figmaNodeId": "199:65",
+      "figmaVariantPath": "状态=Default, 底色=白底, 图标=左, 高度=36, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-36",
+        "tab-toggle--r-pill",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-36 tab-toggle--r-pill tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "white-h36-r4-icon-left",
+      "figmaNodeId": "199:60",
+      "figmaVariantPath": "状态=Default, 底色=白底, 图标=左, 高度=36, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-36",
+        "tab-toggle--r-4",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-36 tab-toggle--r-4 tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "white-h40-r100-icon-left",
+      "figmaNodeId": "199:75",
+      "figmaVariantPath": "状态=Default, 底色=白底, 图标=左, 高度=40, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-40",
+        "tab-toggle--r-pill",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-40 tab-toggle--r-pill tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "white-h40-r4-icon-left",
+      "figmaNodeId": "199:70",
+      "figmaVariantPath": "状态=Default, 底色=白底, 图标=左, 高度=40, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-40",
+        "tab-toggle--r-4",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-40 tab-toggle--r-4 tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "white-h32-r100",
+      "figmaNodeId": "199:40",
+      "figmaVariantPath": "状态=Default, 底色=白底, 图标=无, 高度=32, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-32",
+        "tab-toggle--r-pill"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-32 tab-toggle--r-pill\">标签</span>"
+    },
+    {
+      "name": "white-h32-r4",
+      "figmaNodeId": "199:38",
+      "figmaVariantPath": "状态=Default, 底色=白底, 图标=无, 高度=32, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-32",
+        "tab-toggle--r-4"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-32 tab-toggle--r-4\">标签</span>"
+    },
+    {
+      "name": "white-h36-r100",
+      "figmaNodeId": "199:44",
+      "figmaVariantPath": "状态=Default, 底色=白底, 图标=无, 高度=36, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-36",
+        "tab-toggle--r-pill"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-36 tab-toggle--r-pill\">标签</span>"
+    },
+    {
+      "name": "white-h36-r4",
+      "figmaNodeId": "199:42",
+      "figmaVariantPath": "状态=Default, 底色=白底, 图标=无, 高度=36, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-36",
+        "tab-toggle--r-4"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-36 tab-toggle--r-4\">标签</span>"
+    },
+    {
+      "name": "white-h40-r100",
+      "figmaNodeId": "199:48",
+      "figmaVariantPath": "状态=Default, 底色=白底, 图标=无, 高度=40, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-40",
+        "tab-toggle--r-pill"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-40 tab-toggle--r-pill\">标签</span>"
+    },
+    {
+      "name": "white-h40-r4",
+      "figmaNodeId": "199:46",
+      "figmaVariantPath": "状态=Default, 底色=白底, 图标=无, 高度=40, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-40",
+        "tab-toggle--r-4"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-40 tab-toggle--r-4\">标签</span>"
+    },
+    {
+      "name": "black-h32-r100-icon-right",
+      "figmaNodeId": "199:229",
+      "figmaVariantPath": "状态=Default, 底色=黑底, 图标=右, 高度=32, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-32",
+        "tab-toggle--r-pill",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-32 tab-toggle--r-pill tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "black-h32-r4-icon-right",
+      "figmaNodeId": "199:224",
+      "figmaVariantPath": "状态=Default, 底色=黑底, 图标=右, 高度=32, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-32",
+        "tab-toggle--r-4",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-32 tab-toggle--r-4 tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "black-h36-r100-icon-right",
+      "figmaNodeId": "199:239",
+      "figmaVariantPath": "状态=Default, 底色=黑底, 图标=右, 高度=36, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-36",
+        "tab-toggle--r-pill",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-36 tab-toggle--r-pill tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "black-h36-r4-icon-right",
+      "figmaNodeId": "199:234",
+      "figmaVariantPath": "状态=Default, 底色=黑底, 图标=右, 高度=36, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-36",
+        "tab-toggle--r-4",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-36 tab-toggle--r-4 tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "black-h40-r100-icon-right",
+      "figmaNodeId": "199:249",
+      "figmaVariantPath": "状态=Default, 底色=黑底, 图标=右, 高度=40, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-40",
+        "tab-toggle--r-pill",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-40 tab-toggle--r-pill tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "black-h40-r4-icon-right",
+      "figmaNodeId": "199:244",
+      "figmaVariantPath": "状态=Default, 底色=黑底, 图标=右, 高度=40, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-40",
+        "tab-toggle--r-4",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-40 tab-toggle--r-4 tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "black-h32-r100-icon-left",
+      "figmaNodeId": "199:199",
+      "figmaVariantPath": "状态=Default, 底色=黑底, 图标=左, 高度=32, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-32",
+        "tab-toggle--r-pill",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-32 tab-toggle--r-pill tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "black-h32-r4-icon-left",
+      "figmaNodeId": "199:194",
+      "figmaVariantPath": "状态=Default, 底色=黑底, 图标=左, 高度=32, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-32",
+        "tab-toggle--r-4",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-32 tab-toggle--r-4 tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "black-h36-r100-icon-left",
+      "figmaNodeId": "199:209",
+      "figmaVariantPath": "状态=Default, 底色=黑底, 图标=左, 高度=36, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-36",
+        "tab-toggle--r-pill",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-36 tab-toggle--r-pill tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "black-h36-r4-icon-left",
+      "figmaNodeId": "199:204",
+      "figmaVariantPath": "状态=Default, 底色=黑底, 图标=左, 高度=36, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-36",
+        "tab-toggle--r-4",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-36 tab-toggle--r-4 tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "black-h40-r100-icon-left",
+      "figmaNodeId": "199:219",
+      "figmaVariantPath": "状态=Default, 底色=黑底, 图标=左, 高度=40, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-40",
+        "tab-toggle--r-pill",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-40 tab-toggle--r-pill tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "black-h40-r4-icon-left",
+      "figmaNodeId": "199:214",
+      "figmaVariantPath": "状态=Default, 底色=黑底, 图标=左, 高度=40, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-40",
+        "tab-toggle--r-4",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-40 tab-toggle--r-4 tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "black-h32-r100",
+      "figmaNodeId": "199:184",
+      "figmaVariantPath": "状态=Default, 底色=黑底, 图标=无, 高度=32, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-32",
+        "tab-toggle--r-pill"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-32 tab-toggle--r-pill\">标签</span>"
+    },
+    {
+      "name": "black-h32-r4",
+      "figmaNodeId": "199:182",
+      "figmaVariantPath": "状态=Default, 底色=黑底, 图标=无, 高度=32, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-32",
+        "tab-toggle--r-4"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-32 tab-toggle--r-4\">标签</span>"
+    },
+    {
+      "name": "black-h36-r100",
+      "figmaNodeId": "199:188",
+      "figmaVariantPath": "状态=Default, 底色=黑底, 图标=无, 高度=36, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-36",
+        "tab-toggle--r-pill"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-36 tab-toggle--r-pill\">标签</span>"
+    },
+    {
+      "name": "black-h36-r4",
+      "figmaNodeId": "199:186",
+      "figmaVariantPath": "状态=Default, 底色=黑底, 图标=无, 高度=36, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-36",
+        "tab-toggle--r-4"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-36 tab-toggle--r-4\">标签</span>"
+    },
+    {
+      "name": "black-h40-r100",
+      "figmaNodeId": "199:192",
+      "figmaVariantPath": "状态=Default, 底色=黑底, 图标=无, 高度=40, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-40",
+        "tab-toggle--r-pill"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-40 tab-toggle--r-pill\">标签</span>"
+    },
+    {
+      "name": "black-h40-r4",
+      "figmaNodeId": "199:190",
+      "figmaVariantPath": "状态=Default, 底色=黑底, 图标=无, 高度=40, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-40",
+        "tab-toggle--r-4"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-40 tab-toggle--r-4\">标签</span>"
+    },
+    {
+      "name": "disabled-gray-h32-r100-icon-right",
+      "figmaNodeId": "199:589",
+      "figmaVariantPath": "状态=Disabled, 底色=灰底, 图标=右, 高度=32, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-32",
+        "tab-toggle--r-pill",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-32 tab-toggle--r-pill tab-toggle--disabled tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "disabled-gray-h32-r4-icon-right",
+      "figmaNodeId": "199:584",
+      "figmaVariantPath": "状态=Disabled, 底色=灰底, 图标=右, 高度=32, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-32",
+        "tab-toggle--r-4",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-32 tab-toggle--r-4 tab-toggle--disabled tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "disabled-gray-h36-r100-icon-right",
+      "figmaNodeId": "199:599",
+      "figmaVariantPath": "状态=Disabled, 底色=灰底, 图标=右, 高度=36, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-36",
+        "tab-toggle--r-pill",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-36 tab-toggle--r-pill tab-toggle--disabled tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "disabled-gray-h36-r4-icon-right",
+      "figmaNodeId": "199:594",
+      "figmaVariantPath": "状态=Disabled, 底色=灰底, 图标=右, 高度=36, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-36",
+        "tab-toggle--r-4",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-36 tab-toggle--r-4 tab-toggle--disabled tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "disabled-gray-h40-r100-icon-right",
+      "figmaNodeId": "199:609",
+      "figmaVariantPath": "状态=Disabled, 底色=灰底, 图标=右, 高度=40, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-40",
+        "tab-toggle--r-pill",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-40 tab-toggle--r-pill tab-toggle--disabled tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "disabled-gray-h40-r4-icon-right",
+      "figmaNodeId": "199:604",
+      "figmaVariantPath": "状态=Disabled, 底色=灰底, 图标=右, 高度=40, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-40",
+        "tab-toggle--r-4",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-40 tab-toggle--r-4 tab-toggle--disabled tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "disabled-gray-h32-r100-icon-left",
+      "figmaNodeId": "199:559",
+      "figmaVariantPath": "状态=Disabled, 底色=灰底, 图标=左, 高度=32, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-32",
+        "tab-toggle--r-pill",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-32 tab-toggle--r-pill tab-toggle--disabled tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "disabled-gray-h32-r4-icon-left",
+      "figmaNodeId": "199:554",
+      "figmaVariantPath": "状态=Disabled, 底色=灰底, 图标=左, 高度=32, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-32",
+        "tab-toggle--r-4",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-32 tab-toggle--r-4 tab-toggle--disabled tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "disabled-gray-h36-r100-icon-left",
+      "figmaNodeId": "199:569",
+      "figmaVariantPath": "状态=Disabled, 底色=灰底, 图标=左, 高度=36, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-36",
+        "tab-toggle--r-pill",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-36 tab-toggle--r-pill tab-toggle--disabled tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "disabled-gray-h36-r4-icon-left",
+      "figmaNodeId": "199:564",
+      "figmaVariantPath": "状态=Disabled, 底色=灰底, 图标=左, 高度=36, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-36",
+        "tab-toggle--r-4",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-36 tab-toggle--r-4 tab-toggle--disabled tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "disabled-gray-h40-r100-icon-left",
+      "figmaNodeId": "199:579",
+      "figmaVariantPath": "状态=Disabled, 底色=灰底, 图标=左, 高度=40, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-40",
+        "tab-toggle--r-pill",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-40 tab-toggle--r-pill tab-toggle--disabled tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "disabled-gray-h40-r4-icon-left",
+      "figmaNodeId": "199:574",
+      "figmaVariantPath": "状态=Disabled, 底色=灰底, 图标=左, 高度=40, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-40",
+        "tab-toggle--r-4",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-40 tab-toggle--r-4 tab-toggle--disabled tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "disabled-gray-h32-r100",
+      "figmaNodeId": "199:544",
+      "figmaVariantPath": "状态=Disabled, 底色=灰底, 图标=无, 高度=32, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-32",
+        "tab-toggle--r-pill",
+        "tab-toggle--disabled"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-32 tab-toggle--r-pill tab-toggle--disabled\">标签</span>"
+    },
+    {
+      "name": "disabled-gray-h32-r4",
+      "figmaNodeId": "199:542",
+      "figmaVariantPath": "状态=Disabled, 底色=灰底, 图标=无, 高度=32, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-32",
+        "tab-toggle--r-4",
+        "tab-toggle--disabled"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-32 tab-toggle--r-4 tab-toggle--disabled\">标签</span>"
+    },
+    {
+      "name": "disabled-gray-h36-r100",
+      "figmaNodeId": "199:548",
+      "figmaVariantPath": "状态=Disabled, 底色=灰底, 图标=无, 高度=36, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-36",
+        "tab-toggle--r-pill",
+        "tab-toggle--disabled"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-36 tab-toggle--r-pill tab-toggle--disabled\">标签</span>"
+    },
+    {
+      "name": "disabled-gray-h36-r4",
+      "figmaNodeId": "199:546",
+      "figmaVariantPath": "状态=Disabled, 底色=灰底, 图标=无, 高度=36, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-36",
+        "tab-toggle--r-4",
+        "tab-toggle--disabled"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-36 tab-toggle--r-4 tab-toggle--disabled\">标签</span>"
+    },
+    {
+      "name": "disabled-gray-h40-r100",
+      "figmaNodeId": "199:552",
+      "figmaVariantPath": "状态=Disabled, 底色=灰底, 图标=无, 高度=40, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-40",
+        "tab-toggle--r-pill",
+        "tab-toggle--disabled"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-40 tab-toggle--r-pill tab-toggle--disabled\">标签</span>"
+    },
+    {
+      "name": "disabled-gray-h40-r4",
+      "figmaNodeId": "199:550",
+      "figmaVariantPath": "状态=Disabled, 底色=灰底, 图标=无, 高度=40, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-40",
+        "tab-toggle--r-4",
+        "tab-toggle--disabled"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-40 tab-toggle--r-4 tab-toggle--disabled\">标签</span>"
+    },
+    {
+      "name": "disabled-white-h32-r100-icon-right",
+      "figmaNodeId": "199:517",
+      "figmaVariantPath": "状态=Disabled, 底色=白底, 图标=右, 高度=32, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-32",
+        "tab-toggle--r-pill",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-32 tab-toggle--r-pill tab-toggle--disabled tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "disabled-white-h32-r4-icon-right",
+      "figmaNodeId": "199:512",
+      "figmaVariantPath": "状态=Disabled, 底色=白底, 图标=右, 高度=32, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-32",
+        "tab-toggle--r-4",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-32 tab-toggle--r-4 tab-toggle--disabled tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "disabled-white-h36-r100-icon-right",
+      "figmaNodeId": "199:527",
+      "figmaVariantPath": "状态=Disabled, 底色=白底, 图标=右, 高度=36, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-36",
+        "tab-toggle--r-pill",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-36 tab-toggle--r-pill tab-toggle--disabled tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "disabled-white-h36-r4-icon-right",
+      "figmaNodeId": "199:522",
+      "figmaVariantPath": "状态=Disabled, 底色=白底, 图标=右, 高度=36, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-36",
+        "tab-toggle--r-4",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-36 tab-toggle--r-4 tab-toggle--disabled tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "disabled-white-h40-r100-icon-right",
+      "figmaNodeId": "199:537",
+      "figmaVariantPath": "状态=Disabled, 底色=白底, 图标=右, 高度=40, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-40",
+        "tab-toggle--r-pill",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-40 tab-toggle--r-pill tab-toggle--disabled tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "disabled-white-h40-r4-icon-right",
+      "figmaNodeId": "199:532",
+      "figmaVariantPath": "状态=Disabled, 底色=白底, 图标=右, 高度=40, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-40",
+        "tab-toggle--r-4",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-40 tab-toggle--r-4 tab-toggle--disabled tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "disabled-white-h32-r100-icon-left",
+      "figmaNodeId": "199:487",
+      "figmaVariantPath": "状态=Disabled, 底色=白底, 图标=左, 高度=32, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-32",
+        "tab-toggle--r-pill",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-32 tab-toggle--r-pill tab-toggle--disabled tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "disabled-white-h32-r4-icon-left",
+      "figmaNodeId": "199:482",
+      "figmaVariantPath": "状态=Disabled, 底色=白底, 图标=左, 高度=32, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-32",
+        "tab-toggle--r-4",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-32 tab-toggle--r-4 tab-toggle--disabled tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "disabled-white-h36-r100-icon-left",
+      "figmaNodeId": "199:497",
+      "figmaVariantPath": "状态=Disabled, 底色=白底, 图标=左, 高度=36, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-36",
+        "tab-toggle--r-pill",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-36 tab-toggle--r-pill tab-toggle--disabled tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "disabled-white-h36-r4-icon-left",
+      "figmaNodeId": "199:492",
+      "figmaVariantPath": "状态=Disabled, 底色=白底, 图标=左, 高度=36, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-36",
+        "tab-toggle--r-4",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-36 tab-toggle--r-4 tab-toggle--disabled tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "disabled-white-h40-r100-icon-left",
+      "figmaNodeId": "199:507",
+      "figmaVariantPath": "状态=Disabled, 底色=白底, 图标=左, 高度=40, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-40",
+        "tab-toggle--r-pill",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-40 tab-toggle--r-pill tab-toggle--disabled tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "disabled-white-h40-r4-icon-left",
+      "figmaNodeId": "199:502",
+      "figmaVariantPath": "状态=Disabled, 底色=白底, 图标=左, 高度=40, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-40",
+        "tab-toggle--r-4",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-40 tab-toggle--r-4 tab-toggle--disabled tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "disabled-white-h32-r100",
+      "figmaNodeId": "199:472",
+      "figmaVariantPath": "状态=Disabled, 底色=白底, 图标=无, 高度=32, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-32",
+        "tab-toggle--r-pill",
+        "tab-toggle--disabled"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-32 tab-toggle--r-pill tab-toggle--disabled\">标签</span>"
+    },
+    {
+      "name": "disabled-white-h32-r4",
+      "figmaNodeId": "199:470",
+      "figmaVariantPath": "状态=Disabled, 底色=白底, 图标=无, 高度=32, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-32",
+        "tab-toggle--r-4",
+        "tab-toggle--disabled"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-32 tab-toggle--r-4 tab-toggle--disabled\">标签</span>"
+    },
+    {
+      "name": "disabled-white-h36-r100",
+      "figmaNodeId": "199:476",
+      "figmaVariantPath": "状态=Disabled, 底色=白底, 图标=无, 高度=36, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-36",
+        "tab-toggle--r-pill",
+        "tab-toggle--disabled"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-36 tab-toggle--r-pill tab-toggle--disabled\">标签</span>"
+    },
+    {
+      "name": "disabled-white-h36-r4",
+      "figmaNodeId": "199:474",
+      "figmaVariantPath": "状态=Disabled, 底色=白底, 图标=无, 高度=36, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-36",
+        "tab-toggle--r-4",
+        "tab-toggle--disabled"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-36 tab-toggle--r-4 tab-toggle--disabled\">标签</span>"
+    },
+    {
+      "name": "disabled-white-h40-r100",
+      "figmaNodeId": "199:480",
+      "figmaVariantPath": "状态=Disabled, 底色=白底, 图标=无, 高度=40, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-40",
+        "tab-toggle--r-pill",
+        "tab-toggle--disabled"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-40 tab-toggle--r-pill tab-toggle--disabled\">标签</span>"
+    },
+    {
+      "name": "disabled-white-h40-r4",
+      "figmaNodeId": "199:478",
+      "figmaVariantPath": "状态=Disabled, 底色=白底, 图标=无, 高度=40, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-40",
+        "tab-toggle--r-4",
+        "tab-toggle--disabled"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-40 tab-toggle--r-4 tab-toggle--disabled\">标签</span>"
+    },
+    {
+      "name": "disabled-black-h32-r100-icon-right",
+      "figmaNodeId": "199:661",
+      "figmaVariantPath": "状态=Disabled, 底色=黑底, 图标=右, 高度=32, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-32",
+        "tab-toggle--r-pill",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-32 tab-toggle--r-pill tab-toggle--disabled tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "disabled-black-h32-r4-icon-right",
+      "figmaNodeId": "199:656",
+      "figmaVariantPath": "状态=Disabled, 底色=黑底, 图标=右, 高度=32, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-32",
+        "tab-toggle--r-4",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-32 tab-toggle--r-4 tab-toggle--disabled tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "disabled-black-h36-r100-icon-right",
+      "figmaNodeId": "199:671",
+      "figmaVariantPath": "状态=Disabled, 底色=黑底, 图标=右, 高度=36, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-36",
+        "tab-toggle--r-pill",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-36 tab-toggle--r-pill tab-toggle--disabled tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "disabled-black-h36-r4-icon-right",
+      "figmaNodeId": "199:666",
+      "figmaVariantPath": "状态=Disabled, 底色=黑底, 图标=右, 高度=36, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-36",
+        "tab-toggle--r-4",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-36 tab-toggle--r-4 tab-toggle--disabled tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "disabled-black-h40-r100-icon-right",
+      "figmaNodeId": "199:681",
+      "figmaVariantPath": "状态=Disabled, 底色=黑底, 图标=右, 高度=40, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-40",
+        "tab-toggle--r-pill",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-40 tab-toggle--r-pill tab-toggle--disabled tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "disabled-black-h40-r4-icon-right",
+      "figmaNodeId": "199:676",
+      "figmaVariantPath": "状态=Disabled, 底色=黑底, 图标=右, 高度=40, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-40",
+        "tab-toggle--r-4",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-40 tab-toggle--r-4 tab-toggle--disabled tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "disabled-black-h32-r100-icon-left",
+      "figmaNodeId": "199:631",
+      "figmaVariantPath": "状态=Disabled, 底色=黑底, 图标=左, 高度=32, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-32",
+        "tab-toggle--r-pill",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-32 tab-toggle--r-pill tab-toggle--disabled tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "disabled-black-h32-r4-icon-left",
+      "figmaNodeId": "199:626",
+      "figmaVariantPath": "状态=Disabled, 底色=黑底, 图标=左, 高度=32, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-32",
+        "tab-toggle--r-4",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-32 tab-toggle--r-4 tab-toggle--disabled tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "disabled-black-h36-r100-icon-left",
+      "figmaNodeId": "199:641",
+      "figmaVariantPath": "状态=Disabled, 底色=黑底, 图标=左, 高度=36, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-36",
+        "tab-toggle--r-pill",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-36 tab-toggle--r-pill tab-toggle--disabled tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "disabled-black-h36-r4-icon-left",
+      "figmaNodeId": "199:636",
+      "figmaVariantPath": "状态=Disabled, 底色=黑底, 图标=左, 高度=36, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-36",
+        "tab-toggle--r-4",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-36 tab-toggle--r-4 tab-toggle--disabled tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "disabled-black-h40-r100-icon-left",
+      "figmaNodeId": "199:651",
+      "figmaVariantPath": "状态=Disabled, 底色=黑底, 图标=左, 高度=40, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-40",
+        "tab-toggle--r-pill",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-40 tab-toggle--r-pill tab-toggle--disabled tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "disabled-black-h40-r4-icon-left",
+      "figmaNodeId": "199:646",
+      "figmaVariantPath": "状态=Disabled, 底色=黑底, 图标=左, 高度=40, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-40",
+        "tab-toggle--r-4",
+        "tab-toggle--disabled",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-40 tab-toggle--r-4 tab-toggle--disabled tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "disabled-black-h32-r100",
+      "figmaNodeId": "199:616",
+      "figmaVariantPath": "状态=Disabled, 底色=黑底, 图标=无, 高度=32, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-32",
+        "tab-toggle--r-pill",
+        "tab-toggle--disabled"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-32 tab-toggle--r-pill tab-toggle--disabled\">标签</span>"
+    },
+    {
+      "name": "disabled-black-h32-r4",
+      "figmaNodeId": "199:614",
+      "figmaVariantPath": "状态=Disabled, 底色=黑底, 图标=无, 高度=32, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-32",
+        "tab-toggle--r-4",
+        "tab-toggle--disabled"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-32 tab-toggle--r-4 tab-toggle--disabled\">标签</span>"
+    },
+    {
+      "name": "disabled-black-h36-r100",
+      "figmaNodeId": "199:620",
+      "figmaVariantPath": "状态=Disabled, 底色=黑底, 图标=无, 高度=36, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-36",
+        "tab-toggle--r-pill",
+        "tab-toggle--disabled"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-36 tab-toggle--r-pill tab-toggle--disabled\">标签</span>"
+    },
+    {
+      "name": "disabled-black-h36-r4",
+      "figmaNodeId": "199:618",
+      "figmaVariantPath": "状态=Disabled, 底色=黑底, 图标=无, 高度=36, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-36",
+        "tab-toggle--r-4",
+        "tab-toggle--disabled"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-36 tab-toggle--r-4 tab-toggle--disabled\">标签</span>"
+    },
+    {
+      "name": "disabled-black-h40-r100",
+      "figmaNodeId": "199:624",
+      "figmaVariantPath": "状态=Disabled, 底色=黑底, 图标=无, 高度=40, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-40",
+        "tab-toggle--r-pill",
+        "tab-toggle--disabled"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-40 tab-toggle--r-pill tab-toggle--disabled\">标签</span>"
+    },
+    {
+      "name": "disabled-black-h40-r4",
+      "figmaNodeId": "199:622",
+      "figmaVariantPath": "状态=Disabled, 底色=黑底, 图标=无, 高度=40, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-40",
+        "tab-toggle--r-4",
+        "tab-toggle--disabled"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-40 tab-toggle--r-4 tab-toggle--disabled\">标签</span>"
+    },
+    {
+      "name": "selected-gray-h32-r100-icon-right",
+      "figmaNodeId": "199:373",
+      "figmaVariantPath": "状态=Selected, 底色=灰底, 图标=右, 高度=32, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-32",
+        "tab-toggle--r-pill",
+        "tab-toggle--selected",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-32 tab-toggle--r-pill tab-toggle--selected tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "selected-gray-h32-r4-icon-right",
+      "figmaNodeId": "199:368",
+      "figmaVariantPath": "状态=Selected, 底色=灰底, 图标=右, 高度=32, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-32",
+        "tab-toggle--r-4",
+        "tab-toggle--selected",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-32 tab-toggle--r-4 tab-toggle--selected tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "selected-gray-h36-r100-icon-right",
+      "figmaNodeId": "199:383",
+      "figmaVariantPath": "状态=Selected, 底色=灰底, 图标=右, 高度=36, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-36",
+        "tab-toggle--r-pill",
+        "tab-toggle--selected",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-36 tab-toggle--r-pill tab-toggle--selected tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "selected-gray-h36-r4-icon-right",
+      "figmaNodeId": "199:378",
+      "figmaVariantPath": "状态=Selected, 底色=灰底, 图标=右, 高度=36, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-36",
+        "tab-toggle--r-4",
+        "tab-toggle--selected",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-36 tab-toggle--r-4 tab-toggle--selected tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "selected-gray-h40-r100-icon-right",
+      "figmaNodeId": "199:393",
+      "figmaVariantPath": "状态=Selected, 底色=灰底, 图标=右, 高度=40, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-40",
+        "tab-toggle--r-pill",
+        "tab-toggle--selected",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-40 tab-toggle--r-pill tab-toggle--selected tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "selected-gray-h40-r4-icon-right",
+      "figmaNodeId": "199:388",
+      "figmaVariantPath": "状态=Selected, 底色=灰底, 图标=右, 高度=40, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-40",
+        "tab-toggle--r-4",
+        "tab-toggle--selected",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-40 tab-toggle--r-4 tab-toggle--selected tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "selected-gray-h32-r100-icon-left",
+      "figmaNodeId": "199:343",
+      "figmaVariantPath": "状态=Selected, 底色=灰底, 图标=左, 高度=32, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-32",
+        "tab-toggle--r-pill",
+        "tab-toggle--selected",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-32 tab-toggle--r-pill tab-toggle--selected tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "selected-gray-h32-r4-icon-left",
+      "figmaNodeId": "199:338",
+      "figmaVariantPath": "状态=Selected, 底色=灰底, 图标=左, 高度=32, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-32",
+        "tab-toggle--r-4",
+        "tab-toggle--selected",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-32 tab-toggle--r-4 tab-toggle--selected tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "selected-gray-h36-r100-icon-left",
+      "figmaNodeId": "199:353",
+      "figmaVariantPath": "状态=Selected, 底色=灰底, 图标=左, 高度=36, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-36",
+        "tab-toggle--r-pill",
+        "tab-toggle--selected",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-36 tab-toggle--r-pill tab-toggle--selected tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "selected-gray-h36-r4-icon-left",
+      "figmaNodeId": "199:348",
+      "figmaVariantPath": "状态=Selected, 底色=灰底, 图标=左, 高度=36, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-36",
+        "tab-toggle--r-4",
+        "tab-toggle--selected",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-36 tab-toggle--r-4 tab-toggle--selected tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "selected-gray-h40-r100-icon-left",
+      "figmaNodeId": "199:363",
+      "figmaVariantPath": "状态=Selected, 底色=灰底, 图标=左, 高度=40, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-40",
+        "tab-toggle--r-pill",
+        "tab-toggle--selected",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-40 tab-toggle--r-pill tab-toggle--selected tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "selected-gray-h40-r4-icon-left",
+      "figmaNodeId": "199:358",
+      "figmaVariantPath": "状态=Selected, 底色=灰底, 图标=左, 高度=40, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-40",
+        "tab-toggle--r-4",
+        "tab-toggle--selected",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-40 tab-toggle--r-4 tab-toggle--selected tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "selected-gray-h32-r100",
+      "figmaNodeId": "199:328",
+      "figmaVariantPath": "状态=Selected, 底色=灰底, 图标=无, 高度=32, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-32",
+        "tab-toggle--r-pill",
+        "tab-toggle--selected"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-32 tab-toggle--r-pill tab-toggle--selected\">标签</span>"
+    },
+    {
+      "name": "selected-gray-h32-r4",
+      "figmaNodeId": "199:326",
+      "figmaVariantPath": "状态=Selected, 底色=灰底, 图标=无, 高度=32, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-32",
+        "tab-toggle--r-4",
+        "tab-toggle--selected"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-32 tab-toggle--r-4 tab-toggle--selected\">标签</span>"
+    },
+    {
+      "name": "selected-gray-h36-r100",
+      "figmaNodeId": "199:332",
+      "figmaVariantPath": "状态=Selected, 底色=灰底, 图标=无, 高度=36, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-36",
+        "tab-toggle--r-pill",
+        "tab-toggle--selected"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-36 tab-toggle--r-pill tab-toggle--selected\">标签</span>"
+    },
+    {
+      "name": "selected-gray-h36-r4",
+      "figmaNodeId": "199:330",
+      "figmaVariantPath": "状态=Selected, 底色=灰底, 图标=无, 高度=36, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-36",
+        "tab-toggle--r-4",
+        "tab-toggle--selected"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-36 tab-toggle--r-4 tab-toggle--selected\">标签</span>"
+    },
+    {
+      "name": "selected-gray-h40-r100",
+      "figmaNodeId": "199:336",
+      "figmaVariantPath": "状态=Selected, 底色=灰底, 图标=无, 高度=40, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-40",
+        "tab-toggle--r-pill",
+        "tab-toggle--selected"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-40 tab-toggle--r-pill tab-toggle--selected\">标签</span>"
+    },
+    {
+      "name": "selected-gray-h40-r4",
+      "figmaNodeId": "199:334",
+      "figmaVariantPath": "状态=Selected, 底色=灰底, 图标=无, 高度=40, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-gray",
+        "tab-toggle--h-40",
+        "tab-toggle--r-4",
+        "tab-toggle--selected"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-gray tab-toggle--h-40 tab-toggle--r-4 tab-toggle--selected\">标签</span>"
+    },
+    {
+      "name": "selected-white-h32-r100-icon-right",
+      "figmaNodeId": "199:301",
+      "figmaVariantPath": "状态=Selected, 底色=白底, 图标=右, 高度=32, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-32",
+        "tab-toggle--r-pill",
+        "tab-toggle--selected",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-32 tab-toggle--r-pill tab-toggle--selected tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "selected-white-h32-r4-icon-right",
+      "figmaNodeId": "199:296",
+      "figmaVariantPath": "状态=Selected, 底色=白底, 图标=右, 高度=32, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-32",
+        "tab-toggle--r-4",
+        "tab-toggle--selected",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-32 tab-toggle--r-4 tab-toggle--selected tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "selected-white-h36-r100-icon-right",
+      "figmaNodeId": "199:311",
+      "figmaVariantPath": "状态=Selected, 底色=白底, 图标=右, 高度=36, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-36",
+        "tab-toggle--r-pill",
+        "tab-toggle--selected",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-36 tab-toggle--r-pill tab-toggle--selected tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "selected-white-h36-r4-icon-right",
+      "figmaNodeId": "199:306",
+      "figmaVariantPath": "状态=Selected, 底色=白底, 图标=右, 高度=36, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-36",
+        "tab-toggle--r-4",
+        "tab-toggle--selected",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-36 tab-toggle--r-4 tab-toggle--selected tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "selected-white-h40-r100-icon-right",
+      "figmaNodeId": "199:321",
+      "figmaVariantPath": "状态=Selected, 底色=白底, 图标=右, 高度=40, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-40",
+        "tab-toggle--r-pill",
+        "tab-toggle--selected",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-40 tab-toggle--r-pill tab-toggle--selected tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "selected-white-h40-r4-icon-right",
+      "figmaNodeId": "199:316",
+      "figmaVariantPath": "状态=Selected, 底色=白底, 图标=右, 高度=40, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-40",
+        "tab-toggle--r-4",
+        "tab-toggle--selected",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-40 tab-toggle--r-4 tab-toggle--selected tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "selected-white-h32-r100-icon-left",
+      "figmaNodeId": "199:271",
+      "figmaVariantPath": "状态=Selected, 底色=白底, 图标=左, 高度=32, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-32",
+        "tab-toggle--r-pill",
+        "tab-toggle--selected",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-32 tab-toggle--r-pill tab-toggle--selected tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "selected-white-h32-r4-icon-left",
+      "figmaNodeId": "199:266",
+      "figmaVariantPath": "状态=Selected, 底色=白底, 图标=左, 高度=32, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-32",
+        "tab-toggle--r-4",
+        "tab-toggle--selected",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-32 tab-toggle--r-4 tab-toggle--selected tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "selected-white-h36-r100-icon-left",
+      "figmaNodeId": "199:281",
+      "figmaVariantPath": "状态=Selected, 底色=白底, 图标=左, 高度=36, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-36",
+        "tab-toggle--r-pill",
+        "tab-toggle--selected",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-36 tab-toggle--r-pill tab-toggle--selected tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "selected-white-h36-r4-icon-left",
+      "figmaNodeId": "199:276",
+      "figmaVariantPath": "状态=Selected, 底色=白底, 图标=左, 高度=36, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-36",
+        "tab-toggle--r-4",
+        "tab-toggle--selected",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-36 tab-toggle--r-4 tab-toggle--selected tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "selected-white-h40-r100-icon-left",
+      "figmaNodeId": "199:291",
+      "figmaVariantPath": "状态=Selected, 底色=白底, 图标=左, 高度=40, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-40",
+        "tab-toggle--r-pill",
+        "tab-toggle--selected",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-40 tab-toggle--r-pill tab-toggle--selected tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "selected-white-h40-r4-icon-left",
+      "figmaNodeId": "199:286",
+      "figmaVariantPath": "状态=Selected, 底色=白底, 图标=左, 高度=40, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-40",
+        "tab-toggle--r-4",
+        "tab-toggle--selected",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-40 tab-toggle--r-4 tab-toggle--selected tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "selected-white-h32-r100",
+      "figmaNodeId": "199:256",
+      "figmaVariantPath": "状态=Selected, 底色=白底, 图标=无, 高度=32, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-32",
+        "tab-toggle--r-pill",
+        "tab-toggle--selected"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-32 tab-toggle--r-pill tab-toggle--selected\">标签</span>"
+    },
+    {
+      "name": "selected-white-h32-r4",
+      "figmaNodeId": "199:254",
+      "figmaVariantPath": "状态=Selected, 底色=白底, 图标=无, 高度=32, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-32",
+        "tab-toggle--r-4",
+        "tab-toggle--selected"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-32 tab-toggle--r-4 tab-toggle--selected\">标签</span>"
+    },
+    {
+      "name": "selected-white-h36-r100",
+      "figmaNodeId": "199:260",
+      "figmaVariantPath": "状态=Selected, 底色=白底, 图标=无, 高度=36, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-36",
+        "tab-toggle--r-pill",
+        "tab-toggle--selected"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-36 tab-toggle--r-pill tab-toggle--selected\">标签</span>"
+    },
+    {
+      "name": "selected-white-h36-r4",
+      "figmaNodeId": "199:258",
+      "figmaVariantPath": "状态=Selected, 底色=白底, 图标=无, 高度=36, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-36",
+        "tab-toggle--r-4",
+        "tab-toggle--selected"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-36 tab-toggle--r-4 tab-toggle--selected\">标签</span>"
+    },
+    {
+      "name": "selected-white-h40-r100",
+      "figmaNodeId": "199:264",
+      "figmaVariantPath": "状态=Selected, 底色=白底, 图标=无, 高度=40, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-40",
+        "tab-toggle--r-pill",
+        "tab-toggle--selected"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-40 tab-toggle--r-pill tab-toggle--selected\">标签</span>"
+    },
+    {
+      "name": "selected-white-h40-r4",
+      "figmaNodeId": "199:262",
+      "figmaVariantPath": "状态=Selected, 底色=白底, 图标=无, 高度=40, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-white",
+        "tab-toggle--h-40",
+        "tab-toggle--r-4",
+        "tab-toggle--selected"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-white tab-toggle--h-40 tab-toggle--r-4 tab-toggle--selected\">标签</span>"
+    },
+    {
+      "name": "selected-black-h32-r100-icon-right",
+      "figmaNodeId": "199:445",
+      "figmaVariantPath": "状态=Selected, 底色=黑底, 图标=右, 高度=32, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-32",
+        "tab-toggle--r-pill",
+        "tab-toggle--selected",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-32 tab-toggle--r-pill tab-toggle--selected tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "selected-black-h32-r4-icon-right",
+      "figmaNodeId": "199:440",
+      "figmaVariantPath": "状态=Selected, 底色=黑底, 图标=右, 高度=32, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-32",
+        "tab-toggle--r-4",
+        "tab-toggle--selected",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-32 tab-toggle--r-4 tab-toggle--selected tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "selected-black-h36-r100-icon-right",
+      "figmaNodeId": "199:455",
+      "figmaVariantPath": "状态=Selected, 底色=黑底, 图标=右, 高度=36, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-36",
+        "tab-toggle--r-pill",
+        "tab-toggle--selected",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-36 tab-toggle--r-pill tab-toggle--selected tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "selected-black-h36-r4-icon-right",
+      "figmaNodeId": "199:450",
+      "figmaVariantPath": "状态=Selected, 底色=黑底, 图标=右, 高度=36, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-36",
+        "tab-toggle--r-4",
+        "tab-toggle--selected",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-36 tab-toggle--r-4 tab-toggle--selected tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "selected-black-h40-r100-icon-right",
+      "figmaNodeId": "199:465",
+      "figmaVariantPath": "状态=Selected, 底色=黑底, 图标=右, 高度=40, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-40",
+        "tab-toggle--r-pill",
+        "tab-toggle--selected",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-40 tab-toggle--r-pill tab-toggle--selected tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "selected-black-h40-r4-icon-right",
+      "figmaNodeId": "199:460",
+      "figmaVariantPath": "状态=Selected, 底色=黑底, 图标=右, 高度=40, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-40",
+        "tab-toggle--r-4",
+        "tab-toggle--selected",
+        "tab-toggle--icon-right"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-40 tab-toggle--r-4 tab-toggle--selected tab-toggle--icon-right\">标签<span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span></span>"
+    },
+    {
+      "name": "selected-black-h32-r100-icon-left",
+      "figmaNodeId": "199:415",
+      "figmaVariantPath": "状态=Selected, 底色=黑底, 图标=左, 高度=32, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-32",
+        "tab-toggle--r-pill",
+        "tab-toggle--selected",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-32 tab-toggle--r-pill tab-toggle--selected tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "selected-black-h32-r4-icon-left",
+      "figmaNodeId": "199:410",
+      "figmaVariantPath": "状态=Selected, 底色=黑底, 图标=左, 高度=32, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-32",
+        "tab-toggle--r-4",
+        "tab-toggle--selected",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-32 tab-toggle--r-4 tab-toggle--selected tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "selected-black-h36-r100-icon-left",
+      "figmaNodeId": "199:425",
+      "figmaVariantPath": "状态=Selected, 底色=黑底, 图标=左, 高度=36, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-36",
+        "tab-toggle--r-pill",
+        "tab-toggle--selected",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-36 tab-toggle--r-pill tab-toggle--selected tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "selected-black-h36-r4-icon-left",
+      "figmaNodeId": "199:420",
+      "figmaVariantPath": "状态=Selected, 底色=黑底, 图标=左, 高度=36, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-36",
+        "tab-toggle--r-4",
+        "tab-toggle--selected",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-36 tab-toggle--r-4 tab-toggle--selected tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "selected-black-h40-r100-icon-left",
+      "figmaNodeId": "199:435",
+      "figmaVariantPath": "状态=Selected, 底色=黑底, 图标=左, 高度=40, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-40",
+        "tab-toggle--r-pill",
+        "tab-toggle--selected",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-40 tab-toggle--r-pill tab-toggle--selected tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "selected-black-h40-r4-icon-left",
+      "figmaNodeId": "199:430",
+      "figmaVariantPath": "状态=Selected, 底色=黑底, 图标=左, 高度=40, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-40",
+        "tab-toggle--r-4",
+        "tab-toggle--selected",
+        "tab-toggle--icon-left"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-40 tab-toggle--r-4 tab-toggle--selected tab-toggle--icon-left\"><span class=\"tab-toggle__icon\" aria-hidden=\"true\">▸</span>标签</span>"
+    },
+    {
+      "name": "selected-black-h32-r100",
+      "figmaNodeId": "199:400",
+      "figmaVariantPath": "状态=Selected, 底色=黑底, 图标=无, 高度=32, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-32",
+        "tab-toggle--r-pill",
+        "tab-toggle--selected"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-32 tab-toggle--r-pill tab-toggle--selected\">标签</span>"
+    },
+    {
+      "name": "selected-black-h32-r4",
+      "figmaNodeId": "199:398",
+      "figmaVariantPath": "状态=Selected, 底色=黑底, 图标=无, 高度=32, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-32",
+        "tab-toggle--r-4",
+        "tab-toggle--selected"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-32 tab-toggle--r-4 tab-toggle--selected\">标签</span>"
+    },
+    {
+      "name": "selected-black-h36-r100",
+      "figmaNodeId": "199:404",
+      "figmaVariantPath": "状态=Selected, 底色=黑底, 图标=无, 高度=36, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-36",
+        "tab-toggle--r-pill",
+        "tab-toggle--selected"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-36 tab-toggle--r-pill tab-toggle--selected\">标签</span>"
+    },
+    {
+      "name": "selected-black-h36-r4",
+      "figmaNodeId": "199:402",
+      "figmaVariantPath": "状态=Selected, 底色=黑底, 图标=无, 高度=36, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-36",
+        "tab-toggle--r-4",
+        "tab-toggle--selected"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-36 tab-toggle--r-4 tab-toggle--selected\">标签</span>"
+    },
+    {
+      "name": "selected-black-h40-r100",
+      "figmaNodeId": "199:408",
+      "figmaVariantPath": "状态=Selected, 底色=黑底, 图标=无, 高度=40, 圆角=100",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-40",
+        "tab-toggle--r-pill",
+        "tab-toggle--selected"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-40 tab-toggle--r-pill tab-toggle--selected\">标签</span>"
+    },
+    {
+      "name": "selected-black-h40-r4",
+      "figmaNodeId": "199:406",
+      "figmaVariantPath": "状态=Selected, 底色=黑底, 图标=无, 高度=40, 圆角=4",
+      "modifiers": [
+        "tab-toggle--bg-black",
+        "tab-toggle--h-40",
+        "tab-toggle--r-4",
+        "tab-toggle--selected"
+      ],
+      "exampleHtml": "<span class=\"tab-toggle tab-toggle--bg-black tab-toggle--h-40 tab-toggle--r-4 tab-toggle--selected\">标签</span>"
+    }
+  ],
+  "generatedAt": "2026-05-12T12:00:00Z"
+}

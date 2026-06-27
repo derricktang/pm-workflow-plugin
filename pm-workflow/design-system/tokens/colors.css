@@ -1,0 +1,59 @@
+/* Color tokens — synced from Figma "不觉组件库"
+   Light (白版) and dark (黑板) themes are stored as parallel token sets
+   because the source file does not use Figma Variable modes — each
+   theme is a separate page of named paint styles. Consumers pick the
+   appropriate set explicitly rather than via :root[data-theme]. */
+
+:root {
+  /* ── 白版 / Light theme ───────────────────────────────── */
+
+  /* Text */
+  --color-light-text-1: #333333;          /* 正文主色 / 标题 */
+  --color-light-text-2: #666666;          /* 次级文字 */
+  --color-light-text-3: #999999;          /* 弱化 / 占位 */
+
+  /* Status */
+  --color-light-error: #E60023;           /* ⚠️ 仅错误 / 危险 */
+  --color-light-disabled: #CCCCCC;        /* 禁用态 */
+  --color-light-selected-soft: #FDE6E9;   /* 浅选中底 */
+
+  /* Background */
+  --color-light-white: #FFFFFF;           /* 卡片 / 浮层 / 顶底栏 */
+  --color-light-bg-1: #FAFAFA;            /* 极浅底（hover 等） */
+  --color-light-bg-2: #F5F5F5;            /* 页面 canvas（推荐） */
+  --color-light-bg-3: #F1F1F1;
+  --color-light-bg-4: #EDEDED;
+  --color-light-bg-5: #E2E2E2;            /* DualActionButton 左区 */
+
+  /* Border */
+  --color-light-border-1: #EBEBEB;        /* 默认边框 */
+  --color-light-border-2: #DBDBDB;        /* 强调边框 */
+
+  /* Special */
+  --color-light-nav-blur: rgba(255, 255, 255, 0.8);  /* App 导航栏带模糊背景 */
+
+  /* ── 黑板 / Dark theme ───────────────────────────────── */
+
+  /* Text (opacity over dark bg) */
+  --color-dark-text-1: rgba(255, 255, 255, 0.85);    /* 暗底正文主色 */
+  --color-dark-text-2: rgba(255, 255, 255, 0.65);    /* 暗底次级文字 */
+  --color-dark-text-3: rgba(255, 255, 255, 0.45);    /* 暗底弱化 */
+
+  /* Status / borders (dark) */
+  --color-dark-disabled: rgba(255, 255, 255, 0.25);  /* 暗底禁用 */
+  --color-dark-border: rgba(255, 255, 255, 0.15);    /* 暗底边框 */
+  --color-dark-white-10: rgba(255, 255, 255, 0.1);   /* 暗底高亮 hover */
+  --color-dark-white-8: rgba(255, 255, 255, 0.08);   /* 暗底叠加 */
+
+  /* Background */
+  --color-dark-bg-1: #000000;             /* 暗底主背景 */
+  --color-dark-bg-2: #151515;             /* 暗底次级 */
+  --color-dark-bg-image: #1F1F1F;         /* 图片预览底 */
+  --color-dark-bg-3: #2A2A2A;             /* 暗底卡片 */
+  --color-dark-bg-4: #454545;             /* 暗底浮层 */
+  --color-dark-bg-5: #545454;             /* 暗底 hover */
+
+  /* Overlay */
+  --color-dark-label-mask: rgba(0, 0, 0, 0.3);   /* 图片上的标签底 */
+  --color-dark-mask: rgba(0, 0, 0, 0.4);         /* 弹窗遮罩 */
+}

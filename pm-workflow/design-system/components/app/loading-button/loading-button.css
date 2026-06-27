@@ -1,0 +1,53 @@
+/* App LoadingButton — Figma 32xWNWcyKwBl6ElXLG5oFs · 101:1016
+   48 variants: Style(6) × Size(4) × 圆角(2). No State axis — always loading.
+   "深底白点 / 白底文字色点" — dots use currentColor.
+   Sample widths (S/M/L/XL default): 54/54/54/86; pill: 62/62/62/94.
+*/
+
+@import url("../../../tokens/index.css");
+
+.app-loading-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  box-sizing: border-box;
+  border: 0 solid transparent;
+  border-radius: var(--radius-4);
+  padding: 0 8px;
+  cursor: progress;
+  user-select: none;
+}
+.app-loading-btn__dots { display: inline-flex; gap: 4px; }
+.app-loading-btn__dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: currentColor;
+  animation: app-loading-btn-pulse 1.2s ease-in-out infinite;
+}
+.app-loading-btn__dot:nth-child(2) { animation-delay: 0.2s; }
+@keyframes app-loading-btn-pulse {
+  0%, 80%, 100% { opacity: 0.3; transform: scale(0.85); }
+  40%           { opacity: 1;   transform: scale(1);    }
+}
+
+/* Sizes — width/height ground-truthed */
+.app-loading-btn--s  { height: 24px; width: 54px; }
+.app-loading-btn--m  { height: 28px; width: 54px; }
+.app-loading-btn--l  { height: 36px; width: 54px; }
+.app-loading-btn--xl { height: 40px; width: 86px; padding: 0 24px; }
+
+.app-loading-btn--s.app-loading-btn--radius-pill { width: 62px; }
+.app-loading-btn--m.app-loading-btn--radius-pill { width: 62px; }
+.app-loading-btn--l.app-loading-btn--radius-pill { width: 62px; }
+.app-loading-btn--xl.app-loading-btn--radius-pill { width: 94px; padding: 0 28px; }
+
+.app-loading-btn--s .app-loading-btn__dot { width: 4px; height: 4px; }
+.app-loading-btn--radius-pill { border-radius: var(--radius-pill); }
+
+/* Style — same 6 as App Button */
+.app-loading-btn--textonly      { background: transparent; color: var(--color-light-text-1); }
+.app-loading-btn--soliddark     { background: var(--color-light-text-1); color: var(--color-light-white); }
+.app-loading-btn--outline       { background: transparent; color: var(--color-light-text-1); border: 1px solid var(--color-light-border-1); }
+.app-loading-btn--solidlight    { background: var(--color-light-white); color: var(--color-light-text-1); }
+.app-loading-btn--solidsoft     { background: var(--color-light-bg-2); color: var(--color-light-text-1); }
+.app-loading-btn--outlinestrong { background: transparent; color: var(--color-light-text-1); border: 1px solid var(--color-light-border-2); }

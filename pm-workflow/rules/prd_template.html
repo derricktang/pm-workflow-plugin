@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!--
+  prd_template.html — PRD 主模板 v1.0
+  使用规则见：pm-workflow/rules/prd_expression_standard.md §九
+  规划阶段 fork 本文件，重命名为 prd_[产品名]_latest.html，再按模块填坑
+-->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[产品名] PRD — [YYYY-MM-DD]</title>
+  <!-- mermaid CDN：用于 A-04 用户旅程「流程图视图」渲染（proto_contract.md §十一 局部豁免）
+       defer 减少首屏阻塞；mermaid.initialize + mermaid.run 由本文件 <script> 段集中调用
+       onerror：标记「确定性加载失败」（404/网络断），区分于「加载慢」的瞬态场景 —— 见下方 ensureMermaidReady() -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js" defer onerror="window.__mermaidLoadFailed=true"></script>
+  <style>
+    /* === [PROJ-CSS-START] auto-injected by assemble.py === */
+    /* === [PROJ-CSS-END] === */
+
+    /* ════════════════════════════════════════════
+       PRD 文档场景静态化兜底
+       文档场景下所有 infinite 动画 / 高代价 paint 默认关停，避免任何 PRD 产物上线后立即出现
+       "打开就 30% CPU"、滚动条闪烁等问题；真源 keyframes 在真实业务页面照常工作（仅本 <style> 块内生效）
+       覆盖：① 5+ stripe keyframes（pf-/dt-/fse-/alr-/qd-skeleton/skeleton-pulse）②  fb-fallback fb-spin（21+ 实例）
+            ③ inline style="animation:...infinite"（h5-frame 骨架屏 / spinner 等）④ qd-canvas multiply blend
+       ════════════════════════════════════════════ */
+    .fb-btn.is-loading::after,
+    .fb-state-loading .fb-state-illustration::before,
+    [class*="-loading-stripe"]::before,
+    [class*="-loading-stripe"]::after,
+    [style*="animation:"][style*="infinite"],
+    .proj-qrcode-display.is-loading .qd-canvas {
+      animation: none !important;
+    }
+    .proj-qrcode-display .qd-canvas {
+      background-blend-mode: normal !important;
+    }
+
+    /* ════════════════════════════════════════════
+       设计系统 CSS 变量（来源：bujue-design-system/tokens.md）
+       变更时以 tokens.md 为权威，在此同步更新
+    ════════════════════════════════════════════ */
+    :root {
+      /* 文字 */
+      --fb-text-primary:   #333333;
+      --fb-text-secondary: #666666;
+      --fb-text-hint:      #999999;
+      --fb-text-disabled:  #cccccc;
+      /* 语义色 */
+      --fb-error:          #E60023;
+      --fb-error-bg-light: #FEEDEF;
+      --fb-selected-light: #FDE6E9;
+      /* 背景 */
+      --fb-white:          #ffffff;
+      --fb-bg-1:           #fafafa;
+      --fb-bg-2:           #f5f5f5;
+      --fb-bg-3:           #f1f1f1;
+      --fb-bg-4:           #ededed;
+      --fb-bg-5:           #e2e2e2;
+      /* 线框/分割线 */
+      --fb-border-1:       #ebebeb;
+      --fb-border-2:       #dbdbdb;
+      /* 遮罩 */
+      --fb-overlay:        rgba(0, 0, 0, 0.5);
+      /* 导航栏 */
+      --fb-nav-bg:         rgba(255, 255, 255, 0.8);
+      /* Skeleton 尺寸（跨平台默认值，真源 bujue-design-system/tokens.md） */
+      --skel-phone-padding:   32px;
+      --skel-phone-circle:    80px;
+      --skel-phone-row:       24px;
+      --skel-desktop-padding: 48px 32px;
+      --skel-desktop-circle:  120px;
+      --skel-desktop-row:     28px;
+      --skel-h5-padding:      40px 24px;
+      --skel-h5-row:          24px;
+      --skel-modal-padding:   24px 16px;
+      --skel-modal-row:       20px;
+    }
+
+    /* ════════════════════════════════════════════
+       暗色模式变量覆盖
+    ════════════════════════════════════════════ */
+    html[data-theme="dark"] {
+      --fb-text-primary:   #e0e0e0;
+      --fb-text-secondary: #9a9a9a;
+      --fb-text-hint:      #606060;
+      --fb-text-disabled:  #404040;
+      --fb-error:          #ff4d6a;
+      --fb-error-bg-light: #3D1520;
+      --fb-selected-light: #3d1520;
+      --fb-white:          #2c2c2c;
+      --fb-bg-1:           #121212;
+      --fb-bg-2:           #1c1c1c;
+      --fb-bg-3:           #242424;
+      --fb-bg-4:           #2e2e2e;
+      --fb-bg-5:           #383838;
+      --fb-border-1:       #2a2a2a;
+      --fb-border-2:       #363636;
+      --fb-overlay:        rgba(0, 0, 0, 0.75);
+      --fb-nav-bg:         rgba(28, 28, 28, 0.9);
+    }
+    html[data-theme="dark"] .tp-marker { background: #1a55cc; }
+    html[data-theme="dark"] .section-header { box-shadow: 0 2px 12px rgba(0,0,0,0.4); }
+    html[data-theme="dark"] .state-chip.active {
+      background: #383838;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.5), 0 0 0 0.5px rgba(255,255,255,0.08);
+    }
+    html[data-theme="dark"] .lang-btn.active {
+      background: #383838;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+    html[data-theme="dark"] .cover-version { background: #e0e0e0; color: #121212; }
+    html[data-theme="dark"] .comp-panel { border-left-color: #4a8fff; }
+
+    /* Skeleton 平台级默认尺寸 — PM drafts 默认继承，禁 inline padding 覆盖（S4-42 WARN） */
+    .phone-frame .fb-state-loading,
+    [data-platform="phone"] .fb-state-loading {
+      padding: var(--skel-phone-padding);
+    }
+    .desktop-frame .fb-state-loading,
+    [data-platform="desktop"] .fb-state-loading {
+      padding: var(--skel-desktop-padding);
+    }
+    .h5-frame .fb-state-loading,
+    [data-platform="h5"] .fb-state-loading {
+      padding: var(--skel-h5-padding);
+    }
+    /* modal 上下文覆盖（嵌套 .fb-modal 内 skeleton 用更紧凑 padding） */
+    .phone-frame .fb-modal .fb-state-loading,
+    .desktop-frame .fb-modal .fb-state-loading,
+    .h5-frame .fb-modal .fb-state-loading {
+      padding: var(--skel-modal-padding);
+    }
+    /* 圆头像 + 文本行尺寸 token 化 */
+    .phone-frame .fb-state-loading .skel-circle { width: var(--skel-phone-circle); height: var(--skel-phone-circle); }
+    .desktop-frame .fb-state-loading .skel-circle { width: var(--skel-desktop-circle); height: var(--skel-desktop-circle); }
+    .phone-frame .fb-state-loading .skel-row { height: var(--skel-phone-row); }
+    .desktop-frame .fb-state-loading .skel-row { height: var(--skel-desktop-row); }
+    .h5-frame .fb-state-loading .skel-row { height: var(--skel-h5-row); }
+
+    /* ════════════════════════════════════════════
+       全局资源：字体 + iconfont
+       **`[Should]` 本地预览体验**：本模板 `outputs/prd_*_latest.html` 推荐用
+       本地 HTTP 服务打开（如 `python3 -m http.server` / VSCode Live Server），
+       而非浏览器直接拖 file:// 协议打开。`file://` 协议下浏览器会对 origin
+       施加 CORS 安全限制 + 把 protocol-relative URL（`//host/path`）解析为
+       file:// 同协议 → 字体/CDN 资源加载失败。
+       **iconfont URL 显式 https:// 协议**：
+       原 `//at.alicdn.com/...` protocol-relative 形式在 file:// 下被解析为
+       `file://at.alicdn.com/...` ERR_FILE_NOT_FOUND；改 `https://at.alicdn.com/...`
+       显式协议，HTTP/HTTPS/file:// 三协议下均可加载。
+    ════════════════════════════════════════════ */
+    @font-face {
+      font-family: 'iconfont'; /* Project id 5123795 */
+      src:
+        url('https://at.alicdn.com/t/c/font_5123795_06mxe0ztuy73.woff2?t=1775808309000') format('woff2'),
+        url('https://at.alicdn.com/t/c/font_5123795_06mxe0ztuy73.woff?t=1775808309000') format('woff'),
+        url('https://at.alicdn.com/t/c/font_5123795_06mxe0ztuy73.ttf?t=1775808309000') format('truetype');
+    }
+    .iconfont { font-family: 'iconfont' !important; font-style: normal; -webkit-font-smoothing: antialiased; }
+
+    /* ════════════════════════════════════════════
+       文档基础布局（来源：prd_expression_standard.md）
+    ════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Source Han Sans CN', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: var(--fb-bg-1);
+      color: var(--fb-text-primary);
+    }
+    .layout { display: flex; height: 100vh; overflow: hidden; }
+
+    /* ── 导航侧栏 ── */
+    .sidebar {
+      width: 220px;
+      background: var(--fb-white);
+      border-right: 1px solid var(--fb-border-1);
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar-nav {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px 0 16px;
+    }
+    .sidebar-bottom {
+      flex-shrink: 0;
+      border-top: 1px solid var(--fb-border-1);
+      padding: 12px 14px;
+    }
+    .lang-switcher {
+      display: flex;
+      background: var(--fb-bg-3);
+      border-radius: 6px;
+      padding: 2px;
+      gap: 2px;
+    }
+    .lang-btn {
+      flex: 1; padding: 5px 0;
+      border: none; border-radius: 4px;
+      background: transparent; color: var(--fb-text-secondary);
+      font-size: 12px; font-weight: 500; cursor: pointer;
+    }
+    .lang-btn.active {
+      background: var(--fb-white); color: var(--fb-text-primary);
+      font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,0.10);
+    }
+    .sidebar-controls-row { display: flex; align-items: center; gap: 6px; }
+    .icon-toggle {
+      flex-shrink: 0; width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--fb-border-2); border-radius: 6px;
+      background: transparent; color: var(--fb-text-hint); cursor: pointer;
+    }
+    .icon-toggle.active { background: var(--fb-bg-3); color: var(--fb-text-primary); }
+    .sidebar-section-title {
+      padding: 12px 16px 4px;
+      font-size: 11px; font-weight: 600;
+      color: var(--fb-text-hint);
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .sidebar-section-title:not(:first-child) {
+      border-top: 1px solid var(--fb-border-1);
+      margin-top: 8px;
+    }
+    /* 顶层分组折叠按钮 */
+    .sidebar-group-toggle {
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .sidebar-group-toggle:hover { color: var(--fb-text-secondary); }
+    .sidebar-toggle-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 14px;
+      font-family: monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--fb-text-hint);
+    }
+    .sidebar-group-toggle[data-collapsed="true"] .sidebar-toggle-icon::before { content: "+"; }
+    .sidebar-group-toggle[data-collapsed="true"] .sidebar-toggle-icon { content: "+"; }
+    .sidebar-group-body[data-collapsed="true"] { display: none; }
+    /* 组件变更条目数徽章 */
+    .sidebar-changelog-badge {
+      margin-left: 6px;
+      padding: 1px 6px;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--fb-white);
+      background: var(--fb-accent);
+      border-radius: 8px;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    /* 组件变更 — 侧栏第 4 分组
+       sidebar-component-status: 每个组件名前的状态 tag（新增/更新/弃用）
+       SSOT 数据源: PRD §十一 component-changelog section 三个 group
+       由 assemble.py prd inject_component_changelog_nav 自动注入。 */
+    .sidebar-component-status {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 1px 6px;
+      border-radius: 3px;
+      margin-right: 6px;
+      letter-spacing: 0;
+      text-transform: none;
+      vertical-align: 1px;
+    }
+    /* 状态 tag 三色与 §十一 changelog-group border-left 色板对齐:
+       new=#2c8c4d 绿 / update=#1665ff 蓝 / deprecated=灰（--fb-text-disabled）
+       注: 绿/蓝两色与 changelog-new/update 既有规范一致（无对应 fb-* token,直接 hex） */
+    .sidebar-status-new {
+      background: #2c8c4d; color: var(--fb-white);
+    }
+    .sidebar-status-update {
+      background: #1665ff; color: var(--fb-white);
+    }
+    .sidebar-status-deprecated {
+      background: var(--fb-text-disabled); color: var(--fb-white);
+    }
+    .sidebar-group { margin-bottom: 2px; }
+    .sidebar-page {
+      padding: 7px 16px;
+      font-size: 13px; font-weight: 600;
+      color: var(--fb-text-primary);
+      cursor: pointer;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .sidebar-page:hover { background: var(--fb-bg-1); }
+    .sidebar-state {
+      padding: 5px 16px 5px 28px;
+      font-size: 12px; color: var(--fb-text-secondary);
+      cursor: pointer;
+    }
+    .sidebar-state:hover { color: var(--fb-text-primary); background: var(--fb-bg-1); }
+    .sidebar-state.active { color: var(--fb-text-primary); background: var(--fb-bg-2); font-weight: 500; }
+    /* 缩进锚点:顶层文字位置 = padding-left 16 + icon 14 + gap 6 = 36px。
+       子级文字位置必须 > 36 才视觉缩进合理。下面 padding-left 已增大确保层级清晰。
+       叶子节点用 ::before 加 18px 隐形占位,与 non-leaf(有 14px icon + 4px
+       margin-right)的文字左边缘对齐 — 解决「组件清单」(leaf) vs「组件说明」(non-leaf)
+       并列时文字不齐的问题。 */
+    .sidebar-spec-item {
+      padding: 5px 16px 5px 40px;
+      font-size: 12px; color: var(--fb-text-secondary);
+      cursor: pointer;
+    }
+    /* 叶子节点(无 data-subgroup)::before 加 18px 占位与 non-leaf icon 视觉等宽 */
+    .sidebar-spec-item:not([data-subgroup])::before {
+      content: ''; display: inline-block;
+      width: 14px; margin-right: 4px;
+    }
+    .sidebar-spec-item:hover { color: var(--fb-text-primary); background: var(--fb-bg-1); }
+    /* 二级子项(non-leaf 节点的子项,缩进 +1 级) */
+    /* padding-left 56 + ::before 占位 18 = 文字位置 74,> 父级「组件说明」文字 58(40+18) */
+    .sidebar-spec-subitem {
+      padding: 5px 16px 5px 56px;
+      font-size: 12px; color: var(--fb-text-secondary);
+      cursor: pointer;
+    }
+    .sidebar-spec-subitem:not([data-subgroup])::before {
+      content: ''; display: inline-block;
+      width: 14px; margin-right: 4px;
+    }
+    .sidebar-spec-subitem:hover { color: var(--fb-text-primary); background: var(--fb-bg-1); }
+    /* 第一层级章节「折叠/展开所有子层」按钮 — 与既有 −/+ 顶层 toggle 分离,
+       本按钮控制下属所有 [data-subgroup] 的递归状态。flex margin-left:auto 推至行右端。 */
+    .sidebar-recursive-toggle {
+      margin-left: auto;
+      padding: 0 6px;
+      font-size: 12px;
+      color: var(--fb-text-hint);
+      cursor: pointer;
+      user-select: none;
+    }
+    .sidebar-recursive-toggle:hover { color: var(--fb-text-primary); }
+    /* non-leaf 节点 toggle 机制 */
+    /* 通用 subgroup toggle:点 icon 折叠 / 点文字跳转(JS 处理分流) */
+    .sidebar-subgroup-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 14px; font-family: monospace; font-size: 11px; font-weight: 700;
+      color: var(--fb-text-hint); margin-right: 4px;
+      user-select: none;
+    }
+    .sidebar-subgroup-icon:hover { color: var(--fb-text-primary); }
+    .sidebar-subgroup-body[data-collapsed="true"] { display: none; }
+    /* 交互原型模块层 toggle — 复用 .sidebar-page,加 subgroup-icon */
+    .sidebar-page .sidebar-subgroup-icon { margin-right: 6px; font-size: 12px; }
+
+    /* ── 内容区 ── */
+    .content { flex: 1; overflow-y: auto; }
+
+    /* ── section 显示控制：长页面模式，全部可见，侧栏高亮跟随滚动 ── */
+    section { display: block; }
+
+    /* ════════════════════════════════════════════
+       区域 A — 产品规格区（来源：prd_expression_standard.md §二）
+    ════════════════════════════════════════════ */
+    .spec-section { padding: 32px 40px; border-bottom: 2px solid var(--fb-border-1); max-width: 100%; overflow: hidden; }
+    .spec-header {
+      font-size: 18px; font-weight: 600;
+      color: var(--fb-text-primary);
+      margin-bottom: 20px; padding-bottom: 10px;
+      border-bottom: 1px solid var(--fb-border-2);
+    }
+    .spec-body { display: flex; flex-direction: column; gap: 20px; }
+    .spec-block h3 { font-size: 14px; font-weight: 600; color: var(--fb-text-secondary); margin-bottom: 10px; }
+    .spec-block h4 {
+      font-size: 12px; font-weight: 600; color: var(--fb-text-hint);
+      margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .spec-table { border-collapse: collapse; font-size: 13px; color: var(--fb-text-primary); }
+    .spec-table.full-width { width: 100%; table-layout: fixed; word-break: break-word; }
+    .spec-table th {
+      background: var(--fb-bg-2); padding: 8px 12px;
+      text-align: left; font-weight: 500; color: var(--fb-text-secondary);
+      border: 1px solid var(--fb-border-1); white-space: nowrap;
+    }
+    .spec-table td { padding: 8px 12px; border: 1px solid var(--fb-border-1); vertical-align: top; line-height: 1.6; }
+    .persona-card { border: 1px solid var(--fb-border-1); border-radius: 8px; overflow: hidden; }
+    .persona-role { background: var(--fb-bg-3); padding: 10px 16px; font-weight: 600; font-size: 14px; }
+    .feature-block { border: 1px solid var(--fb-border-1); border-radius: 8px; overflow: hidden; margin-bottom: 20px; }
+    .feature-title {
+      background: var(--fb-bg-2); padding: 10px 16px;
+      font-weight: 600; font-size: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .priority-tag {
+      background: var(--fb-text-primary); color: var(--fb-white);
+      padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 500;
+    }
+    .feature-meta { font-size: 12px; color: var(--fb-text-hint); font-weight: 400; margin-left: auto; }
+    .feature-block .spec-block { padding: 12px 16px; border-top: 1px solid var(--fb-border-1); }
+    .gherkin {
+      background: var(--fb-bg-2); padding: 10px 14px; border-radius: 4px;
+      font-size: 12px; line-height: 1.8;
+      font-family: 'Courier New', monospace; white-space: pre-wrap; margin: 0;
+    }
+
+    /* ════════════════════════════════════════════
+       区域 B — 交互原型区（来源：prd_expression_standard.md §三~§八）
+    ════════════════════════════════════════════ */
+
+    /* proto-section 自身完整视觉容器：每个 section 是独立的"页面卡"，有完整边框 + 微浅背景 + 阴影层次
+       内容左对齐自然流动（无 max-width / margin: 0 auto / text-align: center 居中限制） */
+    .proto-section {
+      background: var(--fb-bg-1);
+      border: 1px solid var(--fb-border-1);
+      border-radius: 12px;
+      margin: 32px 0;
+      padding: 0;                           /* 内部三层（header / frame / interaction）各自管 padding */
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      overflow: visible;                    /* 不能 hidden,否则 sticky section-header 失效 */
+    }
+    /* 相邻 section 视觉间距由 margin 提供,不再依赖 border-top 分隔 */
+    .proto-section + .proto-section {
+      margin-top: 32px;
+    }
+
+    /* section-header — 吸顶页面标题卡（位于 proto-section 容器内顶部,圆角与外层对齐）
+       width:100% + box-sizing:border-box 显式撑满父容器,避免被 inline-block / fit-content 收缩。
+       z-index: 200 — 显著高于弹框帧上限（199）,确保 sticky 标题永远在弹框视觉帧之上。
+       配套 prd_expression_standard.md §四 区块 A 规则: 弹框/浮框元素 z-index 必须 < 200。 */
+    .section-header {
+      width: 100%;
+      box-sizing: border-box;
+      background: var(--fb-bg-2);
+      border-bottom: 2px solid var(--fb-border-1);
+      border-radius: 12px 12px 0 0;        /* 上圆角与 .proto-section 对齐 */
+      padding: 14px 24px;
+      margin-bottom: 16px;                  /* header → frame 间距 */
+      display: flex; flex-direction: column; gap: 8px;
+      position: sticky; top: 0; z-index: 200;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+    /* frame-card 内不嵌套 section-header（已位于 proto-section 一级层级,见 prd_expression_standard.md §四 区块 A 规则） */
+
+    /* frame-card — 单个状态帧外壳（PRD 草稿层 wrapper,仅包裹 frame-wrapper 视觉帧主体）
+       interaction-card 已平级移出,作为 proto-section 直接子元素（与 frame-card 同级兄弟）;
+       四周 padding 提供阅读呼吸空间,内容文字距离 frame-card 边缘有充足间距;
+       margin-bottom 提供 frame-card → interaction-card 视觉间距 */
+    .frame-card {
+      padding: 20px 24px;
+      margin-bottom: 24px;                  /* frame-card → interaction-card 间距（接管原 frame-wrapper margin-bottom） */
+      box-sizing: border-box;
+      isolation: isolate;                   /* 创建独立 stacking context，frame 内弹框/浮层 z-index 不溢出到 sidebar/section-header（参 prd_expression_standard.md §零.1 注释） */
+      overflow-x: auto;                     /* 多端帧横排总宽 > frame-card 宽度时显示横向滚动条 */
+    }
+    .section-meta { display: flex; flex-direction: column; gap: 6px; font-size: 13px; }
+    .section-title-row { display: flex; align-items: center; gap: 10px; }
+    .section-tag-row { display: flex; align-items: center; gap: 8px; }
+    .page-id { font-size: 17px; font-weight: 700; color: var(--fb-text-primary); letter-spacing: -0.3px; }
+    .page-name { font-size: 17px; font-weight: 500; color: var(--fb-text-primary); }
+    .role-tag { background: var(--fb-bg-4); color: var(--fb-text-secondary); padding: 2px 8px; border-radius: 4px; font-size: 11px; }
+    .func-tag { background: var(--fb-bg-3); color: var(--fb-text-secondary); padding: 2px 8px; border-radius: 4px; font-size: 11px; }
+
+    /* state chips — segmented control 风格 */
+    .state-chips {
+      display: inline-flex; gap: 2px; flex-wrap: wrap;
+      background: var(--fb-bg-2); border: 1px solid var(--fb-border-1);
+      border-radius: 100px; padding: 3px;
+      align-self: flex-start;
+    }
+    .state-chip {
+      padding: 4px 12px; border-radius: 100px; font-size: 12px;
+      cursor: pointer; border: none; white-space: nowrap;
+      background: transparent; color: var(--fb-text-secondary); font-weight: 400;
+    }
+    .state-chip.active {
+      background: var(--fb-white); color: var(--fb-text-primary); font-weight: 600;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.10), 0 0 0 0.5px rgba(0,0,0,0.06);
+    }
+
+    /* 帧容器 — 视觉帧主体容器（frame-card 内唯一子元素,居中展示视觉帧主体）
+       底部 margin 由父级 frame-card margin-bottom 接管,本元素不再单独维护 frame → interaction-card 间距 */
+    .frame-wrapper {
+      display: flex; justify-content: flex-start;  /* 多端页面帧左对齐 */
+      padding: 32px 24px;
+      gap: 24px; align-items: flex-start;
+    }
+    .phone-frame {
+      width: 440px; min-height: 956px;
+      background: var(--fb-white); border-radius: 12px;
+      border: 1px solid var(--fb-border-1);
+      overflow: hidden; position: relative; flex-shrink: 0;
+    }
+    .desktop-frame {
+      width: 100%; max-width: 1440px; min-height: 800px;
+      background: var(--fb-white); border-radius: 8px;
+      border: 1px solid var(--fb-border-1);
+      overflow: hidden; position: relative; flex-shrink: 0;
+    }
+    /* H5 移动端帧(proto_platform_h5.md 主基准 440pt — Safari 显示态)
+       关键属性: position: relative 为 .fb-modal-overlay 等 absolute 元素提供 positioning context,
+       否则 modal 冒泡至 viewport 形成全屏漂移 */
+    .h5-frame {
+      width: 440px; min-height: 956px;
+      background: var(--fb-white); border-radius: 12px;
+      border: 1px solid var(--fb-border-1);
+      overflow: hidden; position: relative; flex-shrink: 0;
+    }
+    /* Tablet/PAD 帧(proto_platform_app.md iPad Pro 13" 横屏默认 1376×1032 pt) */
+    .tablet-frame {
+      width: 1376px; min-height: 1032px;
+      background: var(--fb-white); border-radius: 12px;
+      border: 1px solid var(--fb-border-1);
+      overflow: hidden; position: relative; flex-shrink: 0;
+    }
+    /* 微信小程序帧(proto_platform_miniprogram.md 画布 375pt;高度参考 iPhone 13 mini 基准 812pt) */
+    .miniprogram-frame {
+      width: 375px; min-height: 812px;
+      background: var(--fb-white); border-radius: 12px;
+      border: 1px solid var(--fb-border-1);
+      overflow: hidden; position: relative; flex-shrink: 0;
+    }
+
+    /* 5 frame 启用 flex column,让底部 sticky panel 真正贴 frame 底部
+       根因:overflow:hidden 容器内 sticky;bottom:0 找不到滚动空间 → panel 留在内容流末尾。
+       改 flex column + margin-top:auto 把 panel 自动推到容器底部(margin-collapse 不发生影响小)。
+       匹配规则覆盖既有 PM 写的 inline `position:sticky;bottom:0` 底部操作栏,CSS-only 无需改 HTML。 */
+    :where(.phone-frame, .desktop-frame, .h5-frame, .tablet-frame, .miniprogram-frame) {
+      display: flex;
+      flex-direction: column;
+    }
+    :where(.phone-frame, .desktop-frame, .h5-frame, .tablet-frame, .miniprogram-frame)
+      > [style*="position:sticky"][style*="bottom:0"],
+    :where(.phone-frame, .desktop-frame, .h5-frame, .tablet-frame, .miniprogram-frame)
+      > [style*="position: sticky"][style*="bottom: 0"] {
+      margin-top: auto;
+    }
+
+    /* modal 背景帧 modifier
+       场景:modal 状态帧(含 .fb-modal-overlay.is-visible)的"被遮罩背景帧"应紧凑显示,
+            避免 800/956 标准尺寸下 modal 浮在中间显得头重脚轻;视觉焦点应聚集在 modal 自身。
+       规范:PM 在 drafts 写 modal 状态帧的背景 frame 时,加 `.is-modal-bg` modifier 显式声明背景态,
+            禁止用 inline `style="min-height:XXpx"` 自由发挥(违反 SSOT #30 派生层禁修真源精神)。
+       配套:precheck_stage4 S4-FRAME-01 拦截 frame inline 尺寸 override,引导 PM 用本 modifier。 */
+    .phone-frame.is-modal-bg,
+    .desktop-frame.is-modal-bg,
+    .h5-frame.is-modal-bg,
+    .tablet-frame.is-modal-bg,
+    .miniprogram-frame.is-modal-bg {
+      min-height: 520px;  /* modal 背景帧标准尺寸:够展示被遮罩内容 + 不过度扩张 */
+    }
+
+    /* 帧单元 — 每端一个 cell，纵向排列「端口标签 + 视觉帧」（多端并列时由 frame-wrapper 横向铺）。
+       DOM 结构:
+         frame-card
+         └─ frame-wrapper                   ← 唯一 flex 容器（横向铺多端 cell）
+            ├─ frame-cell                   ← 每端一个 cell（纵向 flex：标签 → 帧）
+            │  ├─ frame-platform-item       ← 端口标签 + 可选差异说明（cell 顶，多端必填、单端可省）
+            │  │  ├─ .frame-platform-tag    （span）
+            │  │  └─ .frame-platform-note   （p, 可选）
+            │  └─ phone-frame / desktop-frame / ...   ← 视觉帧（cell 底）
+            └─ ...
+       核心机制:
+         - 标签与帧绑定在同一 cell 内（DOM 父子嵌套），cell 宽度按 max-content（即 frame zoomed 后尺寸）自适应
+         - zoom 应用到 frame（不应用到 cell）→ frame layout box 缩放 → cell 跟随收缩 → 标签位置自然移动
+         - 标签字号 / gap 不受 zoom 影响（保持可读性，避免标签缩到看不清；治"zoom on flex item layout 脱节"副作用）
+         - .frame-platform-item min-height: 48px 让多 cell 内 frame 顶部对齐（含 note vs 不含 note 视觉等高）
+         - 单端帧 frame-card 可省略 .frame-platform-item，cell 内仅含视觉帧（或省略 cell 直接置帧）
+         - 完全 CSS-only，无需 JS sync（取代旧 .frame-platforms-bar 兄弟 flex + JS getBoundingClientRect 校正方案）
+       配套规则:
+         - prd_expression_standard.md §四 区块 B「端口标签 + 端口差异说明」(端口标签 [Must])
+         - proto_cross_platform.md §六 6.1 / 6.6
+       亮暗自动切换通过 --fb-text-primary 与 --fb-white 在亮/暗色块中分别定义实现。 */
+    .frame-cell {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;            /* 标签 / 帧左对齐 */
+      gap: 12px;                           /* 标签 → 帧间距 */
+      flex-shrink: 0;                      /* 横向并排时 cell 不被挤压 */
+      /* cell 默认 max-content 宽度（按内部 frame 实际 layout box 自适应，含 zoom 后尺寸自动跟随）
+         治"zoom 缩 frame 后 cell 不跟随 → cell 内右侧出现空白 → 多端帧间距视觉变大"问题 */
+    }
+    /* desktop-frame 在 cell 嵌套中改固定 1200px 替代默认的 width: 100%
+       根因：cell 默认 max-content → desktop-frame width: 100% 解析为 cell width 而 cell width 又按子元素自然 width → 循环依赖
+       治本：cell 内 desktop-frame 用显式宽度，max-width: 100% 保留响应式上限 */
+    .frame-cell > .desktop-frame {
+      width: 1200px;
+      max-width: 100%;
+    }
+    .frame-platform-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;                           /* 标签 → 说明 间距 */
+      min-height: 48px;                   /* 视觉等高保护：含 tag (~24px) + gap (4) + note 一行 (~18) ≈ 46px，向上取 48；
+                                             无 note 的 cell 仍占 48px 高，让多 cell 内 frame 顶部位置在同 frame-card 内对齐 */
+    }
+    .frame-platform-tag {
+      display: inline-block;
+      background: var(--fb-text-primary);   /* 亮色:黑底 / 暗色:浅灰底（自动反转）*/
+      color: var(--fb-white);               /* 亮色:白字 / 暗色:深灰字 */
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .frame-platform-note {
+      margin: 0;
+      font-size: 11px;
+      color: var(--fb-text-secondary);
+      line-height: 1.4;
+      max-width: 280px;                   /* 说明文字最大宽度,避免单行过长 */
+    }
+    html[data-theme="dark"] .frame-platform-tag {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);   /* 暗色加深阴影,在暗背景下保持可见 */
+    }
+
+    /* 触点徽章 */
+    .tp-marker {
+      position: absolute; top: -6px; right: -6px;
+      width: 18px; height: 18px;
+      background: #003080; color: #fff;
+      border-radius: 50%; font-size: 10px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 10; pointer-events: none;
+      letter-spacing: -0.5px;
+    }
+    /* 触点徽章视觉前缀 T/D/C — 由 assemble 注入 data-tp-system 属性派生
+       消数字 "01" 在 T01/D01/C01 三系同字面的视觉冲突，让阅读者一眼区分触点系 */
+    .tp-marker[data-tp-system]::before {
+      content: attr(data-tp-system);
+      font-weight: 700; font-size: 9px;
+      margin-right: 1px;
+      opacity: 0.95;
+    }
+    .tp-wrap { position: relative; display: inline-flex; }
+
+    /* 触点序号 / 业务规则序号 — 普通文字 + 等宽字体（C-3 触点交互表 + C-4.A 业务规则表统一表达） */
+    .tp-num {
+      font-family: 'SF Mono', Menlo, Consolas, 'Courier New', monospace;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+      color: inherit;
+    }
+
+    /* cursor:pointer 通配（phone-frame 内） */
+    .phone-frame button,
+    .phone-frame [onclick],
+    .phone-frame .list-item,
+    .phone-frame .menu-item,
+    .phone-frame .tab-item,
+    .phone-frame .card { cursor: pointer; }
+
+    /* 状态枚举表区 */
+    .state-table-wrapper { padding: 16px 24px 0; background: var(--fb-bg-1); }
+    .state-table-wrapper h4 { font-size: 13px; font-weight: 600; color: var(--fb-text-secondary); margin: 0 0 8px; }
+
+    /* 交互说明卡 — proto-section 直接子元素（与 frame-card 同级兄弟）;
+       左右 24px 与 frame-card 内 frame-wrapper 视觉对齐;上方 0（由 frame-card margin-bottom 提供间距）;
+       box-sizing: border-box 保证 padding 不撑大容器,内部 table 已 width:100% 撑满 */
+    .interaction-card {
+      box-sizing: border-box;
+      background: var(--fb-white); border: 1px solid var(--fb-border-1);
+      border-radius: 8px;
+      margin: 0 24px 24px;                  /* 上方 0（由 frame-card margin-bottom 提供间距）/ 左右 24px 与 frame-wrapper 对齐 / 下方 24px 与 section 容器底部对齐 */
+      overflow: hidden;
+    }
+    .interaction-card .card-title {
+      padding: 10px 16px; background: var(--fb-bg-2);
+      font-size: 13px; font-weight: 600;
+      border-bottom: 1px solid var(--fb-border-1);
+    }
+    .interaction-card table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .interaction-card th {
+      background: var(--fb-bg-1); padding: 8px 12px;
+      text-align: left; font-weight: 500;
+      color: var(--fb-text-secondary);
+      border-bottom: 1px solid var(--fb-border-1); white-space: nowrap;
+      font-size: 13px; line-height: 1.6;
+    }
+    .interaction-card td { padding: 8px 12px; border-bottom: 1px solid var(--fb-border-1); vertical-align: top; font-size: 13px; line-height: 1.6; }
+    /* 内容性元素字号统一（议题 2A 表达规范化）— body 文本元素均 13px / line-height 1.6；
+       保留 .card-title / .data-sub-title / .c4-sub-title 自身视觉层级字号 */
+    .interaction-card p,
+    .interaction-card li,
+    .interaction-card .c4-cross-page-note { font-size: 13px; line-height: 1.6; }
+    /* C-4 子标题作小段头视觉分隔（独立字号体系，与 .data-sub-title 同源） */
+    .interaction-card .c4-sub-title {
+      padding: 6px 16px; font-size: 11px; font-weight: 700;
+      color: var(--fb-text-secondary); letter-spacing: 0.4px;
+      background: var(--fb-bg-2); border-bottom: 1px solid var(--fb-border-1);
+    }
+    /* C-4.A/.B 表格内 td/th 继承 .interaction-card table 13px；防 PM inline 覆盖 */
+    .interaction-card table.c4-business-rules td:first-child,
+    .interaction-card table.c4-data-scale td:first-child { white-space: nowrap; color: var(--fb-text-secondary); }
+    .data-sub-title {
+      padding: 8px 16px; background: var(--fb-bg-3);
+      font-size: 11px; font-weight: 700; color: var(--fb-text-secondary);
+      text-transform: uppercase; letter-spacing: 0.6px;
+      border-top: 2px solid var(--fb-border-1); border-bottom: 1px solid var(--fb-border-1);
+      margin-top: 8px;
+    }
+    .interaction-card .data-sub-title:first-of-type { border-top: none; margin-top: 0; }
+    /* 状态差异说明 — 单段文字，描述本帧相对默认态的业务-交互层差异 */
+    .interaction-card .state-diff-note {
+      padding: 10px 16px; background: var(--fb-bg-1);
+      font-size: 12px; font-weight: normal; line-height: 1.5;
+      color: var(--fb-text-secondary);
+      border-bottom: 1px solid var(--fb-border-1);
+    }
+
+    /* 新增组件说明栏 */
+    .comp-panel { width: 300px; background: var(--fb-bg-1); border-left: 3px solid #0055CC; border-radius: 4px; padding: 12px; flex-shrink: 0; }
+    .comp-panel-title { font-size: 13px; font-weight: 600; color: var(--fb-text-primary); margin-bottom: 12px; }
+
+    /* ════════════════════════════════════════════
+       封面页 & 使用说明页
+    ════════════════════════════════════════════ */
+    .cover-page {
+      display: flex; align-items: center; justify-content: center;
+      min-height: 600px;
+      background: var(--fb-white);
+      border-bottom: 2px solid var(--fb-border-1);
+    }
+    .cover-inner { text-align: center; max-width: 560px; padding: 80px 40px; }
+    .cover-product-name {
+      font-size: 40px; font-weight: 700; color: var(--fb-text-primary);
+      line-height: 1.2; margin-bottom: 28px; letter-spacing: -0.5px;
+    }
+    .cover-badge-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: 12px; margin-bottom: 20px;
+    }
+    .cover-version {
+      background: var(--fb-text-primary); color: var(--fb-white);
+      padding: 4px 14px; border-radius: 100px; font-size: 13px; font-weight: 600;
+    }
+    .cover-date { font-size: 13px; color: var(--fb-text-secondary); }
+    .cover-platforms { display: flex; justify-content: center; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
+    .cover-platform-tag {
+      background: var(--fb-bg-3); color: var(--fb-text-secondary);
+      padding: 4px 12px; border-radius: 4px; font-size: 12px; font-weight: 500;
+      border: 1px solid var(--fb-border-1);
+    }
+    .cover-description { font-size: 14px; color: var(--fb-text-secondary); line-height: 1.8; margin-bottom: 40px; }
+    .cover-divider { width: 48px; height: 3px; background: var(--fb-bg-5); border-radius: 2px; margin: 0 auto 20px; }
+    .cover-footer { font-size: 12px; color: var(--fb-text-hint); }
+    .cover-status {
+      display: inline-block; padding: 3px 12px; border-radius: 100px;
+      font-size: 12px; font-weight: 600;
+    }
+    .cover-status.draft    { background: var(--fb-bg-4); color: var(--fb-text-secondary); }
+    .cover-status.review   { background: #FFF3CD; color: #856404; }
+    .cover-status.approved { background: #D1FAE5; color: #065F46; }
+    html[data-theme="dark"] .cover-status.draft    { background: #2e2e2e; color: #9a9a9a; }
+    html[data-theme="dark"] .cover-status.review   { background: #3d2e00; color: #ffc107; }
+    html[data-theme="dark"] .cover-status.approved { background: #0d2d1f; color: #6ee7b7; }
+
+    /* ── 侧栏搜索框 ── */
+    .sidebar-search { padding: 8px 12px 4px; }
+    .sidebar-search input {
+      width: 100%; padding: 6px 10px;
+      border: 1px solid var(--fb-border-2); border-radius: 6px;
+      background: var(--fb-bg-2); color: var(--fb-text-primary);
+      font-size: 12px; outline: none; transition: background 0.15s;
+    }
+    .sidebar-search input::placeholder { color: var(--fb-text-hint); }
+    .sidebar-search input:focus { background: var(--fb-white); }
+
+    /* ── 帧缩放 ── */
+    .zoom-switcher {
+      display: flex; background: var(--fb-bg-3); border-radius: 6px; padding: 2px; gap: 2px;
+    }
+    .zoom-btn {
+      flex: 1; padding: 5px 0; border: none; border-radius: 4px;
+      background: transparent; color: var(--fb-text-secondary);
+      font-size: 12px; font-weight: 500; cursor: pointer;
+    }
+    .zoom-btn.active {
+      background: var(--fb-white); color: var(--fb-text-primary);
+      font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,0.10);
+    }
+    html[data-theme="dark"] .zoom-btn.active,
+    html[data-theme="dark"] .icon-toggle.active {
+      background: #383838; box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+
+    /* 隐藏标注模式 */
+    .hide-anno .tp-marker { visibility: hidden; }
+
+    /* ════════════════════════════════════════════
+       用户旅程可视化（A-04）— toggle 按钮 + 双视图容器
+       规范来源：prd_expression_standard.md §A-04.1「用户旅程可视化」
+       数据来源：产品定义 §5「旅程步骤表 + 多角色参与矩阵」（SSOT 主源）
+    ════════════════════════════════════════════ */
+    .journey-toggle {
+      display: inline-flex;
+      gap: 4px;
+      padding: 4px;
+      margin-bottom: 16px;
+      background: var(--fb-bg-2);
+      border: 1px solid var(--fb-border-1);
+      border-radius: 8px;
+    }
+    .journey-view-btn {
+      padding: 6px 14px;
+      font-size: 13px;
+      color: var(--fb-text-secondary);
+      background: transparent;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .journey-view-btn:hover { color: var(--fb-text-primary); }
+    .journey-view-btn.is-active {
+      background: var(--fb-white);
+      color: var(--fb-text-primary);
+      font-weight: 500;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+    /* mermaid CDN 加载失败 → applyMermaidFailureFallback() 给 [data-view="flow"] 按钮加 .is-disabled */
+    /* mermaid v10 ELK renderer 运行时注入的 cytoscape 容器（#cy）——库不自动清理，
+       会在 body 末尾留空白带；与 mermaid SVG 业务图渲染无关，强制隐藏。 */
+    #cy, body > #cy { display: none !important; }
+    .journey-view-btn.is-disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+      color: var(--fb-text-disabled);
+      background: transparent;
+      box-shadow: none;
+    }
+    html[data-theme="dark"] .journey-view-btn.is-active {
+      background: #383838;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    html[data-theme="dark"] .journey-view-btn.is-disabled {
+      opacity: 0.5;
+      color: var(--fb-text-disabled);
+      background: transparent;
+      box-shadow: none;
+    }
+    .journey-table-view,
+    .journey-flow-view {
+      padding: 8px 0;
+    }
+    .journey-flow-view pre.mermaid,
+    #spec-sitemap pre.mermaid {
+      background: var(--fb-bg-1);
+      border: 1px solid var(--fb-border-1);
+      border-radius: 8px;
+      padding: 16px;
+      margin: 0;
+      overflow-x: auto;
+      font-family: 'Source Han Sans CN', 'PingFang SC', sans-serif;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* ════════════════════════════════════════════
+       mermaid 全屏预览（规范见 prd_expression_standard.md §A-10——
+       CSS/JS 真源在本文件，§A-10 不复刻避免双源漂移）
+       自包含无 CDN：纯 vanilla JS transform 滚轮缩放 + 拖拽平移（见 <script>）
+       覆盖全部 mermaid（spec-sitemap 层级/依赖图 + 业务流程图 + 用户旅程）
+    ════════════════════════════════════════════ */
+    .mmd-fs-host { position: relative; }
+    .mmd-fs-btn {
+      position: absolute; top: 8px; right: 8px; z-index: 1; /* Z-1 默认流（§零.1）；position:absolute 后置于 svg 之上即可 */
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 4px 9px; font-size: 12px; line-height: 1;
+      color: var(--fb-text-secondary);
+      background: var(--fb-bg-2); border: 1px solid var(--fb-border-1);
+      border-radius: 6px; cursor: pointer; opacity: 0.65;
+      transition: opacity 0.15s, color 0.15s;
+    }
+    .mmd-fs-host:hover .mmd-fs-btn { opacity: 1; }
+    .mmd-fs-btn:hover { color: var(--fb-text-primary); background: var(--fb-bg-3); }
+    .mmd-fs-overlay {
+      position: fixed; inset: 0; z-index: 300; /* Z-300 mermaid 全屏预览（§零.1） */
+      display: none; flex-direction: column;
+      background: rgba(0, 0, 0, 0.72);
+    }
+    .mmd-fs-overlay.is-open { display: flex; }
+    .mmd-fs-toolbar {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 16px; color: var(--fb-white, #fff);
+      background: rgba(0, 0, 0, 0.35); flex: 0 0 auto;
+    }
+    .mmd-fs-hint { font-size: 12px; opacity: 0.85; margin-right: auto; }
+    .mmd-fs-toolbar button {
+      padding: 5px 12px; font-size: 12px; cursor: pointer;
+      color: var(--fb-white, #fff); background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 6px;
+    }
+    .mmd-fs-toolbar button:hover { background: rgba(255, 255, 255, 0.26); }
+    .mmd-fs-stage {
+      flex: 1 1 auto; overflow: hidden; position: relative;
+      cursor: grab; touch-action: none;
+      /* 禁文字选中——配合 JS pointerdown.preventDefault() 双保险，
+         避免长按拖拽时浏览器触发 text selection */
+      user-select: none; -webkit-user-select: none;
+    }
+    .mmd-fs-stage.is-panning { cursor: grabbing; }
+    .mmd-fs-canvas {
+      position: absolute; top: 50%; left: 50%;
+      transform-origin: center center;
+      transition: transform 0.04s linear;
+      user-select: none; -webkit-user-select: none;
+    }
+    /* 拖拽时禁用 transition——0.04s 过渡叠加 pointermove 每帧触发会累积成
+       可见 lag；松开即恢复给滚轮缩放保留过渡感 */
+    .mmd-fs-stage.is-panning .mmd-fs-canvas { transition: none; }
+    .mmd-fs-canvas svg { display: block; max-width: none; height: auto; }
+
+    /* ════════════════════════════════════════════
+       §七 7.1 项目组件状态展示区（SSOT 双锚同步：与 prd_expression_standard.md §七 7.1 字面一致）
+    ════════════════════════════════════════════ */
+    .proj-component-showcase { padding: 24px 24px; border-top: 1px solid var(--fb-border-1); }
+    .proj-component-showcase h2 { font-size: 16px; font-weight: 600; margin-bottom: 16px; }
+    .showcase-row { display: flex; align-items: center; gap: 16px; padding: 12px 0; border-bottom: 1px dashed var(--fb-border-1); }
+    .showcase-label { width: 140px; font-size: 12px; color: var(--fb-text-secondary); flex-shrink: 0; }
+
+    /* ════════════════════════════════════════════
+       §十一 组件变更清单配套样式（SSOT 双锚同步：与 prd_expression_standard.md §11.4 字面一致）
+       命名理由：.proto-changelog-table 避免占用 fb-* 命名空间（fb-* 须在 pub_components_index.md / fb-fallback.css 登记）
+       双锚调整方向：先改 template、再同步 standard §11.4，禁止反向（参 standard §九 line 957）
+    ════════════════════════════════════════════ */
+    .changelog-group { margin-bottom: 24px; padding: 16px; border-radius: 8px; background: var(--fb-bg-1); }
+    .changelog-new { border-left: 4px solid #2c8c4d; }
+    .changelog-update { border-left: 4px solid #1665ff; }
+    .changelog-deprecated { border-left: 4px solid var(--fb-text-disabled); }
+    .changelog-promote { border-left: 4px solid #e6a300; }
+    .deprecated-tag { color: var(--fb-error); font-size: 11px; padding: 2px 6px; border: 1px solid var(--fb-error); border-radius: 4px; margin-left: 8px; }
+    .proto-changelog-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+    .proto-changelog-table th, .proto-changelog-table td { padding: 8px 12px; border: 1px solid var(--fb-border-2); text-align: left; vertical-align: top; color: var(--fb-text-primary); }
+    .proto-changelog-table thead th { background: var(--fb-bg-2); font-weight: 600; }
+
+    /* ════════════════════════════════════════════
+       页面骨架屏色块（SSOT 双锚 #41 同步：与 prd_expression_standard.md §A-09 字面一致）
+       双锚调整方向：先改 template、再同步 standard §A-09，禁止反向
+       仅平面布局示意，非组件层级 / 非实现 DOM；data-w/data-h 由 applySkeletonDims() 落地
+    ════════════════════════════════════════════ */
+    .sk-page { display: flex; flex-direction: column; gap: 6px; padding: 12px; border: 1px dashed var(--fb-border-2); border-radius: 8px; background: var(--fb-bg-1); max-width: 720px; }
+    .sk-row { display: flex; gap: 6px; }
+    .sk-col { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+    .sk-region { flex: 1; min-height: 36px; padding: 8px 10px; border: 1px solid var(--fb-border-1); border-radius: 4px; background: var(--fb-bg-3); color: var(--fb-text-secondary); font-size: 12px; line-height: 1.4; display: flex; align-items: center; }
+    .sk-region::before { content: "▢ "; color: var(--fb-text-hint); }
+    /* 平台几何收窄:per-platform 块的 phone/h5/mp 端容器自动收窄至窄宽 portrait,
+       让 reviewer 一眼看出 phone 端骨架的几何形态（避免与 desktop 同宽 720px 视觉无差异）。
+       tablet/desktop 保留默认 720px max-width（横向布局可读性优先）。
+       wrapper 由 assemble.build_archetype_skeleton_html / inject_page_skeletons 据 ```skeleton:{plat} info-string 包裹。 */
+    .sk-platform-phone .sk-page,
+    .sk-platform-h5 .sk-page,
+    .sk-platform-mp .sk-page { max-width: 360px; }
+    /* 同一 archetype 下多端骨架横排（左右对比）容器:含 ≥1 个 per-platform 块时,
+       assemble 包此 wrapper 让各 .sk-platform 横向并排。flex-wrap:wrap 兜底窄视口
+       自动换行避免横向溢出;align-items:flex-start 顶对齐（phone 比 desktop 矮时不拉伸）。 */
+    .sk-archetype-platforms {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    /* ════════════════════════════════════════════
+       模块专属样式占位区
+       各模块 Agent 将自己的组件样式追加到此处（通过草稿拼装）
+    ════════════════════════════════════════════ */
+    /* [MODULE-STYLES] 待拼装 */
+
+  </style>
+</head>
+<body>
+  <div class="layout">
+
+    <!-- ══════════════════════════════════════════
+         导航侧栏
+    ══════════════════════════════════════════ -->
+    <nav class="sidebar">
+      <div class="sidebar-nav">
+        <div class="sidebar-search">
+          <input type="text" placeholder="搜索页面…" oninput="searchSidebar(this.value)" />
+        </div>
+        <div class="sidebar-section-title sidebar-group-toggle" data-group="doc" onclick="toggleSidebarGroup('doc')" style="border-top:none;margin-top:0;"><span class="sidebar-toggle-icon">−</span>文档说明</div>
+        <div class="sidebar-group-body" data-group-body="doc">
+        <div class="sidebar-spec-item" data-target="doc-cover" onclick="showSection('doc-cover')">封面</div>
+        <div class="sidebar-spec-item" data-target="doc-guide" onclick="showSection('doc-guide')">使用说明</div>
+        <div class="sidebar-spec-item" data-target="doc-changelog" onclick="showSection('doc-changelog')">变更记录</div>
+        </div>
+        <div class="sidebar-section-title sidebar-group-toggle" data-group="spec" onclick="toggleSidebarGroup('spec')"><span class="sidebar-toggle-icon">−</span>产品规格</div>
+        <div class="sidebar-group-body" data-group-body="spec">
+        <!-- [SPEC-NAV] 规划阶段填入 SPEC_ITEMS 全量 9 个导航条目（含 spec-business-flow 业务流程图紧跟用户旅程，议题 27 按 §A-04.2 L642 [Must]「侧栏导航须含业务流程分组与用户旅程并列」规范修复 L250-251 vs L642 内部矛盾，由 gen_scaffold.py build_spec_nav 驱动），示例：
+        <div class="sidebar-spec-item" onclick="showSection('spec-background')">需求背景</div>
+        <div class="sidebar-spec-item" onclick="showSection('spec-persona')">用户画像</div>
+        <div class="sidebar-spec-item" onclick="showSection('spec-permission')">权限矩阵</div>
+        <div class="sidebar-spec-item" onclick="showSection('spec-journey')">用户旅程</div>
+        <div class="sidebar-spec-item" onclick="showSection('spec-business-flow')">业务流程图</div>
+        <div class="sidebar-spec-item" onclick="showSection('spec-feature')">功能索引</div>
+        <div class="sidebar-spec-item" onclick="showSection('spec-data')">数据字段</div>
+        <div class="sidebar-spec-item" onclick="showSection('spec-exception')">异常处理全景</div>
+        <div class="sidebar-spec-item" onclick="showSection('spec-nonfunc')">非功能需求</div>
+        -->
+        </div>
+        <div class="sidebar-section-title sidebar-group-toggle" data-group="sitemap" onclick="toggleSidebarGroup('sitemap')"><span class="sidebar-toggle-icon">−</span>页面架构总览</div>
+        <div class="sidebar-group-body" data-group-body="sitemap">
+        <!-- [SITEMAP-NAV] 由 gen_scaffold.py build_sitemap_nav 驱动：4 个 spec-sitemap 块内锚点滚动子项（sk-hier 页面层级图 #38 / sk-arch 页面结构契约 #39 / sk-askel 范式骨架 #41 / sk-mod 模块架构 #40，showSection 对 <div id> 锚生效），共 4 项（议题 27 业务流程图 nav 归"产品规格"组按 §A-04.2 L642 [Must] 5→4），示例：
+             #41 范式骨架按 page_archetypes 颗粒度（一类页一骨架）：sk-askel 子节注入 spec-sitemap（紧接 #39 契约表后），每范式含 sk-askel-<aid> 子锚；默认页帧旁仅渲范式 chip 跳 sk-askel-<aid>，仅个别确无法套范式的页帧旁渲该页专属骨架。
+        <div class="sidebar-spec-item" data-target="sk-hier" onclick="showSection('sk-hier')">页面层级图</div>
+        <div class="sidebar-spec-item" data-target="sk-arch" onclick="showSection('sk-arch')">页面结构契约</div>
+        <div class="sidebar-spec-item" data-target="sk-askel" onclick="showSection('sk-askel')">范式骨架</div>
+        <div class="sidebar-spec-item" data-target="sk-mod" onclick="showSection('sk-mod')">模块架构</div>
+        -->
+        </div>
+
+        <div class="sidebar-section-title sidebar-group-toggle" data-group="changelog" onclick="toggleSidebarGroup('changelog')"><span class="sidebar-toggle-icon">−</span><span data-changelog-title>组件变更</span><span class="sidebar-changelog-badge" data-changelog-count style="display:none;"></span><span class="sidebar-recursive-toggle" onclick="event.stopPropagation(); toggleAllSubgroupsInGroup('changelog')" title="折叠/展开所有下层">⇊</span></div>
+        <div class="sidebar-group-body" data-group-body="changelog">
+        <!-- 2 固定子章节:组件清单跳 §11 changelog / 组件说明跳 §7.1 集中容器 -->
+        <div class="sidebar-spec-item" data-target="component-changelog" onclick="showSection('component-changelog')" style="font-weight:600;">组件清单</div>
+        <!-- 「组件说明」作为 non-leaf 节点:点击 icon 折叠/展开下方派生 proj 组件 nav,点击文字跳转 #proj-component-area -->
+        <div class="sidebar-spec-item"
+             data-subgroup="proj-component-area"
+             data-target="proj-component-area"
+             onclick="handleSubgroupClick(event, 'proj-component-area', 'proj-component-area')"
+             style="font-weight:600;"><span class="sidebar-subgroup-icon">−</span>组件说明</div>
+        <div class="sidebar-subgroup-body" data-subgroup-body="proj-component-area">
+        <!-- [COMPONENT-CHANGELOG-NAV] assemble.py prd 自动注入(派生子项,作为「组件说明」的子节点,缩进 +1 级用 .sidebar-spec-subitem class)。
+             数据源为 PRD §十一 <section id="component-changelog"> 内 changelog-new / changelog-update /
+             changelog-deprecated 三个 group。每个组件含状态 tag（新增/更新/弃用）+
+             onclick 跳到对应 #proj-component-{name}。示例：
+        <div class="sidebar-spec-subitem" data-target="proj-component-product-card" onclick="showSection('proj-component-product-card')">
+          <span class="sidebar-component-status sidebar-status-new">新增</span>proj.L2.product-card
+        </div>
+        <div class="sidebar-spec-subitem" data-target="proj-component-feedback-form" onclick="showSection('proj-component-feedback-form')">
+          <span class="sidebar-component-status sidebar-status-update">更新</span>proj.L1.feedback-form
+        </div>
+        -->
+        </div>
+        </div>
+
+        <div class="sidebar-section-title sidebar-group-toggle" data-group="proto" onclick="toggleSidebarGroup('proto')"><span class="sidebar-toggle-icon">−</span>交互原型<span class="sidebar-recursive-toggle" onclick="event.stopPropagation(); toggleAllSubgroupsInGroup('proto')" title="折叠/展开所有下层">⇊</span></div>
+        <div class="sidebar-group-body" data-group-body="proto">
+        <!-- [PROTO-NAV] 规划阶段根据任务清单 ID 契约填入全量页面/状态条目，示例：
+        <div class="sidebar-group">
+          <div class="sidebar-page">▼ P-01 列表页</div>
+          <div class="sidebar-state" data-target="H-M01-P01-default" onclick="showSection('H-M01-P01-default')">S01 默认态</div>
+          <div class="sidebar-state" data-target="H-M01-P01-empty" onclick="showSection('H-M01-P01-empty')">S02 空状态</div>
+          <div class="sidebar-state" data-target="H-M01-P01-loading" onclick="showSection('H-M01-P01-loading')">S03 加载态</div>
+        </div>
+        -->
+        </div>
+      </div>
+      <div class="sidebar-bottom" style="display:flex;flex-direction:column;gap:8px;">
+        <div class="sidebar-controls-row">
+          <div class="lang-switcher" style="flex:1;">
+            <button class="lang-btn active" data-lang="zh" onclick="setLang('zh')">中文</button>
+            <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+          </div>
+          <button class="icon-toggle active" id="themeToggle" title="切换暗色" onclick="toggleTheme()">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+              <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+          </button>
+          <button class="icon-toggle active" id="annoToggle" title="隐藏标注" onclick="toggleAnnotations()">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+        </div>
+        <div class="zoom-switcher">
+          <button class="zoom-btn" data-zoom="0.5" onclick="setZoom(0.5)">50%</button>
+          <button class="zoom-btn active" data-zoom="0.75" onclick="setZoom(0.75)">75%</button>
+          <button class="zoom-btn" data-zoom="1" onclick="setZoom(1)">100%</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ══════════════════════════════════════════
+         内容区
+    ══════════════════════════════════════════ -->
+    <main class="content">
+
+      <!-- ────────────────────────────────────────
+           区域 A — 产品规格区
+           规划阶段：写入 8 个 section 骨架（内容留空）
+           各 section 内容由 spec 模块 Agent 填充
+      ──────────────────────────────────────── -->
+
+      <!-- [COVER-PAGE] -->
+      <!-- [GUIDE-PAGE] -->
+      <!-- [CHANGELOG-PAGE] -->
+
+      <!-- [MODULE SPEC]: 产品规格区 待拼装 -->
+
+
+      <!-- ────────────────────────────────────────
+           区域 B — 交互原型区
+           SSOT 顺序:
+             §十一 组件变更清单（开篇,diff 索引视角）
+             → 模块 M-01..N（含 proj-component-{name} showcase,detail 详情视角）
+           规划阶段：根据任务清单添加各模块占位注释,changelog 在模块前
+           各模块 Agent 生成草稿后由编排器拼装
+      ──────────────────────────────────────── -->
+
+      <!-- ────────────────────────────────────────
+           §十一 组件变更清单 section（强制章节）— 区域 B 开篇
+           SSOT 真源：prd_expression_standard.md §十一
+           SSOT 派生：spec.md §八 组件变更清单（逐行映射）
+           内容来源：assemble.py 不直接填，由 PM Foundation Agent 在子阶段二写入
+                     条目（依据 outputs/components_[产品名]_latest.md 中 proj 索引段）
+           4 个 sub-section（new / update / deprecated / promote）必须**全部**保留，
+           无内容时填占位文字"本期无 X 类变更"（precheck S4-22 校验存在性）
+           侧栏 nav 项由 assemble.py inject_component_changelog_nav() 从本节派生
+           设计意图:diff 索引在前 → 读者跳到模块内
+           proj-component-{name} showcase 看 detail,符合 release notes 阅读路径
+      ──────────────────────────────────────── -->
+      <section id="component-changelog" class="proto-section">
+        <div class="section-header">
+          <h2>组件变更清单</h2>
+        </div>
+
+        <div class="changelog-group changelog-new">
+          <h3>新增（NEW）</h3>
+          <table class="proto-changelog-table">
+            <thead>
+              <tr><th>组件 ID</th><th>派生原因</th><th>使用页面</th><th>组件说明锚点</th></tr>
+            </thead>
+            <tbody>
+              <!-- [CHANGELOG-NEW-ROWS] Foundation Agent 写入 / 本期无新增时填一行占位"本期无新增组件" -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="changelog-group changelog-update">
+          <h3>修改（UPDATE）</h3>
+          <table class="proto-changelog-table">
+            <thead>
+              <tr><th>组件 ID</th><th>修改类型</th><th>修改描述</th><th>上一版本</th><th>本版本</th><th>影响页面</th></tr>
+            </thead>
+            <tbody>
+              <!-- [CHANGELOG-UPDATE-ROWS] Foundation Agent 写入 / 本期无更新时填一行占位"本期无组件更新" -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="changelog-group changelog-deprecated">
+          <h3>弃用（DEPRECATED）</h3>
+          <table class="proto-changelog-table">
+            <thead>
+              <tr><th>组件 ID</th><th>弃用版本</th><th>弃用原因</th><th>替代组件</th></tr>
+            </thead>
+            <tbody>
+              <!-- [CHANGELOG-DEPRECATED-ROWS] Foundation Agent 写入 / 本期无弃用时填一行占位"本期无组件弃用" -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="changelog-group changelog-promote">
+          <h3>建议升级 proj → pub（PROMOTE-SUGGESTION）</h3>
+          <table class="proto-changelog-table">
+            <thead>
+              <tr><th>组件 ID</th><th>建议原因</th><th>当前使用项目数</th><th>复用价值评估</th></tr>
+            </thead>
+            <tbody>
+              <!-- [CHANGELOG-PROMOTE-ROWS] Foundation Agent 写入 / 本期无升级建议时填一行占位"本期无升级建议" -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ────────────────────────────────────────
+           §7.1 组件说明 集中容器 section（强制章节）
+           SSOT 真源：prd_expression_standard.md §7.1（改名「组件说明」）
+           SSOT 派生：各 module drafts 中 <section id="proj-component-*"> 块
+           Step 6.5 注入：assemble.py extract_proj_component_showcase()
+                          从各 drafts 提取 → 集中注入到本 section 内的占位
+           设计意图:清单(全揽)在前 → 组件说明(展开详情)在后,
+           符合 abstract → concrete 阅读路径
+      ──────────────────────────────────────── -->
+      <section id="proj-component-area" class="proto-section">
+        <div class="section-header">
+          <h2>组件说明</h2>
+          <p style="font-size:12px;color:var(--fb-text-secondary);margin-top:4px;">本章列出本期所有 proj 组件的状态全集（default + needed:yes 状态行），来自各模块 owner 草稿。每个组件含独立 anchor 供侧栏「组件说明」子项跳转。</p>
+        </div>
+
+        <!-- [PROJ-COMPONENT-SHOWCASE-AREA] auto-injected by assemble.py extract_proj_component_showcase()
+             数据源:各 process_record/drafts/prd_M*_draft.html 中
+             <section id="proj-component-*" class="proj-component-showcase"> 块全量提取,集中堆放 -->
+      </section>
+
+      <!-- [MODULE M-01]: 待拼装 -->
+      <!-- [MODULE M-02]: 待拼装 -->
+      <!-- 依此类推，规划阶段按任务清单模块数量添加 -->
+
+    </main>
+  </div>
+
+  <!-- ════ mermaid 全屏预览遮罩 ════
+       静态容器刻意不含任何 mermaid 标记：①无 <pre class="mermaid"> / 无 ```mermaid
+       字面；②class 用 .mmd-fs-* 而非 .mermaid-fs-*——后者 class 名内含 mermaid 词元，
+       check_prd 游离-mermaid 检测正则会在 `-` 处成词边界而误判本容器为 section 外
+       mermaid 块。SVG 由 <script> openMermaidFs() 运行时 clone 已渲染节点注入
+       #mermaidFsCanvas（check_prd 扫静态文件且留白 <script>/注释域，永不命中本容器）。 -->
+  <div class="mmd-fs-overlay" id="mermaidFsOverlay" aria-hidden="true">
+    <div class="mmd-fs-toolbar">
+      <span class="mmd-fs-hint">滚轮缩放 · 拖拽平移 · ESC 或点击关闭按钮关闭</span>
+      <button type="button" onclick="resetMermaidFsView()">重置视图</button>
+      <button type="button" onclick="closeMermaidFs()" aria-label="关闭全屏">✕ 关闭</button>
+    </div>
+    <div class="mmd-fs-stage" id="mermaidFsStage">
+      <div class="mmd-fs-canvas" id="mermaidFsCanvas"></div>
+    </div>
+  </div>
+
+  <script>
+    const content = document.querySelector('.content');
+
+    /* ── 多语言切换 ── */
+    let currentLang = 'zh';
+    function setLang(lang) {
+      currentLang = lang;
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+      document.querySelectorAll('[data-zh][data-en]').forEach(el => {
+        el.textContent = el.dataset[lang];
+      });
+    }
+
+    /* ── 帧缩放 ── */
+    function setZoom(scale) {
+      // zoom 应用到 frame 自身（5 frame 类全局命中，多端/单端统一处理）
+      // 行为：frame 的 layout box 按 zoom 缩放 → cell 父容器（flex column）按 max-content 自适应
+      //       → cell 宽度跟随 frame zoomed 后尺寸 → 标签随 cell 位置自然移动跟随帧
+      // 标签字号 / cell gap 等不受 zoom 影响（保持可读性最佳，避免标签缩到看不清）
+      // 规避 zoom 应用到 flex item（cell）时的 layout box vs visual size 脱节问题
+      document.querySelectorAll('.phone-frame, .desktop-frame, .h5-frame, .tablet-frame, .miniprogram-frame').forEach(el => {
+        el.style.zoom = scale;
+      });
+      document.querySelectorAll('.zoom-btn').forEach(btn => {
+        btn.classList.toggle('active', parseFloat(btn.dataset.zoom) === scale);
+      });
+    }
+
+    /* ── 触点标注开关 ── */
+    const _EYE = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
+    const _EYE_OFF = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>`;
+    function toggleAnnotations() {
+      const hidden = document.body.classList.toggle('hide-anno');
+      const btn = document.getElementById('annoToggle');
+      btn.innerHTML = hidden ? _EYE_OFF : _EYE;
+      btn.title = hidden ? '显示标注' : '隐藏标注';
+      btn.classList.toggle('active', !hidden);
+    }
+
+    /* ── 侧栏搜索 ── */
+    // 侧栏顶层分组折叠/展开
+    // 状态记忆于 localStorage(key: prd-sidebar-collapsed-{group}),默认全展开
+    function toggleSidebarGroup(group) {
+      const title = document.querySelector('.sidebar-group-toggle[data-group="' + group + '"]');
+      const body = document.querySelector('.sidebar-group-body[data-group-body="' + group + '"]');
+      if (!title || !body) return;
+      const isCollapsed = title.getAttribute('data-collapsed') === 'true';
+      const next = !isCollapsed;
+      title.setAttribute('data-collapsed', String(next));
+      body.setAttribute('data-collapsed', String(next));
+      const icon = title.querySelector('.sidebar-toggle-icon');
+      if (icon) icon.textContent = next ? '+' : '−';
+      try { localStorage.setItem('prd-sidebar-collapsed-' + group, String(next)); } catch (e) {}
+    }
+    // non-leaf 节点 toggle
+    // 通用 subgroup 折叠/展开;subgroup_id 用 data-subgroup 标识
+    function toggleSidebarSubgroup(subgroup) {
+      const trigger = document.querySelector('[data-subgroup="' + subgroup + '"]');
+      const body = document.querySelector('[data-subgroup-body="' + subgroup + '"]');
+      if (!trigger || !body) return;
+      const isCollapsed = body.getAttribute('data-collapsed') === 'true';
+      const next = !isCollapsed;
+      body.setAttribute('data-collapsed', String(next));
+      const icon = trigger.querySelector('.sidebar-subgroup-icon');
+      if (icon) icon.textContent = next ? '+' : '−';
+      try { localStorage.setItem('prd-subgroup-collapsed-' + subgroup, String(next)); } catch (e) {}
+    }
+    // non-leaf 节点 click 分流:
+    // - 点 icon → 总是折叠/展开
+    // - 点其他区域:有 jumpTarget → 跳转;无 jumpTarget(模块/页面等纯结构节点)→ 整个容器都折叠
+    function handleSubgroupClick(event, subgroup, jumpTarget) {
+      if (event.target.classList && event.target.classList.contains('sidebar-subgroup-icon')) {
+        event.stopPropagation();
+        toggleSidebarSubgroup(subgroup);
+        return;
+      }
+      if (jumpTarget) {
+        showSection(jumpTarget);
+      } else {
+        // 无跳转目标的纯结构节点(.sidebar-page 模块/页面层):整个容器点击都触发折叠
+        toggleSidebarSubgroup(subgroup);
+      }
+    }
+    // 第一层级章节「折叠/展开所有下层」按钮
+    // smart toggle: 有任意 subgroup 展开 → 全部折叠;都已折叠 → 全部展开
+    function toggleAllSubgroupsInGroup(group) {
+      const body = document.querySelector('.sidebar-group-body[data-group-body="' + group + '"]');
+      if (!body) return;
+      const subgroupBodies = body.querySelectorAll('[data-subgroup-body]');
+      if (subgroupBodies.length === 0) return;  // 该分组下无 subgroup,noop
+      // 检查任意展开?
+      let anyExpanded = false;
+      subgroupBodies.forEach(sb => {
+        if (sb.getAttribute('data-collapsed') !== 'true') anyExpanded = true;
+      });
+      const targetCollapsed = anyExpanded ? 'true' : 'false';
+      subgroupBodies.forEach(sb => {
+        sb.setAttribute('data-collapsed', targetCollapsed);
+        const subgroupId = sb.getAttribute('data-subgroup-body');
+        const trigger = document.querySelector('[data-subgroup="' + subgroupId + '"]');
+        if (trigger) {
+          const icon = trigger.querySelector('.sidebar-subgroup-icon');
+          if (icon) icon.textContent = targetCollapsed === 'true' ? '+' : '−';
+        }
+        try { localStorage.setItem('prd-subgroup-collapsed-' + subgroupId, targetCollapsed); } catch (e) {}
+      });
+    }
+    // frame-cell DOM 嵌套方案（取代旧 frame-platforms-bar 兄弟 flex + JS sync）：
+    //   端口标签与视觉帧绑定在同一 .frame-cell 内（父子嵌套），
+    //   align-items: flex-start + cell 宽度自适应让标签随帧位置自然移动；
+    //   zoom 缩 frame 后 cell 宽度自动收缩 → 标签紧贴帧。
+    //   完全 CSS-only，无需 getBoundingClientRect 测量 + JS absolute 校正 → 零 forced reflow。
+    // 启动时从 localStorage 恢复折叠状态
+    document.addEventListener('DOMContentLoaded', function() {
+      ['doc', 'spec', 'proto', 'changelog'].forEach(group => {
+        try {
+          if (localStorage.getItem('prd-sidebar-collapsed-' + group) === 'true') {
+            toggleSidebarGroup(group);
+          }
+        } catch (e) {}
+      });
+      // 恢复所有 subgroup 折叠状态(non-leaf 节点)
+      document.querySelectorAll('[data-subgroup]').forEach(trigger => {
+        const subgroup = trigger.getAttribute('data-subgroup');
+        try {
+          if (localStorage.getItem('prd-subgroup-collapsed-' + subgroup) === 'true') {
+            toggleSidebarSubgroup(subgroup);
+          }
+        } catch (e) {}
+      });
+      // 默认缩放 75%(user 偏好)
+      setZoom(0.75);
+    });
+
+    function searchSidebar(query) {
+      const q = query.toLowerCase().trim();
+      document.querySelectorAll('.sidebar-state, .sidebar-spec-item').forEach(el => {
+        el.style.display = (!q || el.textContent.toLowerCase().includes(q)) ? '' : 'none';
+      });
+      document.querySelectorAll('.sidebar-group').forEach(group => {
+        const hasVisible = [...group.querySelectorAll('.sidebar-state')].some(s => s.style.display !== 'none');
+        group.style.display = hasVisible ? '' : 'none';
+      });
+    }
+
+    /* ── 亮色 / 暗色切换 ── */
+    const _SUN = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`;
+    const _MOON = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+    function toggleTheme() {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      const btn = document.getElementById('themeToggle');
+      btn.innerHTML = isDark ? _SUN : _MOON;
+      btn.title = isDark ? '切换暗色' : '切换亮色';
+      btn.classList.toggle('active', isDark);
+    }
+
+    function setActive(id) {
+      document.querySelectorAll('.sidebar-state, .sidebar-spec-item').forEach(el => {
+        el.classList.toggle('active', el.dataset.target === id);
+      });
+    }
+
+    function fastScrollTo(el, duration) {
+      const container = document.querySelector('.content');
+      const from = container.scrollTop;
+      const to = from + el.getBoundingClientRect().top - container.getBoundingClientRect().top;
+      const delta = to - from;
+      let startTs = null;
+      function ease(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
+      function step(ts) {
+        if (!startTs) startTs = ts;
+        const p = Math.min((ts - startTs) / duration, 1);
+        container.scrollTop = from + delta * ease(p);
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    function showSection(id) {
+      const target = document.getElementById(id);
+      if (target) fastScrollTo(target, 300);
+      setActive(id);
+    }
+
+    // 滚动时自动高亮当前可见 section
+    window.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      }, {
+        root: content,
+        threshold: 0,
+        rootMargin: '0px 0px -80% 0px'   // section 顶部进入视口上方 20% 时高亮
+      });
+      document.querySelectorAll('section').forEach(s => observer.observe(s));
+    });
+
+    /* ── 用户旅程视图切换（A-04 表格 ↔ 流程图 toggle） ──
+       规范：prd_expression_standard.md §A-04.1
+       行为：互斥单选切换 .journey-table-view / .journey-flow-view 的 display；
+             首次切到 flow 时懒加载渲染 mermaid（避免初始 layout 抖动）
+       CDN 加载失败：见下方 applyMermaidFailureFallback()，致灰 toggle、强制表格视图 */
+    function switchJourneyView(btn, view) {
+      // 致灰按钮被点击时静默忽略（pointer-events:none 已阻止，但兜底防御）
+      if (btn.classList.contains('is-disabled') || btn.hasAttribute('disabled')) return;
+      const block = btn.closest('.spec-block') || btn.closest('section');
+      if (!block) return;
+      // 1. 切按钮 active 态
+      block.querySelectorAll('.journey-view-btn').forEach(b => {
+        const isActive = b.dataset.view === view;
+        b.classList.toggle('is-active', isActive);
+        b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+      // 2. 切视图容器 display
+      block.querySelectorAll('[data-view-pane]').forEach(pane => {
+        pane.style.display = pane.dataset.viewPane === view ? '' : 'none';
+      });
+      // 3. 首次切到 flow 时懒渲染 mermaid；就绪门 + 运行时失败有限重试（耗尽才 fallback）
+      if (view === 'flow') {
+        const target = block.querySelector('.journey-flow-view pre.mermaid');
+        if (target && !target.dataset.mermaidRendered) {
+          renderMermaidWithRetry(target, 0);
+        }
+      }
+    }
+
+    /* ── mermaid CDN 加载失败兜底（A-04 用户旅程） ──
+       触发场景：CDN 不可达（离线 / 内网 / mermaid CDN 故障）/ initialize 抛异常 / run 抛异常
+       行为：①致灰所有 .journey-view-btn[data-view="flow"]（含 disabled 属性 + title 提示）
+             ②隐藏所有 .journey-flow-view，显示所有 .journey-table-view
+       规范：prd_expression_standard.md §A-04.1.4「CDN 加载失败回退」 */
+    function applyMermaidFailureFallback() {
+      // 1. 致灰流程图视图按钮
+      document.querySelectorAll('.journey-view-btn[data-view="flow"]').forEach(btn => {
+        btn.classList.add('is-disabled');
+        btn.classList.remove('is-active');
+        btn.setAttribute('disabled', 'disabled');
+        btn.setAttribute('aria-disabled', 'true');
+        btn.setAttribute('aria-selected', 'false');
+        btn.title = '流程图视图不可用：mermaid 资源加载失败';
+      });
+      // 2. 强制激活表格视图按钮
+      document.querySelectorAll('.journey-view-btn[data-view="table"]').forEach(btn => {
+        btn.classList.add('is-active');
+        btn.setAttribute('aria-selected', 'true');
+      });
+      // 3. 隐藏流程图视图、显示表格视图
+      document.querySelectorAll('.journey-flow-view').forEach(v => { v.style.display = 'none'; });
+      document.querySelectorAll('.journey-table-view').forEach(v => { v.style.display = ''; });
+    }
+
+    /* ── mermaid 初始化（startOnLoad=false，避免渲染初始隐藏的 .journey-flow-view） ──
+       时序鲁棒性：defer 脚本 + mermaid@11 UMD 内部异步初始化（布局引擎 dagre/elk 懒加载），
+       DOMContentLoaded 时 window.mermaid 可能尚未就绪（jsdelivr 网络波动）。旧实现「失败即
+       永久降级、零重试」导致下游 ~20:1 失败率。改为区分三类降级触发：
+         ① script onerror（确定性加载失败 404/网络断）→ 立即降级，不空等
+         ② CDN 慢但最终可达 → 有界轮询探测就绪（MERMAID_READY_TIMEOUT_MS 窗口），超时才降级
+         ③ 引擎懒加载瞬态失败 → mermaid.run() 失败有限重试，耗尽才降级
+       规范：prd_expression_standard.md §A-04.1.4 第 4 项「CDN 加载失败回退」 */
+    let mermaidInitState = 'pending'; // pending | ready | failed
+    const MERMAID_READY_TIMEOUT_MS = 12000;
+    const MERMAID_POLL_INTERVAL_MS = 200;
+    const MERMAID_RUN_MAX_ATTEMPTS = 3;
+
+    function markMermaidFailed() {
+      if (mermaidInitState === 'failed') return;
+      mermaidInitState = 'failed';
+      applyMermaidFailureFallback();
+    }
+
+    // 尝试 initialize；就绪返回 true，未就绪返回 false，initialize 抛异常则永久降级
+    function tryInitMermaid() {
+      if (mermaidInitState === 'ready') return true;
+      if (mermaidInitState === 'failed') return false;
+      if (typeof window.mermaid === 'undefined' || !window.mermaid.initialize) return false;
+      try {
+        window.mermaid.initialize({
+          startOnLoad: false,
+          theme: 'neutral',
+          flowchart: { htmlLabels: true, useMaxWidth: true }
+        });
+        mermaidInitState = 'ready';
+        return true;
+      } catch (e) {
+        console.warn('[mermaid] 初始化失败，降级到表格视图', e);
+        markMermaidFailed();
+        return false;
+      }
+    }
+
+    // 有界轮询探测就绪：覆盖「CDN 慢但最终可达」的瞬态场景
+    function ensureMermaidReady() {
+      if (window.__mermaidLoadFailed) { markMermaidFailed(); return; }
+      if (tryInitMermaid() || mermaidInitState === 'failed') return;
+      let waited = 0;
+      const timer = setInterval(() => {
+        if (window.__mermaidLoadFailed) { clearInterval(timer); markMermaidFailed(); return; }
+        if (tryInitMermaid() || mermaidInitState === 'failed') { clearInterval(timer); return; }
+        waited += MERMAID_POLL_INTERVAL_MS;
+        if (waited >= MERMAID_READY_TIMEOUT_MS) {
+          clearInterval(timer);
+          console.warn('[mermaid] 就绪等待超时（' + MERMAID_READY_TIMEOUT_MS + 'ms），降级到表格视图');
+          markMermaidFailed();
+        }
+      }, MERMAID_POLL_INTERVAL_MS);
+    }
+
+    // 懒渲染：①未就绪 → 让位全局就绪机轮询（不自设上限，由 ensureMermaidReady 的
+    //           12s 超时 / onerror 统一裁决降级，避免用户早点击时过早误降级）
+    //         ②已就绪 → mermaid.run() 失败有限重试（覆盖引擎懒加载瞬态失败），耗尽才永久降级
+    function renderMermaidWithRetry(target, runAttempt) {
+      runAttempt = runAttempt || 0;
+      if (mermaidInitState === 'failed' || window.__mermaidLoadFailed) { markMermaidFailed(); return; }
+      if (mermaidInitState !== 'ready' || !window.mermaid || typeof window.mermaid.run !== 'function') {
+        if (!tryInitMermaid()) {
+          setTimeout(() => renderMermaidWithRetry(target, runAttempt), MERMAID_POLL_INTERVAL_MS);
+          return;
+        }
+      }
+      window.mermaid.run({ nodes: [target] }).then(() => {
+        target.dataset.mermaidRendered = '1';
+      }).catch((e) => {
+        if (runAttempt + 1 >= MERMAID_RUN_MAX_ATTEMPTS) {
+          console.warn('[mermaid] run 重试耗尽，降级到表格视图', e);
+          markMermaidFailed();
+        } else {
+          setTimeout(() => renderMermaidWithRetry(target, runAttempt + 1), 400 * (runAttempt + 1));
+        }
+      });
+    }
+
+    /* ── 静态 mermaid 急渲染（spec-sitemap 页面架构总览） ──
+       sitemap section 是静态结构概览（proto_contract §十一），始终可见、**无 toggle**：
+       提议1 页面层级 `graph TD`(SSOT #38) + 提议3 模块依赖 `graph LR`(SSOT #40) 两块
+       `<pre class="mermaid">` 由 assemble.py 现场派生注入，不在 .journey-flow-view 内，
+       switchJourneyView 永不触达 → 必须独立急渲染。
+       为何不受 startOnLoad:false 约束：startOnLoad:false 仅为规避「初始 display:none 的
+       .journey-flow-view」隐藏态布局抖动；sitemap 始终可见，DOMContentLoaded 即可安全渲染。
+       复用 renderMermaidWithRetry 的就绪门 + 运行时重试 + CDN 失败降级机制（与 ensureMermaidReady
+       的 12s 就绪/onerror 状态机共用 mermaidInitState，二者竞向同一裁决，安全）。 */
+    function renderStaticMermaid() {
+      document.querySelectorAll('#spec-sitemap pre.mermaid').forEach(target => {
+        if (!target.dataset.mermaidRendered) renderMermaidWithRetry(target, 0);
+      });
+    }
+
+    /* ── 页面骨架屏 data-w/data-h 落地（SSOT #41；自包含无 CDN，仅平面示意）──
+       data-w → flex-grow（同级相对占比）；data-h → min-height(px)。骨架仅布局示意，
+       不读不改任何组件契约（容纳权威归 page_archetypes #39）。 */
+    function applySkeletonDims() {
+      document.querySelectorAll('.sk-region[data-w], .sk-col[data-w]').forEach(e => {
+        const w = parseFloat(e.dataset.w); if (w > 0) e.style.flexGrow = w;
+      });
+      document.querySelectorAll('.sk-region[data-h]').forEach(e => {
+        const h = parseFloat(e.dataset.h); if (h > 0) e.style.minHeight = h + 'px';
+      });
+    }
+
+    /* ── mermaid 全屏预览（自包含无 CDN）──
+       覆盖全部 mermaid（spec-sitemap 层级/依赖图 + 业务流程图 + 用户旅程）。
+       本段在 <script> 内 → check_prd 游离-mermaid 扫描经 _blank_mermaid_scan_noise
+       等长留白 <script> 域后零假阳性（同族对称硬化，详 agent_methodology §七.2）。
+       enhance 在 render 前跑：把 pre.mermaid 包进 .mmd-fs-host（按钮为 host
+       直接子、非 pre 子）→ mermaid.run() 替换 pre.innerHTML 为 svg 不波及按钮。 */
+    function enhanceMermaidFullscreen() {
+      document.querySelectorAll('pre.mermaid').forEach(pre => {
+        if (pre.parentElement && pre.parentElement.classList.contains('mmd-fs-host')) return;
+        const host = document.createElement('div');
+        host.className = 'mmd-fs-host';
+        pre.parentNode.insertBefore(host, pre);
+        host.appendChild(pre);
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'mmd-fs-btn';
+        btn.textContent = '⤢ 全屏';
+        btn.setAttribute('aria-label', '全屏预览此图');
+        btn.addEventListener('click', () => openMermaidFs(pre));
+        host.appendChild(btn);
+      });
+    }
+
+    let _fsScale = 1, _fsTx = 0, _fsTy = 0, _fsDrag = null;
+
+    function _applyFsTransform() {
+      const c = document.getElementById('mermaidFsCanvas');
+      if (c) c.style.transform =
+        'translate(-50%, -50%) translate(' + _fsTx + 'px, ' + _fsTy + 'px) scale(' + _fsScale + ')';
+    }
+    /* 根据 SVG bbox 和 stage 尺寸计算 fit-to-viewport 缩放——让图打开即填满
+       可视区。留 5% 边距便于视觉呼吸；上限 4x 允许小图放大充满（不限制 1.0，
+       否则小图浮在中央占不满空间，正是"默认比例太小"症状的根因）；下限 0.2
+       保证极大图至少可见。 */
+    function _computeFitScale(svgEl, stageEl) {
+      if (!svgEl || !stageEl) return 1;
+      const sw = stageEl.clientWidth, sh = stageEl.clientHeight;
+      let bw = 0, bh = 0;
+      // 优先 getBoundingClientRect——返回 DOM 实际渲染尺寸（含 CSS 影响后的真实值），
+      // 比 getBBox（仅 SVG 内容包围盒）更接近视觉实际，避免 mermaid useMaxWidth/width
+      // attribute 干扰下的"被压扁后的 bbox"陷阱
+      try {
+        const rect = svgEl.getBoundingClientRect();
+        if (rect && rect.width > 0 && rect.height > 0) { bw = rect.width; bh = rect.height; }
+      } catch (_) {}
+      if (!bw || !bh) {
+        try {
+          const bbox = svgEl.getBBox && svgEl.getBBox();
+          if (bbox && bbox.width > 0 && bbox.height > 0) { bw = bbox.width; bh = bbox.height; }
+        } catch (_) {}
+      }
+      if (!bw || !bh) {
+        // 最后 fallback：viewBox / width attribute（SVG 隐藏或未挂载场景）
+        const vb = svgEl.getAttribute('viewBox');
+        if (vb) { const p = vb.split(/\s+/); bw = parseFloat(p[2]) || 0; bh = parseFloat(p[3]) || 0; }
+        if (!bw) bw = parseFloat(svgEl.getAttribute('width')) || sw;
+        if (!bh) bh = parseFloat(svgEl.getAttribute('height')) || sh;
+      }
+      if (!sw || !sh || !bw || !bh) return 1;
+      const fit = Math.min(sw / bw, sh / bh) * 0.95;
+      return Math.min(4, Math.max(0.2, fit));
+    }
+
+    function openMermaidFs(pre) {
+      const svg = pre.querySelector('svg');
+      const canvas = document.getElementById('mermaidFsCanvas');
+      const stage = document.getElementById('mermaidFsStage');
+      const overlay = document.getElementById('mermaidFsOverlay');
+      if (!canvas || !overlay) return;
+      canvas.innerHTML = '';
+      if (svg) {
+        const clone = svg.cloneNode(true);
+        clone.removeAttribute('style');
+        // 强制 SVG 显示尺寸 = viewBox 真实 px——绕过 mermaid useMaxWidth:true
+        // 设置的 width="100%" attribute（导致 SVG 被父容器 shrink-to-fit，
+        // getBBox 返回被压扁尺寸、fit 计算基数偏小，正是"默认比例仍然太小"根因）
+        const vb = clone.getAttribute('viewBox');
+        if (vb) {
+          const p = vb.split(/\s+/);
+          const vbW = parseFloat(p[2]) || 0;
+          const vbH = parseFloat(p[3]) || 0;
+          if (vbW > 0 && vbH > 0) {
+            clone.setAttribute('width', vbW);
+            clone.setAttribute('height', vbH);
+          }
+        }
+        canvas.appendChild(clone);
+      } else {
+        canvas.innerHTML = '<div style="color:#fff;padding:24px;">该图尚未渲染完成，请关闭后稍候重试。</div>';
+      }
+      // 先重置平移 + 显示 overlay（stage 必须可见才能拿到 clientWidth/Height）
+      _fsTx = 0; _fsTy = 0; _fsScale = 1; _applyFsTransform();
+      overlay.classList.add('is-open');
+      overlay.setAttribute('aria-hidden', 'false');
+      // 显示后下一帧计算 fit-scale（确保 stage 已布局）
+      requestAnimationFrame(() => {
+        const cloneSvg = canvas.querySelector('svg');
+        _fsScale = _computeFitScale(cloneSvg, stage);
+        _applyFsTransform();
+      });
+    }
+    function closeMermaidFs(ev) {
+      // 仅关闭按钮 + ESC 触发；点击遮罩/stage 不再关闭（防误关）。
+      const overlay = document.getElementById('mermaidFsOverlay');
+      if (!overlay) return;
+      overlay.classList.remove('is-open');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.getElementById('mermaidFsCanvas').innerHTML = '';
+    }
+    /* 重置视图须重新 fit-to-viewport（与 openMermaidFs 初始化一致，不硬编码 scale） */
+    function resetMermaidFsView() {
+      const canvas = document.getElementById('mermaidFsCanvas');
+      const stage = document.getElementById('mermaidFsStage');
+      _fsTx = 0; _fsTy = 0;
+      _fsScale = canvas && stage ? _computeFitScale(canvas.querySelector('svg'), stage) : 1;
+      _applyFsTransform();
+    }
+
+    function _initMermaidFsInteractions() {
+      const overlay = document.getElementById('mermaidFsOverlay');
+      const stage = document.getElementById('mermaidFsStage');
+      if (!overlay || !stage) return;
+      // 不绑定 overlay/stage click → close——只允许 ESC + 关闭按钮（防误关）
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeMermaidFs();
+      });
+      stage.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const factor = e.deltaY < 0 ? 1.12 : 1 / 1.12;
+        _fsScale = Math.min(8, Math.max(0.2, _fsScale * factor));
+        _applyFsTransform();
+      }, { passive: false });
+      stage.addEventListener('pointerdown', (e) => {
+        // preventDefault 阻止默认 text selection（配合 CSS user-select:none 双保险）
+        e.preventDefault();
+        _fsDrag = { x: e.clientX, y: e.clientY, tx: _fsTx, ty: _fsTy };
+        stage.classList.add('is-panning');
+        stage.setPointerCapture(e.pointerId);
+      });
+      stage.addEventListener('pointermove', (e) => {
+        if (!_fsDrag) return;
+        e.preventDefault();
+        _fsTx = _fsDrag.tx + (e.clientX - _fsDrag.x);
+        _fsTy = _fsDrag.ty + (e.clientY - _fsDrag.y);
+        _applyFsTransform();
+      });
+      const _endPan = () => { _fsDrag = null; stage.classList.remove('is-panning'); };
+      stage.addEventListener('pointerup', _endPan);
+      stage.addEventListener('pointercancel', _endPan);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      ensureMermaidReady();
+      enhanceMermaidFullscreen();
+      renderStaticMermaid();
+      applySkeletonDims();
+      _initMermaidFsInteractions();
+    });
+  </script>
+</body>
+</html>

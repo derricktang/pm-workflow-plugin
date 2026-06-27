@@ -1,0 +1,74 @@
+/* TextArea — Web Component Library (Figma 102:841).
+   120 variants: State(3) × 边框(2) × 背景(5) × 内容(2) × 计数(2).
+   Layout: column with padding 8 12, 452×96 default. Shares 边框/背景 axes with Input. */
+
+@import url("../../tokens/index.css");
+
+.text-area {
+  box-sizing: border-box;
+  width: 452px;
+  min-height: 96px;
+  padding: 8px 12px;
+  border-radius: var(--radius-8);
+  background: var(--color-light-white);
+  border: 1px solid var(--color-light-border-1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  font-family: var(--font-source-han);
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--color-light-text-1);
+  resize: vertical;
+}
+.text-area::placeholder { color: var(--color-light-text-3); }
+
+/* Wrapper variant when using <div> + <textarea> for the counter row layout */
+.text-area-wrap {
+  box-sizing: border-box;
+  width: 452px;
+  min-height: 96px;
+  padding: 8px 12px;
+  border-radius: var(--radius-8);
+  background: var(--color-light-white);
+  border: 1px solid var(--color-light-border-1);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: var(--font-source-han);
+}
+.text-area-wrap > textarea {
+  flex: 1; min-height: 40px;
+  background: transparent; border: 0; outline: none;
+  font: 400 14px/21px var(--font-source-han);
+  color: var(--color-light-text-1);
+  resize: none;
+}
+.text-area-wrap > textarea::placeholder { color: var(--color-light-text-3); }
+.text-area-wrap__counter {
+  align-self: flex-end;
+  font-size: 12px;
+  line-height: 19px;
+  color: var(--color-light-text-3);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── 边框 axis ── */
+.text-area--border-2, .text-area-wrap.text-area--border-2 { border-color: var(--color-light-border-2); }
+
+/* ── 背景 axis ── */
+.text-area--bg-white,         .text-area-wrap.text-area--bg-white         { background: var(--color-light-white); }
+.text-area--bg-gray,          .text-area-wrap.text-area--bg-gray          { background: var(--color-light-bg-2); }
+.text-area--bg-dark-soft,     .text-area-wrap.text-area--bg-dark-soft     { background: rgba(255,255,255,0.08); }
+.text-area--bg-dark-strong,   .text-area-wrap.text-area--bg-dark-strong   { background: rgba(255,255,255,0.15); }
+.text-area--bg-transparent,   .text-area-wrap.text-area--bg-transparent   { background: transparent; }
+
+/* ── State axis ── */
+.text-area--error, .text-area-wrap.text-area--error,
+.text-area[data-state="error"], .text-area-wrap[data-state="error"] {
+  border-color: var(--color-light-selected-soft) !important;
+  border-width: 3px;
+  padding: 6px 10px;  /* compensate +2px border × 2 */
+}
+.text-area[readonly], .text-area-wrap[data-state="readonly"] { cursor: default; }

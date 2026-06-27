@@ -1,0 +1,15 @@
+/* Effect tokens — synced from Figma "不觉组件库" page "◉ 阴影模糊".
+   Shadows are only for floating layers (popups, hover tools, lifted
+   cards). Layout-region separation uses color tiers, not stacked
+   shadows. */
+
+:root {
+  /* Drop shadows */
+  --shadow-card-on-white: 0px 0px 12px 0px rgba(0, 0, 0, 0.06);
+  --shadow-card-on-gray:  0px 0px 12px 0px rgba(0, 0, 0, 0.04);
+  --shadow-popover:       0px 0px 12px 0px rgba(0, 0, 0, 0.08);
+
+  /* Background blurs (use as backdrop-filter) */
+  --blur-strong: blur(20px);   /* 浮层背景 / 弹窗模糊 */
+  --blur-nav:    blur(80px);   /* App 顶/底导航栏毛玻璃 */
+}

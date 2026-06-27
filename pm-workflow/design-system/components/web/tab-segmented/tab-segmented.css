@@ -1,0 +1,59 @@
+/* Tab/胶囊·分段容器 — Web Component Library (Figma 200:633).
+   54 variants: 底色(3) × 高度(3) × 圆角(2) × 选中位置(3).
+   底板：白底=bg-2、灰底=bg-4、黑底=dark-border。内边距 2px，3 个 tab 平铺。
+   选中通过 data-active="1|2|3" 属性切换。 */
+
+@import url("../../../tokens/index.css");
+
+.tab-segmented {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
+  border-radius: var(--radius-4);
+  box-sizing: border-box;
+  font-family: var(--font-source-han);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 19px;
+  user-select: none;
+}
+
+/* 底板色 */
+.tab-segmented--bg-white { background: var(--color-light-bg-2); }   /* #F5F5F5 */
+.tab-segmented--bg-gray  { background: var(--color-light-bg-4); }   /* #EDEDED */
+.tab-segmented--bg-black { background: rgba(255, 255, 255, 0.15); } /* on dark surface */
+
+/* 圆角 */
+.tab-segmented--r-4    { border-radius: var(--radius-4); }
+.tab-segmented--r-pill { border-radius: var(--radius-pill); }
+
+/* 高度 (outer ≈ height + 4px padding) */
+.tab-segmented--h-32 { height: 32px; }
+.tab-segmented--h-36 { height: 36px; }
+.tab-segmented--h-40 { height: 40px; }
+
+/* Inner tabs */
+.tab-segmented__tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  height: 100%;
+  border-radius: inherit;
+  cursor: pointer;
+  color: var(--color-light-text-1);
+  flex: 1;
+}
+.tab-segmented--bg-black .tab-segmented__tab { color: var(--color-light-white); }
+
+/* Active tab via data-active */
+.tab-segmented[data-active="1"] .tab-segmented__tab:nth-child(1),
+.tab-segmented[data-active="2"] .tab-segmented__tab:nth-child(2),
+.tab-segmented[data-active="3"] .tab-segmented__tab:nth-child(3) {
+  background: var(--color-light-white);
+}
+.tab-segmented--bg-black[data-active="1"] .tab-segmented__tab:nth-child(1),
+.tab-segmented--bg-black[data-active="2"] .tab-segmented__tab:nth-child(2),
+.tab-segmented--bg-black[data-active="3"] .tab-segmented__tab:nth-child(3) {
+  background: rgba(255, 255, 255, 0.15);
+}

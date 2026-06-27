@@ -1,0 +1,102 @@
+/* Button — Web Component Library (Figma 12:1442, file hxksE13w1AZQivOylmZ9gn).
+   1000 variants enumerated via 5 axes: Style(10) × Size(6) × State(4) × 图标(4) × 圆角(2).
+
+   ★ 本次 re-sample (2026-05-12)：每个 Style 的 Default 实测 + 关键 Hover 实测，
+     不再凭 token 命名推断。值都来自 MCP get_figma_data。
+
+   Ground-truthed via MCP (this session):
+     · Style/Default: Black 6:100, Black30 6:292, DarkL3 6:340, DarkL4 6:388,
+                      F5 6:436, Outline1 6:148, Outline2 6:196, Red 6:484,
+                      TextOnly 6:52, White 6:244
+     · Size/Default:  Black at XS 6:84, S 6:92, M 6:100, L 6:108, XL 6:116, XXL 6:124
+     · State:         Black M Hover 8:69, Black M Disabled 7:70,
+                      F5 M Hover 8:405, White M Hover 8:213
+   Hover for non-sampled Styles (Red/Outline1/Outline2/TextOnly/DarkL3/DarkL4):
+     pattern = "darken one step" (bg shifts to the next darker tier). */
+
+@import url("../../tokens/index.css");
+
+/* ── Base ───────────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  box-sizing: border-box;
+  border: 0 solid transparent;
+  border-radius: var(--radius-8);
+  font-family: var(--font-source-han);
+  font-weight: 400;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+.btn:focus-visible { outline: 2px solid var(--color-light-border-2); outline-offset: 2px; }
+
+/* ── Size axis (ground-truth heights / padding / font) ── */
+/* XS height assumed 20 from Figma sample (padding 0 8). Text size for XS/XXL
+   not separately sampled this run; XS uses 11px (web micro-ish), XXL uses 14px M baseline. */
+
+.btn--xs  { height: 20px; padding: 0 8px;  font-size: 11px; line-height: 16px; }
+.btn--s   { height: 28px; padding: 0 8px;  font-size: 12px; line-height: 19px; }
+.btn--m   { height: 32px; padding: 0 8px;  font-size: 14px; line-height: 21px; }
+.btn--l   { height: 40px; padding: 0 12px; font-size: 14px; line-height: 21px; }
+.btn--xl  { height: 48px; padding: 0 12px; font-size: 14px; line-height: 21px; }
+.btn--xxl { height: 56px; padding: 0 16px; font-size: 14px; line-height: 21px; }
+
+/* ── Radius axis (default keeps Size's radius; pill overrides to 100px) ── */
+.btn--radius-pill { border-radius: var(--radius-pill); }
+
+/* ── Icon position (asymmetric padding adjustment) ── */
+/* Sampled: Black M 图标=左 → padding 0 12px 0 8px. Side opposite the icon
+   gets enlarged padding. */
+.btn--icon-left  { padding-left: 8px;  padding-right: 12px; }
+.btn--icon-right { padding-left: 12px; padding-right: 8px;  }
+.btn--icon-both  { padding-left: 8px;  padding-right: 8px;  }
+.btn__icon { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+.btn__icon svg { width: 1em; height: 1em; display: block; }
+
+/* ── Style axis (10 ground-truthed Default colors) ── */
+
+.btn--black    { background: #333333; color: #FFFFFF; }
+.btn--black30  { background: rgba(0,0,0,0.30); color: #FFFFFF; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+.btn--darkl3   { background: #2A2A2A; color: #FFFFFF; }
+.btn--darkl4   { background: #454545; color: #FFFFFF; }
+.btn--f5       { background: #F5F5F5; color: #333333; }
+.btn--outline1 { background: transparent; color: #333333; border: 1px solid #EBEBEB; }
+.btn--outline2 { background: transparent; color: #333333; border: 1px solid #DBDBDB; }
+.btn--red      { background: #E60023; color: #FFFFFF; }
+.btn--textonly { background: transparent; color: #333333; }
+.btn--white    { background: #FFFFFF; color: #333333; }
+
+/* ── Hover deltas (ground-truth: Black, F5, White; pattern-inferred others) ── */
+
+.btn--black:hover,    .btn--black[data-state="hover"]    { background: #000000; }
+.btn--black30:hover,  .btn--black30[data-state="hover"]  { background: rgba(0,0,0,0.40); }
+.btn--darkl3:hover,   .btn--darkl3[data-state="hover"]   { background: #454545; }
+.btn--darkl4:hover,   .btn--darkl4[data-state="hover"]   { background: #545454; }
+.btn--f5:hover,       .btn--f5[data-state="hover"]       { background: #E2E2E2; }
+.btn--outline1:hover, .btn--outline1[data-state="hover"] { background: #FAFAFA; }
+.btn--outline2:hover, .btn--outline2[data-state="hover"] { background: #F5F5F5; }
+.btn--red:hover,      .btn--red[data-state="hover"]      { background: #B8001B; }
+.btn--textonly:hover, .btn--textonly[data-state="hover"] { background: #FAFAFA; }
+.btn--white:hover,    .btn--white[data-state="hover"]    { background: #F5F5F5; }
+
+/* ── Active (pressed) ──────────────────────────── */
+.btn:active:not([disabled]) { transform: translateY(0.5px); }
+.btn[data-state="active"] { transform: translateY(0.5px); }
+
+/* ── Disabled (uniform across all Styles — ground-truth from Black 7:70) ── */
+/* bg #CCCCCC + text #FFFFFF for all Style/Size combos. */
+.btn[disabled],
+.btn[data-state="disabled"] {
+  background: #CCCCCC !important;
+  color: #FFFFFF !important;
+  border-color: transparent !important;
+  cursor: not-allowed;
+  pointer-events: none;
+  backdrop-filter: none !important;
+}

@@ -1,0 +1,69 @@
+/* 列表项输入框 / List Input — Web Component Library (Figma 129:768).
+   8 variants: State(2) × 错误提示文字(2) × 内容(2).
+   Composition: optional label "备注" + Input Box (drag handle | text | delete handle) + optional error message.
+   Width: 452 column. Input Box: row, fill #F5F5F5, stroke #EBEBEB 1px, radius 8.
+   Drag/Delete areas: 28w, fill #FFF. */
+
+@import url("../../tokens/index.css");
+
+.list-input {
+  box-sizing: border-box;
+  width: 452px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: var(--font-source-han);
+}
+.list-input__label {
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--color-light-text-3);
+}
+.list-input__box {
+  display: flex;
+  align-items: stretch;
+  background: var(--color-light-bg-2);  /* #F5F5F5 */
+  border: 1px solid var(--color-light-border-1);  /* #EBEBEB */
+  border-radius: var(--radius-8);
+  overflow: hidden;
+  height: 40px;
+  box-sizing: border-box;
+}
+.list-input__handle {
+  flex: 0 0 28px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-light-white);
+  color: var(--color-light-text-3);
+  cursor: grab;
+}
+.list-input__handle--delete { cursor: pointer; }
+.list-input__handle svg { width: 20px; height: 20px; display: block; }
+.list-input__text {
+  flex: 1; min-width: 0;
+  height: 100%;
+  padding: 0 12px;
+  background: transparent;
+  border: 0; outline: none;
+  font: 350 14px/21px var(--font-source-han);
+  color: var(--color-light-text-1);
+}
+.list-input__text::placeholder { color: var(--color-light-text-3); }
+
+.list-input__error {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  line-height: 19px;
+  color: var(--color-light-error);
+}
+
+/* ── State axis ── */
+.list-input--error .list-input__box,
+.list-input[data-state="error"] .list-input__box {
+  border-color: var(--color-light-selected-soft);  /* #FDE6E9 */
+  border-width: 3px;
+}

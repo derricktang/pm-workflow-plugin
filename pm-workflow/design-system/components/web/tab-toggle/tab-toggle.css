@@ -1,0 +1,55 @@
+/* Tab/胶囊·Toggle — Web Component Library (Figma 199:686).
+   162 variants: 状态(3) × 底色(3) × 图标(3) × 高度(3) × 圆角(2).
+   字号 12/19 Normal (所有状态一致). Selected: 白/灰底用 #333 深选中；黑底用 #FFF25。 */
+
+@import url("../../../tokens/index.css");
+
+.tab-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0 12px;
+  border-radius: var(--radius-4);
+  font-family: var(--font-source-han);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 19px;
+  user-select: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  background: transparent;
+}
+.tab-toggle__icon { width: 14px; height: 14px; display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+
+/* 高度 */
+.tab-toggle--h-32 { height: 32px; }
+.tab-toggle--h-36 { height: 36px; }
+.tab-toggle--h-40 { height: 40px; }
+
+/* 圆角 */
+.tab-toggle--r-4    { border-radius: var(--radius-4); }
+.tab-toggle--r-pill { border-radius: var(--radius-pill); }
+
+/* 底色 axis — text color */
+.tab-toggle--bg-white { color: var(--color-light-text-1); }
+.tab-toggle--bg-gray  { color: var(--color-light-text-1); }
+.tab-toggle--bg-black { color: var(--color-light-white); }
+
+/* 状态 axis */
+/* Selected: bg becomes 深色（白/灰底用 #333），text becomes #FFF (white/gray bg) or stays #FFF (black bg) */
+.tab-toggle--selected.tab-toggle--bg-white,
+.tab-toggle--selected.tab-toggle--bg-gray {
+  background: var(--color-light-text-1);
+  color: var(--color-light-white);
+}
+.tab-toggle--selected.tab-toggle--bg-black {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Disabled */
+.tab-toggle--disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* 图标 axis: asymmetric padding */
+.tab-toggle--icon-left  { padding-left: 8px;  padding-right: 12px; }
+.tab-toggle--icon-right { padding-left: 12px; padding-right: 8px;  }

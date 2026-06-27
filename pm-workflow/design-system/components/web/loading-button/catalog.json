@@ -1,0 +1,1237 @@
+{
+  "schemaVersion": 2,
+  "kind": "component",
+  "name": "loading-button",
+  "displayName": "LoadingButton",
+  "category": "Base",
+  "type": "COMPONENT_SET",
+  "figmaFileKey": "hxksE13w1AZQivOylmZ9gn",
+  "figmaNodeId": "75:2950",
+  "figmaSourceUrl": "https://www.figma.com/file/hxksE13w1AZQivOylmZ9gn/?node-id=75-2950",
+  "files": {
+    "html": "components/web/loading-button/loading-button.html",
+    "css": "components/web/loading-button/loading-button.css",
+    "js": null,
+    "thumb": null,
+    "readme": "components/web/loading-button/README.md"
+  },
+  "axes": [
+    {
+      "name": "Style",
+      "values": [
+        "Black",
+        "Black30",
+        "DarkL3",
+        "DarkL4",
+        "F5",
+        "Outline1",
+        "Outline2",
+        "Red",
+        "TextOnly",
+        "White"
+      ],
+      "modifierPrefix": "loading-btn--"
+    },
+    {
+      "name": "Size",
+      "values": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "modifierPrefix": "loading-btn--",
+      "lowercaseClass": true
+    },
+    {
+      "name": "圆角",
+      "values": [
+        "默认",
+        "胶囊"
+      ],
+      "modifierPrefix": "loading-btn--radius-"
+    }
+  ],
+  "states": [
+    {
+      "selector": "[disabled]",
+      "trigger": "attribute",
+      "description": "Always rendered disabled — LoadingButton IS the loading state"
+    }
+  ],
+  "modifiers": [
+    {
+      "class": "loading-btn--black",
+      "axis": "Style",
+      "value": "Black"
+    },
+    {
+      "class": "loading-btn--black30",
+      "axis": "Style",
+      "value": "Black30"
+    },
+    {
+      "class": "loading-btn--darkl3",
+      "axis": "Style",
+      "value": "DarkL3"
+    },
+    {
+      "class": "loading-btn--darkl4",
+      "axis": "Style",
+      "value": "DarkL4"
+    },
+    {
+      "class": "loading-btn--f5",
+      "axis": "Style",
+      "value": "F5"
+    },
+    {
+      "class": "loading-btn--outline1",
+      "axis": "Style",
+      "value": "Outline1"
+    },
+    {
+      "class": "loading-btn--outline2",
+      "axis": "Style",
+      "value": "Outline2"
+    },
+    {
+      "class": "loading-btn--red",
+      "axis": "Style",
+      "value": "Red"
+    },
+    {
+      "class": "loading-btn--textonly",
+      "axis": "Style",
+      "value": "TextOnly"
+    },
+    {
+      "class": "loading-btn--white",
+      "axis": "Style",
+      "value": "White"
+    },
+    {
+      "class": "loading-btn--xs",
+      "axis": "Size",
+      "value": "XS"
+    },
+    {
+      "class": "loading-btn--s",
+      "axis": "Size",
+      "value": "S"
+    },
+    {
+      "class": "loading-btn--m",
+      "axis": "Size",
+      "value": "M"
+    },
+    {
+      "class": "loading-btn--l",
+      "axis": "Size",
+      "value": "L"
+    },
+    {
+      "class": "loading-btn--xl",
+      "axis": "Size",
+      "value": "XL"
+    },
+    {
+      "class": "loading-btn--xxl",
+      "axis": "Size",
+      "value": "XXL"
+    },
+    {
+      "class": "loading-btn--radius-pill",
+      "axis": "圆角",
+      "value": "胶囊"
+    }
+  ],
+  "slots": [
+    {
+      "name": "dots",
+      "selector": ".loading-btn__dots",
+      "description": "Two animated loading dots — provided by the snippet, no user content"
+    }
+  ],
+  "tokensReferenced": [
+    "--color-dark-bg-3",
+    "--color-dark-bg-4",
+    "--color-light-bg-2",
+    "--color-light-bg-3",
+    "--color-light-border-1",
+    "--color-light-border-2",
+    "--color-light-error",
+    "--color-light-text-1",
+    "--color-light-white",
+    "--radius-4",
+    "--radius-8",
+    "--radius-pill"
+  ],
+  "variantCount": 70,
+  "generatedAt": "2026-05-12T08:30:00Z",
+  "variants": [
+    {
+      "name": "black-xs",
+      "figmaNodeId": "74:2935",
+      "figmaVariantPath": "Style=Black, Size=XS, 圆角=默认",
+      "modifiers": [
+        "loading-btn--black",
+        "loading-btn--xs"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--black loading-btn--xs\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "black-xs-pill",
+      "figmaNodeId": "74:2938",
+      "figmaVariantPath": "Style=Black, Size=XS, 圆角=胶囊",
+      "modifiers": [
+        "loading-btn--black",
+        "loading-btn--xs",
+        "loading-btn--radius-pill"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--black loading-btn--xs loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "black-s",
+      "figmaNodeId": "74:2941",
+      "figmaVariantPath": "Style=Black, Size=S, 圆角=默认",
+      "modifiers": [
+        "loading-btn--black",
+        "loading-btn--s"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--black loading-btn--s\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "black-m",
+      "figmaNodeId": "74:2944",
+      "figmaVariantPath": "Style=Black, Size=M, 圆角=默认",
+      "modifiers": [
+        "loading-btn--black",
+        "loading-btn--m"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--black loading-btn--m\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "black-l",
+      "figmaNodeId": "74:2947",
+      "figmaVariantPath": "Style=Black, Size=L, 圆角=默认",
+      "modifiers": [
+        "loading-btn--black",
+        "loading-btn--l"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--black loading-btn--l\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "black-xl",
+      "figmaNodeId": "74:2950",
+      "figmaVariantPath": "Style=Black, Size=XL, 圆角=默认",
+      "modifiers": [
+        "loading-btn--black",
+        "loading-btn--xl"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--black loading-btn--xl\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "black-xxl",
+      "figmaNodeId": "74:2953",
+      "figmaVariantPath": "Style=Black, Size=XXL, 圆角=默认",
+      "modifiers": [
+        "loading-btn--black",
+        "loading-btn--xxl"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--black loading-btn--xxl\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "black30-xs",
+      "figmaNodeId": "74:3019",
+      "figmaVariantPath": "Style=Black30, Size=XS, 圆角=默认",
+      "modifiers": [
+        "loading-btn--black30",
+        "loading-btn--xs"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--black30 loading-btn--xs\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "black30-xs-pill",
+      "figmaNodeId": "74:3022",
+      "figmaVariantPath": "Style=Black30, Size=XS, 圆角=胶囊",
+      "modifiers": [
+        "loading-btn--black30",
+        "loading-btn--xs",
+        "loading-btn--radius-pill"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--black30 loading-btn--xs loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "black30-s",
+      "figmaNodeId": "74:3025",
+      "figmaVariantPath": "Style=Black30, Size=S, 圆角=默认",
+      "modifiers": [
+        "loading-btn--black30",
+        "loading-btn--s"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--black30 loading-btn--s\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "black30-m",
+      "figmaNodeId": "74:3028",
+      "figmaVariantPath": "Style=Black30, Size=M, 圆角=默认",
+      "modifiers": [
+        "loading-btn--black30",
+        "loading-btn--m"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--black30 loading-btn--m\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "black30-l",
+      "figmaNodeId": "74:3031",
+      "figmaVariantPath": "Style=Black30, Size=L, 圆角=默认",
+      "modifiers": [
+        "loading-btn--black30",
+        "loading-btn--l"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--black30 loading-btn--l\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "black30-xl",
+      "figmaNodeId": "74:3034",
+      "figmaVariantPath": "Style=Black30, Size=XL, 圆角=默认",
+      "modifiers": [
+        "loading-btn--black30",
+        "loading-btn--xl"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--black30 loading-btn--xl\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "black30-xxl",
+      "figmaNodeId": "74:3037",
+      "figmaVariantPath": "Style=Black30, Size=XXL, 圆角=默认",
+      "modifiers": [
+        "loading-btn--black30",
+        "loading-btn--xxl"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--black30 loading-btn--xxl\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "darkl3-xs",
+      "figmaNodeId": "74:3040",
+      "figmaVariantPath": "Style=DarkL3, Size=XS, 圆角=默认",
+      "modifiers": [
+        "loading-btn--darkl3",
+        "loading-btn--xs"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--darkl3 loading-btn--xs\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "darkl3-xs-pill",
+      "figmaNodeId": "74:3043",
+      "figmaVariantPath": "Style=DarkL3, Size=XS, 圆角=胶囊",
+      "modifiers": [
+        "loading-btn--darkl3",
+        "loading-btn--xs",
+        "loading-btn--radius-pill"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--darkl3 loading-btn--xs loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "darkl3-s",
+      "figmaNodeId": "74:3046",
+      "figmaVariantPath": "Style=DarkL3, Size=S, 圆角=默认",
+      "modifiers": [
+        "loading-btn--darkl3",
+        "loading-btn--s"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--darkl3 loading-btn--s\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "darkl3-m",
+      "figmaNodeId": "74:3049",
+      "figmaVariantPath": "Style=DarkL3, Size=M, 圆角=默认",
+      "modifiers": [
+        "loading-btn--darkl3",
+        "loading-btn--m"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--darkl3 loading-btn--m\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "darkl3-l",
+      "figmaNodeId": "74:3052",
+      "figmaVariantPath": "Style=DarkL3, Size=L, 圆角=默认",
+      "modifiers": [
+        "loading-btn--darkl3",
+        "loading-btn--l"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--darkl3 loading-btn--l\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "darkl3-xl",
+      "figmaNodeId": "74:3055",
+      "figmaVariantPath": "Style=DarkL3, Size=XL, 圆角=默认",
+      "modifiers": [
+        "loading-btn--darkl3",
+        "loading-btn--xl"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--darkl3 loading-btn--xl\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "darkl3-xxl",
+      "figmaNodeId": "74:3058",
+      "figmaVariantPath": "Style=DarkL3, Size=XXL, 圆角=默认",
+      "modifiers": [
+        "loading-btn--darkl3",
+        "loading-btn--xxl"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--darkl3 loading-btn--xxl\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "darkl4-xs",
+      "figmaNodeId": "74:3061",
+      "figmaVariantPath": "Style=DarkL4, Size=XS, 圆角=默认",
+      "modifiers": [
+        "loading-btn--darkl4",
+        "loading-btn--xs"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--darkl4 loading-btn--xs\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "darkl4-xs-pill",
+      "figmaNodeId": "74:3064",
+      "figmaVariantPath": "Style=DarkL4, Size=XS, 圆角=胶囊",
+      "modifiers": [
+        "loading-btn--darkl4",
+        "loading-btn--xs",
+        "loading-btn--radius-pill"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--darkl4 loading-btn--xs loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "darkl4-s",
+      "figmaNodeId": "74:3067",
+      "figmaVariantPath": "Style=DarkL4, Size=S, 圆角=默认",
+      "modifiers": [
+        "loading-btn--darkl4",
+        "loading-btn--s"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--darkl4 loading-btn--s\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "darkl4-m",
+      "figmaNodeId": "74:3070",
+      "figmaVariantPath": "Style=DarkL4, Size=M, 圆角=默认",
+      "modifiers": [
+        "loading-btn--darkl4",
+        "loading-btn--m"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--darkl4 loading-btn--m\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "darkl4-l",
+      "figmaNodeId": "74:3073",
+      "figmaVariantPath": "Style=DarkL4, Size=L, 圆角=默认",
+      "modifiers": [
+        "loading-btn--darkl4",
+        "loading-btn--l"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--darkl4 loading-btn--l\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "darkl4-xl",
+      "figmaNodeId": "74:3076",
+      "figmaVariantPath": "Style=DarkL4, Size=XL, 圆角=默认",
+      "modifiers": [
+        "loading-btn--darkl4",
+        "loading-btn--xl"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--darkl4 loading-btn--xl\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "darkl4-xxl",
+      "figmaNodeId": "74:3079",
+      "figmaVariantPath": "Style=DarkL4, Size=XXL, 圆角=默认",
+      "modifiers": [
+        "loading-btn--darkl4",
+        "loading-btn--xxl"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--darkl4 loading-btn--xxl\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "f5-xs",
+      "figmaNodeId": "74:3082",
+      "figmaVariantPath": "Style=F5, Size=XS, 圆角=默认",
+      "modifiers": [
+        "loading-btn--f5",
+        "loading-btn--xs"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--f5 loading-btn--xs\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "f5-xs-pill",
+      "figmaNodeId": "74:3085",
+      "figmaVariantPath": "Style=F5, Size=XS, 圆角=胶囊",
+      "modifiers": [
+        "loading-btn--f5",
+        "loading-btn--xs",
+        "loading-btn--radius-pill"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--f5 loading-btn--xs loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "f5-s",
+      "figmaNodeId": "74:3088",
+      "figmaVariantPath": "Style=F5, Size=S, 圆角=默认",
+      "modifiers": [
+        "loading-btn--f5",
+        "loading-btn--s"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--f5 loading-btn--s\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "f5-m",
+      "figmaNodeId": "74:3091",
+      "figmaVariantPath": "Style=F5, Size=M, 圆角=默认",
+      "modifiers": [
+        "loading-btn--f5",
+        "loading-btn--m"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--f5 loading-btn--m\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "f5-l",
+      "figmaNodeId": "74:3094",
+      "figmaVariantPath": "Style=F5, Size=L, 圆角=默认",
+      "modifiers": [
+        "loading-btn--f5",
+        "loading-btn--l"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--f5 loading-btn--l\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "f5-xl",
+      "figmaNodeId": "74:3097",
+      "figmaVariantPath": "Style=F5, Size=XL, 圆角=默认",
+      "modifiers": [
+        "loading-btn--f5",
+        "loading-btn--xl"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--f5 loading-btn--xl\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "f5-xxl",
+      "figmaNodeId": "74:3100",
+      "figmaVariantPath": "Style=F5, Size=XXL, 圆角=默认",
+      "modifiers": [
+        "loading-btn--f5",
+        "loading-btn--xxl"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--f5 loading-btn--xxl\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outline1-xs",
+      "figmaNodeId": "74:2956",
+      "figmaVariantPath": "Style=Outline1, Size=XS, 圆角=默认",
+      "modifiers": [
+        "loading-btn--outline1",
+        "loading-btn--xs"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--outline1 loading-btn--xs\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outline1-xs-pill",
+      "figmaNodeId": "74:2959",
+      "figmaVariantPath": "Style=Outline1, Size=XS, 圆角=胶囊",
+      "modifiers": [
+        "loading-btn--outline1",
+        "loading-btn--xs",
+        "loading-btn--radius-pill"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--outline1 loading-btn--xs loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outline1-s",
+      "figmaNodeId": "74:2962",
+      "figmaVariantPath": "Style=Outline1, Size=S, 圆角=默认",
+      "modifiers": [
+        "loading-btn--outline1",
+        "loading-btn--s"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--outline1 loading-btn--s\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outline1-m",
+      "figmaNodeId": "74:2965",
+      "figmaVariantPath": "Style=Outline1, Size=M, 圆角=默认",
+      "modifiers": [
+        "loading-btn--outline1",
+        "loading-btn--m"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--outline1 loading-btn--m\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outline1-l",
+      "figmaNodeId": "74:2968",
+      "figmaVariantPath": "Style=Outline1, Size=L, 圆角=默认",
+      "modifiers": [
+        "loading-btn--outline1",
+        "loading-btn--l"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--outline1 loading-btn--l\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outline1-xl",
+      "figmaNodeId": "74:2971",
+      "figmaVariantPath": "Style=Outline1, Size=XL, 圆角=默认",
+      "modifiers": [
+        "loading-btn--outline1",
+        "loading-btn--xl"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--outline1 loading-btn--xl\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outline1-xxl",
+      "figmaNodeId": "74:2974",
+      "figmaVariantPath": "Style=Outline1, Size=XXL, 圆角=默认",
+      "modifiers": [
+        "loading-btn--outline1",
+        "loading-btn--xxl"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--outline1 loading-btn--xxl\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outline2-xs",
+      "figmaNodeId": "74:2977",
+      "figmaVariantPath": "Style=Outline2, Size=XS, 圆角=默认",
+      "modifiers": [
+        "loading-btn--outline2",
+        "loading-btn--xs"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--outline2 loading-btn--xs\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outline2-xs-pill",
+      "figmaNodeId": "74:2980",
+      "figmaVariantPath": "Style=Outline2, Size=XS, 圆角=胶囊",
+      "modifiers": [
+        "loading-btn--outline2",
+        "loading-btn--xs",
+        "loading-btn--radius-pill"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--outline2 loading-btn--xs loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outline2-s",
+      "figmaNodeId": "74:2983",
+      "figmaVariantPath": "Style=Outline2, Size=S, 圆角=默认",
+      "modifiers": [
+        "loading-btn--outline2",
+        "loading-btn--s"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--outline2 loading-btn--s\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outline2-m",
+      "figmaNodeId": "74:2986",
+      "figmaVariantPath": "Style=Outline2, Size=M, 圆角=默认",
+      "modifiers": [
+        "loading-btn--outline2",
+        "loading-btn--m"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--outline2 loading-btn--m\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outline2-l",
+      "figmaNodeId": "74:2989",
+      "figmaVariantPath": "Style=Outline2, Size=L, 圆角=默认",
+      "modifiers": [
+        "loading-btn--outline2",
+        "loading-btn--l"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--outline2 loading-btn--l\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outline2-xl",
+      "figmaNodeId": "74:2992",
+      "figmaVariantPath": "Style=Outline2, Size=XL, 圆角=默认",
+      "modifiers": [
+        "loading-btn--outline2",
+        "loading-btn--xl"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--outline2 loading-btn--xl\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outline2-xxl",
+      "figmaNodeId": "74:2995",
+      "figmaVariantPath": "Style=Outline2, Size=XXL, 圆角=默认",
+      "modifiers": [
+        "loading-btn--outline2",
+        "loading-btn--xxl"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--outline2 loading-btn--xxl\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "red-xs",
+      "figmaNodeId": "74:3103",
+      "figmaVariantPath": "Style=Red, Size=XS, 圆角=默认",
+      "modifiers": [
+        "loading-btn--red",
+        "loading-btn--xs"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--red loading-btn--xs\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "red-xs-pill",
+      "figmaNodeId": "74:3106",
+      "figmaVariantPath": "Style=Red, Size=XS, 圆角=胶囊",
+      "modifiers": [
+        "loading-btn--red",
+        "loading-btn--xs",
+        "loading-btn--radius-pill"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--red loading-btn--xs loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "red-s",
+      "figmaNodeId": "74:3109",
+      "figmaVariantPath": "Style=Red, Size=S, 圆角=默认",
+      "modifiers": [
+        "loading-btn--red",
+        "loading-btn--s"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--red loading-btn--s\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "red-m",
+      "figmaNodeId": "74:3112",
+      "figmaVariantPath": "Style=Red, Size=M, 圆角=默认",
+      "modifiers": [
+        "loading-btn--red",
+        "loading-btn--m"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--red loading-btn--m\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "red-l",
+      "figmaNodeId": "74:3115",
+      "figmaVariantPath": "Style=Red, Size=L, 圆角=默认",
+      "modifiers": [
+        "loading-btn--red",
+        "loading-btn--l"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--red loading-btn--l\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "red-xl",
+      "figmaNodeId": "74:3118",
+      "figmaVariantPath": "Style=Red, Size=XL, 圆角=默认",
+      "modifiers": [
+        "loading-btn--red",
+        "loading-btn--xl"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--red loading-btn--xl\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "red-xxl",
+      "figmaNodeId": "74:3121",
+      "figmaVariantPath": "Style=Red, Size=XXL, 圆角=默认",
+      "modifiers": [
+        "loading-btn--red",
+        "loading-btn--xxl"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--red loading-btn--xxl\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "textonly-xs",
+      "figmaNodeId": "74:2914",
+      "figmaVariantPath": "Style=TextOnly, Size=XS, 圆角=默认",
+      "modifiers": [
+        "loading-btn--textonly",
+        "loading-btn--xs"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--textonly loading-btn--xs\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "textonly-xs-pill",
+      "figmaNodeId": "74:2917",
+      "figmaVariantPath": "Style=TextOnly, Size=XS, 圆角=胶囊",
+      "modifiers": [
+        "loading-btn--textonly",
+        "loading-btn--xs",
+        "loading-btn--radius-pill"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--textonly loading-btn--xs loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "textonly-s",
+      "figmaNodeId": "74:2920",
+      "figmaVariantPath": "Style=TextOnly, Size=S, 圆角=默认",
+      "modifiers": [
+        "loading-btn--textonly",
+        "loading-btn--s"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--textonly loading-btn--s\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "textonly-m",
+      "figmaNodeId": "74:2923",
+      "figmaVariantPath": "Style=TextOnly, Size=M, 圆角=默认",
+      "modifiers": [
+        "loading-btn--textonly",
+        "loading-btn--m"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--textonly loading-btn--m\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "textonly-l",
+      "figmaNodeId": "74:2926",
+      "figmaVariantPath": "Style=TextOnly, Size=L, 圆角=默认",
+      "modifiers": [
+        "loading-btn--textonly",
+        "loading-btn--l"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--textonly loading-btn--l\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "textonly-xl",
+      "figmaNodeId": "74:2929",
+      "figmaVariantPath": "Style=TextOnly, Size=XL, 圆角=默认",
+      "modifiers": [
+        "loading-btn--textonly",
+        "loading-btn--xl"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--textonly loading-btn--xl\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "textonly-xxl",
+      "figmaNodeId": "74:2932",
+      "figmaVariantPath": "Style=TextOnly, Size=XXL, 圆角=默认",
+      "modifiers": [
+        "loading-btn--textonly",
+        "loading-btn--xxl"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--textonly loading-btn--xxl\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "white-xs",
+      "figmaNodeId": "74:2998",
+      "figmaVariantPath": "Style=White, Size=XS, 圆角=默认",
+      "modifiers": [
+        "loading-btn--white",
+        "loading-btn--xs"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--white loading-btn--xs\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "white-xs-pill",
+      "figmaNodeId": "74:3001",
+      "figmaVariantPath": "Style=White, Size=XS, 圆角=胶囊",
+      "modifiers": [
+        "loading-btn--white",
+        "loading-btn--xs",
+        "loading-btn--radius-pill"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--white loading-btn--xs loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "white-s",
+      "figmaNodeId": "74:3004",
+      "figmaVariantPath": "Style=White, Size=S, 圆角=默认",
+      "modifiers": [
+        "loading-btn--white",
+        "loading-btn--s"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--white loading-btn--s\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "white-m",
+      "figmaNodeId": "74:3007",
+      "figmaVariantPath": "Style=White, Size=M, 圆角=默认",
+      "modifiers": [
+        "loading-btn--white",
+        "loading-btn--m"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--white loading-btn--m\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "white-l",
+      "figmaNodeId": "74:3010",
+      "figmaVariantPath": "Style=White, Size=L, 圆角=默认",
+      "modifiers": [
+        "loading-btn--white",
+        "loading-btn--l"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--white loading-btn--l\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "white-xl",
+      "figmaNodeId": "74:3013",
+      "figmaVariantPath": "Style=White, Size=XL, 圆角=默认",
+      "modifiers": [
+        "loading-btn--white",
+        "loading-btn--xl"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--white loading-btn--xl\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "white-xxl",
+      "figmaNodeId": "74:3016",
+      "figmaVariantPath": "Style=White, Size=XXL, 圆角=默认",
+      "modifiers": [
+        "loading-btn--white",
+        "loading-btn--xxl"
+      ],
+      "state": "loading",
+      "attrs": {
+        "disabled": true,
+        "data-state": null
+      },
+      "exampleHtml": "<button class=\"loading-btn loading-btn--white loading-btn--xxl\" disabled aria-label=\"Loading\"><span class=\"loading-btn__dots\" aria-hidden=\"true\"><span class=\"loading-btn__dot\"></span><span class=\"loading-btn__dot\"></span></span></button>"
+    }
+  ],
+  "platform": "web"
+}

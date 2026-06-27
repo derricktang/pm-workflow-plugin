@@ -1,0 +1,49 @@
+/* App IconButton — Figma 32xWNWcyKwBl6ElXLG5oFs · 95:1048
+   96 variants: Style(6) × Size(4) × State(2) × 圆角(2)
+   Square button containing only an icon (no text).
+   Sample: M=28×28 radius 4 (94:899), M=28×28 radius 100 (94:903), XL=40×40 radius 100 (94:935).
+*/
+
+@import url("../../../tokens/index.css");
+
+.app-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: 0 solid transparent;
+  border-radius: var(--radius-4);
+  background: transparent;
+  cursor: pointer;
+  user-select: none;
+  padding: 0;
+  color: var(--color-light-text-1);
+}
+.app-icon-btn:focus-visible { outline: 2px solid var(--color-light-border-2); outline-offset: 2px; }
+.app-icon-btn__icon { display: inline-flex; align-items: center; justify-content: center; }
+.app-icon-btn__icon svg { width: 1em; height: 1em; display: block; }
+
+/* Size — square (width = height) */
+.app-icon-btn--s  { width: 24px; height: 24px; font-size: 16px; }
+.app-icon-btn--m  { width: 28px; height: 28px; font-size: 18px; }
+.app-icon-btn--l  { width: 36px; height: 36px; font-size: 20px; }
+.app-icon-btn--xl { width: 40px; height: 40px; font-size: 24px; }
+
+.app-icon-btn--radius-pill { border-radius: var(--radius-pill); }
+
+/* Style (same 6 as Button) */
+.app-icon-btn--textonly      { background: transparent; color: var(--color-light-text-1); }
+.app-icon-btn--soliddark     { background: var(--color-light-text-1); color: var(--color-light-white); }
+.app-icon-btn--outline       { background: transparent; color: var(--color-light-text-1); border: 1px solid var(--color-light-border-1); }
+.app-icon-btn--solidlight    { background: var(--color-light-white); color: var(--color-light-text-1); }
+.app-icon-btn--solidsoft     { background: var(--color-light-bg-2); color: var(--color-light-text-1); }
+.app-icon-btn--outlinestrong { background: transparent; color: var(--color-light-text-1); border: 1px solid var(--color-light-border-2); }
+
+/* Disabled (uniform) */
+.app-icon-btn--disabled,
+.app-icon-btn[disabled] {
+  background: var(--color-light-disabled) !important;
+  color: var(--color-light-white) !important;
+  border-color: transparent !important;
+  cursor: not-allowed; pointer-events: none;
+}

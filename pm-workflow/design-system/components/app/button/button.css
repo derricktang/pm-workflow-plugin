@@ -1,0 +1,80 @@
+/* App Button — Figma 32xWNWcyKwBl6ElXLG5oFs · 19:630
+   384 variants: Style(6) × Size(4) × State(2) × 图标(4) × 圆角(2)
+
+   App vs Web 关键差异:
+   - 6 Styles (无 Black30/DarkL3/DarkL4/Red 等)
+   - 4 Sizes S/M/L/XL (无 XS/XXL)
+   - 2 States Default/Disabled (无 Hover/Active — App 是触屏)
+   - 高度更紧凑: M=28 (Web M=32), XL=40 (Web XL=48)
+
+   Style 色板 ground-truth (LoadingButton 48 variants inline 一次查清):
+     TextOnly       transparent · text #333
+     SolidDark      bg #333    · text #FFF
+     Outline        transparent · border #EBEBEB · text #333
+     SolidLight     bg #FFF    · text #333
+     SolidSoft      bg #F5F5F5 · text #333
+     OutlineStrong  transparent · border #DBDBDB · text #333
+*/
+
+@import url("../../../tokens/index.css");
+
+/* ── Base ── */
+.app-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  box-sizing: border-box;
+  border: 0 solid transparent;
+  border-radius: var(--radius-4);
+  font-family: var(--font-source-han);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  background: transparent;
+  color: var(--color-light-text-1);
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+.app-btn:focus-visible { outline: 2px solid var(--color-light-border-2); outline-offset: 2px; }
+
+/* ── Size axis (ground-truth from LoadingButton sample) ── */
+.app-btn--s  { height: 24px; padding: 0 8px;  font-size: 12px; line-height: 19px; }
+.app-btn--m  { height: 28px; padding: 0 8px;  font-size: 14px; line-height: 21px; }
+.app-btn--l  { height: 36px; padding: 0 8px;  font-size: 14px; line-height: 21px; }
+.app-btn--xl { height: 40px; padding: 0 24px; font-size: 16px; line-height: 24px; }
+
+/* ── Radius (default per size; pill overrides) ── */
+.app-btn--radius-pill { border-radius: var(--radius-pill); }
+/* pill version of XL has extra horizontal padding */
+.app-btn--xl.app-btn--radius-pill { padding: 0 28px; }
+
+/* ── Icon position (asymmetric padding) ── */
+.app-btn--icon-left  { padding-left: 8px;  padding-right: 12px; }
+.app-btn--icon-right { padding-left: 12px; padding-right: 8px;  }
+.app-btn--icon-both  { padding-left: 8px;  padding-right: 8px;  }
+.app-btn--xl.app-btn--icon-left  { padding-left: 28px; padding-right: 32px; }
+.app-btn--xl.app-btn--icon-right { padding-left: 32px; padding-right: 28px; }
+.app-btn__icon { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+.app-btn__icon svg { width: 1em; height: 1em; display: block; }
+
+/* ── Style axis (6) — ground-truth ── */
+.app-btn--textonly      { background: transparent; color: var(--color-light-text-1); }
+.app-btn--soliddark     { background: var(--color-light-text-1); color: var(--color-light-white); }
+.app-btn--outline       { background: transparent; color: var(--color-light-text-1); border: 1px solid var(--color-light-border-1); }
+.app-btn--solidlight    { background: var(--color-light-white); color: var(--color-light-text-1); }
+.app-btn--solidsoft     { background: var(--color-light-bg-2); color: var(--color-light-text-1); }
+.app-btn--outlinestrong { background: transparent; color: var(--color-light-text-1); border: 1px solid var(--color-light-border-2); }
+
+/* ── Disabled state (uniform: bg #CCC + text #FFF, ground-truth 19:144) ── */
+.app-btn--disabled,
+.app-btn[disabled] {
+  background: var(--color-light-disabled) !important;
+  color: var(--color-light-white) !important;
+  border-color: transparent !important;
+  cursor: not-allowed;
+  pointer-events: none;
+}

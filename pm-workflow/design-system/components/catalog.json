@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 4,
+  "kind": "components-index",
+  "lastSyncedAt": "2026-05-12T14:00:00Z",
+  "sources": {
+    "B1KFmcQrMgQiqKsyppory3": {
+      "fileName": "不觉组件库",
+      "role": "tokens"
+    },
+    "hxksE13w1AZQivOylmZ9gn": {
+      "fileName": "不觉 Web 组件",
+      "role": "components-web"
+    },
+    "32xWNWcyKwBl6ElXLG5oFs": {
+      "fileName": "不觉 App 组件",
+      "role": "components-app"
+    }
+  },
+  "note": "Top-level component index — splits by consumption platform. Tokens (tokens/catalog.json) and icons (icons/catalog.json) stay shared across all platforms; components/ is the only family that splits per-platform. Read this file first, then descend into the platform sub-index.",
+  "platforms": {
+    "web": {
+      "catalog": "components/web/catalog.json",
+      "figmaFile": "hxksE13w1AZQivOylmZ9gn",
+      "figmaFileName": "不觉 Web 组件",
+      "note": "Web 端组件库 — 桌面 / 浏览器场景"
+    },
+    "app": {
+      "catalog": "components/app/catalog.json",
+      "figmaFile": "32xWNWcyKwBl6ElXLG5oFs",
+      "figmaFileName": "不觉 App 组件",
+      "note": "App 端组件库（移动 / Pad 触控场景） — Button family 已落"
+    }
+  }
+}

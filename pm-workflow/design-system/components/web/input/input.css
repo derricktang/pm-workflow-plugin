@@ -1,0 +1,96 @@
+/* Input — Web Component Library (Figma 87:642).
+   240 variants: State(3) × 图标(4) × 边框(2) × 背景(5) × 内容(2).
+   Single size: 240×40, padding 0 12, radius 8.
+
+   Re-sample 2026-05-12: ground-truthed each 背景/边框 axis via MCP.
+     · 82:5  bg=white     → #FFFFFF + stroke #EBEBEB 1px
+     · 82:17 bg=暗底浅    → rgba(255,255,255,0.08)
+     · 82:21 bg=暗底重    → rgba(255,255,255,0.15)
+     · 82:13 bg=灰底      → #F5F5F5
+     · 82:9  bg=透明      → transparent
+     · 82:25 边框=2级     → stroke #DBDBDB 1px
+     · 85:324 State=Error → stroke #FDE6E9 3px (soft red, NOT solid)
+     · 86:484 State=Readonly → visually same as Default (cursor only changes) */
+
+@import url("../../tokens/index.css");
+
+.input {
+  box-sizing: border-box;
+  width: 240px;
+  height: 40px;
+  padding: 0 12px;
+  border-radius: var(--radius-8);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--color-light-white);
+  border: 1px solid var(--color-light-border-1);
+  font-family: var(--font-source-han);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--color-light-text-1);
+  cursor: text;
+  transition: border-color 120ms ease, background-color 120ms ease;
+}
+.input::placeholder { color: var(--color-light-text-3); }
+.input__icon { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; color: var(--color-light-text-3); }
+.input__icon svg { width: 16px; height: 16px; display: block; }
+
+/* When wrapping <input> in a row container (icon + native input) */
+.input-row {
+  box-sizing: border-box;
+  width: 240px;
+  height: 40px;
+  padding: 0 12px;
+  border-radius: var(--radius-8);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--color-light-white);
+  border: 1px solid var(--color-light-border-1);
+  font-family: var(--font-source-han);
+}
+.input-row > input {
+  flex: 1; min-width: 0;
+  background: transparent; border: 0; outline: none;
+  font: inherit; color: var(--color-light-text-1);
+}
+.input-row > input::placeholder { color: var(--color-light-text-3); }
+
+/* ── 边框 axis (1级 default; 2级 stronger) ── */
+.input--border-2, .input-row.input--border-2 { border-color: var(--color-light-border-2); }
+
+/* ── 背景 axis ── */
+.input--bg-white,    .input-row.input--bg-white    { background: var(--color-light-white); }
+.input--bg-gray,     .input-row.input--bg-gray     { background: var(--color-light-bg-2); }
+.input--bg-dark-soft,.input-row.input--bg-dark-soft{ background: rgba(255,255,255,0.08); }
+.input--bg-dark-strong,.input-row.input--bg-dark-strong{ background: rgba(255,255,255,0.15); }
+.input--bg-transparent,.input-row.input--bg-transparent{ background: transparent; }
+
+/* ── 图标 axis (asymmetric padding when icon present) ── */
+.input--icon-left,  .input-row.input--icon-left  { padding-left: 8px;  padding-right: 12px; }
+.input--icon-right, .input-row.input--icon-right { padding-left: 12px; padding-right: 8px;  }
+.input--icon-both,  .input-row.input--icon-both  { padding-left: 8px;  padding-right: 8px;  }
+
+/* ── State axis ── */
+/* Default: covered by base. */
+
+/* Error: soft red 3px stroke + RED TEXT.
+   Figma deliberately uses light red border (#FDE6E9 3px) for the "soft
+   error" stroke; the text content turns #E60023. Sampled 85:324. */
+.input--error, .input-row.input--error,
+.input[data-state="error"], .input-row[data-state="error"] {
+  border-color: var(--color-light-selected-soft) !important;  /* #FDE6E9 */
+  border-width: 3px;
+  color: var(--color-light-error);  /* text turns red */
+  padding-top: 0; padding-bottom: 0;
+  height: 40px;
+}
+.input-row.input--error > input,
+.input-row[data-state="error"] > input { color: var(--color-light-error); }
+.input-row.input--error > input::placeholder,
+.input-row[data-state="error"] > input::placeholder { color: var(--color-light-error); opacity: 0.6; }
+
+/* Readonly: visually identical to Default; semantics via [readonly] attribute */
+.input[readonly], .input-row[data-state="readonly"] { cursor: default; }

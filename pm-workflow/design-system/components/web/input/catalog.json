@@ -1,0 +1,3838 @@
+{
+  "schemaVersion": 2,
+  "kind": "component",
+  "name": "input",
+  "displayName": "Input",
+  "category": "Base",
+  "type": "COMPONENT_SET",
+  "figmaFileKey": "hxksE13w1AZQivOylmZ9gn",
+  "figmaNodeId": "87:642",
+  "figmaSourceUrl": "https://www.figma.com/file/hxksE13w1AZQivOylmZ9gn/?node-id=87-642",
+  "files": {
+    "html": null,
+    "css": "components/web/input/input.css",
+    "js": null,
+    "thumb": null,
+    "readme": "components/web/input/README.md"
+  },
+  "axes": [
+    {
+      "name": "State",
+      "values": [
+        "Default",
+        "Error",
+        "Readonly"
+      ]
+    },
+    {
+      "name": "图标",
+      "values": [
+        "无",
+        "左",
+        "右",
+        "双"
+      ]
+    },
+    {
+      "name": "边框",
+      "values": [
+        "1级",
+        "2级"
+      ]
+    },
+    {
+      "name": "背景",
+      "values": [
+        "white",
+        "灰底",
+        "暗底浅",
+        "暗底重",
+        "透明"
+      ]
+    },
+    {
+      "name": "内容",
+      "values": [
+        "空",
+        "已填"
+      ]
+    }
+  ],
+  "states": [
+    {
+      "selector": "[data-state=\"error\"], .input--error",
+      "description": "Soft red 3px stroke (浅红 #FDE6E9, NOT solid #E60023)"
+    },
+    {
+      "selector": "[readonly], [data-state=\"readonly\"]",
+      "description": "Visually same as Default, cursor changes only"
+    }
+  ],
+  "modifiers": [
+    {
+      "class": "input--bg-white",
+      "axis": "背景",
+      "value": "white"
+    },
+    {
+      "class": "input--bg-gray",
+      "axis": "背景",
+      "value": "灰底"
+    },
+    {
+      "class": "input--bg-dark-soft",
+      "axis": "背景",
+      "value": "暗底浅"
+    },
+    {
+      "class": "input--bg-dark-strong",
+      "axis": "背景",
+      "value": "暗底重"
+    },
+    {
+      "class": "input--bg-transparent",
+      "axis": "背景",
+      "value": "透明"
+    },
+    {
+      "class": "input--border-2",
+      "axis": "边框",
+      "value": "2级"
+    },
+    {
+      "class": "input--icon-left",
+      "axis": "图标",
+      "value": "左"
+    },
+    {
+      "class": "input--icon-right",
+      "axis": "图标",
+      "value": "右"
+    },
+    {
+      "class": "input--icon-both",
+      "axis": "图标",
+      "value": "双"
+    },
+    {
+      "class": "input--error",
+      "axis": "State",
+      "value": "Error"
+    }
+  ],
+  "slots": [
+    {
+      "name": "value",
+      "selector": null,
+      "description": "Input value/placeholder text"
+    }
+  ],
+  "tokensReferenced": [
+    "--color-light-white",
+    "--color-light-bg-2",
+    "--color-light-border-1",
+    "--color-light-border-2",
+    "--color-light-text-1",
+    "--color-light-text-3",
+    "--color-light-selected-soft",
+    "--radius-8",
+    "--font-source-han"
+  ],
+  "variantCount": 240,
+  "variants": [
+    {
+      "name": "border-2",
+      "figmaNodeId": "82:25",
+      "figmaVariantPath": "State=Default, 图标=无, 边框=2级, 背景=white, 内容=空",
+      "modifiers": [
+        "input",
+        "input--border-2"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--border-2\" placeholder=\"请输入...\">"
+    },
+    {
+      "name": "border-2-dark-soft",
+      "figmaNodeId": "82:37",
+      "figmaVariantPath": "State=Default, 图标=无, 边框=2级, 背景=暗底浅, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--border-2"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-dark-soft input--border-2\" placeholder=\"请输入...\">"
+    },
+    {
+      "name": "border-2-dark-soft-filled",
+      "figmaNodeId": "82:39",
+      "figmaVariantPath": "State=Default, 图标=无, 边框=2级, 背景=暗底浅, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--border-2"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-dark-soft input--border-2\" placeholder=\"\" value=\"输入内容\">"
+    },
+    {
+      "name": "border-2-dark-strong",
+      "figmaNodeId": "82:41",
+      "figmaVariantPath": "State=Default, 图标=无, 边框=2级, 背景=暗底重, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--border-2"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-dark-strong input--border-2\" placeholder=\"请输入...\">"
+    },
+    {
+      "name": "border-2-dark-strong-filled",
+      "figmaNodeId": "82:43",
+      "figmaVariantPath": "State=Default, 图标=无, 边框=2级, 背景=暗底重, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--border-2"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-dark-strong input--border-2\" placeholder=\"\" value=\"输入内容\">"
+    },
+    {
+      "name": "border-2-filled",
+      "figmaNodeId": "82:27",
+      "figmaVariantPath": "State=Default, 图标=无, 边框=2级, 背景=white, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--border-2"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--border-2\" placeholder=\"\" value=\"输入内容\">"
+    },
+    {
+      "name": "border-2-gray",
+      "figmaNodeId": "82:33",
+      "figmaVariantPath": "State=Default, 图标=无, 边框=2级, 背景=灰底, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--border-2"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-gray input--border-2\" placeholder=\"请输入...\">"
+    },
+    {
+      "name": "border-2-gray-filled",
+      "figmaNodeId": "82:35",
+      "figmaVariantPath": "State=Default, 图标=无, 边框=2级, 背景=灰底, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--border-2"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-gray input--border-2\" placeholder=\"\" value=\"输入内容\">"
+    },
+    {
+      "name": "border-2-transparent",
+      "figmaNodeId": "82:29",
+      "figmaVariantPath": "State=Default, 图标=无, 边框=2级, 背景=透明, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--border-2"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-transparent input--border-2\" placeholder=\"请输入...\">"
+    },
+    {
+      "name": "border-2-transparent-filled",
+      "figmaNodeId": "82:31",
+      "figmaVariantPath": "State=Default, 图标=无, 边框=2级, 背景=透明, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--border-2"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-transparent input--border-2\" placeholder=\"\" value=\"输入内容\">"
+    },
+    {
+      "name": "dark-soft",
+      "figmaNodeId": "82:17",
+      "figmaVariantPath": "State=Default, 图标=无, 边框=1级, 背景=暗底浅, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-dark-soft\" placeholder=\"请输入...\">"
+    },
+    {
+      "name": "dark-soft-filled",
+      "figmaNodeId": "82:19",
+      "figmaVariantPath": "State=Default, 图标=无, 边框=1级, 背景=暗底浅, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-dark-soft\" placeholder=\"\" value=\"输入内容\">"
+    },
+    {
+      "name": "dark-strong",
+      "figmaNodeId": "82:21",
+      "figmaVariantPath": "State=Default, 图标=无, 边框=1级, 背景=暗底重, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-dark-strong\" placeholder=\"请输入...\">"
+    },
+    {
+      "name": "dark-strong-filled",
+      "figmaNodeId": "82:23",
+      "figmaVariantPath": "State=Default, 图标=无, 边框=1级, 背景=暗底重, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-dark-strong\" placeholder=\"\" value=\"输入内容\">"
+    },
+    {
+      "name": "default",
+      "figmaNodeId": "82:5",
+      "figmaVariantPath": "State=Default, 图标=无, 边框=1级, 背景=white, 内容=空",
+      "modifiers": [
+        "input"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input\" placeholder=\"请输入...\">"
+    },
+    {
+      "name": "error",
+      "figmaNodeId": "85:322",
+      "figmaVariantPath": "State=Error, 图标=无, 边框=1级, 背景=white, 内容=空",
+      "modifiers": [
+        "input",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--error\" placeholder=\"请输入...\" data-state=\"error\">"
+    },
+    {
+      "name": "error-border-2",
+      "figmaNodeId": "85:342",
+      "figmaVariantPath": "State=Error, 图标=无, 边框=2级, 背景=white, 内容=空",
+      "modifiers": [
+        "input",
+        "input--border-2",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--border-2 input--error\" placeholder=\"请输入...\" data-state=\"error\">"
+    },
+    {
+      "name": "error-border-2-dark-soft",
+      "figmaNodeId": "85:354",
+      "figmaVariantPath": "State=Error, 图标=无, 边框=2级, 背景=暗底浅, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--border-2",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-dark-soft input--border-2 input--error\" placeholder=\"请输入...\" data-state=\"error\">"
+    },
+    {
+      "name": "error-border-2-dark-soft-filled",
+      "figmaNodeId": "85:356",
+      "figmaVariantPath": "State=Error, 图标=无, 边框=2级, 背景=暗底浅, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--border-2",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-dark-soft input--border-2 input--error\" placeholder=\"\" value=\"输入内容\" data-state=\"error\">"
+    },
+    {
+      "name": "error-border-2-dark-strong",
+      "figmaNodeId": "85:358",
+      "figmaVariantPath": "State=Error, 图标=无, 边框=2级, 背景=暗底重, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--border-2",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-dark-strong input--border-2 input--error\" placeholder=\"请输入...\" data-state=\"error\">"
+    },
+    {
+      "name": "error-border-2-dark-strong-filled",
+      "figmaNodeId": "85:360",
+      "figmaVariantPath": "State=Error, 图标=无, 边框=2级, 背景=暗底重, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--border-2",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-dark-strong input--border-2 input--error\" placeholder=\"\" value=\"输入内容\" data-state=\"error\">"
+    },
+    {
+      "name": "error-border-2-filled",
+      "figmaNodeId": "85:344",
+      "figmaVariantPath": "State=Error, 图标=无, 边框=2级, 背景=white, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--border-2",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--border-2 input--error\" placeholder=\"\" value=\"输入内容\" data-state=\"error\">"
+    },
+    {
+      "name": "error-border-2-gray",
+      "figmaNodeId": "85:350",
+      "figmaVariantPath": "State=Error, 图标=无, 边框=2级, 背景=灰底, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--border-2",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-gray input--border-2 input--error\" placeholder=\"请输入...\" data-state=\"error\">"
+    },
+    {
+      "name": "error-border-2-gray-filled",
+      "figmaNodeId": "85:352",
+      "figmaVariantPath": "State=Error, 图标=无, 边框=2级, 背景=灰底, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--border-2",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-gray input--border-2 input--error\" placeholder=\"\" value=\"输入内容\" data-state=\"error\">"
+    },
+    {
+      "name": "error-border-2-transparent",
+      "figmaNodeId": "85:346",
+      "figmaVariantPath": "State=Error, 图标=无, 边框=2级, 背景=透明, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--border-2",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-transparent input--border-2 input--error\" placeholder=\"请输入...\" data-state=\"error\">"
+    },
+    {
+      "name": "error-border-2-transparent-filled",
+      "figmaNodeId": "85:348",
+      "figmaVariantPath": "State=Error, 图标=无, 边框=2级, 背景=透明, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--border-2",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-transparent input--border-2 input--error\" placeholder=\"\" value=\"输入内容\" data-state=\"error\">"
+    },
+    {
+      "name": "error-dark-soft",
+      "figmaNodeId": "85:334",
+      "figmaVariantPath": "State=Error, 图标=无, 边框=1级, 背景=暗底浅, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-dark-soft input--error\" placeholder=\"请输入...\" data-state=\"error\">"
+    },
+    {
+      "name": "error-dark-soft-filled",
+      "figmaNodeId": "85:336",
+      "figmaVariantPath": "State=Error, 图标=无, 边框=1级, 背景=暗底浅, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-dark-soft input--error\" placeholder=\"\" value=\"输入内容\" data-state=\"error\">"
+    },
+    {
+      "name": "error-dark-strong",
+      "figmaNodeId": "85:338",
+      "figmaVariantPath": "State=Error, 图标=无, 边框=1级, 背景=暗底重, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-dark-strong input--error\" placeholder=\"请输入...\" data-state=\"error\">"
+    },
+    {
+      "name": "error-dark-strong-filled",
+      "figmaNodeId": "85:340",
+      "figmaVariantPath": "State=Error, 图标=无, 边框=1级, 背景=暗底重, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-dark-strong input--error\" placeholder=\"\" value=\"输入内容\" data-state=\"error\">"
+    },
+    {
+      "name": "error-filled",
+      "figmaNodeId": "85:324",
+      "figmaVariantPath": "State=Error, 图标=无, 边框=1级, 背景=white, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--error\" placeholder=\"\" value=\"输入内容\" data-state=\"error\">"
+    },
+    {
+      "name": "error-gray",
+      "figmaNodeId": "85:330",
+      "figmaVariantPath": "State=Error, 图标=无, 边框=1级, 背景=灰底, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-gray input--error\" placeholder=\"请输入...\" data-state=\"error\">"
+    },
+    {
+      "name": "error-gray-filled",
+      "figmaNodeId": "85:332",
+      "figmaVariantPath": "State=Error, 图标=无, 边框=1级, 背景=灰底, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-gray input--error\" placeholder=\"\" value=\"输入内容\" data-state=\"error\">"
+    },
+    {
+      "name": "error-icon-both",
+      "figmaNodeId": "85:562",
+      "figmaVariantPath": "State=Error, 图标=双, 边框=1级, 背景=white, 内容=空",
+      "modifiers": [
+        "input",
+        "input--icon-both",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--icon-both input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-both-border-2",
+      "figmaNodeId": "85:642",
+      "figmaVariantPath": "State=Error, 图标=双, 边框=2级, 背景=white, 内容=空",
+      "modifiers": [
+        "input",
+        "input--border-2",
+        "input--icon-both",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--border-2 input--icon-both input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-both-border-2-dark-soft",
+      "figmaNodeId": "85:690",
+      "figmaVariantPath": "State=Error, 图标=双, 边框=2级, 背景=暗底浅, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--border-2",
+        "input--icon-both",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--border-2 input--icon-both input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-both-border-2-dark-soft-filled",
+      "figmaNodeId": "85:698",
+      "figmaVariantPath": "State=Error, 图标=双, 边框=2级, 背景=暗底浅, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--border-2",
+        "input--icon-both",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--border-2 input--icon-both input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-both-border-2-dark-strong",
+      "figmaNodeId": "85:706",
+      "figmaVariantPath": "State=Error, 图标=双, 边框=2级, 背景=暗底重, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--border-2",
+        "input--icon-both",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--border-2 input--icon-both input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-both-border-2-dark-strong-filled",
+      "figmaNodeId": "85:714",
+      "figmaVariantPath": "State=Error, 图标=双, 边框=2级, 背景=暗底重, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--border-2",
+        "input--icon-both",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--border-2 input--icon-both input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-both-border-2-filled",
+      "figmaNodeId": "85:650",
+      "figmaVariantPath": "State=Error, 图标=双, 边框=2级, 背景=white, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--border-2",
+        "input--icon-both",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--border-2 input--icon-both input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-both-border-2-gray",
+      "figmaNodeId": "85:674",
+      "figmaVariantPath": "State=Error, 图标=双, 边框=2级, 背景=灰底, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--border-2",
+        "input--icon-both",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--border-2 input--icon-both input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-both-border-2-gray-filled",
+      "figmaNodeId": "85:682",
+      "figmaVariantPath": "State=Error, 图标=双, 边框=2级, 背景=灰底, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--border-2",
+        "input--icon-both",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--border-2 input--icon-both input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-both-border-2-transparent",
+      "figmaNodeId": "85:658",
+      "figmaVariantPath": "State=Error, 图标=双, 边框=2级, 背景=透明, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--border-2",
+        "input--icon-both",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--border-2 input--icon-both input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-both-border-2-transparent-filled",
+      "figmaNodeId": "85:666",
+      "figmaVariantPath": "State=Error, 图标=双, 边框=2级, 背景=透明, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--border-2",
+        "input--icon-both",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--border-2 input--icon-both input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-both-dark-soft",
+      "figmaNodeId": "85:610",
+      "figmaVariantPath": "State=Error, 图标=双, 边框=1级, 背景=暗底浅, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--icon-both",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--icon-both input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-both-dark-soft-filled",
+      "figmaNodeId": "85:618",
+      "figmaVariantPath": "State=Error, 图标=双, 边框=1级, 背景=暗底浅, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--icon-both",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--icon-both input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-both-dark-strong",
+      "figmaNodeId": "85:626",
+      "figmaVariantPath": "State=Error, 图标=双, 边框=1级, 背景=暗底重, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--icon-both",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--icon-both input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-both-dark-strong-filled",
+      "figmaNodeId": "85:634",
+      "figmaVariantPath": "State=Error, 图标=双, 边框=1级, 背景=暗底重, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--icon-both",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--icon-both input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-both-filled",
+      "figmaNodeId": "85:570",
+      "figmaVariantPath": "State=Error, 图标=双, 边框=1级, 背景=white, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--icon-both",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--icon-both input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-both-gray",
+      "figmaNodeId": "85:594",
+      "figmaVariantPath": "State=Error, 图标=双, 边框=1级, 背景=灰底, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--icon-both",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--icon-both input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-both-gray-filled",
+      "figmaNodeId": "85:602",
+      "figmaVariantPath": "State=Error, 图标=双, 边框=1级, 背景=灰底, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--icon-both",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--icon-both input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-both-transparent",
+      "figmaNodeId": "85:578",
+      "figmaVariantPath": "State=Error, 图标=双, 边框=1级, 背景=透明, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--icon-both",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--icon-both input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-both-transparent-filled",
+      "figmaNodeId": "85:586",
+      "figmaVariantPath": "State=Error, 图标=双, 边框=1级, 背景=透明, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--icon-both",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--icon-both input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-left",
+      "figmaNodeId": "85:362",
+      "figmaVariantPath": "State=Error, 图标=左, 边框=1级, 背景=white, 内容=空",
+      "modifiers": [
+        "input",
+        "input--icon-left",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--icon-left input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "error-icon-left-border-2",
+      "figmaNodeId": "85:412",
+      "figmaVariantPath": "State=Error, 图标=左, 边框=2级, 背景=white, 内容=空",
+      "modifiers": [
+        "input",
+        "input--border-2",
+        "input--icon-left",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--border-2 input--icon-left input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "error-icon-left-border-2-dark-soft",
+      "figmaNodeId": "85:442",
+      "figmaVariantPath": "State=Error, 图标=左, 边框=2级, 背景=暗底浅, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--border-2",
+        "input--icon-left",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--border-2 input--icon-left input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "error-icon-left-border-2-dark-soft-filled",
+      "figmaNodeId": "85:447",
+      "figmaVariantPath": "State=Error, 图标=左, 边框=2级, 背景=暗底浅, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--border-2",
+        "input--icon-left",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--border-2 input--icon-left input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "error-icon-left-border-2-dark-strong",
+      "figmaNodeId": "85:452",
+      "figmaVariantPath": "State=Error, 图标=左, 边框=2级, 背景=暗底重, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--border-2",
+        "input--icon-left",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--border-2 input--icon-left input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "error-icon-left-border-2-dark-strong-filled",
+      "figmaNodeId": "85:457",
+      "figmaVariantPath": "State=Error, 图标=左, 边框=2级, 背景=暗底重, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--border-2",
+        "input--icon-left",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--border-2 input--icon-left input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "error-icon-left-border-2-filled",
+      "figmaNodeId": "85:417",
+      "figmaVariantPath": "State=Error, 图标=左, 边框=2级, 背景=white, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--border-2",
+        "input--icon-left",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--border-2 input--icon-left input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "error-icon-left-border-2-gray",
+      "figmaNodeId": "85:432",
+      "figmaVariantPath": "State=Error, 图标=左, 边框=2级, 背景=灰底, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--border-2",
+        "input--icon-left",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--border-2 input--icon-left input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "error-icon-left-border-2-gray-filled",
+      "figmaNodeId": "85:437",
+      "figmaVariantPath": "State=Error, 图标=左, 边框=2级, 背景=灰底, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--border-2",
+        "input--icon-left",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--border-2 input--icon-left input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "error-icon-left-border-2-transparent",
+      "figmaNodeId": "85:422",
+      "figmaVariantPath": "State=Error, 图标=左, 边框=2级, 背景=透明, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--border-2",
+        "input--icon-left",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--border-2 input--icon-left input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "error-icon-left-border-2-transparent-filled",
+      "figmaNodeId": "85:427",
+      "figmaVariantPath": "State=Error, 图标=左, 边框=2级, 背景=透明, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--border-2",
+        "input--icon-left",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--border-2 input--icon-left input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "error-icon-left-dark-soft",
+      "figmaNodeId": "85:392",
+      "figmaVariantPath": "State=Error, 图标=左, 边框=1级, 背景=暗底浅, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--icon-left",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--icon-left input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "error-icon-left-dark-soft-filled",
+      "figmaNodeId": "85:397",
+      "figmaVariantPath": "State=Error, 图标=左, 边框=1级, 背景=暗底浅, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--icon-left",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--icon-left input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "error-icon-left-dark-strong",
+      "figmaNodeId": "85:402",
+      "figmaVariantPath": "State=Error, 图标=左, 边框=1级, 背景=暗底重, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--icon-left",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--icon-left input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "error-icon-left-dark-strong-filled",
+      "figmaNodeId": "85:407",
+      "figmaVariantPath": "State=Error, 图标=左, 边框=1级, 背景=暗底重, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--icon-left",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--icon-left input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "error-icon-left-filled",
+      "figmaNodeId": "85:367",
+      "figmaVariantPath": "State=Error, 图标=左, 边框=1级, 背景=white, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--icon-left",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--icon-left input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "error-icon-left-gray",
+      "figmaNodeId": "85:382",
+      "figmaVariantPath": "State=Error, 图标=左, 边框=1级, 背景=灰底, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--icon-left",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--icon-left input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "error-icon-left-gray-filled",
+      "figmaNodeId": "85:387",
+      "figmaVariantPath": "State=Error, 图标=左, 边框=1级, 背景=灰底, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--icon-left",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--icon-left input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "error-icon-left-transparent",
+      "figmaNodeId": "85:372",
+      "figmaVariantPath": "State=Error, 图标=左, 边框=1级, 背景=透明, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--icon-left",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--icon-left input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "error-icon-left-transparent-filled",
+      "figmaNodeId": "85:377",
+      "figmaVariantPath": "State=Error, 图标=左, 边框=1级, 背景=透明, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--icon-left",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--icon-left input--error\" data-state=\"error\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "error-icon-right",
+      "figmaNodeId": "85:462",
+      "figmaVariantPath": "State=Error, 图标=右, 边框=1级, 背景=white, 内容=空",
+      "modifiers": [
+        "input",
+        "input--icon-right",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--icon-right input--error\" data-state=\"error\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-right-border-2",
+      "figmaNodeId": "85:512",
+      "figmaVariantPath": "State=Error, 图标=右, 边框=2级, 背景=white, 内容=空",
+      "modifiers": [
+        "input",
+        "input--border-2",
+        "input--icon-right",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--border-2 input--icon-right input--error\" data-state=\"error\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-right-border-2-dark-soft",
+      "figmaNodeId": "85:542",
+      "figmaVariantPath": "State=Error, 图标=右, 边框=2级, 背景=暗底浅, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--border-2",
+        "input--icon-right",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--border-2 input--icon-right input--error\" data-state=\"error\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-right-border-2-dark-soft-filled",
+      "figmaNodeId": "85:547",
+      "figmaVariantPath": "State=Error, 图标=右, 边框=2级, 背景=暗底浅, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--border-2",
+        "input--icon-right",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--border-2 input--icon-right input--error\" data-state=\"error\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-right-border-2-dark-strong",
+      "figmaNodeId": "85:552",
+      "figmaVariantPath": "State=Error, 图标=右, 边框=2级, 背景=暗底重, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--border-2",
+        "input--icon-right",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--border-2 input--icon-right input--error\" data-state=\"error\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-right-border-2-dark-strong-filled",
+      "figmaNodeId": "85:557",
+      "figmaVariantPath": "State=Error, 图标=右, 边框=2级, 背景=暗底重, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--border-2",
+        "input--icon-right",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--border-2 input--icon-right input--error\" data-state=\"error\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-right-border-2-filled",
+      "figmaNodeId": "85:517",
+      "figmaVariantPath": "State=Error, 图标=右, 边框=2级, 背景=white, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--border-2",
+        "input--icon-right",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--border-2 input--icon-right input--error\" data-state=\"error\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-right-border-2-gray",
+      "figmaNodeId": "85:532",
+      "figmaVariantPath": "State=Error, 图标=右, 边框=2级, 背景=灰底, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--border-2",
+        "input--icon-right",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--border-2 input--icon-right input--error\" data-state=\"error\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-right-border-2-gray-filled",
+      "figmaNodeId": "85:537",
+      "figmaVariantPath": "State=Error, 图标=右, 边框=2级, 背景=灰底, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--border-2",
+        "input--icon-right",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--border-2 input--icon-right input--error\" data-state=\"error\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-right-border-2-transparent",
+      "figmaNodeId": "85:522",
+      "figmaVariantPath": "State=Error, 图标=右, 边框=2级, 背景=透明, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--border-2",
+        "input--icon-right",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--border-2 input--icon-right input--error\" data-state=\"error\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-right-border-2-transparent-filled",
+      "figmaNodeId": "85:527",
+      "figmaVariantPath": "State=Error, 图标=右, 边框=2级, 背景=透明, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--border-2",
+        "input--icon-right",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--border-2 input--icon-right input--error\" data-state=\"error\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-right-dark-soft",
+      "figmaNodeId": "85:492",
+      "figmaVariantPath": "State=Error, 图标=右, 边框=1级, 背景=暗底浅, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--icon-right",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--icon-right input--error\" data-state=\"error\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-right-dark-soft-filled",
+      "figmaNodeId": "85:497",
+      "figmaVariantPath": "State=Error, 图标=右, 边框=1级, 背景=暗底浅, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--icon-right",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--icon-right input--error\" data-state=\"error\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-right-dark-strong",
+      "figmaNodeId": "85:502",
+      "figmaVariantPath": "State=Error, 图标=右, 边框=1级, 背景=暗底重, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--icon-right",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--icon-right input--error\" data-state=\"error\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-right-dark-strong-filled",
+      "figmaNodeId": "85:507",
+      "figmaVariantPath": "State=Error, 图标=右, 边框=1级, 背景=暗底重, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--icon-right",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--icon-right input--error\" data-state=\"error\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-right-filled",
+      "figmaNodeId": "85:467",
+      "figmaVariantPath": "State=Error, 图标=右, 边框=1级, 背景=white, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--icon-right",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--icon-right input--error\" data-state=\"error\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-right-gray",
+      "figmaNodeId": "85:482",
+      "figmaVariantPath": "State=Error, 图标=右, 边框=1级, 背景=灰底, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--icon-right",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--icon-right input--error\" data-state=\"error\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-right-gray-filled",
+      "figmaNodeId": "85:487",
+      "figmaVariantPath": "State=Error, 图标=右, 边框=1级, 背景=灰底, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--icon-right",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--icon-right input--error\" data-state=\"error\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-right-transparent",
+      "figmaNodeId": "85:472",
+      "figmaVariantPath": "State=Error, 图标=右, 边框=1级, 背景=透明, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--icon-right",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--icon-right input--error\" data-state=\"error\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-icon-right-transparent-filled",
+      "figmaNodeId": "85:477",
+      "figmaVariantPath": "State=Error, 图标=右, 边框=1级, 背景=透明, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--icon-right",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--icon-right input--error\" data-state=\"error\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "error-transparent",
+      "figmaNodeId": "85:326",
+      "figmaVariantPath": "State=Error, 图标=无, 边框=1级, 背景=透明, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-transparent input--error\" placeholder=\"请输入...\" data-state=\"error\">"
+    },
+    {
+      "name": "error-transparent-filled",
+      "figmaNodeId": "85:328",
+      "figmaVariantPath": "State=Error, 图标=无, 边框=1级, 背景=透明, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--error"
+      ],
+      "attrs": {
+        "data-state": "error",
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-transparent input--error\" placeholder=\"\" value=\"输入内容\" data-state=\"error\">"
+    },
+    {
+      "name": "filled",
+      "figmaNodeId": "82:7",
+      "figmaVariantPath": "State=Default, 图标=无, 边框=1级, 背景=white, 内容=已填",
+      "modifiers": [
+        "input"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input\" placeholder=\"\" value=\"输入内容\">"
+    },
+    {
+      "name": "gray",
+      "figmaNodeId": "82:13",
+      "figmaVariantPath": "State=Default, 图标=无, 边框=1级, 背景=灰底, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-gray"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-gray\" placeholder=\"请输入...\">"
+    },
+    {
+      "name": "gray-filled",
+      "figmaNodeId": "82:15",
+      "figmaVariantPath": "State=Default, 图标=无, 边框=1级, 背景=灰底, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-gray"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-gray\" placeholder=\"\" value=\"输入内容\">"
+    },
+    {
+      "name": "icon-both",
+      "figmaNodeId": "84:182",
+      "figmaVariantPath": "State=Default, 图标=双, 边框=1级, 背景=white, 内容=空",
+      "modifiers": [
+        "input",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--icon-both\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-both-border-2",
+      "figmaNodeId": "84:262",
+      "figmaVariantPath": "State=Default, 图标=双, 边框=2级, 背景=white, 内容=空",
+      "modifiers": [
+        "input",
+        "input--border-2",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--border-2 input--icon-both\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-both-border-2-dark-soft",
+      "figmaNodeId": "84:310",
+      "figmaVariantPath": "State=Default, 图标=双, 边框=2级, 背景=暗底浅, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--border-2",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--border-2 input--icon-both\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-both-border-2-dark-soft-filled",
+      "figmaNodeId": "84:318",
+      "figmaVariantPath": "State=Default, 图标=双, 边框=2级, 背景=暗底浅, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--border-2",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--border-2 input--icon-both\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-both-border-2-dark-strong",
+      "figmaNodeId": "84:326",
+      "figmaVariantPath": "State=Default, 图标=双, 边框=2级, 背景=暗底重, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--border-2",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--border-2 input--icon-both\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-both-border-2-dark-strong-filled",
+      "figmaNodeId": "84:334",
+      "figmaVariantPath": "State=Default, 图标=双, 边框=2级, 背景=暗底重, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--border-2",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--border-2 input--icon-both\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-both-border-2-filled",
+      "figmaNodeId": "84:270",
+      "figmaVariantPath": "State=Default, 图标=双, 边框=2级, 背景=white, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--border-2",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--border-2 input--icon-both\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-both-border-2-gray",
+      "figmaNodeId": "84:294",
+      "figmaVariantPath": "State=Default, 图标=双, 边框=2级, 背景=灰底, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--border-2",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--border-2 input--icon-both\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-both-border-2-gray-filled",
+      "figmaNodeId": "84:302",
+      "figmaVariantPath": "State=Default, 图标=双, 边框=2级, 背景=灰底, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--border-2",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--border-2 input--icon-both\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-both-border-2-transparent",
+      "figmaNodeId": "84:278",
+      "figmaVariantPath": "State=Default, 图标=双, 边框=2级, 背景=透明, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--border-2",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--border-2 input--icon-both\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-both-border-2-transparent-filled",
+      "figmaNodeId": "84:286",
+      "figmaVariantPath": "State=Default, 图标=双, 边框=2级, 背景=透明, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--border-2",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--border-2 input--icon-both\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-both-dark-soft",
+      "figmaNodeId": "84:230",
+      "figmaVariantPath": "State=Default, 图标=双, 边框=1级, 背景=暗底浅, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--icon-both\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-both-dark-soft-filled",
+      "figmaNodeId": "84:238",
+      "figmaVariantPath": "State=Default, 图标=双, 边框=1级, 背景=暗底浅, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--icon-both\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-both-dark-strong",
+      "figmaNodeId": "84:246",
+      "figmaVariantPath": "State=Default, 图标=双, 边框=1级, 背景=暗底重, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--icon-both\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-both-dark-strong-filled",
+      "figmaNodeId": "84:254",
+      "figmaVariantPath": "State=Default, 图标=双, 边框=1级, 背景=暗底重, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--icon-both\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-both-filled",
+      "figmaNodeId": "84:190",
+      "figmaVariantPath": "State=Default, 图标=双, 边框=1级, 背景=white, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--icon-both\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-both-gray",
+      "figmaNodeId": "84:214",
+      "figmaVariantPath": "State=Default, 图标=双, 边框=1级, 背景=灰底, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--icon-both\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-both-gray-filled",
+      "figmaNodeId": "84:222",
+      "figmaVariantPath": "State=Default, 图标=双, 边框=1级, 背景=灰底, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--icon-both\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-both-transparent",
+      "figmaNodeId": "84:198",
+      "figmaVariantPath": "State=Default, 图标=双, 边框=1级, 背景=透明, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--icon-both\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-both-transparent-filled",
+      "figmaNodeId": "84:206",
+      "figmaVariantPath": "State=Default, 图标=双, 边框=1级, 背景=透明, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--icon-both\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-left",
+      "figmaNodeId": "82:45",
+      "figmaVariantPath": "State=Default, 图标=左, 边框=1级, 背景=white, 内容=空",
+      "modifiers": [
+        "input",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--icon-left\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "icon-left-border-2",
+      "figmaNodeId": "82:95",
+      "figmaVariantPath": "State=Default, 图标=左, 边框=2级, 背景=white, 内容=空",
+      "modifiers": [
+        "input",
+        "input--border-2",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--border-2 input--icon-left\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "icon-left-border-2-dark-soft",
+      "figmaNodeId": "82:125",
+      "figmaVariantPath": "State=Default, 图标=左, 边框=2级, 背景=暗底浅, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--border-2",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--border-2 input--icon-left\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "icon-left-border-2-dark-soft-filled",
+      "figmaNodeId": "82:130",
+      "figmaVariantPath": "State=Default, 图标=左, 边框=2级, 背景=暗底浅, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--border-2",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--border-2 input--icon-left\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "icon-left-border-2-dark-strong",
+      "figmaNodeId": "82:135",
+      "figmaVariantPath": "State=Default, 图标=左, 边框=2级, 背景=暗底重, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--border-2",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--border-2 input--icon-left\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "icon-left-border-2-dark-strong-filled",
+      "figmaNodeId": "82:140",
+      "figmaVariantPath": "State=Default, 图标=左, 边框=2级, 背景=暗底重, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--border-2",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--border-2 input--icon-left\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "icon-left-border-2-filled",
+      "figmaNodeId": "82:100",
+      "figmaVariantPath": "State=Default, 图标=左, 边框=2级, 背景=white, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--border-2",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--border-2 input--icon-left\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "icon-left-border-2-gray",
+      "figmaNodeId": "82:115",
+      "figmaVariantPath": "State=Default, 图标=左, 边框=2级, 背景=灰底, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--border-2",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--border-2 input--icon-left\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "icon-left-border-2-gray-filled",
+      "figmaNodeId": "82:120",
+      "figmaVariantPath": "State=Default, 图标=左, 边框=2级, 背景=灰底, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--border-2",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--border-2 input--icon-left\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "icon-left-border-2-transparent",
+      "figmaNodeId": "82:105",
+      "figmaVariantPath": "State=Default, 图标=左, 边框=2级, 背景=透明, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--border-2",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--border-2 input--icon-left\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "icon-left-border-2-transparent-filled",
+      "figmaNodeId": "82:110",
+      "figmaVariantPath": "State=Default, 图标=左, 边框=2级, 背景=透明, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--border-2",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--border-2 input--icon-left\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "icon-left-dark-soft",
+      "figmaNodeId": "82:75",
+      "figmaVariantPath": "State=Default, 图标=左, 边框=1级, 背景=暗底浅, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--icon-left\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "icon-left-dark-soft-filled",
+      "figmaNodeId": "82:80",
+      "figmaVariantPath": "State=Default, 图标=左, 边框=1级, 背景=暗底浅, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--icon-left\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "icon-left-dark-strong",
+      "figmaNodeId": "82:85",
+      "figmaVariantPath": "State=Default, 图标=左, 边框=1级, 背景=暗底重, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--icon-left\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "icon-left-dark-strong-filled",
+      "figmaNodeId": "82:90",
+      "figmaVariantPath": "State=Default, 图标=左, 边框=1级, 背景=暗底重, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--icon-left\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "icon-left-filled",
+      "figmaNodeId": "82:50",
+      "figmaVariantPath": "State=Default, 图标=左, 边框=1级, 背景=white, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--icon-left\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "icon-left-gray",
+      "figmaNodeId": "82:65",
+      "figmaVariantPath": "State=Default, 图标=左, 边框=1级, 背景=灰底, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--icon-left\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "icon-left-gray-filled",
+      "figmaNodeId": "82:70",
+      "figmaVariantPath": "State=Default, 图标=左, 边框=1级, 背景=灰底, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--icon-left\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "icon-left-transparent",
+      "figmaNodeId": "82:55",
+      "figmaVariantPath": "State=Default, 图标=左, 边框=1级, 背景=透明, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--icon-left\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "icon-left-transparent-filled",
+      "figmaNodeId": "82:60",
+      "figmaVariantPath": "State=Default, 图标=左, 边框=1级, 背景=透明, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--icon-left\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "icon-right",
+      "figmaNodeId": "84:82",
+      "figmaVariantPath": "State=Default, 图标=右, 边框=1级, 背景=white, 内容=空",
+      "modifiers": [
+        "input",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--icon-right\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-right-border-2",
+      "figmaNodeId": "84:132",
+      "figmaVariantPath": "State=Default, 图标=右, 边框=2级, 背景=white, 内容=空",
+      "modifiers": [
+        "input",
+        "input--border-2",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--border-2 input--icon-right\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-right-border-2-dark-soft",
+      "figmaNodeId": "84:162",
+      "figmaVariantPath": "State=Default, 图标=右, 边框=2级, 背景=暗底浅, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--border-2",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--border-2 input--icon-right\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-right-border-2-dark-soft-filled",
+      "figmaNodeId": "84:167",
+      "figmaVariantPath": "State=Default, 图标=右, 边框=2级, 背景=暗底浅, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--border-2",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--border-2 input--icon-right\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-right-border-2-dark-strong",
+      "figmaNodeId": "84:172",
+      "figmaVariantPath": "State=Default, 图标=右, 边框=2级, 背景=暗底重, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--border-2",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--border-2 input--icon-right\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-right-border-2-dark-strong-filled",
+      "figmaNodeId": "84:177",
+      "figmaVariantPath": "State=Default, 图标=右, 边框=2级, 背景=暗底重, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--border-2",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--border-2 input--icon-right\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-right-border-2-filled",
+      "figmaNodeId": "84:137",
+      "figmaVariantPath": "State=Default, 图标=右, 边框=2级, 背景=white, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--border-2",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--border-2 input--icon-right\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-right-border-2-gray",
+      "figmaNodeId": "84:152",
+      "figmaVariantPath": "State=Default, 图标=右, 边框=2级, 背景=灰底, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--border-2",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--border-2 input--icon-right\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-right-border-2-gray-filled",
+      "figmaNodeId": "84:157",
+      "figmaVariantPath": "State=Default, 图标=右, 边框=2级, 背景=灰底, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--border-2",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--border-2 input--icon-right\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-right-border-2-transparent",
+      "figmaNodeId": "84:142",
+      "figmaVariantPath": "State=Default, 图标=右, 边框=2级, 背景=透明, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--border-2",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--border-2 input--icon-right\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-right-border-2-transparent-filled",
+      "figmaNodeId": "84:147",
+      "figmaVariantPath": "State=Default, 图标=右, 边框=2级, 背景=透明, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--border-2",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--border-2 input--icon-right\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-right-dark-soft",
+      "figmaNodeId": "84:112",
+      "figmaVariantPath": "State=Default, 图标=右, 边框=1级, 背景=暗底浅, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--icon-right\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-right-dark-soft-filled",
+      "figmaNodeId": "84:117",
+      "figmaVariantPath": "State=Default, 图标=右, 边框=1级, 背景=暗底浅, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--icon-right\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-right-dark-strong",
+      "figmaNodeId": "84:122",
+      "figmaVariantPath": "State=Default, 图标=右, 边框=1级, 背景=暗底重, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--icon-right\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-right-dark-strong-filled",
+      "figmaNodeId": "84:127",
+      "figmaVariantPath": "State=Default, 图标=右, 边框=1级, 背景=暗底重, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--icon-right\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-right-filled",
+      "figmaNodeId": "84:87",
+      "figmaVariantPath": "State=Default, 图标=右, 边框=1级, 背景=white, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--icon-right\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-right-gray",
+      "figmaNodeId": "84:102",
+      "figmaVariantPath": "State=Default, 图标=右, 边框=1级, 背景=灰底, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--icon-right\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-right-gray-filled",
+      "figmaNodeId": "84:107",
+      "figmaVariantPath": "State=Default, 图标=右, 边框=1级, 背景=灰底, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--icon-right\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-right-transparent",
+      "figmaNodeId": "84:92",
+      "figmaVariantPath": "State=Default, 图标=右, 边框=1级, 背景=透明, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--icon-right\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "icon-right-transparent-filled",
+      "figmaNodeId": "84:97",
+      "figmaVariantPath": "State=Default, 图标=右, 边框=1级, 背景=透明, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--icon-right\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly",
+      "figmaNodeId": "86:482",
+      "figmaVariantPath": "State=Readonly, 图标=无, 边框=1级, 背景=white, 内容=空",
+      "modifiers": [
+        "input"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input\" placeholder=\"请输入...\" readonly data-state=\"readonly\">"
+    },
+    {
+      "name": "readonly-border-2",
+      "figmaNodeId": "86:502",
+      "figmaVariantPath": "State=Readonly, 图标=无, 边框=2级, 背景=white, 内容=空",
+      "modifiers": [
+        "input",
+        "input--border-2"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--border-2\" placeholder=\"请输入...\" readonly data-state=\"readonly\">"
+    },
+    {
+      "name": "readonly-border-2-dark-soft",
+      "figmaNodeId": "86:514",
+      "figmaVariantPath": "State=Readonly, 图标=无, 边框=2级, 背景=暗底浅, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--border-2"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-dark-soft input--border-2\" placeholder=\"请输入...\" readonly data-state=\"readonly\">"
+    },
+    {
+      "name": "readonly-border-2-dark-soft-filled",
+      "figmaNodeId": "86:516",
+      "figmaVariantPath": "State=Readonly, 图标=无, 边框=2级, 背景=暗底浅, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--border-2"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-dark-soft input--border-2\" placeholder=\"\" value=\"输入内容\" readonly data-state=\"readonly\">"
+    },
+    {
+      "name": "readonly-border-2-dark-strong",
+      "figmaNodeId": "86:518",
+      "figmaVariantPath": "State=Readonly, 图标=无, 边框=2级, 背景=暗底重, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--border-2"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-dark-strong input--border-2\" placeholder=\"请输入...\" readonly data-state=\"readonly\">"
+    },
+    {
+      "name": "readonly-border-2-dark-strong-filled",
+      "figmaNodeId": "86:520",
+      "figmaVariantPath": "State=Readonly, 图标=无, 边框=2级, 背景=暗底重, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--border-2"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-dark-strong input--border-2\" placeholder=\"\" value=\"输入内容\" readonly data-state=\"readonly\">"
+    },
+    {
+      "name": "readonly-border-2-filled",
+      "figmaNodeId": "86:504",
+      "figmaVariantPath": "State=Readonly, 图标=无, 边框=2级, 背景=white, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--border-2"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--border-2\" placeholder=\"\" value=\"输入内容\" readonly data-state=\"readonly\">"
+    },
+    {
+      "name": "readonly-border-2-gray",
+      "figmaNodeId": "86:510",
+      "figmaVariantPath": "State=Readonly, 图标=无, 边框=2级, 背景=灰底, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--border-2"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-gray input--border-2\" placeholder=\"请输入...\" readonly data-state=\"readonly\">"
+    },
+    {
+      "name": "readonly-border-2-gray-filled",
+      "figmaNodeId": "86:512",
+      "figmaVariantPath": "State=Readonly, 图标=无, 边框=2级, 背景=灰底, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--border-2"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-gray input--border-2\" placeholder=\"\" value=\"输入内容\" readonly data-state=\"readonly\">"
+    },
+    {
+      "name": "readonly-border-2-transparent",
+      "figmaNodeId": "86:506",
+      "figmaVariantPath": "State=Readonly, 图标=无, 边框=2级, 背景=透明, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--border-2"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-transparent input--border-2\" placeholder=\"请输入...\" readonly data-state=\"readonly\">"
+    },
+    {
+      "name": "readonly-border-2-transparent-filled",
+      "figmaNodeId": "86:508",
+      "figmaVariantPath": "State=Readonly, 图标=无, 边框=2级, 背景=透明, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--border-2"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-transparent input--border-2\" placeholder=\"\" value=\"输入内容\" readonly data-state=\"readonly\">"
+    },
+    {
+      "name": "readonly-dark-soft",
+      "figmaNodeId": "86:494",
+      "figmaVariantPath": "State=Readonly, 图标=无, 边框=1级, 背景=暗底浅, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-dark-soft\" placeholder=\"请输入...\" readonly data-state=\"readonly\">"
+    },
+    {
+      "name": "readonly-dark-soft-filled",
+      "figmaNodeId": "86:496",
+      "figmaVariantPath": "State=Readonly, 图标=无, 边框=1级, 背景=暗底浅, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-dark-soft\" placeholder=\"\" value=\"输入内容\" readonly data-state=\"readonly\">"
+    },
+    {
+      "name": "readonly-dark-strong",
+      "figmaNodeId": "86:498",
+      "figmaVariantPath": "State=Readonly, 图标=无, 边框=1级, 背景=暗底重, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-dark-strong\" placeholder=\"请输入...\" readonly data-state=\"readonly\">"
+    },
+    {
+      "name": "readonly-dark-strong-filled",
+      "figmaNodeId": "86:500",
+      "figmaVariantPath": "State=Readonly, 图标=无, 边框=1级, 背景=暗底重, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-dark-strong\" placeholder=\"\" value=\"输入内容\" readonly data-state=\"readonly\">"
+    },
+    {
+      "name": "readonly-filled",
+      "figmaNodeId": "86:484",
+      "figmaVariantPath": "State=Readonly, 图标=无, 边框=1级, 背景=white, 内容=已填",
+      "modifiers": [
+        "input"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input\" placeholder=\"\" value=\"输入内容\" readonly data-state=\"readonly\">"
+    },
+    {
+      "name": "readonly-gray",
+      "figmaNodeId": "86:490",
+      "figmaVariantPath": "State=Readonly, 图标=无, 边框=1级, 背景=灰底, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-gray"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-gray\" placeholder=\"请输入...\" readonly data-state=\"readonly\">"
+    },
+    {
+      "name": "readonly-gray-filled",
+      "figmaNodeId": "86:492",
+      "figmaVariantPath": "State=Readonly, 图标=无, 边框=1级, 背景=灰底, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-gray"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-gray\" placeholder=\"\" value=\"输入内容\" readonly data-state=\"readonly\">"
+    },
+    {
+      "name": "readonly-icon-both",
+      "figmaNodeId": "86:722",
+      "figmaVariantPath": "State=Readonly, 图标=双, 边框=1级, 背景=white, 内容=空",
+      "modifiers": [
+        "input",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--icon-both\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-both-border-2",
+      "figmaNodeId": "86:802",
+      "figmaVariantPath": "State=Readonly, 图标=双, 边框=2级, 背景=white, 内容=空",
+      "modifiers": [
+        "input",
+        "input--border-2",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--border-2 input--icon-both\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-both-border-2-dark-soft",
+      "figmaNodeId": "86:850",
+      "figmaVariantPath": "State=Readonly, 图标=双, 边框=2级, 背景=暗底浅, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--border-2",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--border-2 input--icon-both\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-both-border-2-dark-soft-filled",
+      "figmaNodeId": "86:858",
+      "figmaVariantPath": "State=Readonly, 图标=双, 边框=2级, 背景=暗底浅, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--border-2",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--border-2 input--icon-both\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-both-border-2-dark-strong",
+      "figmaNodeId": "86:866",
+      "figmaVariantPath": "State=Readonly, 图标=双, 边框=2级, 背景=暗底重, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--border-2",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--border-2 input--icon-both\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-both-border-2-dark-strong-filled",
+      "figmaNodeId": "86:874",
+      "figmaVariantPath": "State=Readonly, 图标=双, 边框=2级, 背景=暗底重, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--border-2",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--border-2 input--icon-both\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-both-border-2-filled",
+      "figmaNodeId": "86:810",
+      "figmaVariantPath": "State=Readonly, 图标=双, 边框=2级, 背景=white, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--border-2",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--border-2 input--icon-both\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-both-border-2-gray",
+      "figmaNodeId": "86:834",
+      "figmaVariantPath": "State=Readonly, 图标=双, 边框=2级, 背景=灰底, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--border-2",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--border-2 input--icon-both\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-both-border-2-gray-filled",
+      "figmaNodeId": "86:842",
+      "figmaVariantPath": "State=Readonly, 图标=双, 边框=2级, 背景=灰底, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--border-2",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--border-2 input--icon-both\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-both-border-2-transparent",
+      "figmaNodeId": "86:818",
+      "figmaVariantPath": "State=Readonly, 图标=双, 边框=2级, 背景=透明, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--border-2",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--border-2 input--icon-both\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-both-border-2-transparent-filled",
+      "figmaNodeId": "86:826",
+      "figmaVariantPath": "State=Readonly, 图标=双, 边框=2级, 背景=透明, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--border-2",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--border-2 input--icon-both\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-both-dark-soft",
+      "figmaNodeId": "86:770",
+      "figmaVariantPath": "State=Readonly, 图标=双, 边框=1级, 背景=暗底浅, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--icon-both\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-both-dark-soft-filled",
+      "figmaNodeId": "86:778",
+      "figmaVariantPath": "State=Readonly, 图标=双, 边框=1级, 背景=暗底浅, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--icon-both\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-both-dark-strong",
+      "figmaNodeId": "86:786",
+      "figmaVariantPath": "State=Readonly, 图标=双, 边框=1级, 背景=暗底重, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--icon-both\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-both-dark-strong-filled",
+      "figmaNodeId": "86:794",
+      "figmaVariantPath": "State=Readonly, 图标=双, 边框=1级, 背景=暗底重, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--icon-both\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-both-filled",
+      "figmaNodeId": "86:730",
+      "figmaVariantPath": "State=Readonly, 图标=双, 边框=1级, 背景=white, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--icon-both\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-both-gray",
+      "figmaNodeId": "86:754",
+      "figmaVariantPath": "State=Readonly, 图标=双, 边框=1级, 背景=灰底, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--icon-both\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-both-gray-filled",
+      "figmaNodeId": "86:762",
+      "figmaVariantPath": "State=Readonly, 图标=双, 边框=1级, 背景=灰底, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--icon-both\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-both-transparent",
+      "figmaNodeId": "86:738",
+      "figmaVariantPath": "State=Readonly, 图标=双, 边框=1级, 背景=透明, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--icon-both\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-both-transparent-filled",
+      "figmaNodeId": "86:746",
+      "figmaVariantPath": "State=Readonly, 图标=双, 边框=1级, 背景=透明, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--icon-both"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--icon-both\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-left",
+      "figmaNodeId": "86:522",
+      "figmaVariantPath": "State=Readonly, 图标=左, 边框=1级, 背景=white, 内容=空",
+      "modifiers": [
+        "input",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--icon-left\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "readonly-icon-left-border-2",
+      "figmaNodeId": "86:572",
+      "figmaVariantPath": "State=Readonly, 图标=左, 边框=2级, 背景=white, 内容=空",
+      "modifiers": [
+        "input",
+        "input--border-2",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--border-2 input--icon-left\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "readonly-icon-left-border-2-dark-soft",
+      "figmaNodeId": "86:602",
+      "figmaVariantPath": "State=Readonly, 图标=左, 边框=2级, 背景=暗底浅, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--border-2",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--border-2 input--icon-left\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "readonly-icon-left-border-2-dark-soft-filled",
+      "figmaNodeId": "86:607",
+      "figmaVariantPath": "State=Readonly, 图标=左, 边框=2级, 背景=暗底浅, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--border-2",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--border-2 input--icon-left\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "readonly-icon-left-border-2-dark-strong",
+      "figmaNodeId": "86:612",
+      "figmaVariantPath": "State=Readonly, 图标=左, 边框=2级, 背景=暗底重, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--border-2",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--border-2 input--icon-left\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "readonly-icon-left-border-2-dark-strong-filled",
+      "figmaNodeId": "86:617",
+      "figmaVariantPath": "State=Readonly, 图标=左, 边框=2级, 背景=暗底重, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--border-2",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--border-2 input--icon-left\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "readonly-icon-left-border-2-filled",
+      "figmaNodeId": "86:577",
+      "figmaVariantPath": "State=Readonly, 图标=左, 边框=2级, 背景=white, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--border-2",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--border-2 input--icon-left\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "readonly-icon-left-border-2-gray",
+      "figmaNodeId": "86:592",
+      "figmaVariantPath": "State=Readonly, 图标=左, 边框=2级, 背景=灰底, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--border-2",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--border-2 input--icon-left\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "readonly-icon-left-border-2-gray-filled",
+      "figmaNodeId": "86:597",
+      "figmaVariantPath": "State=Readonly, 图标=左, 边框=2级, 背景=灰底, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--border-2",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--border-2 input--icon-left\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "readonly-icon-left-border-2-transparent",
+      "figmaNodeId": "86:582",
+      "figmaVariantPath": "State=Readonly, 图标=左, 边框=2级, 背景=透明, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--border-2",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--border-2 input--icon-left\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "readonly-icon-left-border-2-transparent-filled",
+      "figmaNodeId": "86:587",
+      "figmaVariantPath": "State=Readonly, 图标=左, 边框=2级, 背景=透明, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--border-2",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--border-2 input--icon-left\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "readonly-icon-left-dark-soft",
+      "figmaNodeId": "86:552",
+      "figmaVariantPath": "State=Readonly, 图标=左, 边框=1级, 背景=暗底浅, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--icon-left\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "readonly-icon-left-dark-soft-filled",
+      "figmaNodeId": "86:557",
+      "figmaVariantPath": "State=Readonly, 图标=左, 边框=1级, 背景=暗底浅, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--icon-left\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "readonly-icon-left-dark-strong",
+      "figmaNodeId": "86:562",
+      "figmaVariantPath": "State=Readonly, 图标=左, 边框=1级, 背景=暗底重, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--icon-left\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "readonly-icon-left-dark-strong-filled",
+      "figmaNodeId": "86:567",
+      "figmaVariantPath": "State=Readonly, 图标=左, 边框=1级, 背景=暗底重, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--icon-left\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "readonly-icon-left-filled",
+      "figmaNodeId": "86:527",
+      "figmaVariantPath": "State=Readonly, 图标=左, 边框=1级, 背景=white, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--icon-left\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "readonly-icon-left-gray",
+      "figmaNodeId": "86:542",
+      "figmaVariantPath": "State=Readonly, 图标=左, 边框=1级, 背景=灰底, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--icon-left\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "readonly-icon-left-gray-filled",
+      "figmaNodeId": "86:547",
+      "figmaVariantPath": "State=Readonly, 图标=左, 边框=1级, 背景=灰底, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--icon-left\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "readonly-icon-left-transparent",
+      "figmaNodeId": "86:532",
+      "figmaVariantPath": "State=Readonly, 图标=左, 边框=1级, 背景=透明, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--icon-left\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"请输入...\"></div>"
+    },
+    {
+      "name": "readonly-icon-left-transparent-filled",
+      "figmaNodeId": "86:537",
+      "figmaVariantPath": "State=Readonly, 图标=左, 边框=1级, 背景=透明, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--icon-left"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--icon-left\" readonly data-state=\"readonly\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span><input type=\"text\" placeholder=\"\" value=\"输入内容\"></div>"
+    },
+    {
+      "name": "readonly-icon-right",
+      "figmaNodeId": "86:622",
+      "figmaVariantPath": "State=Readonly, 图标=右, 边框=1级, 背景=white, 内容=空",
+      "modifiers": [
+        "input",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--icon-right\" readonly data-state=\"readonly\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-right-border-2",
+      "figmaNodeId": "86:672",
+      "figmaVariantPath": "State=Readonly, 图标=右, 边框=2级, 背景=white, 内容=空",
+      "modifiers": [
+        "input",
+        "input--border-2",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--border-2 input--icon-right\" readonly data-state=\"readonly\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-right-border-2-dark-soft",
+      "figmaNodeId": "86:702",
+      "figmaVariantPath": "State=Readonly, 图标=右, 边框=2级, 背景=暗底浅, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--border-2",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--border-2 input--icon-right\" readonly data-state=\"readonly\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-right-border-2-dark-soft-filled",
+      "figmaNodeId": "86:707",
+      "figmaVariantPath": "State=Readonly, 图标=右, 边框=2级, 背景=暗底浅, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--border-2",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--border-2 input--icon-right\" readonly data-state=\"readonly\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-right-border-2-dark-strong",
+      "figmaNodeId": "86:712",
+      "figmaVariantPath": "State=Readonly, 图标=右, 边框=2级, 背景=暗底重, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--border-2",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--border-2 input--icon-right\" readonly data-state=\"readonly\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-right-border-2-dark-strong-filled",
+      "figmaNodeId": "86:717",
+      "figmaVariantPath": "State=Readonly, 图标=右, 边框=2级, 背景=暗底重, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--border-2",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--border-2 input--icon-right\" readonly data-state=\"readonly\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-right-border-2-filled",
+      "figmaNodeId": "86:677",
+      "figmaVariantPath": "State=Readonly, 图标=右, 边框=2级, 背景=white, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--border-2",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--border-2 input--icon-right\" readonly data-state=\"readonly\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-right-border-2-gray",
+      "figmaNodeId": "86:692",
+      "figmaVariantPath": "State=Readonly, 图标=右, 边框=2级, 背景=灰底, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--border-2",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--border-2 input--icon-right\" readonly data-state=\"readonly\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-right-border-2-gray-filled",
+      "figmaNodeId": "86:697",
+      "figmaVariantPath": "State=Readonly, 图标=右, 边框=2级, 背景=灰底, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--border-2",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--border-2 input--icon-right\" readonly data-state=\"readonly\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-right-border-2-transparent",
+      "figmaNodeId": "86:682",
+      "figmaVariantPath": "State=Readonly, 图标=右, 边框=2级, 背景=透明, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--border-2",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--border-2 input--icon-right\" readonly data-state=\"readonly\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-right-border-2-transparent-filled",
+      "figmaNodeId": "86:687",
+      "figmaVariantPath": "State=Readonly, 图标=右, 边框=2级, 背景=透明, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--border-2",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--border-2 input--icon-right\" readonly data-state=\"readonly\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-right-dark-soft",
+      "figmaNodeId": "86:652",
+      "figmaVariantPath": "State=Readonly, 图标=右, 边框=1级, 背景=暗底浅, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--icon-right\" readonly data-state=\"readonly\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-right-dark-soft-filled",
+      "figmaNodeId": "86:657",
+      "figmaVariantPath": "State=Readonly, 图标=右, 边框=1级, 背景=暗底浅, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-soft",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-soft input--icon-right\" readonly data-state=\"readonly\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-right-dark-strong",
+      "figmaNodeId": "86:662",
+      "figmaVariantPath": "State=Readonly, 图标=右, 边框=1级, 背景=暗底重, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--icon-right\" readonly data-state=\"readonly\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-right-dark-strong-filled",
+      "figmaNodeId": "86:667",
+      "figmaVariantPath": "State=Readonly, 图标=右, 边框=1级, 背景=暗底重, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-dark-strong",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-dark-strong input--icon-right\" readonly data-state=\"readonly\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-right-filled",
+      "figmaNodeId": "86:627",
+      "figmaVariantPath": "State=Readonly, 图标=右, 边框=1级, 背景=white, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--icon-right\" readonly data-state=\"readonly\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-right-gray",
+      "figmaNodeId": "86:642",
+      "figmaVariantPath": "State=Readonly, 图标=右, 边框=1级, 背景=灰底, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--icon-right\" readonly data-state=\"readonly\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-right-gray-filled",
+      "figmaNodeId": "86:647",
+      "figmaVariantPath": "State=Readonly, 图标=右, 边框=1级, 背景=灰底, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-gray",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-gray input--icon-right\" readonly data-state=\"readonly\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-right-transparent",
+      "figmaNodeId": "86:632",
+      "figmaVariantPath": "State=Readonly, 图标=右, 边框=1级, 背景=透明, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--icon-right\" readonly data-state=\"readonly\"><input type=\"text\" placeholder=\"请输入...\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-icon-right-transparent-filled",
+      "figmaNodeId": "86:637",
+      "figmaVariantPath": "State=Readonly, 图标=右, 边框=1级, 背景=透明, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-transparent",
+        "input--icon-right"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<div class=\"input-row input--bg-transparent input--icon-right\" readonly data-state=\"readonly\"><input type=\"text\" placeholder=\"\" value=\"输入内容\"><span class=\"input__icon\" aria-hidden=\"true\">▸</span></div>"
+    },
+    {
+      "name": "readonly-transparent",
+      "figmaNodeId": "86:486",
+      "figmaVariantPath": "State=Readonly, 图标=无, 边框=1级, 背景=透明, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-transparent"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-transparent\" placeholder=\"请输入...\" readonly data-state=\"readonly\">"
+    },
+    {
+      "name": "readonly-transparent-filled",
+      "figmaNodeId": "86:488",
+      "figmaVariantPath": "State=Readonly, 图标=无, 边框=1级, 背景=透明, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-transparent"
+      ],
+      "attrs": {
+        "data-state": "readonly",
+        "readonly": true
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-transparent\" placeholder=\"\" value=\"输入内容\" readonly data-state=\"readonly\">"
+    },
+    {
+      "name": "transparent",
+      "figmaNodeId": "82:9",
+      "figmaVariantPath": "State=Default, 图标=无, 边框=1级, 背景=透明, 内容=空",
+      "modifiers": [
+        "input",
+        "input--bg-transparent"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-transparent\" placeholder=\"请输入...\">"
+    },
+    {
+      "name": "transparent-filled",
+      "figmaNodeId": "82:11",
+      "figmaVariantPath": "State=Default, 图标=无, 边框=1级, 背景=透明, 内容=已填",
+      "modifiers": [
+        "input",
+        "input--bg-transparent"
+      ],
+      "attrs": {
+        "data-state": null,
+        "readonly": false
+      },
+      "exampleHtml": "<input type=\"text\" class=\"input input--bg-transparent\" placeholder=\"\" value=\"输入内容\">"
+    }
+  ],
+  "generatedAt": "2026-05-12T10:00:00Z",
+  "platform": "web"
+}

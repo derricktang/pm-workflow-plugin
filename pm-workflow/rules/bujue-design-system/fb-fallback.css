@@ -1,0 +1,682 @@
+/* ============================================================
+ * fb-fallback.css — 不觉设计系统 PM 兜底组件库（批次 1）
+ * --------------------------------------------------------
+ * ⚠️ 内建兜底 pub 库(单库):本文件属于「pub 库(正式组件库,不觉
+ *    设计系统)」内建兜底库——工作流自带、git 跟踪长期保留,当前唯一
+ *    pub 源,可走 workflow-evolution skill 直改(非"外部接管/只读")。
+ *    正式 pub 库接入为后续:终态由独立仓 pm-group/bujue-design-system
+ *    经 skill/CLI 消费,届时本库降离线 fallback。详 workflow_architecture_map.md §六。
+ * --------------------------------------------------------
+ * [Must] SSOT 主从架构（与 fb-fallback-manifest.md 双锚关系）:
+ *   - 本文件是 fb-* class 实际渲染的【技术真源】(SSOT) —— assemble.py 注入 PRD
+ *     <style> 块顶部, 决定浏览器最终渲染效果
+ *   - fb-fallback-manifest.md 是【派生视图】—— PM 阶段 4 PRD 撰写时必读的 HTML
+ *     模板调用文档
+ *   - 调整方向: 先改本文件加 / 删 / 改 .fb-* selector, 再同步 manifest 的 HTML
+ *     模板示例; 禁止反向 (manifest 写了 css 没实现 = PM 引用必塌陷)
+ *   - 兜底校验: precheck_stage4.py check_fb_fallback_sync 双向 diff 拦截漂移
+ * --------------------------------------------------------
+ * 视觉来源: bujue tokens（黑白灰主调，红色仅错误语义）
+ * API 形态参考: TDesign（多端一致 API）
+ * 注入方式: assemble.py prd 自动注入到 PRD <style> 块顶部
+ * 适用容器: .phone-frame / .tablet-frame / .desktop-frame / .miniprogram-frame
+ * 命名前缀: fb- （与 bujue 设计规范一致；未来公司组件库就位时可零成本迁移）
+ * 修改前提示: 本文件由批次 1 维护；批次 2-5 增补移动端/桌面端/小程序专属组件
+ * ============================================================ */
+
+/* ─── 基础重置 ─── */
+[class^="fb-"], [class*=" fb-"] {
+  box-sizing: border-box;
+  font-family: 'Source Han Sans CN', -apple-system, BlinkMacSystemFont, "PingFang SC", system-ui, sans-serif;
+}
+
+/* ============================================================
+ * 1. 原子组件（Atom）
+ * ============================================================ */
+
+/* —— Button —— */
+.fb-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 4px; padding: 0 16px; height: 32px;
+  border: 1px solid transparent; border-radius: 8px;
+  font-size: 14px; line-height: 21px; font-weight: normal;
+  cursor: pointer; user-select: none;
+  background: transparent; color: var(--fb-text-primary);
+  transition: background-color .15s, border-color .15s, color .15s;
+}
+.fb-btn-primary { background: var(--fb-text-primary); color: var(--fb-white); }
+.fb-btn-primary:hover { background: #1a1a1a; }
+.fb-btn-default { background: var(--fb-white); color: var(--fb-text-primary); border-color: var(--fb-border-1); }
+.fb-btn-default:hover { background: var(--fb-bg-2); border-color: var(--fb-border-2); }
+.fb-btn-ghost { background: var(--fb-bg-2); color: var(--fb-text-primary); }
+.fb-btn-ghost:hover { background: var(--fb-bg-3); }
+.fb-btn-text { background: transparent; color: var(--fb-text-primary); padding: 0 8px; }
+.fb-btn-text:hover { background: var(--fb-bg-2); }
+.fb-btn-danger { background: var(--fb-error); color: var(--fb-white); }
+.fb-btn-danger:hover { background: #c10020; }
+.fb-btn-sm { height: 28px; padding: 0 8px; font-size: 12px; line-height: 19px; }
+.fb-btn-md { height: 32px; padding: 0 16px; font-size: 14px; }
+.fb-btn-lg { height: 40px; padding: 0 16px; font-size: 14px; }
+.fb-btn-xl { height: 48px; padding: 0 24px; font-size: 16px; }
+.fb-btn[disabled], .fb-btn.is-disabled {
+  background: var(--fb-text-disabled) !important; color: var(--fb-white) !important;
+  border-color: transparent !important; cursor: not-allowed !important;
+}
+.fb-btn.is-loading { position: relative; pointer-events: none; }
+.fb-btn.is-loading::after {
+  content: ""; width: 14px; height: 14px; margin-left: 4px;
+  border: 2px solid currentColor; border-top-color: transparent; border-radius: 50%;
+  animation: fb-spin .8s linear infinite;
+}
+
+/* —— Input / Textarea —— */
+.fb-input {
+  display: flex; align-items: center; gap: 4px;
+  width: 100%; height: 40px; padding: 0 12px;
+  border: 1px solid var(--fb-border-1); border-radius: 8px;
+  background: var(--fb-white);
+  font-size: 14px; line-height: 21px; color: var(--fb-text-primary);
+  transition: border-color .15s;
+}
+.fb-input::placeholder { color: var(--fb-text-hint); }
+.fb-input:focus, .fb-input.is-focus { outline: none; border-color: var(--fb-text-primary); }
+.fb-input.is-error { border-color: var(--fb-error); }
+.fb-input.is-disabled, .fb-input[disabled] {
+  background: var(--fb-bg-2); color: var(--fb-text-disabled); cursor: not-allowed;
+}
+.fb-input-readonly { background: var(--fb-bg-2); cursor: default; }
+.fb-textarea {
+  width: 100%; min-height: 80px; padding: 8px 12px;
+  border: 1px solid var(--fb-border-1); border-radius: 8px;
+  background: var(--fb-white);
+  font-size: 14px; line-height: 21px; color: var(--fb-text-primary);
+  font-family: inherit; resize: vertical;
+}
+.fb-textarea::placeholder { color: var(--fb-text-hint); }
+.fb-textarea:focus, .fb-textarea.is-focus { outline: none; border-color: var(--fb-text-primary); }
+.fb-textarea.is-error { border-color: var(--fb-error); }
+
+/* —— Icon container —— */
+.fb-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px; flex-shrink: 0;
+  color: var(--fb-text-primary);
+}
+.fb-icon-sm { width: 16px; height: 16px; }
+.fb-icon-lg { width: 32px; height: 32px; }
+
+/* —— Label / Hint / Link —— */
+.fb-label { font-size: 14px; line-height: 21px; color: var(--fb-text-primary); }
+.fb-label-required::after { content: "*"; color: var(--fb-error); margin-left: 2px; }
+.fb-hint { font-size: 12px; line-height: 19px; color: var(--fb-text-hint); }
+.fb-hint-error { color: var(--fb-error); }
+.fb-link { color: var(--fb-text-primary); text-decoration: underline; cursor: pointer; }
+.fb-link:hover { color: #1a1a1a; }
+
+/* ============================================================
+ * 2. 表单组件
+ * ============================================================ */
+
+/* —— FormRow（label + field + error）—— */
+.fb-form-row { display: flex; flex-direction: column; gap: 4px; margin-bottom: 16px; }
+.fb-form-row-inline { flex-direction: row; align-items: center; gap: 12px; }
+.fb-form-row-inline .fb-label { width: 100px; flex-shrink: 0; }
+.fb-form-error { font-size: 12px; line-height: 19px; color: var(--fb-error); }
+
+/* —— Select（下拉选择）—— */
+.fb-select {
+  position: relative; display: inline-flex; align-items: center;
+  width: 100%; height: 40px; padding: 0 32px 0 12px;
+  border: 1px solid var(--fb-border-1); border-radius: 8px;
+  background: var(--fb-white); cursor: pointer;
+  font-size: 14px; line-height: 21px; color: var(--fb-text-primary);
+}
+.fb-select::after {
+  content: ""; position: absolute; right: 12px; top: 50%;
+  width: 8px; height: 8px;
+  border-right: 1.5px solid var(--fb-text-secondary);
+  border-bottom: 1.5px solid var(--fb-text-secondary);
+  transform: translateY(-75%) rotate(45deg);
+}
+.fb-select.is-open::after { transform: translateY(-25%) rotate(-135deg); }
+.fb-select.is-disabled { background: var(--fb-bg-2); color: var(--fb-text-disabled); cursor: not-allowed; }
+.fb-select-placeholder { color: var(--fb-text-hint); }
+.fb-select-dropdown {
+  position: absolute; left: 0; right: 0; top: calc(100% + 4px);
+  background: var(--fb-white); border: 1px solid var(--fb-border-1); border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.06);
+  z-index: 100; max-height: 240px; overflow-y: auto;
+}
+.fb-select-option { padding: 8px 12px; font-size: 14px; cursor: pointer; }
+.fb-select-option:hover { background: var(--fb-bg-2); }
+.fb-select-option.is-selected { background: var(--fb-bg-3); color: var(--fb-text-primary); font-weight: 500; }
+
+/* —— Checkbox —— */
+.fb-checkbox {
+  display: inline-flex; align-items: center; gap: 8px; cursor: pointer; user-select: none;
+  font-size: 14px; line-height: 21px; color: var(--fb-text-primary);
+}
+.fb-checkbox-box {
+  width: 16px; height: 16px; border: 1.5px solid var(--fb-border-2); border-radius: 3px;
+  background: var(--fb-white); display: inline-flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: all .15s;
+}
+.fb-checkbox.is-checked .fb-checkbox-box { background: var(--fb-text-primary); border-color: var(--fb-text-primary); }
+.fb-checkbox.is-checked .fb-checkbox-box::after {
+  content: ""; width: 8px; height: 4px; border: 1.5px solid var(--fb-white);
+  border-top: none; border-right: none; transform: rotate(-45deg) translate(1px, -1px);
+}
+.fb-checkbox.is-disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* —— Radio —— */
+.fb-radio {
+  display: inline-flex; align-items: center; gap: 8px; cursor: pointer; user-select: none;
+  font-size: 14px; line-height: 21px; color: var(--fb-text-primary);
+}
+.fb-radio-dot {
+  width: 16px; height: 16px; border: 1.5px solid var(--fb-border-2); border-radius: 50%;
+  background: var(--fb-white); flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center; transition: all .15s;
+}
+.fb-radio.is-checked .fb-radio-dot { border-color: var(--fb-text-primary); }
+.fb-radio.is-checked .fb-radio-dot::after {
+  content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--fb-text-primary);
+}
+.fb-radio.is-disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* —— Switch —— */
+.fb-switch {
+  display: inline-flex; align-items: center;
+  width: 44px; height: 24px; padding: 2px;
+  background: var(--fb-bg-5); border-radius: 100px; cursor: pointer; user-select: none;
+  transition: background .2s;
+}
+.fb-switch-thumb {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--fb-white); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  transition: transform .2s;
+}
+.fb-switch.is-checked { background: var(--fb-text-primary); }
+.fb-switch.is-checked .fb-switch-thumb { transform: translateX(20px); }
+.fb-switch.is-disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* —— Search —— */
+.fb-search {
+  display: flex; align-items: center; gap: 4px;
+  width: 100%; height: 40px; padding: 0 12px;
+  border: 1px solid var(--fb-border-1); border-radius: 8px;
+  background: var(--fb-white);
+}
+.fb-search-input {
+  flex: 1; border: none; outline: none; background: transparent;
+  font-size: 14px; line-height: 21px; color: var(--fb-text-primary);
+  font-family: inherit;
+}
+.fb-search-input::placeholder { color: var(--fb-text-hint); }
+.fb-search-icon { color: var(--fb-text-hint); flex-shrink: 0; }
+
+/* ============================================================
+ * 3. 容器组件
+ * ============================================================ */
+
+/* —— Card —— */
+.fb-card {
+  background: var(--fb-white); border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+.fb-card-media { width: 100%; aspect-ratio: 16 / 9; background: var(--fb-bg-2); object-fit: cover; }
+.fb-card-body { padding: 12px; }
+.fb-card-title { font-size: 14px; line-height: 21px; font-weight: 600; color: var(--fb-text-primary); margin-bottom: 4px; }
+.fb-card-meta { font-size: 12px; line-height: 19px; color: var(--fb-text-secondary); }
+.fb-card-actions { display: flex; gap: 8px; padding: 8px 12px; border-top: 1px solid var(--fb-border-1); }
+
+/* —— Modal —— */
+/* 默认隐藏 — 由 .is-visible 修饰类 / JS 触发显示，避免 prd.html 中弹框全局常驻 */
+/* position: absolute 嵌入 frame-card（非 fixed），依赖 frame-card 的 isolation: isolate 形成独立 stacking context */
+.fb-modal-overlay {
+  position: absolute; inset: 0; background: var(--fb-overlay);
+  display: none; align-items: center; justify-content: center;
+  z-index: 50; /* Z-50 overlay 遮罩（参 prd_expression_standard.md §零.1）*/
+}
+.fb-modal-overlay.is-visible { display: flex; }
+.fb-modal {
+  background: var(--fb-white); border-radius: 8px;
+  width: 90%; max-width: 480px; max-height: 90vh;
+  display: flex; flex-direction: column;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  /* fb-action-bar v3 命名覆盖：modal 内取静态底栏行为（CSS 变量就近继承，详文件末 v3 段）*/
+  --bar-position: static;
+  --bar-bottom: auto;
+  --bar-margin-top: 0;
+  --bar-background: transparent;
+  --bar-padding: 12px 20px;
+}
+.fb-modal-header { padding: 16px 20px; border-bottom: 1px solid var(--fb-border-1); }
+.fb-modal-title { font-size: 16px; line-height: 24px; font-weight: 600; color: var(--fb-text-primary); }
+.fb-modal-body { padding: 20px; overflow-y: auto; flex: 1; }
+/* .fb-modal-footer — deprecated v3 别名，行为定义见文件末 fb-action-bar v3 总段 */
+
+/* —— Toast —— */
+/* 默认隐藏 — 由 .is-visible 修饰类 / JS 触发短暂显示（典型 3-4 秒），避免 prd.html 中 toast 全局常驻 */
+/* position: absolute 嵌入 frame-card（依赖 frame-card 的 isolation: isolate） */
+.fb-toast {
+  position: absolute; left: 50%; transform: translateX(-50%);
+  display: none; align-items: center; gap: 8px;
+  padding: 12px 16px; border-radius: 8px;
+  background: var(--fb-text-primary); color: var(--fb-white);
+  font-size: 14px; line-height: 21px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  z-index: 150; /* Z-150 toast 反馈层（高于 dropdown Z-100，弹框打开时 toast 仍可见；参 prd_expression_standard.md §零.1）*/
+}
+.fb-toast.is-visible { display: inline-flex; }
+.fb-toast-success { background: #2c8c4d; }
+.fb-toast-error { background: var(--fb-error); }
+.fb-toast-warning { background: #e6a300; }
+.fb-toast-info { background: var(--fb-text-primary); }
+
+/* —— Toast 端类分流定位 ——
+ * 桌面端 toast 顶部对齐 + 顶部预留 20px;移动类端口(phone/h5/tablet/miniprogram)底部对齐 + 底部预留 12px
+ * :where() 特异性 0,不与既有 L1 inline 打架(允许 PM 在帧内 inline override)
+ */
+:where(.desktop-frame) .fb-toast { top: 20px; }
+:where(.phone-frame, .h5-frame, .tablet-frame, .miniprogram-frame) .fb-toast { bottom: 12px; }
+
+/* —— Drawer —— */
+/* 抽屉，从 frame-card 边缘滑入；默认隐藏，加 .is-visible 触发显示。
+   修饰类 .fb-drawer-{top|right|bottom|left} 决定滑入方向（默认 right） */
+.fb-drawer-overlay {
+  position: absolute; inset: 0; background: var(--fb-overlay);
+  display: none;
+  z-index: 40; /* Z-40 drawer 遮罩 */
+}
+.fb-drawer-overlay.is-visible { display: block; }
+.fb-drawer {
+  position: absolute;
+  background: var(--fb-white);
+  box-shadow: 0 0 32px rgba(0, 0, 0, 0.16);
+  display: flex; flex-direction: column;
+  z-index: 41; /* Z-40 drawer 内容（略高于 drawer-overlay，确保内容在遮罩之上）*/
+  /* fb-action-bar v3 命名覆盖：drawer 内取静态底栏行为（与 modal 一致；未来分化时此处独立调整）*/
+  --bar-position: static;
+  --bar-bottom: auto;
+  --bar-margin-top: 0;
+  --bar-background: transparent;
+  --bar-padding: 12px 20px;
+}
+.fb-drawer-right { top: 0; right: 0; bottom: 0; width: 360px; max-width: 80%; }
+.fb-drawer-left  { top: 0; left: 0; bottom: 0; width: 360px; max-width: 80%; }
+.fb-drawer-top   { top: 0; left: 0; right: 0; height: 50%; max-height: 80vh; }
+.fb-drawer-bottom{ bottom: 0; left: 0; right: 0; height: 50%; max-height: 80vh; }
+.fb-drawer-header { padding: 16px 20px; border-bottom: 1px solid var(--fb-border-1); font-weight: 600; }
+.fb-drawer-body { padding: 20px; overflow-y: auto; flex: 1; }
+/* .fb-drawer-footer — deprecated v3 别名，行为定义见文件末 fb-action-bar v3 总段 */
+
+/* —— Dropdown —— */
+/* 下拉浮层（典型用于 select 二级菜单 / 操作菜单）；默认隐藏，由 trigger 控制显示。
+   预期由父 trigger 元素 position: relative，dropdown 用 top:100%; left:0 锚定 */
+.fb-dropdown {
+  position: absolute;
+  background: var(--fb-white);
+  border: 1px solid var(--fb-border-1); border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: none; flex-direction: column;
+  min-width: 120px; padding: 4px 0;
+  z-index: 100; /* Z-100 dropdown / select（参 prd_expression_standard.md §零.1）*/
+}
+.fb-dropdown.is-visible { display: flex; }
+/* 方向修饰类（同 popover 4 方向同族对称；默认 .fb-dropdown 等效 .fb-dropdown-bottom）：
+   bottom = 下方左对齐（默认） / top = 上方左对齐 / right = 下方右对齐 / left = 下方左对齐（显式标）
+   业务场景：表格右侧列空间紧张时用 .fb-dropdown-right 防出屏；底部贴边时用 .fb-dropdown-top */
+.fb-dropdown-bottom { top: 100%; left: 0; margin-top: 4px; }
+.fb-dropdown-top    { bottom: 100%; left: 0; margin-bottom: 4px; }
+.fb-dropdown-right  { top: 100%; right: 0; left: auto; margin-top: 4px; }
+.fb-dropdown-left   { top: 100%; left: 0; right: auto; margin-top: 4px; }
+.fb-dropdown-item { padding: 8px 12px; font-size: 14px; cursor: pointer; }
+.fb-dropdown-item:hover { background: var(--fb-bg-2); }
+.fb-dropdown-item.is-selected { background: var(--fb-bg-3); color: var(--fb-text-primary); font-weight: 500; }
+.fb-dropdown-item.is-disabled { color: var(--fb-text-disabled); cursor: not-allowed; }
+.fb-dropdown-divider { height: 1px; background: var(--fb-border-1); margin: 4px 0; }
+
+/* —— Popover —— */
+/* 悬浮气泡（典型用于"点击查看更多" / 富内容触发提示）；默认隐藏，加 .is-visible 触发显示。
+   修饰类 .fb-popover-{top|right|bottom|left} 决定展开方向（默认 bottom） */
+.fb-popover {
+  position: absolute;
+  background: var(--fb-white);
+  border: 1px solid var(--fb-border-1); border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  padding: 12px 16px;
+  display: none; flex-direction: column; gap: 6px;
+  min-width: 180px; max-width: 320px;
+  font-size: 14px; line-height: 21px; color: var(--fb-text-primary);
+  z-index: 60; /* Z-60 tooltip / popover（参 prd_expression_standard.md §零.1）*/
+}
+.fb-popover.is-visible { display: flex; }
+.fb-popover-bottom { top: 100%; margin-top: 8px; }
+.fb-popover-top    { bottom: 100%; margin-bottom: 8px; }
+.fb-popover-right  { left: 100%; margin-left: 8px; }
+.fb-popover-left   { right: 100%; margin-right: 8px; }
+.fb-popover-title { font-weight: 600; font-size: 14px; }
+.fb-popover-body { font-size: 13px; color: var(--fb-text-secondary); }
+
+/* —— Tooltip —— */
+/* 轻量提示（典型用于 hover 简短说明）；默认隐藏，加 .is-visible 触发显示。
+   修饰类 .fb-tooltip-{top|right|bottom|left} 决定展开方向（默认 top） */
+.fb-tooltip {
+  position: absolute;
+  background: var(--fb-text-primary); color: var(--fb-white);
+  padding: 6px 10px; border-radius: 4px;
+  font-size: 12px; line-height: 18px; white-space: nowrap;
+  display: none;
+  z-index: 60; /* Z-60 tooltip / popover（参 prd_expression_standard.md §零.1）*/
+}
+.fb-tooltip.is-visible { display: inline-block; }
+.fb-tooltip-top    { bottom: 100%; left: 50%; transform: translateX(-50%); margin-bottom: 6px; }
+.fb-tooltip-bottom { top: 100%; left: 50%; transform: translateX(-50%); margin-top: 6px; }
+.fb-tooltip-left   { right: 100%; top: 50%; transform: translateY(-50%); margin-right: 6px; }
+.fb-tooltip-right  { left: 100%; top: 50%; transform: translateY(-50%); margin-left: 6px; }
+
+/* —— Tag —— */
+.fb-tag {
+  display: inline-flex; align-items: center; gap: 4px;
+  height: 24px; padding: 0 8px; border-radius: 4px;
+  font-size: 12px; line-height: 19px;
+  background: var(--fb-white); color: var(--fb-text-secondary); border: 1px solid var(--fb-border-1);
+}
+.fb-tag-selected { background: var(--fb-bg-3); color: var(--fb-text-primary); border-color: transparent; }
+.fb-tag-disabled { color: var(--fb-text-disabled); }
+.fb-tag-pill { border-radius: 100px; }
+.fb-tag-md { height: 36px; padding: 0 12px; font-size: 14px; }
+.fb-tag-lg { height: 40px; padding: 0 12px; font-size: 14px; }
+
+/* —— Chip（Tag with close）—— */
+.fb-chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  height: 24px; padding: 0 4px 0 8px; border-radius: 4px;
+  font-size: 12px; line-height: 19px;
+  background: var(--fb-bg-3); color: var(--fb-text-primary);
+}
+.fb-chip-close {
+  width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--fb-text-secondary); border-radius: 50%;
+}
+.fb-chip-close:hover { background: var(--fb-bg-5); }
+
+/* —— Badge —— */
+.fb-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 16px; height: 16px; padding: 0 4px; border-radius: 8px;
+  background: var(--fb-error); color: var(--fb-white);
+  font-size: 10px; line-height: 15px; font-weight: 500;
+}
+.fb-badge-dot { min-width: 8px; height: 8px; padding: 0; border-radius: 50%; }
+
+/* —— Action Bar (统一底栏操作组，S4-28 v3 CSS Custom Property 继承) —— */
+/* 设计：5 个 CSS 变量实现"就近祖先值天然胜出"的底栏行为切换，根治 v2 三 class
+   (.fb-frame-bottom-bar / .fb-modal-footer / .fb-drawer-footer) 命名冗余 + PM 误叠加问题。
+   - 5 类 frame 容器声明默认 sticky 贴底行为（base 变量基线）
+   - .fb-modal / .fb-drawer 容器内覆盖变量为 static 行为（命名覆盖块就近）
+   - .fb-action-bar 使用 var(--bar-*) 取值，CSS 引擎按 DOM 最近祖先值取，
+     嵌套深度不敏感、无源码顺序仲裁问题
+   - 浏览器兼容：CSS Custom Properties（Chrome 49+ / Firefox 31+ / Safari 9.1+，2026 全覆盖）
+   详 fb-fallback-manifest.md §3.11 (v3) + rule_hard_constraints.md §S4-28 (v3) */
+
+/* === 变量基线：5 类 frame 容器声明默认 sticky 贴底行为 ===
+   :where() 特异性 0，不与既有 inline 打架；frame 容器永不命名化，仅作 base 默认环境 */
+:where(
+  .desktop-frame, .tablet-frame,
+  .phone-frame, .h5-frame, .miniprogram-frame
+) {
+  --bar-position: sticky;
+  --bar-bottom: 0;
+  --bar-margin-top: auto;
+  --bar-background: var(--fb-bg-1);
+  --bar-padding: 12px 24px;
+}
+
+/* === 基础类：使用变量，CSS 引擎按 DOM 最近祖先值取（就近优先）=== */
+.fb-action-bar {
+  display: flex; align-items: center; justify-content: flex-end; gap: 8px;
+  border-top: 1px solid var(--fb-border-1);
+  position: var(--bar-position);
+  bottom: var(--bar-bottom);
+  margin-top: var(--bar-margin-top);
+  background: var(--bar-background);
+  padding: var(--bar-padding);
+}
+
+/* === Deprecated 别名（v3 兼容期保留，v4 触发条件 = 全部下游迁移完成 + ≥ 3 个月后删）===
+   旧 class 行为通过变量继承机制与 .fb-action-bar 完全等价（无视觉差异）；
+   precheck 扫旧 class 用法 → WARN 提示迁移到 .fb-action-bar */
+.fb-frame-bottom-bar,
+.fb-modal-footer,
+.fb-drawer-footer {
+  display: flex; align-items: center; justify-content: flex-end; gap: 8px;
+  border-top: 1px solid var(--fb-border-1);
+  position: var(--bar-position);
+  bottom: var(--bar-bottom);
+  margin-top: var(--bar-margin-top);
+  background: var(--bar-background);
+  padding: var(--bar-padding);
+}
+
+/* —— Navbar (顶部导航栏，v2 支持 7 variant) ——
+   移动类端口(phone/h5/miniprogram/tablet)顶部 sticky 容器,3 slot 灵活布局
+   (left / center / right),按业务场景填充不同子组件。data-variant 显式声明
+   场景类型,precheck 按此精确判定(零启发式,FP≈0)。
+
+   7 variant (PM 自报 data-variant):
+     detail        - 次级详情(默认): .fb-nav-back + .fb-nav-title + .fb-nav-action(≤1)
+     multi-select  - 列表多选态:     .fb-btn-text(取消) + .fb-nav-title(已选 N/M) + .fb-btn-text(全选)
+     confirm       - 表单/浮层确认:  .fb-btn-text(取消) + .fb-nav-title + .fb-btn-primary(确认)
+     edit          - 编辑态密集:     .fb-btn-text(完成/保存) + .fb-nav-title + .fb-nav-action(···)
+     list          - 列表入口页:     .fb-nav-back(可选) + .fb-nav-title + .fb-nav-action × N
+     workflow      - 向导分步:       .fb-nav-back(上一步) + .fb-nav-title(步骤 X/N) + .fb-nav-action(跳过)
+     home          - 主页/Tab:       — + .fb-nav-title(logo) + .fb-nav-action × N
+
+   center slot 容器约定: PM 总用 .fb-nav-title 作 center 子元素(已有 flex:1 1 auto
+   自动占据剩余空间居中),即使内容是"已选 N/M"/"步骤 X/N"等非标题文字。
+
+   sticky 贴顶由真源自带(position:sticky;top:0),PM 禁写 inline position:sticky/top。
+   须为 *-frame 直接子元素(置首位);桌面 Web 用 sidebar 导航,不用本组件。
+   S4-35 校验: detail/workflow variant 强制 .fb-nav-back; 其他 variant 不强制
+   (用 [取消]/[完成] 等替代)。default data-variant=detail (向后兼容)。
+   详 fb-fallback-manifest.md §3.12 + rule_hard_constraints.md §S4-35。 */
+.fb-navbar {
+  position: sticky; top: 0;
+  display: flex; align-items: center; gap: 8px;
+  height: 44px; padding: 0 12px;
+  background: var(--fb-bg-1);
+  border-bottom: 1px solid var(--fb-border-1);
+}
+.fb-nav-back {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 28px; height: 28px; flex: 0 0 auto;
+  color: var(--fb-text-primary); cursor: pointer;
+}
+.fb-nav-title {
+  flex: 1 1 auto; text-align: center;
+  font-size: 16px; font-weight: 600; color: var(--fb-text-primary);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.fb-nav-action {
+  display: inline-flex; align-items: center; justify-content: flex-end; gap: 4px;
+  flex: 0 0 auto; min-width: 28px;
+}
+
+/* ============================================================
+ * 4. 列表组件
+ * ============================================================ */
+
+/* —— ListItem —— */
+.fb-list { background: var(--fb-white); }
+.fb-list-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px; border-bottom: 1px solid var(--fb-border-1);
+  cursor: pointer; transition: background .15s;
+}
+.fb-list-item:hover { background: var(--fb-bg-2); }
+.fb-list-item:last-child { border-bottom: none; }
+.fb-list-item-content { flex: 1; min-width: 0; }
+.fb-list-item-title { font-size: 14px; line-height: 21px; color: var(--fb-text-primary); }
+.fb-list-item-desc { font-size: 12px; line-height: 19px; color: var(--fb-text-secondary); margin-top: 2px; }
+.fb-list-item-extra { color: var(--fb-text-hint); font-size: 12px; }
+
+/* —— Table —— */
+/* 适用:多字段对比 / 任务密集 / B 端专业用户(参 proto_data_display_selection.md §一 Q1 ≥5 字段 / Q2 扫描-排序-筛选 / Q4 专业用户)
+ * 用 <table> 原生标签或 <div role="table"> 均可,标准 class 让 inline style 无需重复声明
+ */
+.fb-table {
+  width: 100%; background: var(--fb-white);
+  border-collapse: collapse;
+  font-size: 14px; line-height: 21px; color: var(--fb-text-primary);
+}
+.fb-table-header { background: var(--fb-bg-2); }
+.fb-table-header-cell {
+  padding: 10px 12px; text-align: left;
+  font-weight: 600; font-size: 13px; color: var(--fb-text-secondary);
+  border-bottom: 1px solid var(--fb-border-1);
+  white-space: nowrap;
+}
+.fb-table-row {
+  border-bottom: 1px solid var(--fb-border-1);
+  cursor: pointer; transition: background .15s;
+}
+.fb-table-row:hover { background: var(--fb-bg-2); }
+.fb-table-row:last-child { border-bottom: none; }
+.fb-table-row.is-selected { background: var(--fb-bg-3); }
+.fb-table-cell { padding: 12px; vertical-align: middle; }
+.fb-table-cell-num { text-align: right; font-variant-numeric: tabular-nums; }
+.fb-table-cell-actions { text-align: right; }
+
+/* —— Pagination —— */
+.fb-pagination { display: inline-flex; align-items: center; gap: 4px; }
+.fb-pagination-item {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 32px; height: 32px; padding: 0 8px; border-radius: 4px;
+  background: transparent; color: var(--fb-text-primary); cursor: pointer;
+  font-size: 14px; line-height: 21px; user-select: none;
+}
+.fb-pagination-item:hover { background: var(--fb-bg-2); }
+.fb-pagination-item.is-active { background: var(--fb-text-primary); color: var(--fb-white); }
+.fb-pagination-item.is-disabled { color: var(--fb-text-disabled); cursor: not-allowed; }
+
+/* ============================================================
+ * 5. 状态帧模板（L4）
+ * ============================================================ */
+
+.fb-state {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 48px 20px; text-align: center; gap: 12px;
+  min-height: 320px;
+}
+.fb-state-illustration {
+  width: 120px; height: 120px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--fb-text-hint);
+}
+.fb-state-title { font-size: 16px; line-height: 24px; font-weight: 600; color: var(--fb-text-primary); }
+.fb-state-subtitle { font-size: 14px; line-height: 21px; color: var(--fb-text-secondary); max-width: 320px; }
+.fb-state-actions { display: flex; gap: 8px; margin-top: 8px; }
+
+/* Empty state */
+.fb-state-empty .fb-state-title { color: var(--fb-text-secondary); }
+
+/* Loading state */
+.fb-state-loading .fb-state-illustration::before {
+  content: ""; width: 40px; height: 40px;
+  border: 3px solid var(--fb-border-2); border-top-color: var(--fb-text-primary); border-radius: 50%;
+  animation: fb-spin .8s linear infinite;
+}
+.fb-state-loading .fb-state-illustration { width: auto; height: auto; }
+
+/* Error state */
+.fb-state-error .fb-state-title { color: var(--fb-error); }
+
+/* Success state */
+.fb-state-success .fb-state-illustration::before {
+  content: "✓"; font-size: 56px; line-height: 1; color: #2c8c4d; font-weight: 700;
+}
+
+/* Disabled page state（受限/无权限）*/
+.fb-state-disabled .fb-state-title { color: var(--fb-text-hint); }
+
+/* Spin keyframes（内部使用）*/
+@keyframes fb-spin { to { transform: rotate(360deg); } }
+
+/* ============================================================
+ * PRD-aware 静态化分支（建议 9 Layer 3 / [Should]）
+ * --------------------------------------------------------
+ * 设计意图:fb-fallback CSS 库在真实业务页面跑 infinite 动画无问题,
+ * 但在 PRD 文档场景(prd_template.html `<body data-prd-static>` 自带属性,
+ * 也可在主模板手动加)下应静态化以避免 CPU 持续消耗。
+ *
+ * 与 prd_template.html `<style>` 顶部 PRD 静态化兜底 CSS(建议 9 Layer 1)
+ * 的关系:Layer 1 是 PRD 模板兜底(只对引用本 fallback 的 PRD 文档生效);
+ * Layer 3 是设计系统库内化(对任何用 data-prd-static 标记的页面都生效),
+ * 长远治本但牵连面大,本期降为 [Should],可在下次大改时启用。
+ *
+ * 启用方式:在使用本 CSS 库的页面 `<body>` 加 `data-prd-static="true"` 属性。
+ * ============================================================ */
+body[data-prd-static] .fb-btn.is-loading::after,
+body[data-prd-static] .fb-state-loading .fb-state-illustration::before {
+  animation: none !important;
+}
+
+/* ============================================================
+ * 6. 端口适配（基于 frame 容器选择器）
+ * --------------------------------------------------------
+ * 默认值适用于桌面 Web；在 .phone-frame / .tablet-frame /
+ * .miniprogram-frame 容器内自动调大触控目标 + 字号。
+ * ============================================================ */
+
+/* —— 手机 / 小程序：触控目标 ≥ 44px，圆角降为 4px，字号略大 —— */
+.phone-frame .fb-btn,
+.miniprogram-frame .fb-btn { height: 44px; border-radius: 4px; font-size: 15px; }
+.phone-frame .fb-btn-sm,
+.miniprogram-frame .fb-btn-sm { height: 32px; font-size: 13px; }
+.phone-frame .fb-btn-lg,
+.miniprogram-frame .fb-btn-lg { height: 48px; font-size: 16px; }
+
+.phone-frame .fb-input,
+.phone-frame .fb-search,
+.phone-frame .fb-select,
+.miniprogram-frame .fb-input,
+.miniprogram-frame .fb-search,
+.miniprogram-frame .fb-select { height: 44px; border-radius: 4px; font-size: 15px; }
+
+.phone-frame .fb-textarea,
+.miniprogram-frame .fb-textarea { border-radius: 4px; font-size: 15px; }
+
+.phone-frame .fb-card,
+.miniprogram-frame .fb-card { border-radius: 4px; }
+
+.phone-frame .fb-tag,
+.miniprogram-frame .fb-tag { height: 28px; font-size: 13px; }
+
+.phone-frame .fb-modal,
+.miniprogram-frame .fb-modal { border-radius: 12px 12px 0 0; align-self: flex-end; width: 100%; max-width: 100%; }
+
+/* —— PAD：介于桌面与手机之间 —— */
+.tablet-frame .fb-btn { height: 40px; border-radius: 4px; }
+.tablet-frame .fb-input,
+.tablet-frame .fb-search,
+.tablet-frame .fb-select { height: 40px; border-radius: 4px; }
+.tablet-frame .fb-textarea { border-radius: 4px; }
+.tablet-frame .fb-card { border-radius: 4px; }
+
+/* —— 桌面 Web：使用默认值，无需覆盖 —— */
+/* 默认尺寸已按 Web 基线：btn h=32, input h=40, radius=8, font-size=14 */
+
+/* ============================================================
+ * 7. 触点徽章（与 proto_contract §四 联动）
+ * ============================================================ */
+
+.tp-marker {
+  position: absolute; display: inline-flex; align-items: center; justify-content: center;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: #1665ff; color: var(--fb-white);
+  font-size: 11px; line-height: 1; font-weight: 600;
+  z-index: 10; pointer-events: none;
+}

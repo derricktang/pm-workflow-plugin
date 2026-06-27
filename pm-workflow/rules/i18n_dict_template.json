@@ -1,0 +1,42 @@
+{
+  "_meta": {
+    "purpose": "i18n 字典模板,新项目复制为 process_record/i18n_dict.json 后由 PM 维护英译",
+    "trigger": "产品定义含多语言需求 (prd_expression_standard.md §十) 时启用",
+    "tool": "pm-workflow/scripts/add_i18n.py --extract / --inject",
+    "format_rules": [
+      "key 是中文 textContent 字面 (与 prd_M0X_draft.html 中 <tag>...</tag> 内文字一致,含 &amp; 等已转义实体保留原样)",
+      "value 是英文翻译",
+      "value 留空字符串 = 保留中文作 data-en (适用于项目示例数据如人名 / 地名 / 业务编号)",
+      "术语一致: 同一概念跨模块用同一翻译 (如 '确认报价' 全局统一 'Confirm Quote' 而非混用 'Confirm Price')",
+      "新增 key: --extract 自动追加 (留空 value),PM 维护后再跑 --inject"
+    ],
+    "workflow": [
+      "Step 1: PM 写完 8 份 prd_M0X_draft.html 后跑 `python pm-workflow/scripts/add_i18n.py --extract`",
+      "Step 2: 编辑 process_record/i18n_dict.json 填 value 列英译 (保留中文示例数据时 value 留空)",
+      "Step 3: 跑 `python pm-workflow/scripts/add_i18n.py --inject` 注入 drafts",
+      "Step 4: 重跑 `python pm-workflow/scripts/assemble.py prd` 派生到 outputs/prd.html"
+    ]
+  },
+  "dict": {
+    "确认": "Confirm",
+    "取消": "Cancel",
+    "删除": "Delete",
+    "新建": "Create",
+    "保存": "Save",
+    "提交": "Submit",
+    "重置": "Reset",
+    "返回": "Back",
+    "下一步": "Next",
+    "上一步": "Previous",
+    "搜索": "Search",
+    "筛选": "Filter",
+    "导出": "Export",
+    "导入": "Import",
+    "编辑": "Edit",
+    "查看详情": "View Details",
+    "暂无数据": "No data",
+    "加载中": "Loading",
+    "操作成功": "Operation succeeded",
+    "操作失败": "Operation failed"
+  }
+}

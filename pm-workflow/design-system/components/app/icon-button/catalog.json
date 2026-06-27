@@ -1,0 +1,1490 @@
+{
+  "schemaVersion": 2,
+  "kind": "component",
+  "name": "icon-button",
+  "displayName": "IconButton",
+  "category": "Base",
+  "type": "COMPONENT_SET",
+  "platform": "app",
+  "figmaFileKey": "32xWNWcyKwBl6ElXLG5oFs",
+  "figmaNodeId": "95:1048",
+  "figmaSourceUrl": "https://www.figma.com/file/32xWNWcyKwBl6ElXLG5oFs/?node-id=95-1048",
+  "files": {
+    "html": null,
+    "css": "components/app/icon-button/icon-button.css",
+    "js": null,
+    "thumb": null,
+    "readme": "components/app/icon-button/README.md"
+  },
+  "axes": [
+    {
+      "name": "Style",
+      "values": [
+        "TextOnly",
+        "SolidDark",
+        "Outline",
+        "SolidLight",
+        "SolidSoft",
+        "OutlineStrong"
+      ]
+    },
+    {
+      "name": "Size",
+      "values": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
+    },
+    {
+      "name": "State",
+      "values": [
+        "Default",
+        "Disabled"
+      ]
+    },
+    {
+      "name": "圆角",
+      "values": [
+        "默认",
+        "胶囊"
+      ]
+    }
+  ],
+  "states": [
+    {
+      "selector": "[disabled]",
+      "trigger": "attribute",
+      "description": "Disabled"
+    }
+  ],
+  "modifiers": [
+    {
+      "class": "app-icon-btn--textonly",
+      "axis": "Style",
+      "value": "TextOnly"
+    },
+    {
+      "class": "app-icon-btn--soliddark",
+      "axis": "Style",
+      "value": "SolidDark"
+    },
+    {
+      "class": "app-icon-btn--outline",
+      "axis": "Style",
+      "value": "Outline"
+    },
+    {
+      "class": "app-icon-btn--solidlight",
+      "axis": "Style",
+      "value": "SolidLight"
+    },
+    {
+      "class": "app-icon-btn--solidsoft",
+      "axis": "Style",
+      "value": "SolidSoft"
+    },
+    {
+      "class": "app-icon-btn--outlinestrong",
+      "axis": "Style",
+      "value": "OutlineStrong"
+    },
+    {
+      "class": "app-icon-btn--s",
+      "axis": "Size",
+      "value": "S"
+    },
+    {
+      "class": "app-icon-btn--m",
+      "axis": "Size",
+      "value": "M"
+    },
+    {
+      "class": "app-icon-btn--l",
+      "axis": "Size",
+      "value": "L"
+    },
+    {
+      "class": "app-icon-btn--xl",
+      "axis": "Size",
+      "value": "XL"
+    },
+    {
+      "class": "app-icon-btn--radius-pill",
+      "axis": "圆角",
+      "value": "胶囊"
+    },
+    {
+      "class": "app-icon-btn--disabled",
+      "axis": "State",
+      "value": "Disabled"
+    }
+  ],
+  "slots": [
+    {
+      "name": "icon",
+      "selector": ".app-icon-btn__icon",
+      "description": "Icon container"
+    }
+  ],
+  "tokensReferenced": [
+    "--color-light-bg-2",
+    "--color-light-border-1",
+    "--color-light-border-2",
+    "--color-light-disabled",
+    "--color-light-text-1",
+    "--color-light-white",
+    "--font-source-han",
+    "--radius-4",
+    "--radius-pill"
+  ],
+  "variantCount": 96,
+  "variants": [
+    {
+      "name": "outline-l-pill",
+      "figmaNodeId": "94:983",
+      "figmaVariantPath": "Style=Outline, Size=L, State=Default, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--outline",
+        "app-icon-btn--l",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outline app-icon-btn--l app-icon-btn--radius-pill\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outline-l",
+      "figmaNodeId": "94:979",
+      "figmaVariantPath": "Style=Outline, Size=L, State=Default, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--outline",
+        "app-icon-btn--l"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outline app-icon-btn--l\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outline-l-pill-disabled",
+      "figmaNodeId": "94:991",
+      "figmaVariantPath": "Style=Outline, Size=L, State=Disabled, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--outline",
+        "app-icon-btn--l",
+        "app-icon-btn--disabled",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outline app-icon-btn--l app-icon-btn--disabled app-icon-btn--radius-pill\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outline-l-disabled",
+      "figmaNodeId": "94:987",
+      "figmaVariantPath": "Style=Outline, Size=L, State=Disabled, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--outline",
+        "app-icon-btn--l",
+        "app-icon-btn--disabled"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outline app-icon-btn--l app-icon-btn--disabled\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outline-m-pill",
+      "figmaNodeId": "94:967",
+      "figmaVariantPath": "Style=Outline, Size=M, State=Default, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--outline",
+        "app-icon-btn--m",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outline app-icon-btn--m app-icon-btn--radius-pill\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outline-m",
+      "figmaNodeId": "94:963",
+      "figmaVariantPath": "Style=Outline, Size=M, State=Default, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--outline",
+        "app-icon-btn--m"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outline app-icon-btn--m\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outline-m-pill-disabled",
+      "figmaNodeId": "94:975",
+      "figmaVariantPath": "Style=Outline, Size=M, State=Disabled, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--outline",
+        "app-icon-btn--m",
+        "app-icon-btn--disabled",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outline app-icon-btn--m app-icon-btn--disabled app-icon-btn--radius-pill\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outline-m-disabled",
+      "figmaNodeId": "94:971",
+      "figmaVariantPath": "Style=Outline, Size=M, State=Disabled, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--outline",
+        "app-icon-btn--m",
+        "app-icon-btn--disabled"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outline app-icon-btn--m app-icon-btn--disabled\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outline-s-pill",
+      "figmaNodeId": "94:951",
+      "figmaVariantPath": "Style=Outline, Size=S, State=Default, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--outline",
+        "app-icon-btn--s",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outline app-icon-btn--s app-icon-btn--radius-pill\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outline-s",
+      "figmaNodeId": "94:947",
+      "figmaVariantPath": "Style=Outline, Size=S, State=Default, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--outline",
+        "app-icon-btn--s"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outline app-icon-btn--s\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outline-s-pill-disabled",
+      "figmaNodeId": "94:959",
+      "figmaVariantPath": "Style=Outline, Size=S, State=Disabled, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--outline",
+        "app-icon-btn--s",
+        "app-icon-btn--disabled",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outline app-icon-btn--s app-icon-btn--disabled app-icon-btn--radius-pill\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outline-s-disabled",
+      "figmaNodeId": "94:955",
+      "figmaVariantPath": "Style=Outline, Size=S, State=Disabled, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--outline",
+        "app-icon-btn--s",
+        "app-icon-btn--disabled"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outline app-icon-btn--s app-icon-btn--disabled\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outline-xl-pill",
+      "figmaNodeId": "94:999",
+      "figmaVariantPath": "Style=Outline, Size=XL, State=Default, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--outline",
+        "app-icon-btn--xl",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outline app-icon-btn--xl app-icon-btn--radius-pill\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outline-xl",
+      "figmaNodeId": "94:995",
+      "figmaVariantPath": "Style=Outline, Size=XL, State=Default, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--outline",
+        "app-icon-btn--xl"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outline app-icon-btn--xl\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outline-xl-pill-disabled",
+      "figmaNodeId": "94:1007",
+      "figmaVariantPath": "Style=Outline, Size=XL, State=Disabled, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--outline",
+        "app-icon-btn--xl",
+        "app-icon-btn--disabled",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outline app-icon-btn--xl app-icon-btn--disabled app-icon-btn--radius-pill\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outline-xl-disabled",
+      "figmaNodeId": "94:1003",
+      "figmaVariantPath": "Style=Outline, Size=XL, State=Disabled, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--outline",
+        "app-icon-btn--xl",
+        "app-icon-btn--disabled"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outline app-icon-btn--xl app-icon-btn--disabled\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outlinestrong-l-pill",
+      "figmaNodeId": "94:1175",
+      "figmaVariantPath": "Style=OutlineStrong, Size=L, State=Default, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--outlinestrong",
+        "app-icon-btn--l",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outlinestrong app-icon-btn--l app-icon-btn--radius-pill\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outlinestrong-l",
+      "figmaNodeId": "94:1171",
+      "figmaVariantPath": "Style=OutlineStrong, Size=L, State=Default, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--outlinestrong",
+        "app-icon-btn--l"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outlinestrong app-icon-btn--l\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outlinestrong-l-pill-disabled",
+      "figmaNodeId": "94:1183",
+      "figmaVariantPath": "Style=OutlineStrong, Size=L, State=Disabled, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--outlinestrong",
+        "app-icon-btn--l",
+        "app-icon-btn--disabled",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outlinestrong app-icon-btn--l app-icon-btn--disabled app-icon-btn--radius-pill\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outlinestrong-l-disabled",
+      "figmaNodeId": "94:1179",
+      "figmaVariantPath": "Style=OutlineStrong, Size=L, State=Disabled, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--outlinestrong",
+        "app-icon-btn--l",
+        "app-icon-btn--disabled"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outlinestrong app-icon-btn--l app-icon-btn--disabled\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outlinestrong-m-pill",
+      "figmaNodeId": "94:1159",
+      "figmaVariantPath": "Style=OutlineStrong, Size=M, State=Default, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--outlinestrong",
+        "app-icon-btn--m",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outlinestrong app-icon-btn--m app-icon-btn--radius-pill\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outlinestrong-m",
+      "figmaNodeId": "94:1155",
+      "figmaVariantPath": "Style=OutlineStrong, Size=M, State=Default, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--outlinestrong",
+        "app-icon-btn--m"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outlinestrong app-icon-btn--m\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outlinestrong-m-pill-disabled",
+      "figmaNodeId": "94:1167",
+      "figmaVariantPath": "Style=OutlineStrong, Size=M, State=Disabled, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--outlinestrong",
+        "app-icon-btn--m",
+        "app-icon-btn--disabled",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outlinestrong app-icon-btn--m app-icon-btn--disabled app-icon-btn--radius-pill\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outlinestrong-m-disabled",
+      "figmaNodeId": "94:1163",
+      "figmaVariantPath": "Style=OutlineStrong, Size=M, State=Disabled, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--outlinestrong",
+        "app-icon-btn--m",
+        "app-icon-btn--disabled"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outlinestrong app-icon-btn--m app-icon-btn--disabled\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outlinestrong-s-pill",
+      "figmaNodeId": "94:1143",
+      "figmaVariantPath": "Style=OutlineStrong, Size=S, State=Default, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--outlinestrong",
+        "app-icon-btn--s",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outlinestrong app-icon-btn--s app-icon-btn--radius-pill\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outlinestrong-s",
+      "figmaNodeId": "94:1139",
+      "figmaVariantPath": "Style=OutlineStrong, Size=S, State=Default, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--outlinestrong",
+        "app-icon-btn--s"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outlinestrong app-icon-btn--s\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outlinestrong-s-pill-disabled",
+      "figmaNodeId": "94:1151",
+      "figmaVariantPath": "Style=OutlineStrong, Size=S, State=Disabled, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--outlinestrong",
+        "app-icon-btn--s",
+        "app-icon-btn--disabled",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outlinestrong app-icon-btn--s app-icon-btn--disabled app-icon-btn--radius-pill\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outlinestrong-s-disabled",
+      "figmaNodeId": "94:1147",
+      "figmaVariantPath": "Style=OutlineStrong, Size=S, State=Disabled, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--outlinestrong",
+        "app-icon-btn--s",
+        "app-icon-btn--disabled"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outlinestrong app-icon-btn--s app-icon-btn--disabled\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outlinestrong-xl-pill",
+      "figmaNodeId": "94:1191",
+      "figmaVariantPath": "Style=OutlineStrong, Size=XL, State=Default, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--outlinestrong",
+        "app-icon-btn--xl",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outlinestrong app-icon-btn--xl app-icon-btn--radius-pill\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outlinestrong-xl",
+      "figmaNodeId": "94:1187",
+      "figmaVariantPath": "Style=OutlineStrong, Size=XL, State=Default, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--outlinestrong",
+        "app-icon-btn--xl"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outlinestrong app-icon-btn--xl\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outlinestrong-xl-pill-disabled",
+      "figmaNodeId": "94:1199",
+      "figmaVariantPath": "Style=OutlineStrong, Size=XL, State=Disabled, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--outlinestrong",
+        "app-icon-btn--xl",
+        "app-icon-btn--disabled",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outlinestrong app-icon-btn--xl app-icon-btn--disabled app-icon-btn--radius-pill\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "outlinestrong-xl-disabled",
+      "figmaNodeId": "94:1195",
+      "figmaVariantPath": "Style=OutlineStrong, Size=XL, State=Disabled, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--outlinestrong",
+        "app-icon-btn--xl",
+        "app-icon-btn--disabled"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--outlinestrong app-icon-btn--xl app-icon-btn--disabled\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "soliddark-l-pill",
+      "figmaNodeId": "94:919",
+      "figmaVariantPath": "Style=SolidDark, Size=L, State=Default, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--soliddark",
+        "app-icon-btn--l",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--soliddark app-icon-btn--l app-icon-btn--radius-pill\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "soliddark-l",
+      "figmaNodeId": "94:915",
+      "figmaVariantPath": "Style=SolidDark, Size=L, State=Default, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--soliddark",
+        "app-icon-btn--l"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--soliddark app-icon-btn--l\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "soliddark-l-pill-disabled",
+      "figmaNodeId": "94:927",
+      "figmaVariantPath": "Style=SolidDark, Size=L, State=Disabled, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--soliddark",
+        "app-icon-btn--l",
+        "app-icon-btn--disabled",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--soliddark app-icon-btn--l app-icon-btn--disabled app-icon-btn--radius-pill\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "soliddark-l-disabled",
+      "figmaNodeId": "94:923",
+      "figmaVariantPath": "Style=SolidDark, Size=L, State=Disabled, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--soliddark",
+        "app-icon-btn--l",
+        "app-icon-btn--disabled"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--soliddark app-icon-btn--l app-icon-btn--disabled\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "soliddark-m-pill",
+      "figmaNodeId": "94:903",
+      "figmaVariantPath": "Style=SolidDark, Size=M, State=Default, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--soliddark",
+        "app-icon-btn--m",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--soliddark app-icon-btn--m app-icon-btn--radius-pill\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "soliddark-m",
+      "figmaNodeId": "94:899",
+      "figmaVariantPath": "Style=SolidDark, Size=M, State=Default, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--soliddark",
+        "app-icon-btn--m"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--soliddark app-icon-btn--m\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "soliddark-m-pill-disabled",
+      "figmaNodeId": "94:911",
+      "figmaVariantPath": "Style=SolidDark, Size=M, State=Disabled, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--soliddark",
+        "app-icon-btn--m",
+        "app-icon-btn--disabled",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--soliddark app-icon-btn--m app-icon-btn--disabled app-icon-btn--radius-pill\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "soliddark-m-disabled",
+      "figmaNodeId": "94:907",
+      "figmaVariantPath": "Style=SolidDark, Size=M, State=Disabled, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--soliddark",
+        "app-icon-btn--m",
+        "app-icon-btn--disabled"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--soliddark app-icon-btn--m app-icon-btn--disabled\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "soliddark-s-pill",
+      "figmaNodeId": "94:887",
+      "figmaVariantPath": "Style=SolidDark, Size=S, State=Default, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--soliddark",
+        "app-icon-btn--s",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--soliddark app-icon-btn--s app-icon-btn--radius-pill\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "soliddark-s",
+      "figmaNodeId": "94:883",
+      "figmaVariantPath": "Style=SolidDark, Size=S, State=Default, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--soliddark",
+        "app-icon-btn--s"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--soliddark app-icon-btn--s\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "soliddark-s-pill-disabled",
+      "figmaNodeId": "94:895",
+      "figmaVariantPath": "Style=SolidDark, Size=S, State=Disabled, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--soliddark",
+        "app-icon-btn--s",
+        "app-icon-btn--disabled",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--soliddark app-icon-btn--s app-icon-btn--disabled app-icon-btn--radius-pill\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "soliddark-s-disabled",
+      "figmaNodeId": "94:891",
+      "figmaVariantPath": "Style=SolidDark, Size=S, State=Disabled, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--soliddark",
+        "app-icon-btn--s",
+        "app-icon-btn--disabled"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--soliddark app-icon-btn--s app-icon-btn--disabled\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "soliddark-xl-pill",
+      "figmaNodeId": "94:935",
+      "figmaVariantPath": "Style=SolidDark, Size=XL, State=Default, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--soliddark",
+        "app-icon-btn--xl",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--soliddark app-icon-btn--xl app-icon-btn--radius-pill\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "soliddark-xl",
+      "figmaNodeId": "94:931",
+      "figmaVariantPath": "Style=SolidDark, Size=XL, State=Default, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--soliddark",
+        "app-icon-btn--xl"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--soliddark app-icon-btn--xl\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "soliddark-xl-pill-disabled",
+      "figmaNodeId": "94:943",
+      "figmaVariantPath": "Style=SolidDark, Size=XL, State=Disabled, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--soliddark",
+        "app-icon-btn--xl",
+        "app-icon-btn--disabled",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--soliddark app-icon-btn--xl app-icon-btn--disabled app-icon-btn--radius-pill\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "soliddark-xl-disabled",
+      "figmaNodeId": "94:939",
+      "figmaVariantPath": "Style=SolidDark, Size=XL, State=Disabled, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--soliddark",
+        "app-icon-btn--xl",
+        "app-icon-btn--disabled"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--soliddark app-icon-btn--xl app-icon-btn--disabled\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidlight-l-pill",
+      "figmaNodeId": "94:1047",
+      "figmaVariantPath": "Style=SolidLight, Size=L, State=Default, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--solidlight",
+        "app-icon-btn--l",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidlight app-icon-btn--l app-icon-btn--radius-pill\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidlight-l",
+      "figmaNodeId": "94:1043",
+      "figmaVariantPath": "Style=SolidLight, Size=L, State=Default, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--solidlight",
+        "app-icon-btn--l"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidlight app-icon-btn--l\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidlight-l-pill-disabled",
+      "figmaNodeId": "94:1055",
+      "figmaVariantPath": "Style=SolidLight, Size=L, State=Disabled, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--solidlight",
+        "app-icon-btn--l",
+        "app-icon-btn--disabled",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidlight app-icon-btn--l app-icon-btn--disabled app-icon-btn--radius-pill\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidlight-l-disabled",
+      "figmaNodeId": "94:1051",
+      "figmaVariantPath": "Style=SolidLight, Size=L, State=Disabled, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--solidlight",
+        "app-icon-btn--l",
+        "app-icon-btn--disabled"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidlight app-icon-btn--l app-icon-btn--disabled\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidlight-m-pill",
+      "figmaNodeId": "94:1031",
+      "figmaVariantPath": "Style=SolidLight, Size=M, State=Default, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--solidlight",
+        "app-icon-btn--m",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidlight app-icon-btn--m app-icon-btn--radius-pill\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidlight-m",
+      "figmaNodeId": "94:1027",
+      "figmaVariantPath": "Style=SolidLight, Size=M, State=Default, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--solidlight",
+        "app-icon-btn--m"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidlight app-icon-btn--m\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidlight-m-pill-disabled",
+      "figmaNodeId": "94:1039",
+      "figmaVariantPath": "Style=SolidLight, Size=M, State=Disabled, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--solidlight",
+        "app-icon-btn--m",
+        "app-icon-btn--disabled",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidlight app-icon-btn--m app-icon-btn--disabled app-icon-btn--radius-pill\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidlight-m-disabled",
+      "figmaNodeId": "94:1035",
+      "figmaVariantPath": "Style=SolidLight, Size=M, State=Disabled, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--solidlight",
+        "app-icon-btn--m",
+        "app-icon-btn--disabled"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidlight app-icon-btn--m app-icon-btn--disabled\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidlight-s-pill",
+      "figmaNodeId": "94:1015",
+      "figmaVariantPath": "Style=SolidLight, Size=S, State=Default, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--solidlight",
+        "app-icon-btn--s",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidlight app-icon-btn--s app-icon-btn--radius-pill\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidlight-s",
+      "figmaNodeId": "94:1011",
+      "figmaVariantPath": "Style=SolidLight, Size=S, State=Default, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--solidlight",
+        "app-icon-btn--s"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidlight app-icon-btn--s\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidlight-s-pill-disabled",
+      "figmaNodeId": "94:1023",
+      "figmaVariantPath": "Style=SolidLight, Size=S, State=Disabled, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--solidlight",
+        "app-icon-btn--s",
+        "app-icon-btn--disabled",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidlight app-icon-btn--s app-icon-btn--disabled app-icon-btn--radius-pill\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidlight-s-disabled",
+      "figmaNodeId": "94:1019",
+      "figmaVariantPath": "Style=SolidLight, Size=S, State=Disabled, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--solidlight",
+        "app-icon-btn--s",
+        "app-icon-btn--disabled"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidlight app-icon-btn--s app-icon-btn--disabled\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidlight-xl-pill",
+      "figmaNodeId": "94:1063",
+      "figmaVariantPath": "Style=SolidLight, Size=XL, State=Default, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--solidlight",
+        "app-icon-btn--xl",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidlight app-icon-btn--xl app-icon-btn--radius-pill\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidlight-xl",
+      "figmaNodeId": "94:1059",
+      "figmaVariantPath": "Style=SolidLight, Size=XL, State=Default, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--solidlight",
+        "app-icon-btn--xl"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidlight app-icon-btn--xl\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidlight-xl-pill-disabled",
+      "figmaNodeId": "94:1071",
+      "figmaVariantPath": "Style=SolidLight, Size=XL, State=Disabled, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--solidlight",
+        "app-icon-btn--xl",
+        "app-icon-btn--disabled",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidlight app-icon-btn--xl app-icon-btn--disabled app-icon-btn--radius-pill\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidlight-xl-disabled",
+      "figmaNodeId": "94:1067",
+      "figmaVariantPath": "Style=SolidLight, Size=XL, State=Disabled, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--solidlight",
+        "app-icon-btn--xl",
+        "app-icon-btn--disabled"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidlight app-icon-btn--xl app-icon-btn--disabled\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidsoft-l-pill",
+      "figmaNodeId": "94:1111",
+      "figmaVariantPath": "Style=SolidSoft, Size=L, State=Default, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--solidsoft",
+        "app-icon-btn--l",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidsoft app-icon-btn--l app-icon-btn--radius-pill\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidsoft-l",
+      "figmaNodeId": "94:1107",
+      "figmaVariantPath": "Style=SolidSoft, Size=L, State=Default, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--solidsoft",
+        "app-icon-btn--l"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidsoft app-icon-btn--l\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidsoft-l-pill-disabled",
+      "figmaNodeId": "94:1119",
+      "figmaVariantPath": "Style=SolidSoft, Size=L, State=Disabled, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--solidsoft",
+        "app-icon-btn--l",
+        "app-icon-btn--disabled",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidsoft app-icon-btn--l app-icon-btn--disabled app-icon-btn--radius-pill\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidsoft-l-disabled",
+      "figmaNodeId": "94:1115",
+      "figmaVariantPath": "Style=SolidSoft, Size=L, State=Disabled, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--solidsoft",
+        "app-icon-btn--l",
+        "app-icon-btn--disabled"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidsoft app-icon-btn--l app-icon-btn--disabled\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidsoft-m-pill",
+      "figmaNodeId": "94:1095",
+      "figmaVariantPath": "Style=SolidSoft, Size=M, State=Default, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--solidsoft",
+        "app-icon-btn--m",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidsoft app-icon-btn--m app-icon-btn--radius-pill\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidsoft-m",
+      "figmaNodeId": "94:1091",
+      "figmaVariantPath": "Style=SolidSoft, Size=M, State=Default, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--solidsoft",
+        "app-icon-btn--m"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidsoft app-icon-btn--m\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidsoft-m-pill-disabled",
+      "figmaNodeId": "94:1103",
+      "figmaVariantPath": "Style=SolidSoft, Size=M, State=Disabled, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--solidsoft",
+        "app-icon-btn--m",
+        "app-icon-btn--disabled",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidsoft app-icon-btn--m app-icon-btn--disabled app-icon-btn--radius-pill\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidsoft-m-disabled",
+      "figmaNodeId": "94:1099",
+      "figmaVariantPath": "Style=SolidSoft, Size=M, State=Disabled, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--solidsoft",
+        "app-icon-btn--m",
+        "app-icon-btn--disabled"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidsoft app-icon-btn--m app-icon-btn--disabled\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidsoft-s-pill",
+      "figmaNodeId": "94:1079",
+      "figmaVariantPath": "Style=SolidSoft, Size=S, State=Default, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--solidsoft",
+        "app-icon-btn--s",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidsoft app-icon-btn--s app-icon-btn--radius-pill\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidsoft-s",
+      "figmaNodeId": "94:1075",
+      "figmaVariantPath": "Style=SolidSoft, Size=S, State=Default, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--solidsoft",
+        "app-icon-btn--s"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidsoft app-icon-btn--s\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidsoft-s-pill-disabled",
+      "figmaNodeId": "94:1087",
+      "figmaVariantPath": "Style=SolidSoft, Size=S, State=Disabled, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--solidsoft",
+        "app-icon-btn--s",
+        "app-icon-btn--disabled",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidsoft app-icon-btn--s app-icon-btn--disabled app-icon-btn--radius-pill\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidsoft-s-disabled",
+      "figmaNodeId": "94:1083",
+      "figmaVariantPath": "Style=SolidSoft, Size=S, State=Disabled, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--solidsoft",
+        "app-icon-btn--s",
+        "app-icon-btn--disabled"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidsoft app-icon-btn--s app-icon-btn--disabled\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidsoft-xl-pill",
+      "figmaNodeId": "94:1127",
+      "figmaVariantPath": "Style=SolidSoft, Size=XL, State=Default, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--solidsoft",
+        "app-icon-btn--xl",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidsoft app-icon-btn--xl app-icon-btn--radius-pill\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidsoft-xl",
+      "figmaNodeId": "94:1123",
+      "figmaVariantPath": "Style=SolidSoft, Size=XL, State=Default, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--solidsoft",
+        "app-icon-btn--xl"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidsoft app-icon-btn--xl\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidsoft-xl-pill-disabled",
+      "figmaNodeId": "94:1135",
+      "figmaVariantPath": "Style=SolidSoft, Size=XL, State=Disabled, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--solidsoft",
+        "app-icon-btn--xl",
+        "app-icon-btn--disabled",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidsoft app-icon-btn--xl app-icon-btn--disabled app-icon-btn--radius-pill\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "solidsoft-xl-disabled",
+      "figmaNodeId": "94:1131",
+      "figmaVariantPath": "Style=SolidSoft, Size=XL, State=Disabled, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--solidsoft",
+        "app-icon-btn--xl",
+        "app-icon-btn--disabled"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--solidsoft app-icon-btn--xl app-icon-btn--disabled\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "textonly-l-pill",
+      "figmaNodeId": "94:855",
+      "figmaVariantPath": "Style=TextOnly, Size=L, State=Default, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--textonly",
+        "app-icon-btn--l",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--textonly app-icon-btn--l app-icon-btn--radius-pill\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "textonly-l",
+      "figmaNodeId": "94:851",
+      "figmaVariantPath": "Style=TextOnly, Size=L, State=Default, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--textonly",
+        "app-icon-btn--l"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--textonly app-icon-btn--l\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "textonly-l-pill-disabled",
+      "figmaNodeId": "94:863",
+      "figmaVariantPath": "Style=TextOnly, Size=L, State=Disabled, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--textonly",
+        "app-icon-btn--l",
+        "app-icon-btn--disabled",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--textonly app-icon-btn--l app-icon-btn--disabled app-icon-btn--radius-pill\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "textonly-l-disabled",
+      "figmaNodeId": "94:859",
+      "figmaVariantPath": "Style=TextOnly, Size=L, State=Disabled, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--textonly",
+        "app-icon-btn--l",
+        "app-icon-btn--disabled"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--textonly app-icon-btn--l app-icon-btn--disabled\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "textonly-m-pill",
+      "figmaNodeId": "94:839",
+      "figmaVariantPath": "Style=TextOnly, Size=M, State=Default, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--textonly",
+        "app-icon-btn--m",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--textonly app-icon-btn--m app-icon-btn--radius-pill\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "textonly-m",
+      "figmaNodeId": "94:835",
+      "figmaVariantPath": "Style=TextOnly, Size=M, State=Default, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--textonly",
+        "app-icon-btn--m"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--textonly app-icon-btn--m\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "textonly-m-pill-disabled",
+      "figmaNodeId": "94:847",
+      "figmaVariantPath": "Style=TextOnly, Size=M, State=Disabled, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--textonly",
+        "app-icon-btn--m",
+        "app-icon-btn--disabled",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--textonly app-icon-btn--m app-icon-btn--disabled app-icon-btn--radius-pill\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "textonly-m-disabled",
+      "figmaNodeId": "94:843",
+      "figmaVariantPath": "Style=TextOnly, Size=M, State=Disabled, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--textonly",
+        "app-icon-btn--m",
+        "app-icon-btn--disabled"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--textonly app-icon-btn--m app-icon-btn--disabled\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "textonly-s-pill",
+      "figmaNodeId": "94:823",
+      "figmaVariantPath": "Style=TextOnly, Size=S, State=Default, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--textonly",
+        "app-icon-btn--s",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--textonly app-icon-btn--s app-icon-btn--radius-pill\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "textonly-s",
+      "figmaNodeId": "94:819",
+      "figmaVariantPath": "Style=TextOnly, Size=S, State=Default, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--textonly",
+        "app-icon-btn--s"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--textonly app-icon-btn--s\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "textonly-s-pill-disabled",
+      "figmaNodeId": "94:831",
+      "figmaVariantPath": "Style=TextOnly, Size=S, State=Disabled, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--textonly",
+        "app-icon-btn--s",
+        "app-icon-btn--disabled",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--textonly app-icon-btn--s app-icon-btn--disabled app-icon-btn--radius-pill\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "textonly-s-disabled",
+      "figmaNodeId": "94:827",
+      "figmaVariantPath": "Style=TextOnly, Size=S, State=Disabled, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--textonly",
+        "app-icon-btn--s",
+        "app-icon-btn--disabled"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--textonly app-icon-btn--s app-icon-btn--disabled\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "textonly-xl-pill",
+      "figmaNodeId": "94:871",
+      "figmaVariantPath": "Style=TextOnly, Size=XL, State=Default, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--textonly",
+        "app-icon-btn--xl",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--textonly app-icon-btn--xl app-icon-btn--radius-pill\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "textonly-xl",
+      "figmaNodeId": "94:867",
+      "figmaVariantPath": "Style=TextOnly, Size=XL, State=Default, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--textonly",
+        "app-icon-btn--xl"
+      ],
+      "attrs": {
+        "disabled": false
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--textonly app-icon-btn--xl\" aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "textonly-xl-pill-disabled",
+      "figmaNodeId": "94:879",
+      "figmaVariantPath": "Style=TextOnly, Size=XL, State=Disabled, 圆角=胶囊",
+      "modifiers": [
+        "app-icon-btn--textonly",
+        "app-icon-btn--xl",
+        "app-icon-btn--disabled",
+        "app-icon-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--textonly app-icon-btn--xl app-icon-btn--disabled app-icon-btn--radius-pill\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    },
+    {
+      "name": "textonly-xl-disabled",
+      "figmaNodeId": "94:875",
+      "figmaVariantPath": "Style=TextOnly, Size=XL, State=Disabled, 圆角=默认",
+      "modifiers": [
+        "app-icon-btn--textonly",
+        "app-icon-btn--xl",
+        "app-icon-btn--disabled"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-icon-btn app-icon-btn--textonly app-icon-btn--xl app-icon-btn--disabled\" disabled aria-label=\"Action\"><span class=\"app-icon-btn__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M11 5h2v14h-2zM5 11h14v2H5z\"/></svg></span></button>"
+    }
+  ],
+  "generatedAt": "2026-05-12T14:00:00Z"
+}

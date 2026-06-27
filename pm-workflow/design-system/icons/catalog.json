@@ -1,0 +1,1008 @@
+{
+  "schemaVersion": 1,
+  "fileKey": "B1KFmcQrMgQiqKsyppory3",
+  "fileName": "不觉组件库",
+  "lastSyncedAt": "2026-05-12T07:00:00Z",
+  "source": "figma-developer-mcp",
+  "note": "Outbound icon manifest. Icons are a distinct asset class from components — they're single SVG files with no variants/modifiers/slots, only color theming via `currentColor`. Downstream agents read this separately from components.json. Primary fill is normalized to `currentColor` so `color: var(--anything)` in the consuming context themes the icon. Some icons retain a secondary hardcoded color (#666666 / #797979) for deliberate two-tone visuals; those are listed in `secondaryColors`. Default visual color matches Figma's design (light theme #333333 base).",
+  "schema": {
+    "icons[]": {
+      "name": "string · kebab-case ASCII, matches <name>.svg filename",
+      "displayName": "string · raw Figma component name (often Chinese)",
+      "category": "string · icon page slug (matches icons/<category>/ subfolder)",
+      "figmaNodeId": "string · e.g. '40:50'",
+      "figmaSourceUrl": "string · deep link to the Figma node",
+      "file": "string · SVG path relative to repo root",
+      "size": "object · { width: number, height: number } in px (viewBox dimensions)",
+      "defaultColor": "string · CSS color value of the icon's primary fill — usually 'currentColor' so `color:` propagates",
+      "secondaryColors": "string[] · any non-themeable hardcoded colors (e.g. ['#666666']); empty array if single-color",
+      "tokensReferenced": "string[] · semantic CSS vars downstream should map to the icon (typically the text-color tokens to set via `color:`)",
+      "hash": "string · sha1 of the SVG file content",
+      "generatedAt": "string · ISO 8601"
+    }
+  },
+  "icons": [
+    {
+      "name": "arrow-up",
+      "displayName": "箭头-上",
+      "category": "direction-arrow",
+      "figmaNodeId": "40:50",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=40-50",
+      "file": "icons/direction-arrow/arrow-up.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "ddf75124068a50aad0dc4e25b9d2224bb99dc2ed",
+      "generatedAt": "2026-05-12T05:00:00Z"
+    },
+    {
+      "name": "arrow-down",
+      "displayName": "箭头-下",
+      "category": "direction-arrow",
+      "figmaNodeId": "40:72",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=40-72",
+      "file": "icons/direction-arrow/arrow-down.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "4a97320c99b5305648162c305127c2b720ceef8f",
+      "generatedAt": "2026-05-12T05:00:00Z",
+      "rotationFixApplied": "Figma exported same path as arrow-up; wrapped in <g transform='rotate(180 12 12)'>"
+    },
+    {
+      "name": "arrow-right",
+      "displayName": "箭头-右",
+      "category": "direction-arrow",
+      "figmaNodeId": "40:94",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=40-94",
+      "file": "icons/direction-arrow/arrow-right.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "57f3ed13025a1b0a85f6fc90eae6b98f492d85dd",
+      "generatedAt": "2026-05-12T05:00:00Z",
+      "rotationFixApplied": "Figma exported same path as arrow-up; wrapped in <g transform='rotate(90 12 12)'>"
+    },
+    {
+      "name": "arrow-left",
+      "displayName": "箭头-左",
+      "category": "direction-arrow",
+      "figmaNodeId": "40:116",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=40-116",
+      "file": "icons/direction-arrow/arrow-left.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "82e9dcb1144f426c99d2f38adf704d8bcf4fa963",
+      "generatedAt": "2026-05-12T05:00:00Z"
+    },
+    {
+      "name": "single-arrow-left",
+      "displayName": "单箭头-左",
+      "category": "direction-arrow",
+      "figmaNodeId": "40:142",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=40-142",
+      "file": "icons/direction-arrow/single-arrow-left.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "fbf0e01ae81edc65c4cf5a53b98c95f5a91266dd",
+      "generatedAt": "2026-05-12T05:00:00Z"
+    },
+    {
+      "name": "single-arrow-right",
+      "displayName": "单箭头-右",
+      "category": "direction-arrow",
+      "figmaNodeId": "40:164",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=40-164",
+      "file": "icons/direction-arrow/single-arrow-right.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "03fd3c8c71ee495318dedc7704ecec52ae0ca13e",
+      "generatedAt": "2026-05-12T05:00:00Z"
+    },
+    {
+      "name": "single-arrow-up",
+      "displayName": "单箭头-上",
+      "category": "direction-arrow",
+      "figmaNodeId": "40:186",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=40-186",
+      "file": "icons/direction-arrow/single-arrow-up.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "d993ac047e65f85ef39542417683df77c71218f9",
+      "generatedAt": "2026-05-12T05:00:00Z"
+    },
+    {
+      "name": "single-arrow-down",
+      "displayName": "单箭头-下",
+      "category": "direction-arrow",
+      "figmaNodeId": "40:208",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=40-208",
+      "file": "icons/direction-arrow/single-arrow-down.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "f7b7f22c8f34c0dbd12e07a8ca713e95709250e0",
+      "generatedAt": "2026-05-12T05:00:00Z"
+    },
+    {
+      "name": "double-arrow-up",
+      "displayName": "双箭头-上",
+      "category": "direction-arrow",
+      "figmaNodeId": "43:43",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=43-43",
+      "file": "icons/direction-arrow/double-arrow-up.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [
+        "#666666"
+      ],
+      "tokensReferenced": [
+        "--color-light-text-1",
+        "--color-light-text-2"
+      ],
+      "hash": "699271f63a492db9ea6233e5538c5e0dd7155974",
+      "generatedAt": "2026-05-12T05:00:00Z"
+    },
+    {
+      "name": "double-arrow-down",
+      "displayName": "双箭头-下",
+      "category": "direction-arrow",
+      "figmaNodeId": "43:75",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=43-75",
+      "file": "icons/direction-arrow/double-arrow-down.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [
+        "#666666"
+      ],
+      "tokensReferenced": [
+        "--color-light-text-1",
+        "--color-light-text-2"
+      ],
+      "hash": "5832c4462c628e6c2b90ce7f7874f025bffaf63f",
+      "generatedAt": "2026-05-12T05:00:00Z"
+    },
+    {
+      "name": "double-arrow-left",
+      "displayName": "双箭头-左",
+      "category": "direction-arrow",
+      "figmaNodeId": "43:104",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=43-104",
+      "file": "icons/direction-arrow/double-arrow-left.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [
+        "#666666"
+      ],
+      "tokensReferenced": [
+        "--color-light-text-1",
+        "--color-light-text-2"
+      ],
+      "hash": "afef5c3cc19fa4434ffc3682bee04ebef57bcb5d",
+      "generatedAt": "2026-05-12T05:00:00Z"
+    },
+    {
+      "name": "double-arrow-right",
+      "displayName": "双箭头-右",
+      "category": "direction-arrow",
+      "figmaNodeId": "44:24",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=44-24",
+      "file": "icons/direction-arrow/double-arrow-right.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [
+        "#797979"
+      ],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "9c1ed3af76887e082913d976bfe90f62bca06cfa",
+      "generatedAt": "2026-05-12T05:00:00Z"
+    },
+    {
+      "name": "arrow-solid-left",
+      "displayName": "箭头实体-左",
+      "category": "direction-arrow",
+      "figmaNodeId": "43:131",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=43-131",
+      "file": "icons/direction-arrow/arrow-solid-left.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "50a8bcd6046ba953fa73c3a1051e71be3cff9f8b",
+      "generatedAt": "2026-05-12T05:00:00Z"
+    },
+    {
+      "name": "arrow-solid-right",
+      "displayName": "箭头实体-右",
+      "category": "direction-arrow",
+      "figmaNodeId": "43:153",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=43-153",
+      "file": "icons/direction-arrow/arrow-solid-right.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "2cab95e6bbf0e32a0ce06b8c8b9bd071560d044a",
+      "generatedAt": "2026-05-12T05:00:00Z"
+    },
+    {
+      "name": "arrow-solid-down",
+      "displayName": "箭头实体-下",
+      "category": "direction-arrow",
+      "figmaNodeId": "43:175",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=43-175",
+      "file": "icons/direction-arrow/arrow-solid-down.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "adca828b72411e617754410237d3d55fb142f09b",
+      "generatedAt": "2026-05-12T05:00:00Z"
+    },
+    {
+      "name": "arrow-solid-up",
+      "displayName": "箭头实体-上",
+      "category": "direction-arrow",
+      "figmaNodeId": "43:197",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=43-197",
+      "file": "icons/direction-arrow/arrow-solid-up.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "dbf2b95dd9aaa769adc363e2376732b221971ece",
+      "generatedAt": "2026-05-12T05:00:00Z"
+    },
+    {
+      "name": "view",
+      "displayName": "查看",
+      "category": "view-search",
+      "figmaNodeId": "40:354",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=40-354",
+      "file": "icons/view-search/view.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "3db1f9db617884ebbb11cf0d9eb4c6b1a9897037",
+      "generatedAt": "2026-05-12T06:00:00Z"
+    },
+    {
+      "name": "search",
+      "displayName": "搜索",
+      "category": "view-search",
+      "figmaNodeId": "40:376",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=40-376",
+      "file": "icons/view-search/search.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "63c50f6db8f39ca1a9d7284a2c2a9afbc49b04e8",
+      "generatedAt": "2026-05-12T06:00:00Z"
+    },
+    {
+      "name": "filter",
+      "displayName": "筛选",
+      "category": "view-search",
+      "figmaNodeId": "40:398",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=40-398",
+      "file": "icons/view-search/filter.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "1fb3db69546483d9d464995a4ffeeff568fcfcaf",
+      "generatedAt": "2026-05-12T06:00:00Z"
+    },
+    {
+      "name": "hide",
+      "displayName": "隐藏",
+      "category": "view-search",
+      "figmaNodeId": "43:540",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=43-540",
+      "file": "icons/view-search/hide.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "b24abeec5c08415ccfde6e8547e77ae803390bb0",
+      "generatedAt": "2026-05-12T06:00:00Z"
+    },
+    {
+      "name": "preview",
+      "displayName": "预览",
+      "category": "view-search",
+      "figmaNodeId": "43:2322",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=43-2322",
+      "file": "icons/view-search/preview.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "e8b0974afd4e9f91f9ff77aac22af26251af3ab9",
+      "generatedAt": "2026-05-12T06:00:00Z"
+    },
+    {
+      "name": "color-filter",
+      "displayName": "颜色筛选",
+      "category": "view-search",
+      "figmaNodeId": "43:562",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=43-562",
+      "file": "icons/view-search/color-filter.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "48292a6f9f975b669a8018d207a28df771748613",
+      "generatedAt": "2026-05-12T06:00:00Z"
+    },
+    {
+      "name": "edit",
+      "displayName": "编辑",
+      "category": "edit-action",
+      "figmaNodeId": "40:233",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=40-233",
+      "file": "icons/edit-action/edit.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "69b46a853ff21cb63cf417f438933dfe7ef7060c",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    },
+    {
+      "name": "delete",
+      "displayName": "删除",
+      "category": "edit-action",
+      "figmaNodeId": "40:255",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=40-255",
+      "file": "icons/edit-action/delete.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "d9e41adf3c855516359d9a3f2a3ced8e93a3dee9",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    },
+    {
+      "name": "plus",
+      "displayName": "加号",
+      "category": "edit-action",
+      "figmaNodeId": "40:288",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=40-288",
+      "file": "icons/edit-action/plus.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "4a2225b98f1b9661b6c305036d6ff37dd1e64f34",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    },
+    {
+      "name": "save",
+      "displayName": "保存",
+      "category": "edit-action",
+      "figmaNodeId": "40:310",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=40-310",
+      "file": "icons/edit-action/save.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "ca4987946c512cabd45e4989eb4dfe0c545d26a7",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    },
+    {
+      "name": "copy",
+      "displayName": "复制",
+      "category": "edit-action",
+      "figmaNodeId": "40:332",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=40-332",
+      "file": "icons/edit-action/copy.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "bbd1cc577b97825d1bcb06269cff0a41502f40ec",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    },
+    {
+      "name": "upload-task",
+      "displayName": "上传任务",
+      "category": "edit-action",
+      "figmaNodeId": "43:221",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=43-221",
+      "file": "icons/edit-action/upload-task.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "d995447389496cbae6221d9579615b0c7318b352",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    },
+    {
+      "name": "convert",
+      "displayName": "转换",
+      "category": "edit-action",
+      "figmaNodeId": "43:243",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=43-243",
+      "file": "icons/edit-action/convert.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "e235048a702605e5b42768f7a0fca86f0a622770",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    },
+    {
+      "name": "customize",
+      "displayName": "自定义",
+      "category": "edit-action",
+      "figmaNodeId": "43:284",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=43-284",
+      "file": "icons/edit-action/customize.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "1cb031e1ea285b8b5ae91f3a8bd8300a9b3f2432",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    },
+    {
+      "name": "manual-add",
+      "displayName": "手动添加",
+      "category": "edit-action",
+      "figmaNodeId": "43:306",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=43-306",
+      "file": "icons/edit-action/manual-add.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "2e17449521569848e9aa33bd29d6c7f01a40a115",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    },
+    {
+      "name": "minus",
+      "displayName": "减号",
+      "category": "edit-action",
+      "figmaNodeId": "43:329",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=43-329",
+      "file": "icons/edit-action/minus.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "a067ddf377c159fa85492a3aaf15d297d4205ddf",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    },
+    {
+      "name": "confirm",
+      "displayName": "确认",
+      "category": "edit-action",
+      "figmaNodeId": "43:358",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=43-358",
+      "file": "icons/edit-action/confirm.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "90eaf09905944c460bee2045d003e679f72b8390",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    },
+    {
+      "name": "add",
+      "displayName": "添加",
+      "category": "edit-action",
+      "figmaNodeId": "43:380",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=43-380",
+      "file": "icons/edit-action/add.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "e7f6fa86d0dea4ca05b889e05f17844f823927d8",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    },
+    {
+      "name": "decline",
+      "displayName": "不确认",
+      "category": "edit-action",
+      "figmaNodeId": "43:408",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=43-408",
+      "file": "icons/edit-action/decline.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "776ec168a563753e6b12de203f7a5e30d3e8ad89",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    },
+    {
+      "name": "export",
+      "displayName": "导出",
+      "category": "edit-action",
+      "figmaNodeId": "43:430",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=43-430",
+      "file": "icons/edit-action/export.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "eb0148b3e0b56be692e6b5d12e55ed37ade95b2c",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    },
+    {
+      "name": "download-attachment",
+      "displayName": "下载附件",
+      "category": "edit-action",
+      "figmaNodeId": "43:452",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=43-452",
+      "file": "icons/edit-action/download-attachment.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "6a989798c8130013e1255f74573da43ad6803b52",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    },
+    {
+      "name": "download-app",
+      "displayName": "下载-APP",
+      "category": "edit-action",
+      "figmaNodeId": "43:474",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=43-474",
+      "file": "icons/edit-action/download-app.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "bbc93d5ae82f7d553a4bf593479552d731324e51",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    },
+    {
+      "name": "undo",
+      "displayName": "撤销",
+      "category": "edit-action",
+      "figmaNodeId": "43:496",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=43-496",
+      "file": "icons/edit-action/undo.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "917f9b6e1dcccefb65576eab6668cac403ab1759",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    },
+    {
+      "name": "update",
+      "displayName": "更新",
+      "category": "edit-action",
+      "figmaNodeId": "43:518",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=43-518",
+      "file": "icons/edit-action/update.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "5061d9b791c4944e94688b8981a8d2bb05a077f0",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    },
+    {
+      "name": "close",
+      "displayName": "关闭",
+      "category": "edit-action",
+      "figmaNodeId": "40:487",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=40-487",
+      "file": "icons/edit-action/close.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "89ca00919107041f5acc18a954eca265e442c15b",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    },
+    {
+      "name": "check",
+      "displayName": "对勾",
+      "category": "edit-action",
+      "figmaNodeId": "43:634",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=43-634",
+      "file": "icons/edit-action/check.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "51e0c86c7c4e92e4fc1449b22a21a0c7bbbc9890",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    },
+    {
+      "name": "multi-select",
+      "displayName": "多选",
+      "category": "edit-action",
+      "figmaNodeId": "43:1939",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=43-1939",
+      "file": "icons/edit-action/multi-select.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "5b3f41d76afb1a841f01eea8b067396619bb2ee0",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    },
+    {
+      "name": "play",
+      "displayName": "播放",
+      "category": "edit-action",
+      "figmaNodeId": "43:2142",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=43-2142",
+      "file": "icons/edit-action/play.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "214332c7e05185d023d359d0ab85389ce9977b32",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    },
+    {
+      "name": "pause",
+      "displayName": "暂停",
+      "category": "edit-action",
+      "figmaNodeId": "43:2164",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=43-2164",
+      "file": "icons/edit-action/pause.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "00f0902da0fb53e16989610270b4fb3f828bcf76",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    },
+    {
+      "name": "sort",
+      "displayName": "排序",
+      "category": "edit-action",
+      "figmaNodeId": "44:829",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=44-829",
+      "file": "icons/edit-action/sort.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "e617840118a60f60117aa8e63da3c719fb610ce9",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    },
+    {
+      "name": "send-to-friend",
+      "displayName": "发送给朋友",
+      "category": "edit-action",
+      "figmaNodeId": "44:1162",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=44-1162",
+      "file": "icons/edit-action/send-to-friend.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "38362542d868c12ac9d3aa7f0e5bdb82a2bd6035",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    },
+    {
+      "name": "bujue-cloud",
+      "displayName": "不觉云",
+      "category": "edit-action",
+      "figmaNodeId": "44:630",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=44-630",
+      "file": "icons/edit-action/bujue-cloud.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "dbf643c9e8cc424e4bc12df9aa1b189191944444",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    },
+    {
+      "name": "scan-qr",
+      "displayName": "扫码",
+      "category": "edit-action",
+      "figmaNodeId": "44:608",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=44-608",
+      "file": "icons/edit-action/scan-qr.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "f13b1a85d79cbbe9a18dbadbf44b0149cc88ad55",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    },
+    {
+      "name": "reset",
+      "displayName": "重置",
+      "category": "edit-action",
+      "figmaNodeId": "40:665",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=40-665",
+      "file": "icons/edit-action/reset.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "1d093e0727bb482cd110a896bb1bd13927b867d5",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    },
+    {
+      "name": "redo",
+      "displayName": "重做",
+      "category": "edit-action",
+      "figmaNodeId": "43:1452",
+      "figmaSourceUrl": "https://www.figma.com/file/B1KFmcQrMgQiqKsyppory3/?node-id=43-1452",
+      "file": "icons/edit-action/redo.svg",
+      "size": {
+        "width": 24,
+        "height": 24
+      },
+      "defaultColor": "currentColor",
+      "secondaryColors": [],
+      "tokensReferenced": [
+        "--color-light-text-1"
+      ],
+      "hash": "9b028b6f2b723a3cf93e9ad8cea9408939ddc183",
+      "generatedAt": "2026-05-12T07:00:00Z"
+    }
+  ]
+}

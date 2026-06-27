@@ -1,0 +1,54 @@
+/* Tab/下划线型 — Web Component Library (Figma 198:166).
+   27 variants: 状态(3) × 底色(3) × 图标(3).
+   布局：列方向，padding 8 0 0，gap 8，height 40。
+   字号：Default/Disabled 14/21 Normal；Selected 14/21 Medium。
+   下划线 2px，紧贴底部。
+
+   Ground-truth (this session):
+     · 198:58 Selected white → text 14/21 Medium #333 + 2px line #333. */
+
+@import url("../../../tokens/index.css");
+
+.tab-underline {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 8px;
+  height: 40px;
+  box-sizing: border-box;
+  font-family: var(--font-source-han);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  user-select: none;
+}
+.tab-underline__row {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.tab-underline__icon { width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center; }
+.tab-underline__label { display: inline; }
+.tab-underline__line {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: transparent;
+  align-self: stretch;
+}
+
+/* ── 底色 axis ── */
+.tab-underline--bg-white  { color: var(--color-light-text-1); }   /* #333 on #FFF */
+.tab-underline--bg-gray   { color: var(--color-light-text-1); }   /* #333 on #F5F5F5 */
+.tab-underline--bg-black  { color: var(--color-light-white); }    /* #FFF on #151515 */
+
+/* ── 状态 axis ── */
+/* Default: text-color as set above; underline transparent */
+/* Selected: text weight Medium + underline visible */
+.tab-underline--selected { font-weight: 500; }
+.tab-underline--selected .tab-underline__line { background: currentColor; }
+
+/* Disabled: text faded */
+.tab-underline--disabled { opacity: 0.4; cursor: not-allowed; }

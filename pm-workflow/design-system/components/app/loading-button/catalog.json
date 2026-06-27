@@ -1,0 +1,782 @@
+{
+  "schemaVersion": 2,
+  "kind": "component",
+  "name": "loading-button",
+  "displayName": "LoadingButton",
+  "category": "Base",
+  "type": "COMPONENT_SET",
+  "platform": "app",
+  "figmaFileKey": "32xWNWcyKwBl6ElXLG5oFs",
+  "figmaNodeId": "101:1016",
+  "figmaSourceUrl": "https://www.figma.com/file/32xWNWcyKwBl6ElXLG5oFs/?node-id=101-1016",
+  "files": {
+    "html": null,
+    "css": "components/app/loading-button/loading-button.css",
+    "js": null,
+    "thumb": null,
+    "readme": "components/app/loading-button/README.md"
+  },
+  "axes": [
+    {
+      "name": "Style",
+      "values": [
+        "TextOnly",
+        "SolidDark",
+        "Outline",
+        "SolidLight",
+        "SolidSoft",
+        "OutlineStrong"
+      ]
+    },
+    {
+      "name": "Size",
+      "values": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
+    },
+    {
+      "name": "圆角",
+      "values": [
+        "默认",
+        "胶囊"
+      ]
+    }
+  ],
+  "states": [
+    {
+      "selector": "[disabled]",
+      "trigger": "attribute",
+      "description": "Always disabled (loading state)"
+    }
+  ],
+  "modifiers": [
+    {
+      "class": "app-loading-btn--textonly",
+      "axis": "Style",
+      "value": "TextOnly"
+    },
+    {
+      "class": "app-loading-btn--soliddark",
+      "axis": "Style",
+      "value": "SolidDark"
+    },
+    {
+      "class": "app-loading-btn--outline",
+      "axis": "Style",
+      "value": "Outline"
+    },
+    {
+      "class": "app-loading-btn--solidlight",
+      "axis": "Style",
+      "value": "SolidLight"
+    },
+    {
+      "class": "app-loading-btn--solidsoft",
+      "axis": "Style",
+      "value": "SolidSoft"
+    },
+    {
+      "class": "app-loading-btn--outlinestrong",
+      "axis": "Style",
+      "value": "OutlineStrong"
+    },
+    {
+      "class": "app-loading-btn--s",
+      "axis": "Size",
+      "value": "S"
+    },
+    {
+      "class": "app-loading-btn--m",
+      "axis": "Size",
+      "value": "M"
+    },
+    {
+      "class": "app-loading-btn--l",
+      "axis": "Size",
+      "value": "L"
+    },
+    {
+      "class": "app-loading-btn--xl",
+      "axis": "Size",
+      "value": "XL"
+    },
+    {
+      "class": "app-loading-btn--radius-pill",
+      "axis": "圆角",
+      "value": "胶囊"
+    }
+  ],
+  "slots": [
+    {
+      "name": "dots",
+      "selector": ".app-loading-btn__dots",
+      "description": "Two animated dots"
+    }
+  ],
+  "tokensReferenced": [
+    "--color-light-bg-2",
+    "--color-light-border-1",
+    "--color-light-border-2",
+    "--color-light-disabled",
+    "--color-light-text-1",
+    "--color-light-white",
+    "--font-source-han",
+    "--radius-4",
+    "--radius-pill"
+  ],
+  "variantCount": 48,
+  "variants": [
+    {
+      "name": "outline-l-pill",
+      "figmaNodeId": "100:1095",
+      "figmaVariantPath": "Style=Outline, Size=L, 圆角=胶囊",
+      "modifiers": [
+        "app-loading-btn--outline",
+        "app-loading-btn--l",
+        "app-loading-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--outline app-loading-btn--l app-loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outline-l",
+      "figmaNodeId": "100:1092",
+      "figmaVariantPath": "Style=Outline, Size=L, 圆角=默认",
+      "modifiers": [
+        "app-loading-btn--outline",
+        "app-loading-btn--l"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--outline app-loading-btn--l\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outline-m-pill",
+      "figmaNodeId": "100:1089",
+      "figmaVariantPath": "Style=Outline, Size=M, 圆角=胶囊",
+      "modifiers": [
+        "app-loading-btn--outline",
+        "app-loading-btn--m",
+        "app-loading-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--outline app-loading-btn--m app-loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outline-m",
+      "figmaNodeId": "100:1086",
+      "figmaVariantPath": "Style=Outline, Size=M, 圆角=默认",
+      "modifiers": [
+        "app-loading-btn--outline",
+        "app-loading-btn--m"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--outline app-loading-btn--m\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outline-s-pill",
+      "figmaNodeId": "100:1083",
+      "figmaVariantPath": "Style=Outline, Size=S, 圆角=胶囊",
+      "modifiers": [
+        "app-loading-btn--outline",
+        "app-loading-btn--s",
+        "app-loading-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--outline app-loading-btn--s app-loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outline-s",
+      "figmaNodeId": "100:1080",
+      "figmaVariantPath": "Style=Outline, Size=S, 圆角=默认",
+      "modifiers": [
+        "app-loading-btn--outline",
+        "app-loading-btn--s"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--outline app-loading-btn--s\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outline-xl-pill",
+      "figmaNodeId": "100:1101",
+      "figmaVariantPath": "Style=Outline, Size=XL, 圆角=胶囊",
+      "modifiers": [
+        "app-loading-btn--outline",
+        "app-loading-btn--xl",
+        "app-loading-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--outline app-loading-btn--xl app-loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outline-xl",
+      "figmaNodeId": "100:1098",
+      "figmaVariantPath": "Style=Outline, Size=XL, 圆角=默认",
+      "modifiers": [
+        "app-loading-btn--outline",
+        "app-loading-btn--xl"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--outline app-loading-btn--xl\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outlinestrong-l-pill",
+      "figmaNodeId": "100:1167",
+      "figmaVariantPath": "Style=OutlineStrong, Size=L, 圆角=胶囊",
+      "modifiers": [
+        "app-loading-btn--outlinestrong",
+        "app-loading-btn--l",
+        "app-loading-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--outlinestrong app-loading-btn--l app-loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outlinestrong-l",
+      "figmaNodeId": "100:1164",
+      "figmaVariantPath": "Style=OutlineStrong, Size=L, 圆角=默认",
+      "modifiers": [
+        "app-loading-btn--outlinestrong",
+        "app-loading-btn--l"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--outlinestrong app-loading-btn--l\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outlinestrong-m-pill",
+      "figmaNodeId": "100:1161",
+      "figmaVariantPath": "Style=OutlineStrong, Size=M, 圆角=胶囊",
+      "modifiers": [
+        "app-loading-btn--outlinestrong",
+        "app-loading-btn--m",
+        "app-loading-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--outlinestrong app-loading-btn--m app-loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outlinestrong-m",
+      "figmaNodeId": "100:1158",
+      "figmaVariantPath": "Style=OutlineStrong, Size=M, 圆角=默认",
+      "modifiers": [
+        "app-loading-btn--outlinestrong",
+        "app-loading-btn--m"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--outlinestrong app-loading-btn--m\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outlinestrong-s-pill",
+      "figmaNodeId": "100:1155",
+      "figmaVariantPath": "Style=OutlineStrong, Size=S, 圆角=胶囊",
+      "modifiers": [
+        "app-loading-btn--outlinestrong",
+        "app-loading-btn--s",
+        "app-loading-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--outlinestrong app-loading-btn--s app-loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outlinestrong-s",
+      "figmaNodeId": "100:1152",
+      "figmaVariantPath": "Style=OutlineStrong, Size=S, 圆角=默认",
+      "modifiers": [
+        "app-loading-btn--outlinestrong",
+        "app-loading-btn--s"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--outlinestrong app-loading-btn--s\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outlinestrong-xl-pill",
+      "figmaNodeId": "100:1173",
+      "figmaVariantPath": "Style=OutlineStrong, Size=XL, 圆角=胶囊",
+      "modifiers": [
+        "app-loading-btn--outlinestrong",
+        "app-loading-btn--xl",
+        "app-loading-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--outlinestrong app-loading-btn--xl app-loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "outlinestrong-xl",
+      "figmaNodeId": "100:1170",
+      "figmaVariantPath": "Style=OutlineStrong, Size=XL, 圆角=默认",
+      "modifiers": [
+        "app-loading-btn--outlinestrong",
+        "app-loading-btn--xl"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--outlinestrong app-loading-btn--xl\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "soliddark-l-pill",
+      "figmaNodeId": "100:1071",
+      "figmaVariantPath": "Style=SolidDark, Size=L, 圆角=胶囊",
+      "modifiers": [
+        "app-loading-btn--soliddark",
+        "app-loading-btn--l",
+        "app-loading-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--soliddark app-loading-btn--l app-loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "soliddark-l",
+      "figmaNodeId": "100:1068",
+      "figmaVariantPath": "Style=SolidDark, Size=L, 圆角=默认",
+      "modifiers": [
+        "app-loading-btn--soliddark",
+        "app-loading-btn--l"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--soliddark app-loading-btn--l\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "soliddark-m-pill",
+      "figmaNodeId": "100:1065",
+      "figmaVariantPath": "Style=SolidDark, Size=M, 圆角=胶囊",
+      "modifiers": [
+        "app-loading-btn--soliddark",
+        "app-loading-btn--m",
+        "app-loading-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--soliddark app-loading-btn--m app-loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "soliddark-m",
+      "figmaNodeId": "100:1062",
+      "figmaVariantPath": "Style=SolidDark, Size=M, 圆角=默认",
+      "modifiers": [
+        "app-loading-btn--soliddark",
+        "app-loading-btn--m"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--soliddark app-loading-btn--m\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "soliddark-s-pill",
+      "figmaNodeId": "100:1059",
+      "figmaVariantPath": "Style=SolidDark, Size=S, 圆角=胶囊",
+      "modifiers": [
+        "app-loading-btn--soliddark",
+        "app-loading-btn--s",
+        "app-loading-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--soliddark app-loading-btn--s app-loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "soliddark-s",
+      "figmaNodeId": "100:1056",
+      "figmaVariantPath": "Style=SolidDark, Size=S, 圆角=默认",
+      "modifiers": [
+        "app-loading-btn--soliddark",
+        "app-loading-btn--s"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--soliddark app-loading-btn--s\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "soliddark-xl-pill",
+      "figmaNodeId": "100:1077",
+      "figmaVariantPath": "Style=SolidDark, Size=XL, 圆角=胶囊",
+      "modifiers": [
+        "app-loading-btn--soliddark",
+        "app-loading-btn--xl",
+        "app-loading-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--soliddark app-loading-btn--xl app-loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "soliddark-xl",
+      "figmaNodeId": "100:1074",
+      "figmaVariantPath": "Style=SolidDark, Size=XL, 圆角=默认",
+      "modifiers": [
+        "app-loading-btn--soliddark",
+        "app-loading-btn--xl"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--soliddark app-loading-btn--xl\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "solidlight-l-pill",
+      "figmaNodeId": "100:1119",
+      "figmaVariantPath": "Style=SolidLight, Size=L, 圆角=胶囊",
+      "modifiers": [
+        "app-loading-btn--solidlight",
+        "app-loading-btn--l",
+        "app-loading-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--solidlight app-loading-btn--l app-loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "solidlight-l",
+      "figmaNodeId": "100:1116",
+      "figmaVariantPath": "Style=SolidLight, Size=L, 圆角=默认",
+      "modifiers": [
+        "app-loading-btn--solidlight",
+        "app-loading-btn--l"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--solidlight app-loading-btn--l\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "solidlight-m-pill",
+      "figmaNodeId": "100:1113",
+      "figmaVariantPath": "Style=SolidLight, Size=M, 圆角=胶囊",
+      "modifiers": [
+        "app-loading-btn--solidlight",
+        "app-loading-btn--m",
+        "app-loading-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--solidlight app-loading-btn--m app-loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "solidlight-m",
+      "figmaNodeId": "100:1110",
+      "figmaVariantPath": "Style=SolidLight, Size=M, 圆角=默认",
+      "modifiers": [
+        "app-loading-btn--solidlight",
+        "app-loading-btn--m"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--solidlight app-loading-btn--m\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "solidlight-s-pill",
+      "figmaNodeId": "100:1107",
+      "figmaVariantPath": "Style=SolidLight, Size=S, 圆角=胶囊",
+      "modifiers": [
+        "app-loading-btn--solidlight",
+        "app-loading-btn--s",
+        "app-loading-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--solidlight app-loading-btn--s app-loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "solidlight-s",
+      "figmaNodeId": "100:1104",
+      "figmaVariantPath": "Style=SolidLight, Size=S, 圆角=默认",
+      "modifiers": [
+        "app-loading-btn--solidlight",
+        "app-loading-btn--s"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--solidlight app-loading-btn--s\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "solidlight-xl-pill",
+      "figmaNodeId": "100:1125",
+      "figmaVariantPath": "Style=SolidLight, Size=XL, 圆角=胶囊",
+      "modifiers": [
+        "app-loading-btn--solidlight",
+        "app-loading-btn--xl",
+        "app-loading-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--solidlight app-loading-btn--xl app-loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "solidlight-xl",
+      "figmaNodeId": "100:1122",
+      "figmaVariantPath": "Style=SolidLight, Size=XL, 圆角=默认",
+      "modifiers": [
+        "app-loading-btn--solidlight",
+        "app-loading-btn--xl"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--solidlight app-loading-btn--xl\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "solidsoft-l-pill",
+      "figmaNodeId": "100:1143",
+      "figmaVariantPath": "Style=SolidSoft, Size=L, 圆角=胶囊",
+      "modifiers": [
+        "app-loading-btn--solidsoft",
+        "app-loading-btn--l",
+        "app-loading-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--solidsoft app-loading-btn--l app-loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "solidsoft-l",
+      "figmaNodeId": "100:1140",
+      "figmaVariantPath": "Style=SolidSoft, Size=L, 圆角=默认",
+      "modifiers": [
+        "app-loading-btn--solidsoft",
+        "app-loading-btn--l"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--solidsoft app-loading-btn--l\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "solidsoft-m-pill",
+      "figmaNodeId": "100:1137",
+      "figmaVariantPath": "Style=SolidSoft, Size=M, 圆角=胶囊",
+      "modifiers": [
+        "app-loading-btn--solidsoft",
+        "app-loading-btn--m",
+        "app-loading-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--solidsoft app-loading-btn--m app-loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "solidsoft-m",
+      "figmaNodeId": "100:1134",
+      "figmaVariantPath": "Style=SolidSoft, Size=M, 圆角=默认",
+      "modifiers": [
+        "app-loading-btn--solidsoft",
+        "app-loading-btn--m"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--solidsoft app-loading-btn--m\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "solidsoft-s-pill",
+      "figmaNodeId": "100:1131",
+      "figmaVariantPath": "Style=SolidSoft, Size=S, 圆角=胶囊",
+      "modifiers": [
+        "app-loading-btn--solidsoft",
+        "app-loading-btn--s",
+        "app-loading-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--solidsoft app-loading-btn--s app-loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "solidsoft-s",
+      "figmaNodeId": "100:1128",
+      "figmaVariantPath": "Style=SolidSoft, Size=S, 圆角=默认",
+      "modifiers": [
+        "app-loading-btn--solidsoft",
+        "app-loading-btn--s"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--solidsoft app-loading-btn--s\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "solidsoft-xl-pill",
+      "figmaNodeId": "100:1149",
+      "figmaVariantPath": "Style=SolidSoft, Size=XL, 圆角=胶囊",
+      "modifiers": [
+        "app-loading-btn--solidsoft",
+        "app-loading-btn--xl",
+        "app-loading-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--solidsoft app-loading-btn--xl app-loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "solidsoft-xl",
+      "figmaNodeId": "100:1146",
+      "figmaVariantPath": "Style=SolidSoft, Size=XL, 圆角=默认",
+      "modifiers": [
+        "app-loading-btn--solidsoft",
+        "app-loading-btn--xl"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--solidsoft app-loading-btn--xl\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "textonly-l-pill",
+      "figmaNodeId": "100:1047",
+      "figmaVariantPath": "Style=TextOnly, Size=L, 圆角=胶囊",
+      "modifiers": [
+        "app-loading-btn--textonly",
+        "app-loading-btn--l",
+        "app-loading-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--textonly app-loading-btn--l app-loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "textonly-l",
+      "figmaNodeId": "100:1044",
+      "figmaVariantPath": "Style=TextOnly, Size=L, 圆角=默认",
+      "modifiers": [
+        "app-loading-btn--textonly",
+        "app-loading-btn--l"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--textonly app-loading-btn--l\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "textonly-m-pill",
+      "figmaNodeId": "100:1041",
+      "figmaVariantPath": "Style=TextOnly, Size=M, 圆角=胶囊",
+      "modifiers": [
+        "app-loading-btn--textonly",
+        "app-loading-btn--m",
+        "app-loading-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--textonly app-loading-btn--m app-loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "textonly-m",
+      "figmaNodeId": "100:1038",
+      "figmaVariantPath": "Style=TextOnly, Size=M, 圆角=默认",
+      "modifiers": [
+        "app-loading-btn--textonly",
+        "app-loading-btn--m"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--textonly app-loading-btn--m\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "textonly-s-pill",
+      "figmaNodeId": "100:1035",
+      "figmaVariantPath": "Style=TextOnly, Size=S, 圆角=胶囊",
+      "modifiers": [
+        "app-loading-btn--textonly",
+        "app-loading-btn--s",
+        "app-loading-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--textonly app-loading-btn--s app-loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "textonly-s",
+      "figmaNodeId": "100:1032",
+      "figmaVariantPath": "Style=TextOnly, Size=S, 圆角=默认",
+      "modifiers": [
+        "app-loading-btn--textonly",
+        "app-loading-btn--s"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--textonly app-loading-btn--s\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "textonly-xl-pill",
+      "figmaNodeId": "100:1053",
+      "figmaVariantPath": "Style=TextOnly, Size=XL, 圆角=胶囊",
+      "modifiers": [
+        "app-loading-btn--textonly",
+        "app-loading-btn--xl",
+        "app-loading-btn--radius-pill"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--textonly app-loading-btn--xl app-loading-btn--radius-pill\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    },
+    {
+      "name": "textonly-xl",
+      "figmaNodeId": "100:1050",
+      "figmaVariantPath": "Style=TextOnly, Size=XL, 圆角=默认",
+      "modifiers": [
+        "app-loading-btn--textonly",
+        "app-loading-btn--xl"
+      ],
+      "attrs": {
+        "disabled": true
+      },
+      "exampleHtml": "<button class=\"app-loading-btn app-loading-btn--textonly app-loading-btn--xl\" disabled aria-label=\"Loading\"><span class=\"app-loading-btn__dots\" aria-hidden=\"true\"><span class=\"app-loading-btn__dot\"></span><span class=\"app-loading-btn__dot\"></span></span></button>"
+    }
+  ],
+  "generatedAt": "2026-05-12T14:00:00Z"
+}
