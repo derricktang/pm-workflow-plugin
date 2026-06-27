@@ -26,10 +26,11 @@ import re
 import sys
 from pathlib import Path
 
-REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-SKILLS_DIR = REPO_ROOT / "pm-workflow" / "skills"
-COMPONENTS_DIR = REPO_ROOT / "pm-workflow" / "rules" / "bujue-design-system" / "components"
-PUB_INDEX = REPO_ROOT / "pm-workflow" / "rules" / "bujue-design-system" / "pub_components_index.md"
+import os, sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from pm_paths import FRAMEWORK_ROOT, PROJECT_ROOT
+SKILLS_DIR = FRAMEWORK_ROOT / "pm-workflow" / "skills"
+COMPONENTS_DIR = FRAMEWORK_ROOT / "pm-workflow" / "rules" / "bujue-design-system" / "components"
+PUB_INDEX = FRAMEWORK_ROOT / "pm-workflow" / "rules" / "bujue-design-system" / "pub_components_index.md"
 
 
 # ── 报告收集器 ────────────────────────────────────────────────────────────────
@@ -150,7 +151,7 @@ def check_skills(r: Report) -> None:
                     continue
                 # 仅当含小写字母时报警（W 步前缀应全大写）
                 if not prefix.isupper():
-                    bad_prefixes.append((str(f.relative_to(REPO_ROOT)), m.group(0)))
+                    bad_prefixes.append((str(f.relative_to(FRAMEWORK_ROOT)), m.group(0)))
                     prefix_ok = False
     if bad_prefixes:
         r.fail(f"SKILL/template 中含非规范 W 步前缀（应全大写,如 WE-1）: {bad_prefixes[:5]}")
@@ -243,7 +244,7 @@ def check_pub_components(r: Report) -> None:
 # ── 检查 3｜fb-fallback-manifest.md anchor 完整性 ─────────────────────────────
 
 
-MANIFEST_PATH = REPO_ROOT / "pm-workflow" / "rules" / "bujue-design-system" / "fb-fallback-manifest.md"
+MANIFEST_PATH = FRAMEWORK_ROOT / "pm-workflow" / "rules" / "bujue-design-system" / "fb-fallback-manifest.md"
 
 
 def check_manifest_anchors(r: Report) -> None:
@@ -283,7 +284,7 @@ def check_manifest_anchors(r: Report) -> None:
                 list_ids.add(g)
 
     # 3. 派发说明 agent_dispatch_protocol 中声明数（仅校验 21 这个数字字面）
-    DISPATCH_PATH = REPO_ROOT / "pm-workflow" / "rules" / "agent_dispatch_protocol.md"
+    DISPATCH_PATH = FRAMEWORK_ROOT / "pm-workflow" / "rules" / "agent_dispatch_protocol.md"
     expected_count = 21
     if DISPATCH_PATH.exists():
         dispatch_text = DISPATCH_PATH.read_text(encoding="utf-8")
@@ -327,7 +328,7 @@ def check_manifest_anchors(r: Report) -> None:
 
 def main() -> int:
     print("structure_check.py — 新对象入库结构齐全性检查")
-    print(f"仓库: {REPO_ROOT}")
+    print(f"仓库: {FRAMEWORK_ROOT}")
 
     r = Report()
     check_skills(r)

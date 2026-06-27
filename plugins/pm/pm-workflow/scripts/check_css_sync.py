@@ -38,9 +38,10 @@ import re
 import sys
 from pathlib import Path
 
-REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-TEMPLATE_PATH = REPO_ROOT / "pm-workflow" / "rules" / "prd_template.html"
-STANDARD_PATH = REPO_ROOT / "pm-workflow" / "rules" / "prd_expression_standard.md"
+import os, sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from pm_paths import FRAMEWORK_ROOT, PROJECT_ROOT
+TEMPLATE_PATH = FRAMEWORK_ROOT / "pm-workflow" / "rules" / "prd_template.html"
+STANDARD_PATH = FRAMEWORK_ROOT / "pm-workflow" / "rules" / "prd_expression_standard.md"
 
 
 # ── CSS 块提取 ────────────────────────────────────────────────────────────────

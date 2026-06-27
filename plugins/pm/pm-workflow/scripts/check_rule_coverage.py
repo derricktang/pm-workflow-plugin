@@ -27,9 +27,10 @@ import re
 import sys
 from pathlib import Path
 
-REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-RULES_PATH = REPO_ROOT / "pm-workflow" / "rules" / "rule_hard_constraints.md"
-SCRIPTS_DIR = REPO_ROOT / "pm-workflow" / "scripts"
+import os, sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from pm_paths import FRAMEWORK_ROOT, PROJECT_ROOT
+RULES_PATH = FRAMEWORK_ROOT / "pm-workflow" / "rules" / "rule_hard_constraints.md"
+SCRIPTS_DIR = FRAMEWORK_ROOT / "pm-workflow" / "scripts"
 
 # 规则编号格式：S1-01 / S2-03 / S3-15 / S4-22 / G-01 / G-07
 RULE_ID_RE = re.compile(r"\b([SG][1-4]?-\d{2})\b")

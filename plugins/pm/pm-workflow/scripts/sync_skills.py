@@ -24,8 +24,9 @@ import tempfile
 from datetime import date
 from pathlib import Path
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
-SKILLS_DIR = REPO_ROOT / "pm-workflow" / "skills"
+import os, sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from pm_paths import FRAMEWORK_ROOT, PROJECT_ROOT
+SKILLS_DIR = FRAMEWORK_ROOT / "pm-workflow" / "skills"
 SOURCES_FILE = SKILLS_DIR / ".sources.json"
 
 

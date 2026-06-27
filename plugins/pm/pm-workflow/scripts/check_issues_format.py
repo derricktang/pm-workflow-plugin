@@ -28,8 +28,9 @@ import re
 import sys
 from pathlib import Path
 
-REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-ISSUES_DIR = REPO_ROOT / "process_record" / "issues"
+import os, sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from pm_paths import FRAMEWORK_ROOT, PROJECT_ROOT
+ISSUES_DIR = PROJECT_ROOT / "process_record" / "issues"
 
 
 # ── 校验规则 ──────────────────────────────────────────────────────────────────

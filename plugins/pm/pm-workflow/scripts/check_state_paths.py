@@ -30,9 +30,10 @@ import re
 import sys
 from pathlib import Path
 
-REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-STATE_PATH = REPO_ROOT / "process_record" / "state.md"
-OUTPUT_DIR = REPO_ROOT / "outputs"
+import os, sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from pm_paths import FRAMEWORK_ROOT, PROJECT_ROOT
+STATE_PATH = PROJECT_ROOT / "process_record" / "state.md"
+OUTPUT_DIR = PROJECT_ROOT / "outputs"
 
 
 # ── 路径提取与校验 ────────────────────────────────────────────────────────────
@@ -95,7 +96,7 @@ def main() -> None:
             continue
         seen.add(path_str)
 
-        full_path = REPO_ROOT / path_str
+        full_path = PROJECT_ROOT / path_str
 
         # 校验存在性
         if not full_path.exists():

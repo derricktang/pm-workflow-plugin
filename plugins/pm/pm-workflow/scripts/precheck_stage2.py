@@ -37,6 +37,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from pm_paths import FRAMEWORK_ROOT, PROJECT_ROOT
 from strip_inline_change_markers import warn_inline_markers  # SSOT #79 跨阶段内联标记检测（单源）
 from precheck_common import (
     check_role_naming_consistency,
@@ -46,8 +47,7 @@ from precheck_common import (
     extract_already_have_modules,
 )
 
-REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-OUTPUT_DIR = REPO_ROOT / "outputs"
+OUTPUT_DIR = PROJECT_ROOT / "outputs"
 
 
 # ── 报告收集器（同 precheck_stage4.py 风格）────────────────────────────────────
@@ -539,7 +539,7 @@ def resolve_target_path(argv: list[str]) -> Path:
     if len(argv) > 1:
         p = Path(argv[1])
         if not p.is_absolute():
-            p = (REPO_ROOT / p).resolve()
+            p = (PROJECT_ROOT / p).resolve()
         return p
     if not OUTPUT_DIR.exists():
         print(
@@ -570,8 +570,8 @@ def _check_pre_commit_hook_installed() -> str | None:
     """检测 .git/hooks/pre-commit 是否已安装（指向仓库 hook 源）。
     返回 None = 已装/检查不适用；返回 str = WARN 信息。
     SSOT 真源：`pm-workflow/rules/agent_dispatch_protocol.md`「PM / Supervisor Agent 文件改动权限边界」第 5 条 / SSOT 双锚 #31。"""
-    git_hook = REPO_ROOT / ".git" / "hooks" / "pre-commit"
-    expected = REPO_ROOT / "pm-workflow" / "scripts" / "hooks" / "pre-commit"
+    git_hook = PROJECT_ROOT / ".git" / "hooks" / "pre-commit"
+    expected = FRAMEWORK_ROOT / "pm-workflow" / "scripts" / "hooks" / "pre-commit"
     if not expected.exists():
         return None
     if not git_hook.exists():
@@ -632,7 +632,7 @@ def main() -> None:
         check_no_overlap_with_already_have(content, r, stage1_path)
 
     # G-01 / G-02 4 阶段通用硬规则(rule_hard_constraints.md)
-    check_archive_sync(target, r, "阶段2 功能规划", archive_prefix, REPO_ROOT)
+    check_archive_sync(target, r, "阶段2 功能规划", archive_prefix, PROJECT_ROOT)
     check_version_changelog(content, r, "阶段2 功能规划")
 
     # S2-07 UI 字面来源标注校验（G 方案 G.5，SSOT #54，[Recommended] WARN 不阻断）

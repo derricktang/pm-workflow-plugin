@@ -96,9 +96,10 @@ from precheck_common import (
 )
 
 # ── 路径约定 ──────────────────────────────────────────────────────────────────
-REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-DEFAULT_SCAFFOLD = REPO_ROOT / "process_record" / "tasks" / "scaffold.json"
-OUTPUT_DIR = REPO_ROOT / "outputs"
+from pm_paths import FRAMEWORK_ROOT, PROJECT_ROOT
+REPO_ROOT = PROJECT_ROOT  # backward-compat alias (tests monkeypatch REPO_ROOT)
+DEFAULT_SCAFFOLD = PROJECT_ROOT / "process_record" / "tasks" / "scaffold.json"
+OUTPUT_DIR = PROJECT_ROOT / "outputs"
 
 
 # ── 报告收集器 ────────────────────────────────────────────────────────────────
@@ -1237,7 +1238,7 @@ def check_prd(data: dict, html: str, r: Report) -> None:
         if src.startswith(("http://", "https://", "//", "data:", "#")):
             continue
         if src.startswith("/"):
-            target = REPO_ROOT / src.lstrip("/")
+            target = PROJECT_ROOT / src.lstrip("/")
         else:
             target = OUTPUT_DIR / src
         if not target.exists():
@@ -2901,8 +2902,8 @@ def check_proj_components(data: dict, prd_html: str, r: Report) -> None:
 
 # ── 校验 5｜组件索引一致性 ────────────────────────────────────────────────────
 
-PUB_INDEX_PATH = REPO_ROOT / "pm-workflow" / "rules" / "bujue-design-system" / "pub_components_index.md"
-PUB_COMPONENTS_DIR = REPO_ROOT / "pm-workflow" / "rules" / "bujue-design-system" / "components"
+PUB_INDEX_PATH = FRAMEWORK_ROOT / "pm-workflow" / "rules" / "bujue-design-system" / "pub_components_index.md"
+PUB_COMPONENTS_DIR = FRAMEWORK_ROOT / "pm-workflow" / "rules" / "bujue-design-system" / "components"
 
 
 def check_pub_index(r: Report) -> None:
@@ -3006,7 +3007,7 @@ def check_pub_index(r: Report) -> None:
         r.ok(f"分类总览组件数与组件总表行数一致（{sum(actual_counts.values())} 个组件）")
 
 
-FB_FALLBACK_CSS_PATH = REPO_ROOT / "pm-workflow" / "rules" / "bujue-design-system" / "fb-fallback.css"
+FB_FALLBACK_CSS_PATH = FRAMEWORK_ROOT / "pm-workflow" / "rules" / "bujue-design-system" / "fb-fallback.css"
 
 
 def check_prd_fb_registration(data: dict, prd_html: str, r: Report) -> None:
@@ -3061,7 +3062,7 @@ def check_prd_fb_registration(data: dict, prd_html: str, r: Report) -> None:
 # 真源中漏登记 class 直到下游跑实际产物才暴露。本 check 把扫描延伸到 template 真源,
 # template 含未登记 fb-* 即 FAIL,防止派生侧再撞同一坑。
 
-PRD_TEMPLATE_PATH = REPO_ROOT / "pm-workflow" / "rules" / "prd_template.html"
+PRD_TEMPLATE_PATH = FRAMEWORK_ROOT / "pm-workflow" / "rules" / "prd_template.html"
 
 
 def check_prd_template_fb_registration(r: Report) -> None:
@@ -3115,7 +3116,7 @@ def check_prd_template_fb_registration(r: Report) -> None:
         r.ok(f"prd_template.html 真源 fb-* class 全部已登记（{len(used)} 个 unique class）")
 
 
-PRD_EXPRESSION_STANDARD_PATH = REPO_ROOT / "pm-workflow" / "rules" / "prd_expression_standard.md"
+PRD_EXPRESSION_STANDARD_PATH = FRAMEWORK_ROOT / "pm-workflow" / "rules" / "prd_expression_standard.md"
 
 
 def _parse_z_index_truth_source() -> set[int] | None:
@@ -3939,7 +3940,7 @@ A_TABLE_ROW_RE = re.compile(
     r"\s*([^|]+?)\s*\|",                      # owner 列
     re.MULTILINE,
 )
-DRAFTS_DIR = REPO_ROOT / "process_record" / "drafts"
+DRAFTS_DIR = PROJECT_ROOT / "process_record" / "drafts"
 PROJ_CSS_BLOCK_RE = re.compile(
     r"<!--\s*\[PROJ-CSS-START\]\s*-->(.*?)<!--\s*\[PROJ-CSS-END\]\s*-->",
     re.DOTALL,
@@ -5128,7 +5129,7 @@ def check_interactive_data_tp(spec_md: str, prd_html: str, r: Report) -> None:
 # ── 校验 11｜fb-fallback.css ↔ fb-fallback-manifest.md sync ──────────────────
 
 FB_FALLBACK_MANIFEST_PATH = (
-    REPO_ROOT / "pm-workflow" / "rules" / "bujue-design-system" / "fb-fallback-manifest.md"
+    FRAMEWORK_ROOT / "pm-workflow" / "rules" / "bujue-design-system" / "fb-fallback-manifest.md"
 )
 FB_FALLBACK_CSS_SELECTOR_RE = re.compile(r"^\s*\.(fb-[a-z][a-z0-9-]*)", re.MULTILINE)
 # Manifest 端宽松 regex（覆盖 HTML class 属性 + CSS 声明 + 散文描述三种形式）：
@@ -5157,7 +5158,7 @@ def _collect_fb_non_component_refs() -> set[str]:
     refs = {"fb-fallback", "fb-fallback-manifest"}  # 文件名自引
 
     # 自动扫 pm-workflow/skills/fb-* 目录名（避免硬编码 skill 名清单）
-    skills_dir = REPO_ROOT / "pm-workflow" / "skills"
+    skills_dir = FRAMEWORK_ROOT / "pm-workflow" / "skills"
     if skills_dir.exists():
         for p in skills_dir.glob("fb-*"):
             if p.is_dir():
@@ -7648,8 +7649,8 @@ def _check_pre_commit_hook_installed() -> str | None:
     """检测 .git/hooks/pre-commit 是否已安装（指向仓库 hook 源）。
     返回 None = 已装/检查不适用；返回 str = WARN 信息。
     SSOT 真源：`pm-workflow/rules/agent_dispatch_protocol.md`「PM / Supervisor Agent 文件改动权限边界」第 5 条 / SSOT 双锚 #31。"""
-    git_hook = REPO_ROOT / ".git" / "hooks" / "pre-commit"
-    expected = REPO_ROOT / "pm-workflow" / "scripts" / "hooks" / "pre-commit"
+    git_hook = PROJECT_ROOT / ".git" / "hooks" / "pre-commit"
+    expected = FRAMEWORK_ROOT / "pm-workflow" / "scripts" / "hooks" / "pre-commit"
     if not expected.exists():
         return None
     if not git_hook.exists():
@@ -7852,8 +7853,8 @@ def check_spec_api_id_closure(data: dict, spec_md: str, r: Report) -> None:
 
     try:
         prod_def_text = prod_def_path.read_text(encoding="utf-8")
-    except OSError as e:
-        r.warn(f"产品定义文件读取失败 → 跳过 API ID 闭环校验：{e}")
+    except (OSError, UnicodeDecodeError) as e:
+        r.warn(f"产品定义文件读取失败 → 跳过闭环校验：{e}")
         return
 
     api_re = re.compile(r"\bAPI-[A-Za-z0-9-]+\b")
@@ -9642,7 +9643,7 @@ def main() -> None:
     # G-02:校验 spec.md 末尾变更记录表 + prd.html doc-changelog section(NB-WE-21 完整摘账,2026-06-01)
     # 用 spec_path 作 G-01 校验入口(prd_path 同步存在);archive_prefix="deliverable" 触发子目录扫描
     if spec_path.exists():
-        check_archive_sync(spec_path, r, "阶段4 交付文档", "deliverable", REPO_ROOT)
+        check_archive_sync(spec_path, r, "阶段4 交付文档", "deliverable", PROJECT_ROOT)
         check_version_changelog(
             spec_path.read_text(encoding="utf-8"), r, "阶段4 spec.md"
         )
@@ -9682,7 +9683,7 @@ def main() -> None:
 
     # S4-FRAME-01 frame class 禁止 inline 尺寸 override(/retro 2026-05-12_1521 # 4 复盘根因 B)
     # 扫 drafts 真源 + outputs 派生,frame class 含 inline width/height/min-height/max-height 即 FAIL
-    _check_frame_inline_size_override(REPO_ROOT, r)
+    _check_frame_inline_size_override(PROJECT_ROOT, r)
 
     sys.exit(r.summary())
 

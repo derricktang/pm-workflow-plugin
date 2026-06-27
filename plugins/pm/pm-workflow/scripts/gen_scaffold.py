@@ -34,13 +34,14 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 
 # ── 路径约定 ──────────────────────────────────────────────────────────────────
-REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-TEMPLATE = REPO_ROOT / "pm-workflow" / "rules" / "prd_template.html"
-DEFAULT_SCAFFOLD = REPO_ROOT / "process_record" / "tasks" / "scaffold.json"
-OUTPUT_DIR = REPO_ROOT / "outputs"
-DRAFTS_DIR = REPO_ROOT / "process_record" / "drafts"
-SCAFFOLD_LOCK = REPO_ROOT / "process_record" / "tasks" / ".scaffold.lock"
-BACKUP_DIR = REPO_ROOT / "process_record" / "versions" / ".assemble_backups"
+import os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from pm_paths import FRAMEWORK_ROOT, PROJECT_ROOT
+TEMPLATE = FRAMEWORK_ROOT / "pm-workflow" / "rules" / "prd_template.html"
+DEFAULT_SCAFFOLD = PROJECT_ROOT / "process_record" / "tasks" / "scaffold.json"
+OUTPUT_DIR = PROJECT_ROOT / "outputs"
+DRAFTS_DIR = PROJECT_ROOT / "process_record" / "drafts"
+SCAFFOLD_LOCK = PROJECT_ROOT / "process_record" / "tasks" / ".scaffold.lock"
+BACKUP_DIR = PROJECT_ROOT / "process_record" / "versions" / ".assemble_backups"
 
 # 产品规格区固定条目（A-01~A-08 + A-04.2 业务流程图，共 9 节；
 # spec-business-flow 位置介于 spec-journey 与 spec-feature 之间，与 prd_expression_standard.md
@@ -1655,7 +1656,7 @@ def main():
     # ── 任务卡完整性检查（必含「候选组件清单」段，N25 拦截 PM 子阶段一漏填）──
     missing_task_card_sections: list[tuple[str, str]] = []
     for mod in modules:
-        task_card_path = REPO_ROOT / mod.get("task_card", "")
+        task_card_path = PROJECT_ROOT / mod.get("task_card", "")
         if not task_card_path.exists():
             missing_task_card_sections.append((mod.get("id", "?"), f"任务卡不存在：{task_card_path}"))
             continue
@@ -1729,7 +1730,7 @@ def main():
     print()
     print("更新任务卡候选清单段（v2.0 自动衍生）：")
     for mod in modules:
-        task_card_path = REPO_ROOT / mod.get("task_card", "")
+        task_card_path = PROJECT_ROOT / mod.get("task_card", "")
         if update_task_card_candidate_section(task_card_path, mod, modules):
             print(f"  [✎] {task_card_path.name}")
 

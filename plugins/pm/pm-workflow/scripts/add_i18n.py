@@ -39,9 +39,10 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 # ── 路径约定 ──────────────────────────────────────────────────────────────────
-REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-DRAFTS_DIR = REPO_ROOT / "process_record" / "drafts"
-DICT_PATH = REPO_ROOT / "process_record" / "i18n_dict.json"
+import os, sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from pm_paths import FRAMEWORK_ROOT, PROJECT_ROOT
+DRAFTS_DIR = PROJECT_ROOT / "process_record" / "drafts"
+DICT_PATH = PROJECT_ROOT / "process_record" / "i18n_dict.json"
 DRAFTS_GLOB = "prd_M*_draft.html"
 
 # ── extract: 容器 / 跳过 class ────────────────────────────────────────────────

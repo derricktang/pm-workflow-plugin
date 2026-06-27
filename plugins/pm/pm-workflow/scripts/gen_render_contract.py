@@ -34,12 +34,12 @@ import re
 import sys
 from pathlib import Path
 
-REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from pm_paths import FRAMEWORK_ROOT, PROJECT_ROOT
 from gen_scaffold import iter_page_prd_ids  # noqa: E402  (R3 SSOT #76 统一收集)
 
-DEFAULT_SCAFFOLD = REPO_ROOT / "process_record" / "tasks" / "scaffold.json"
-OUTPUT_DIR = REPO_ROOT / "outputs"
+DEFAULT_SCAFFOLD = PROJECT_ROOT / "process_record" / "tasks" / "scaffold.json"
+OUTPUT_DIR = PROJECT_ROOT / "outputs"
 
 # 平台「不生契约项」豁免词（跨端单帧，无 per-platform 期望）
 _AGNOSTIC_PLATFORM_TOKENS = {"agnostic", "all", "全部", "所有", "通用", "跨端", "—", "-", ""}

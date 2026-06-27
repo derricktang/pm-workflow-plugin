@@ -33,9 +33,10 @@ import sys
 from pathlib import Path
 
 
-REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-TEMPLATE_PATH = REPO_ROOT / "pm-workflow" / "rules" / "prd_template.html"
-PLATFORM_DIR = REPO_ROOT / "pm-workflow" / "rules"
+import os, sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from pm_paths import FRAMEWORK_ROOT, PROJECT_ROOT
+TEMPLATE_PATH = FRAMEWORK_ROOT / "pm-workflow" / "rules" / "prd_template.html"
+PLATFORM_DIR = FRAMEWORK_ROOT / "pm-workflow" / "rules"
 
 # 多端枚举 — 应有 frame CSS 的端类清单
 EXPECTED_FRAMES = {
@@ -99,7 +100,7 @@ def main() -> int:
     template_content = TEMPLATE_PATH.read_text(encoding="utf-8")
     frames = extract_frame_css_blocks(template_content)
 
-    print(f"扫描:{TEMPLATE_PATH.relative_to(REPO_ROOT)}")
+    print(f"扫描:{TEMPLATE_PATH.relative_to(FRAMEWORK_ROOT)}")
     print(f"已发现 frame CSS 定义:{len(frames)} 个 — {sorted(frames.keys())}")
 
     errors: list[str] = []

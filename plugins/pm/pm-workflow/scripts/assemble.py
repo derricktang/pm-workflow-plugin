@@ -30,14 +30,17 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 
 # ── 路径约定 ──────────────────────────────────────────────────────────────────
-REPO_ROOT  = Path(__file__).resolve().parent.parent.parent
-SCAFFOLD   = REPO_ROOT / "process_record" / "tasks" / "scaffold.json"
-DRAFTS_DIR = REPO_ROOT / "process_record" / "drafts"
-OUTPUT_DIR = REPO_ROOT / "outputs"
-FALLBACK_CSS_PATH = REPO_ROOT / "pm-workflow" / "rules" / "bujue-design-system" / "fb-fallback.css"
-FINGERPRINT_DIR = REPO_ROOT / "process_record" / "versions" / ".assemble_fingerprints"
-BACKUP_DIR = REPO_ROOT / "process_record" / "versions" / ".assemble_backups"
-PRD_TEMPLATE_PATH = REPO_ROOT / "pm-workflow" / "rules" / "prd_template.html"
+import os, sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from pm_paths import FRAMEWORK_ROOT, PROJECT_ROOT
+# 产物 → PROJECT_ROOT
+SCAFFOLD   = PROJECT_ROOT / "process_record" / "tasks" / "scaffold.json"
+DRAFTS_DIR = PROJECT_ROOT / "process_record" / "drafts"
+OUTPUT_DIR = PROJECT_ROOT / "outputs"
+FINGERPRINT_DIR = PROJECT_ROOT / "process_record" / "versions" / ".assemble_fingerprints"
+BACKUP_DIR = PROJECT_ROOT / "process_record" / "versions" / ".assemble_backups"
+# 框架 → FRAMEWORK_ROOT
+FALLBACK_CSS_PATH = FRAMEWORK_ROOT / "pm-workflow" / "rules" / "bujue-design-system" / "fb-fallback.css"
+PRD_TEMPLATE_PATH = FRAMEWORK_ROOT / "pm-workflow" / "rules" / "prd_template.html"
 
 # template hash 注释标记（嵌入 outputs/prd 头部，用于检测主模板升级）
 TEMPLATE_HASH_COMMENT_PATTERN = r"<!--\s*template-hash:\s*([0-9a-f]{64})\s*-->"
@@ -4498,7 +4501,7 @@ def assemble_prd(data: dict) -> None:
 
     # 追加 audit trail 到 process_record/versions/draft_history.log
     if history_records:
-        history_log = REPO_ROOT / "process_record" / "versions" / "draft_history.log"
+        history_log = PROJECT_ROOT / "process_record" / "versions" / "draft_history.log"
         history_log.parent.mkdir(parents=True, exist_ok=True)
         with history_log.open("a", encoding="utf-8") as f:
             for rec in history_records:

@@ -30,7 +30,9 @@ from pathlib import Path
 
 # ── 配置 ──────────────────────────────────────────────────────────────────────
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
+import os, sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from pm_paths import FRAMEWORK_ROOT, PROJECT_ROOT
+REPO_ROOT = FRAMEWORK_ROOT  # backward-compat alias (tests monkeypatch REPO_ROOT)
 
 # 代码类 L2 文件清单（与 workflow_maintenance_protocol.md「模板纯净度红线」+
 # 「通用 L2 注释纯净度准则」§代码类 [Must] 对齐）
