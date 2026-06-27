@@ -1,0 +1,15 @@
+{
+  "name": "pm-workflow-market",
+  "displayName": "PM Workflow Marketplace",
+  "description": "AI 产品经理工作流插件市场",
+  "version": "1.0.0",
+  "author": { "name": "TODO" },
+  "plugins": [
+    {
+      "name": "pm",
+      "displayName": "PM Workflow",
+      "description": "结构化 AI 产品经理工作流",
+      "source": { "source": "relative", "path": "./plugins/pm" }
+    }
+  ]
+}
