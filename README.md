@@ -34,7 +34,7 @@ claude plugin marketplace add <your-github-repo>
 | 维度 | 插件模式（推荐） | git-copy 模式（**deprecated / 过渡**） |
 |------|-----------------|----------------------------------------|
 | **安装** | `claude plugin marketplace add <repo>` + `/plugin install pm@pm-workflow-market` | clone 仓库 + `bash pm-workflow/scripts/install_hooks.sh` |
-| **更新 L2** | `/plugin update`（maintainer 推送后生效） | `install_hooks` + `/pm:syncUpstream` |
+| **更新 L2** | `/plugin update`（maintainer 推送后生效） | `bash pm-workflow/scripts/install_hooks.sh` + `/pm:syncUpstream` |
 | **L2 可写性** | 只读（插件文件在 Claude 缓存目录） | 本地可改（直接修改 pm-workflow/ 文件） |
 | **多产品复用** | 同一插件版本，多仓库共享 | 每个产品仓各自维护一份 L2 副本 |
 | **运行时产物** | `outputs/` + `process_record/` 落在用户项目根目录 | 同左 |
@@ -64,6 +64,24 @@ claude plugin marketplace add <your-github-repo>
 - **人类产品总监审核** – 最终确认，通过后解锁下一阶段
 
 整个流程支持**状态查看**、**阶段跳转等待**、**需求变更影响分析**，并采用**规范的文件输出结构**，便于版本管理与多人协作。
+
+---
+
+### 快速开始
+
+#### 插件模式（推荐）
+
+安装插件后（见上方「插件安装」），在 Claude Code 对话中直接输入：
+
+```
+/pm:newRequirement 用户希望用手机号一键登录，支持验证码倒计时
+```
+
+AI 会自动开始 **阶段1：需求分析**，完成后等待你的审核，输入 `/pm:nextStage` 继续进入下一阶段。
+
+#### git-copy 模式（deprecated）
+
+clone 仓库并运行 `bash pm-workflow/scripts/install_hooks.sh` 安装 hooks 后启动 Claude Code，命令使用方式与插件模式相同（均以 `/pm:` 前缀）。详见上方「两种使用模式对照」表。
 
 ---
 
@@ -227,6 +245,14 @@ AI 会：
 
 ---
 
+### 审核记录说明
+
+- **AI 产品主管审核**：每次审核完成后，在 `process_record/reviews/` 生成审核报告（`stage[N]_review.md`），含通过/驳回理由及整改要求。
+- **人类 PM 审核**：通过对话直接反馈，状态记录在 `process_record/state.md`。
+- **调整意见记录**：产品总监在任何对话中提出的调整意见，自动记录至 `process_record/issues/`，可通过 `/pm:retro` 进行复盘分析。
+
+---
+
 ### 下游同步上游工作流升级（git-copy 模式）
 
 下游产品仓可随时把上游最新 L2 升级拉到本仓：
@@ -252,6 +278,9 @@ A: 重新打开后输入 `/pm:projectStatus`，AI 会自动读取 `process_recor
 
 **Q: 为什么第四阶段要输出 `spec.md` 和 `prd.html` 两个文件？**
 A: `spec.md` 是 AI 结构化规格文档，作为权威来源先生成；`prd.html` 是面向人类（PM、设计师、业务）的可视化文档，以 `spec.md` 为唯一来源派生生成。你审阅 `prd.html`，反馈的修改会先更新 `spec.md`，再同步到 `prd.html`，确保两份文档永远对齐。
+
+**Q: 如何开始一个新的产品需求？**
+A: 直接输入 `/pm:newRequirement 你的需求简述`。AI 会重置工作区，创建新的 `需求简述.md`，并从阶段1开始执行。
 
 **Q: 技能（skills）是什么，需要单独安装吗？**
 A: 技能是结构化分析框架，定义文件位于 `pm-workflow/skills/`，通过 Claude Code Superpowers 插件加载，无需额外安装步骤。AI 在执行阶段1和阶段2时会自动调用。
