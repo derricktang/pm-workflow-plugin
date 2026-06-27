@@ -103,15 +103,12 @@ git add -A && git commit -m "chore: scaffold plugin layout (move core + commands
   "description": "结构化 AI 产品经理工作流：需求分析→功能规划→产品定义→交付文档，多层审核、可控变更。",
   "version": "1.0.0",
   "author": { "name": "TODO-填发布前" },
-  "homepage": "TODO",
-  "repository": "TODO",
-  "license": "TODO",
   "skills": "./pm-workflow/skills/",
   "commands": "./commands/",
   "hooks": "./hooks/hooks.json"
 }
 ```
-> 注：**不写 `agents` 字段**（角色文件无 frontmatter、本工作流派通用 subagent 再 Read 路径，非注册 agent）。`author/homepage/repository/license` 为发布前填的元数据，非代码占位。
+> 注：**不写 `agents` 字段**（角色文件无 frontmatter、本工作流派通用 subagent 再 Read 路径，非注册 agent）。**`homepage`/`repository`/`license` 一并省略**——它们是可选字段，且非空时按 URI / SPDX 校验，写 `"TODO"` 占位会**校验失败**（final-review 实测）；发布前填真实值再加。`author.name` 为普通字符串，留占位无妨。
 
 - [ ] **Step 2: 写 marketplace.json**
 
@@ -127,7 +124,7 @@ git add -A && git commit -m "chore: scaffold plugin layout (move core + commands
       "name": "pm",
       "displayName": "PM Workflow",
       "description": "结构化 AI 产品经理工作流",
-      "source": { "source": "relative", "path": "./plugins/pm" }
+      "source": "./plugins/pm"
     }
   ]
 }
@@ -174,11 +171,12 @@ def test_project_root_uses_env(monkeypatch, tmp_path):
     import pm_paths; importlib.reload(pm_paths)
     assert pm_paths.PROJECT_ROOT == tmp_path.resolve()
 
-def test_project_root_falls_back_to_cwd(monkeypatch, tmp_path):
+def test_project_root_falls_back_to_framework_root(monkeypatch, tmp_path):
+    # 无 env 时回退到 FRAMEWORK_ROOT（而非 cwd）——保证 git-copy/测试零回归
     monkeypatch.delenv("CLAUDE_PROJECT_DIR", raising=False)
-    monkeypatch.chdir(tmp_path)
+    monkeypatch.chdir(tmp_path)  # 故意换 cwd，证明不依赖 cwd
     import pm_paths; importlib.reload(pm_paths)
-    assert pm_paths.PROJECT_ROOT == tmp_path.resolve()
+    assert pm_paths.PROJECT_ROOT == pm_paths.FRAMEWORK_ROOT
 ```
 
 - [ ] **Step 2: 跑测试确认失败**
@@ -190,14 +188,17 @@ Expected: FAIL（`ModuleNotFoundError: pm_paths`）
 
 ```python
 """双根定位（SSOT）。框架文件用 FRAMEWORK_ROOT（只读），产物用 PROJECT_ROOT（读写）。
-git-copy 模式下两者相等（向后兼容）；插件模式下 FRAMEWORK_ROOT 在只读 cache、PROJECT_ROOT 在用户项目。"""
+插件模式：Claude Code 设 CLAUDE_PROJECT_DIR → PROJECT_ROOT=用户项目；FRAMEWORK_ROOT 在只读 cache。
+git-copy / 测试模式：无 CLAUDE_PROJECT_DIR → PROJECT_ROOT 回退到 FRAMEWORK_ROOT（= 旧 REPO_ROOT 行为，零回归）。"""
 import os
 from pathlib import Path
 
-# 本文件位于 <root>/pm-workflow/scripts/pm_paths.py
+# 本文件位于 <plugin_root>/pm-workflow/scripts/pm_paths.py → parents[2] = <plugin_root>（含 pm-workflow/ 的目录）
 FRAMEWORK_ROOT = Path(__file__).resolve().parents[2]
-PROJECT_ROOT = Path(os.environ.get("CLAUDE_PROJECT_DIR") or os.getcwd()).resolve()
+# 回退到 FRAMEWORK_ROOT（而非 cwd）：保证无 env 时与旧 REPO_ROOT=__file__ 行为一致，现有测试不破
+PROJECT_ROOT = Path(os.environ.get("CLAUDE_PROJECT_DIR") or FRAMEWORK_ROOT).resolve()
 ```
+> **关键**：回退用 `FRAMEWORK_ROOT` 不用 `cwd`——旧代码 `REPO_ROOT=Path(__file__)...parents[2]` 是确定性的；用 cwd 回退会让测试（cwd=scripts）算错根、破坏现有 798 passing。
 
 - [ ] **Step 4: 跑测试确认通过**
 
@@ -432,7 +433,7 @@ git commit -m "feat: generate orchestrator.md from CLAUDE.md anchors + sync test
 import json, os
 from pathlib import Path
 
-root = os.environ.get("CLAUDE_PLUGIN_ROOT") or str(Path(__file__).resolve().parents[2])
+root = os.environ.get("CLAUDE_PLUGIN_ROOT") or str(Path(__file__).resolve().parents[3])  # hooks/→scripts→pm-workflow→pm(plugin root)
 orch = Path(root) / "pm-workflow" / "core" / "orchestrator.md"
 body = orch.read_text(encoding="utf-8") if orch.exists() else "(orchestrator.md 缺失)"
 decl = (f"\n\n[插件根] 框架文件绝对根 = {root}。"

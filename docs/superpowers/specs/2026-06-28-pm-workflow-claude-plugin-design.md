@@ -83,9 +83,6 @@ pm-workflow-plugin/                          # 发布仓根（= marketplace）
   "description": "结构化 AI 产品经理工作流：需求分析→功能规划→产品定义→交付文档，多层审核、可控变更。",
   "version": "1.0.0",
   "author": { "name": "<待填>" },
-  "homepage": "<待填>",
-  "repository": "<待填>",
-  "license": "<待定>",
   "skills": "./pm-workflow/skills/",
   "commands": "./commands/",
   "hooks": "./hooks/hooks.json"
@@ -106,7 +103,7 @@ pm-workflow-plugin/                          # 发布仓根（= marketplace）
   "plugins": [
     { "name": "pm", "displayName": "PM Workflow",
       "description": "结构化 AI 产品经理工作流",
-      "source": { "source": "relative", "path": "./plugins/pm" } }
+      "source": "./plugins/pm" } 
   ]
 }
 ```
@@ -162,7 +159,7 @@ pm-workflow-plugin/                          # 发布仓根（= marketplace）
 ### 6.1 P0-1（最严重，我 rev.2 写反了，已实测纠正）
 - **实测真相**：`assemble.py:33` `REPO_ROOT = Path(__file__).resolve().parent.parent.parent`，产物（`OUTPUT_DIR`/`DRAFTS_DIR`/`SCAFFOLD`/backups）**与**框架（`FALLBACK_CSS_PATH`/`PRD_TEMPLATE_PATH`）**同挂这一个 `__file__` 根**。全仓 **17** 个脚本如此，**0** 个用 `CLAUDE_PROJECT_DIR`。`add_i18n.py:42` 同样 `REPO_ROOT=__file__/../../..` → rev.2「DICT_PATH 已正确指 PROJECT_DIR」**错误**（它指的是 `__file__` 根下的 process_record，插件模式即 cache）。
 - **后果**：插件模式 `__file__` 在只读 cache → assemble 把 `outputs/`、`drafts/` 写进 cache → 失败或污染框架。
-- **修正（P0 重写）**：17 脚本统一引入双根——框架文件用 `FRAMEWORK_ROOT = Path(__file__)...`；产物用 `PROJECT_ROOT = os.environ.get("CLAUDE_PROJECT_DIR", os.getcwd())`。配**红线集成测试**：断言产物落 PROJECT_ROOT、绝不写 cache。
+- **修正（P0 重写）**：17 脚本统一引入双根——框架文件用 `FRAMEWORK_ROOT = Path(__file__).resolve().parents[2]`；产物用 `PROJECT_ROOT = Path(os.environ.get("CLAUDE_PROJECT_DIR") or FRAMEWORK_ROOT)`（**无 env 时回退 FRAMEWORK_ROOT 而非 cwd**——与旧 `REPO_ROOT` 确定性行为一致，现有 798 测试零回归；实测确认 2026-06-28）。配**红线集成测试**：断言产物落 PROJECT_ROOT、绝不写 cache。
 
 ### 6.2 P0-2（433 处跨文件引用，「约定即可」覆盖不到）
 - **错因**：subagent cwd=用户项目，插件模式 `pm-workflow/` 在只读 cache、不在项目里 → 裸相对路径 Read 失败。§5.3 根声明经 SessionStart 进**主会话**，**subagent 全新上下文收不到**（待核-D 确认断裂点）。编排器前缀注入只能管它自己写进 dispatch 的几条，**管不了 subagent 读进来的数百条**。
