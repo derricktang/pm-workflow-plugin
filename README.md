@@ -2,95 +2,100 @@
 
 > 基于 Claude Code 的结构化产品经理工作流 —— 从需求到交付文档，AI 全程辅助，多层审核，可控变更。
 
-## 📖 简介
+---
 
-`Claude PM Workflow` 是一套运行在 **Claude Code** 之上的产品经理工作流。你只需要用 `/newRequirement + 需求简述` 下达指令，AI 便会自动依次执行 **需求分析 → 功能规划 → 产品定义 → 交付文档** 四个核心阶段。
+## 插件安装（推荐）
+
+### 安装
+
+```bash
+claude plugin marketplace add <your-github-repo>
+/plugin install pm@pm-workflow-market
+```
+
+> 注：marketplace URL 和 repo 地址为预发布占位符，正式发布时更新。
+
+### 命令（均以 `/pm:` 命名空间为前缀）
+
+| 命令 | 作用 |
+|------|------|
+| `/pm:newRequirement {简述}` | 启动新需求，从需求分析开始执行全四阶段 |
+| `/pm:nextStage` | 产品总监正式通过当前阶段，推进至下一阶段 |
+| `/pm:projectStatus` | 查看当前工作流进度简报 |
+| `/pm:changeRequest` | 启动需求变更工作流 |
+| `/pm:retro` | 复盘最新未分析的调整意见，输出根因分析 + 机制改进建议 |
+| `/pm:investigate` | 临时排查专项（调研类子任务） |
+| `/pm:syncUpstream` | 从上游拉取最新 L2 升级（git-copy 模式，过渡期适用） |
+
+---
+
+## 两种使用模式对照
+
+| 维度 | 插件模式（推荐） | git-copy 模式（**deprecated / 过渡**） |
+|------|-----------------|----------------------------------------|
+| **安装** | `claude plugin marketplace add <repo>` + `/plugin install pm@pm-workflow-market` | clone 仓库 + `bash pm-workflow/scripts/install_hooks.sh` |
+| **更新 L2** | `/plugin update`（maintainer 推送后生效） | `install_hooks` + `/pm:syncUpstream` |
+| **L2 可写性** | 只读（插件文件在 Claude 缓存目录） | 本地可改（直接修改 pm-workflow/ 文件） |
+| **多产品复用** | 同一插件版本，多仓库共享 | 每个产品仓各自维护一份 L2 副本 |
+| **运行时产物** | `outputs/` + `process_record/` 落在用户项目根目录 | 同左 |
+
+---
+
+## L2 演化策略
+
+- **插件用户 = 纯消费者**：L2 框架文件（规范/模板/脚本/角色定义）由 maintainer 维护，插件目录只读，用户不直接修改。
+- **改进反馈渠道**：通过源仓 **Issue 或 PR** 提交改进意见，maintainer 评审后硬化进下一版本，经 `/plugin update` 下发所有用户。
+- **贡献者 / 本地 L2 修改**：`git clone` 源仓，走 git-copy 通道（与 git-copy 模式复用），本地修改后可提 PR 回源。
+- **参考**：详细 L2 演进历史见 [`CHANGELOG_L2.md`](CHANGELOG_L2.md)。
+
+---
+
+## 工作流详细说明
+
+> 以下为原工作流文档内容，适用于两种模式。
+
+### 简介
+
+`Claude PM Workflow` 是一套运行在 **Claude Code** 之上的产品经理工作流。你只需要用 `/pm:newRequirement + 需求简述` 下达指令，AI 便会自动依次执行 **需求分析 → 功能规划 → 产品定义 → 交付文档** 四个核心阶段。
 
 每个阶段内部包含：
-- 🤖 **AI 自审** – 检查输出质量与完整性  
-- 🧑‍💼 **AI 产品主管审核** – 模拟主管视角，提出修改意见  
-- 👤 **人类产品总监审核** – 最终确认，通过后解锁下一阶段
+- **AI 自审** – 检查输出质量与完整性
+- **AI 产品主管审核** – 模拟主管视角，提出修改意见
+- **人类产品总监审核** – 最终确认，通过后解锁下一阶段
 
 整个流程支持**状态查看**、**阶段跳转等待**、**需求变更影响分析**，并采用**规范的文件输出结构**，便于版本管理与多人协作。
 
 ---
 
-## ✨ 特性
+### 特性
 
-- ✅ **四阶段标准流程** – 需求分析 → 功能规划 → 产品定义 → 交付文档（prd.html + spec.md）  
-- 🧠 **技能驱动分析** – 阶段1/2 内置结构化技能框架（proto-persona / JTBD / Problem Statement / OST / Epic Breakdown / Story Mapping / User Story），以 Claude Code Superpowers 形式驱动，确保分析有据可循  
-- 🔁 **多层审核机制** – AI 自审 + AI 主管 + 人类 PM，确保产出质量  
-- 🧭 **状态持久化与恢复** – 随时 `/projectStatus` 查看进度，AI 引导继续  
-- 🔄 **智能需求变更** – `/changeRequest` 自动分析影响范围，同步更新所有相关文档  
-- 🚦 **显式阶段推进** – 必须使用 `/nextStage` 进入下一步，避免 AI 过度自动  
-- 📋 **调整意见闭环** – `/retro` 对已记录的调整意见进行根因分析与工作流优化
-- 📁 **规范化输出** – 产出物、归档、变更记录、审核记录分目录存储，清晰可追溯
-
----
-
-## 🚀 快速开始
-
-### 1. 环境准备
-- 安装并配置好 [Claude Code](https://docs.anthropic.com/claude-code)（确保有 `claude` 命令行工具）
-- 创建工作区文件夹，例如 `my-pm-project/`
-
-### 2. 安装工作流
-将本仓库的完整目录结构复制到你的工作区根目录下（或通过 Git 克隆）。
-
-### 3. 安装 git hooks（**clone 后必跑一次**）
-```bash
-bash pm-workflow/scripts/install_hooks.sh
-```
-
-> ⚠️ **必跑** — 否则 git pre-commit hook 不生效，L1（产品业务产物）+ L2（工作流框架文件）混合提交的硬边界失守。
-> hook 文件本身随仓库 tracked，但 git 不会自动把 hook 装到 `.git/hooks/`，必须手动跑安装脚本一次。
-> 详细机制见 `pm-workflow/rules/agent_dispatch_protocol.md`「PM / Supervisor Agent 文件改动权限边界」第 5 条 + `pm-workflow/rules/ssot_anchors.md` #31。
-
-### 4. 启动第一个需求
-```bash
-cd your-project-folder
-claude
-```
-
-在 Claude Code 对话中输入：
-```
-/newRequirement 用户希望用手机号一键登录，支持验证码倒计时
-```
-
-AI 会自动开始 **阶段1：需求分析**，完成后等待你的审核。
+- **四阶段标准流程** – 需求分析 → 功能规划 → 产品定义 → 交付文档（prd.html + spec.md）
+- **技能驱动分析** – 阶段1/2 内置结构化技能框架（proto-persona / JTBD / Problem Statement / OST / Epic Breakdown / Story Mapping / User Story），确保分析有据可循
+- **多层审核机制** – AI 自审 + AI 主管 + 人类 PM，确保产出质量
+- **状态持久化与恢复** – 随时 `/pm:projectStatus` 查看进度，AI 引导继续
+- **智能需求变更** – `/pm:changeRequest` 自动分析影响范围，同步更新所有相关文档
+- **显式阶段推进** – 必须使用 `/pm:nextStage` 进入下一步，避免 AI 过度自动
+- **调整意见闭环** – `/pm:retro` 对已记录的调整意见进行根因分析与工作流优化
+- **规范化输出** – 产出物、归档、变更记录、审核记录分目录存储，清晰可追溯
 
 ---
 
-## 🎮 指令参考
-
-| 指令 | 作用 | 示例 |
-|------|------|------|
-| `/newRequirement {简述}` | 启动新需求，自动开始阶段1（需求分析） | `/newRequirement 后台支持批量导出订单` |
-| `/nextStage` | 当前阶段人类审核通过后，进入下一阶段 | `/nextStage` |
-| `/projectStatus` | 查看当前阶段、各文档审核状态 | `/projectStatus` |
-| `/changeRequest {变更描述}` | 对当前需求提出变更，AI 自动分析影响并更新文档 | `/changeRequest 去掉短信验证码，只保留手机号一键登录` |
-| `/retro` | 分析最新未分析的调整意见，输出根因分析与工作流优化建议 | `/retro` |
-
-> ⚠️ 每个阶段必须经过 **AI自审 → AI主管审核 → 人类PM审核** 三步，人类审核通过后 AI 会提示"请使用 `/nextStage` 继续"，不会自动跳阶段。
-
----
-
-## 📋 工作流程详解
+### 工作流程详解
 
 ```mermaid
 graph TD
-    A[/newRequirement] --> B[阶段1: 需求分析]
+    A[/pm:newRequirement] --> B[阶段1: 需求分析]
     B --> C{AI自审+AI主管审核}
     C -- 通过 --> D{人类PM审核}
-    D -- 通过 --> E[/nextStage]
+    D -- 通过 --> E[/pm:nextStage]
     E --> F[阶段2: 功能规划]
     F --> G{AI自审+AI主管审核}
     G -- 通过 --> H{人类PM审核}
-    H -- 通过 --> I[/nextStage]
+    H -- 通过 --> I[/pm:nextStage]
     I --> J[阶段3: 产品定义]
     J --> K{AI自审+AI主管审核}
     K -- 通过 --> L{人类PM审核}
-    L -- 通过 --> M[/nextStage]
+    L -- 通过 --> M[/pm:nextStage]
     M --> N[阶段4: 交付文档]
     N --> O{AI自审+AI主管审核}
     O -- 通过 --> P{人类PM审核}
@@ -116,11 +121,9 @@ graph TD
 
 > `prd.html` 以 `spec.md` 为唯一来源生成，两份文档内容保持严格对齐。
 
-> 注：`[产品名]` 由用户在 `/newRequirement` 中提供或 AI 自动提取（如"报价工具" → `报价工具`）。
-
 ---
 
-## 🧠 技能驱动分析
+### 技能驱动分析
 
 阶段1和阶段2引入结构化技能框架，确保需求分析和功能规划有方法论支撑：
 
@@ -145,11 +148,11 @@ graph TD
 
 ---
 
-## 📂 完整目录结构
+### 完整目录结构（git-copy 模式参考）
 
 ```
 /
-  ├── 需求简述.md                     # 当前需求的核心简述（由 /newRequirement 写入）
+  ├── 需求简述.md                     # 当前需求的核心简述（由 /pm:newRequirement 写入）
   ├── README.md                       # 项目说明文档
   ├── CLAUDE.md                       # Claude Code 工作流总规范
   ├── pm-workflow/                    # 工作流框架资源（AI 角色规范 + 输出模板）
@@ -173,58 +176,45 @@ graph TD
   │       ├── proto_spec_legacy.md          # 已拆分原始规范，保留备查
   │       ├── task_card_template.md         # 阶段四模块任务卡标准格式（模块 Agent 任务单）
   │       └── bujue-design-system/          # 不觉设计系统规范（阶段4必传）
-  │           ├── tokens.md                 # 颜色/字体/间距 Token（唯一视觉来源）
-  │           ├── components/               # 组件规范（按需传入）
-  │           │   ├── button.md
-  │           │   ├── input.md
-  │           │   ├── card.md
-  │           │   ├── tag-tab.md
-  │           │   └── empty-loading.md      # 空状态 SVG + Loading CDN 规范
-  │           └── icon/                     # 空状态 SVG 资源
-  │               ├── NoData_LightMode.svg
-  │               └── NoData_DarkMode.svg
   │   ├── scripts/                        # 阶段四自动化脚本
   │   │   ├── gen_scaffold.py             # 骨架生成：scaffold.json → spec/prd 骨架文件
   │   │   └── assemble.py                 # 拼装：spec草稿/prd草稿 → 最终交付文件
   │   └── skills/                         # 结构化分析技能（Superpowers 插件加载）
-  │       ├── proto-persona/              # 阶段1 Step1：用户画像识别
-  │       ├── jobs-to-be-done/            # 阶段1 Step2：JTBD 三维动机挖掘
-  │       ├── problem-statement/          # 阶段1 Step3：问题陈述转化
-  │       ├── opportunity-solution-tree/  # 阶段1 Step4：机会树收敛解法
-  │       ├── epic-breakdown-advisor/     # 阶段2 Step1：Epic 拆解
-  │       ├── user-story-mapping/         # 阶段2 Step2：用户故事地图
-  │       └── user-story/                 # 阶段2 Step3：User Story 编写
+  │       ├── proto-persona/
+  │       ├── jobs-to-be-done/
+  │       ├── problem-statement/
+  │       ├── opportunity-solution-tree/
+  │       ├── epic-breakdown-advisor/
+  │       ├── user-story-mapping/
+  │       └── user-story/
   ├── .claude/commands/
-  │   ├── newRequirement.md           # /newRequirement 指令实现
-  │   ├── nextStage.md                # /nextStage 指令实现
-  │   ├── changeRequest.md            # /changeRequest 指令实现
-  │   ├── projectStatus.md            # /projectStatus 指令实现
-  │   └── retro.md                    # /retro 指令实现（问题复盘）
-  ├── outputs/                        # 各阶段最新交付物
-  │   ├── 需求分析_[产品名]_latest.md
-  │   ├── 功能规划_[产品名]_latest.md
-  │   ├── 产品定义_[产品名]_latest.md
-  │   ├── prd_[产品名]_latest.html    # 阶段4 人类可读版（以 spec.md 为来源生成）
-  │   └── spec_[产品名]_latest.md     # 阶段4 AI 结构化版（权威来源）
-  └── process_record/                 # 工作流执行过程记录，不建议删除
-      ├── state.md                    # 当前进度状态（阶段、产物路径、当前阶段 ⏳ 开放问题清单）
-      ├── decisions_ledger.md         # 已决策清单权威（SSOT #18，所有 ✅已解答/已决策 条目，append-only）
-      ├── reviews/                    # AI 主管审核报告（stage[N]_review.md）
-      ├── progress/                   # 各阶段分步进度文件
-      ├── issues/                     # 产品总监调整意见记录（按日期时间命名）
-      ├── changes/                    # 需求变更记录（每次 /changeRequest 生成）
-      ├── versions/                   # 历史版本归档
-      ├── tasks/                      # 阶段四任务卡（task_M[XX]_*.md + scaffold.json）
-      └── drafts/                     # 阶段四模块草稿（spec_M[XX]_draft.md + prd_M[XX]_draft.html）
+  │   ├── newRequirement.md
+  │   ├── nextStage.md
+  │   ├── changeRequest.md
+  │   ├── projectStatus.md
+  │   ├── retro.md
+  │   ├── investigate.md
+  │   └── syncUpstream.md
+  ├── outputs/                        # 各阶段最新交付物（运行时生成，不入 git）
+  └── process_record/                 # 工作流执行过程记录（运行时生成，不入 git）
+      ├── state.md
+      ├── decisions_ledger.md
+      ├── reviews/
+      ├── progress/
+      ├── issues/
+      ├── changes/
+      ├── versions/
+      ├── tasks/
+      └── drafts/
 ```
 
 ---
 
-## 🔁 需求变更示例
+### 需求变更示例
 
 当你输入：
 ```
-/changeRequest 增加"一键登录前需要用户同意隐私协议"的勾选框
+/pm:changeRequest 增加"一键登录前需要用户同意隐私协议"的勾选框
 ```
 
 AI 会：
@@ -235,83 +225,51 @@ AI 会：
 5. 在 `process_record/changes/` 中生成变更记录（含时间、描述、影响范围）
 6. 输出变更摘要，提示你重新审核相关阶段
 
-> 💡 已审核通过的阶段标记会**重置为"待审核"**，你需要重新走一遍该阶段的审核流程。
-
 ---
 
-## 📝 审核记录说明
+### 下游同步上游工作流升级（git-copy 模式）
 
-- **AI 产品主管审核**：每次审核完成后，在 `process_record/reviews/` 生成审核报告（`stage[N]_review.md`），含通过/驳回理由及整改要求。
-- **人类 PM 审核**：通过对话直接反馈，状态记录在 `process_record/state.md`。
-- **调整意见记录**：产品总监在任何对话中提出的调整意见，自动记录至 `process_record/issues/`，可通过 `/retro` 进行复盘分析。
-
----
-
-## 🔄 下游同步上游工作流升级
-
-本工作流框架（L2）持续演进（新校验 / assemble 治本 / 规范升级）。**下游产品仓**可随时把上游 `claude-code-pm-workflow` 的最新 L2 升级拉到本仓：
+下游产品仓可随时把上游最新 L2 升级拉到本仓：
 
 ```bash
-# 下游仓内执行（或对编排器说「同步上游」/「sync upstream」自然语言，等同 /syncUpstream）
-bash pm-workflow/scripts/sync_from_upstream.sh        # 默认仅本地 commit，--push 显式推送
+bash pm-workflow/scripts/sync_from_upstream.sh
 ```
 
-**sync 后必看 [`CHANGELOG_L2.md`](CHANGELOG_L2.md)** —— 这是面向下游的**升级日志 + 整改指引**：每条 L2 升级都写明「类型 / 一句话 / 下游影响 / **sync 后须知（actionable 整改步骤）**」，下游不必逐条读 commit 就知道"这次升级要我做什么"。
-
-典型 sync 后流程：
-
-```bash
-# 1. 阶段 4 产物受影响 → 重生 outputs（去时间戳 / 补兜底 / 重读 nav）
-python3 pm-workflow/scripts/assemble.py spec --force-overwrite
-python3 pm-workflow/scripts/assemble.py prd  --force-overwrite
-# 2. 跑 precheck 看新校验 WARN，按 CHANGELOG_L2.md 对应条目整改
-python3 pm-workflow/scripts/precheck_stage4.py
-```
-
-> **上下游约定**：上游 L2 commit 后**不主动**推下游，由下游 PM 按自身接入节奏主动拉（详 `.claude/commands/syncUpstream.md`）。WARN 阶段新校验遵循「≥ 2 仓 dry-run + 误报率 < 30% 后才升 FAIL」的渐进纪律，下游可逐步整改不被硬阻塞。
->
-> **过渡提示（一次性）**：`sync_from_upstream.sh` 会同步升级自身。若**首次 sync 后未见 `CHANGELOG_L2.md`**，是 sync 脚本自更新滞后（旧脚本不认识新增的 root 级文件）—— **再跑一次 sync 即可**拿到。跨过本边界后，之后每次 sync 首跑即同步 CHANGELOG。
+**sync 后必看 [`CHANGELOG_L2.md`](CHANGELOG_L2.md)** —— 每条 L2 升级都写明升级类型、影响说明及 sync 后须知。
 
 ---
 
-## 💬 常见问题
+### 常见问题
 
-**Q: 人类审核时如何反馈？**  
-A: 直接回复"通过"或"审核通过"，AI 会记录并提示使用 `/nextStage`。若不通过，请描述修改意见，AI 会重新修正当前阶段产出。
+**Q: 人类审核时如何反馈？**
+A: 直接回复"通过"或"审核通过"，AI 会记录并提示使用 `/pm:nextStage`。若不通过，请描述修改意见，AI 会重新修正当前阶段产出。
 
-**Q: 可以跳过某个阶段吗？**  
-A: 不建议。工作流设计为顺序执行，若确有紧急情况，可使用 `/changeRequest` 调整范围，或手动修改状态文件（高级操作）。
+**Q: 可以跳过某个阶段吗？**
+A: 不建议。工作流设计为顺序执行，若确有紧急情况，可使用 `/pm:changeRequest` 调整范围，或手动修改状态文件（高级操作）。
 
-**Q: 中途关闭 Claude Code 后如何恢复？**  
-A: 重新打开后输入 `/projectStatus`，AI 会自动读取 `process_record/state.md` 并恢复进度。
+**Q: 中途关闭 Claude Code 后如何恢复？**
+A: 重新打开后输入 `/pm:projectStatus`，AI 会自动读取 `process_record/state.md` 并恢复进度。
 
-**Q: 为什么第四阶段要输出 `spec.md` 和 `prd.html` 两个文件？**  
+**Q: 为什么第四阶段要输出 `spec.md` 和 `prd.html` 两个文件？**
 A: `spec.md` 是 AI 结构化规格文档，作为权威来源先生成；`prd.html` 是面向人类（PM、设计师、业务）的可视化文档，以 `spec.md` 为唯一来源派生生成。你审阅 `prd.html`，反馈的修改会先更新 `spec.md`，再同步到 `prd.html`，确保两份文档永远对齐。
 
-**Q: 如何开始一个新的产品需求？**  
-A: 直接输入 `/newRequirement 你的需求简述`。AI 会重置工作区，创建新的 `需求简述.md`，并从阶段1开始执行。
-
-**Q: 技能（skills）是什么，需要单独安装吗？**  
-A: 技能是结构化分析框架，定义文件位于 `pm-workflow/skills/`（克隆仓库后即可用），通过 Claude Code Superpowers 插件加载，无需额外安装步骤。AI 在执行阶段1和阶段2时会自动调用，产出中间分析产物后提炼结论写入说明书。
+**Q: 技能（skills）是什么，需要单独安装吗？**
+A: 技能是结构化分析框架，定义文件位于 `pm-workflow/skills/`，通过 Claude Code Superpowers 插件加载，无需额外安装步骤。AI 在执行阶段1和阶段2时会自动调用。
 
 ---
 
-## 🤝 贡献指南
+### 贡献指南
 
-欢迎提交 Issue 或 PR 来改进工作流规则、审核模板或分析技能。
+欢迎通过 Issue 或 PR 改进工作流规则、审核模板或分析技能。
 
-1. Fork 本仓库  
-2. 创建特性分支 (`git checkout -b feature/amazing-idea`)  
-3. 提交改动 (`git commit -m 'Add some amazing feature'`)  
-4. 推送分支 (`git push origin feature/amazing-idea`)  
-5. 打开 Pull Request  
+1. Fork 本仓库
+2. 创建特性分支 (`git checkout -b feature/amazing-idea`)
+3. 提交改动 (`git commit -m 'Add some amazing feature'`)
+4. 推送分支 (`git push origin feature/amazing-idea`)
+5. 打开 Pull Request
 
 ---
 
-## 📄 许可证
+### 许可证
 
 MIT License © 2025
-
----
-
-**开始你的第一个产品需求** – 输入 `/newRequirement` 让 Claude PM 成为你的得力助手。

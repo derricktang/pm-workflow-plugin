@@ -1,6 +1,7 @@
 # 工作流运行时执行历史（progress / issues / reviews / state.md / tasks 等）
 # 纯净版分支不入仓；项目执行时本地生成本地保留，由编排器维护
 process_record/
+outputs/
 
 # Python
 __pycache__/
