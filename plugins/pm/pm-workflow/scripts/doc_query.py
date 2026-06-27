@@ -32,9 +32,14 @@ tokens / `rule_hard_constraints.md` ~48k tokens / 产品定义 / spec），不�
 """
 
 import argparse
+import os
 import re
 import sys
 from pathlib import Path
+
+# Ensure pm_paths is importable regardless of caller's cwd
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from pm_paths import FRAMEWORK_ROOT
 
 DEFAULT_MAX_TOKENS = 25_000  # 估算 tokens，预算闸默认值
 
@@ -298,6 +303,10 @@ def main(argv=None) -> int:
 
     args = ap.parse_args(argv)
     path = Path(args.file)
+    if not path.exists():
+        alt = FRAMEWORK_ROOT / args.file
+        if alt.exists():
+            path = alt
     if not path.exists():
         print(f"[ERROR] 文件不存在：{path}", file=sys.stderr)
         return 2
