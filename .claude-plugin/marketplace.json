@@ -9,7 +9,7 @@
       "name": "pm",
       "displayName": "PM Workflow",
       "description": "结构化 AI 产品经理工作流",
-      "source": { "source": "relative", "path": "./plugins/pm" }
+      "source": "./plugins/pm"
     }
   ]
 }

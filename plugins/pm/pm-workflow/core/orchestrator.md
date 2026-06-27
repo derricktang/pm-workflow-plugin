@@ -5,6 +5,8 @@
 
 > 框架文件位于插件根（运行时由 SessionStart 注入绝对路径）；所有 `pm-workflow/...` 路径相对该根解析；用户产物 `outputs/`、`process_record/` 相对项目 cwd。
 
+> **插件模式命令前缀**：所有斜杠命令实际为 `/pm:` 前缀（如 `/pm:newRequirement`）；下文若出现无前缀命令名（`/newRequirement` 等），按 `/pm:` 解读。
+
 # CLAUDE.md
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
