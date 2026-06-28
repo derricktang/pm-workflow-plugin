@@ -5,6 +5,7 @@
   "author": { "name": "derricktang" },
   "homepage": "https://github.com/derricktang/pm-workflow-plugin",
   "repository": "https://github.com/derricktang/pm-workflow-plugin",
+  "license": "MIT",
   "skills": "./pm-workflow/skills/",
   "commands": "./commands/",
   "hooks": "./hooks/hooks.json"
