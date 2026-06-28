@@ -415,6 +415,9 @@ Mini example excerpt:
 - Productside Blueprint — Strategic product discovery process
 - [If Dean has OST resources, link here]
 
+### Provenance
+- Adapted from the Opportunity Solution Tree skill in the `https://github.com/deanpeters/Product-Manager-Skills` repo (methodology by Teresa Torres, *Continuous Discovery Habits*).
+
 ---
 
 **Skill type:** Interactive
