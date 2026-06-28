@@ -46,7 +46,6 @@ graph TB
         STATUS[projectStatus]
         CHANGE[changeRequest]
         RETRO[retro]
-        SYNC[syncUpstream]
     end
 
     subgraph Agents["角色规范"]
@@ -85,7 +84,6 @@ graph TB
         GEN[gen_scaffold.py]
         CSS[check_css_sync.py]
         STRUCT[structure_check.py]
-        HOOK[hooks/pre-commit]
         OTHER[check_state_paths<br/>check_issues_format<br/>check_rule_coverage]
     end
 
@@ -123,7 +121,6 @@ graph TB
     ASM --> DRAFTS
     PM -.写.-> STATE & PROG & TASKS & DRAFTS
     SUP -.写.-> REV
-    HOOK -.L1+L2 混提硬拦截.-> PR & Top
 ```
 
 ---
@@ -170,7 +167,7 @@ flowchart TD
 | 文件 | 定位 | 主消费者 | SSOT |
 |------|------|---------|------|
 | `/CLAUDE.md` | 项目入口 + 编排器规则 + 调整意见 SOP | 编排器 | 真源 #19 |
-| `/README.md` | GitHub 入口 + Setup + 快速开始（含 install_hooks.sh 指引） | 新克隆者 | 真源 |
+| `/README.md` | GitHub 入口 + 插件安装 + 快速开始 | 新安装者 | 真源 |
 | `ssot_anchors.md` | SSOT 双锚清单（动态计数，详见该文件头部）+ 5 要素维护守则 | 维护者 | 元真源 |
 | `agent_dispatch_protocol.md` | 派发协议 + 阶段4 7步 + scaffold v2.0 schema | 编排器/PM/Sup | 真源 #1/#9/#31 |
 | `agent_methodology.md` | T1-T6 + X1-X4 通用方法论 | PM/Sup | 真源 |
@@ -241,9 +238,7 @@ flowchart TD
 | `check_state_paths.py` | state.md 路径存在性 | 维护时 |
 | `check_issues_format.py` | issues/ 格式校验 | 维护时 |
 | `check_rule_coverage.py` | rule↔precheck 元 SSOT 矩阵 | 维护时（SSOT #22）|
-| `hooks/pre-commit` | L1+L2 混提硬拦截（SSOT #31）| 每次 git commit |
 | `hooks/session_start_state_summary.py` | 新会话注入 state.md 摘要 | SessionStart |
-| `install_hooks.sh` | hook 一键安装 | clone 后跑一次 |
 | `add_i18n.py` | 阶段 4 prd 草稿 i18n 工具（B+ 档位 data-zh/data-en 注入） | PM（按需） |
 | `lint_template_frame_coverage.py` | L2 模板多端 frame CSS 覆盖度机械检查（建议 8 落地） | 维护者 |
 | `sync_skills.py` | skills 从上游 vendor 同步（drift detection + update） | 维护者 |
@@ -264,7 +259,6 @@ flowchart TD
 | `projectStatus.md` | 工作流进度简报 |
 | `changeRequest.md` | 需求变更（主版本 +1）|
 | `retro.md` | 复盘 issues/ 找共性根因 |
-| `syncUpstream.md` | （下游仓适用）从上游 claude-code-pm-workflow 拉取最新 L2 升级；自然语义触发（同步上游 / sync upstream / 同步 L2 / sync L2 等）也命中 |
 
 ### 过程记录 `process_record/`（L1 业务过程）
 
@@ -305,7 +299,7 @@ flowchart TD
 | **#2** | fb-fallback ↔ manifest ↔ standard z-index/frame | `fb-fallback.css` → `fb-fallback-manifest.md` + `prd_expression_standard §零` + `prd_template .frame-card{isolation}` | `precheck check_fb_fallback_sync` + 5 条 fail-loud + `assemble._overwrite_first_style_from_template`(<style>) + `assemble._overwrite_scripts_from_template`(<script>:mermaid CDN+内联,WE-ASM) 主动同步 |
 | **#4** | PRD template CSS ↔ standard | `prd_template.html <style>` → standard \`\`\`css 块 | `check_css_sync.py` 字面对账 + 15 测试用例 |
 | **#22** | precheck ↔ rule_hard（元 SSOT）| `rule_hard_constraints.md` S/G 编号 → check 函数 docstring | `check_rule_coverage.py --strict` 双向矩阵 |
-| **#31** | PM L2 修订诉求 NB 上报 SOP | `agent_dispatch_protocol §6 第 6 条` → PM/Sup 角色规范 + CLAUDE.md Setup | `hooks/pre-commit` + `_check_pre_commit_hook_installed` |
+| **#31** | PM L2 修订诉求 NB 上报 SOP | `agent_dispatch_protocol §6 第 6 条` → PM/Sup 角色规范 | 插件模式：L2 只读结构性保证；git-copy + pre-commit 已退役 |
 
 ---
 
@@ -417,7 +411,7 @@ flowchart TD
 ## 六、关键边界（一句话）
 
 - **编排器读文件边界（硬约束）**：只能 Read `process_record/state.md` / `progress/` / `tasks/scaffold.json` / `reviews/` / `outputs/` 文件头 ≤30 行；其他规范文件、角色规范、前序成果、任务卡等**一律传路径**由 subagent 自读（CLAUDE.md + agent_dispatch_protocol.md 强约束）。
-- **L1 vs L2 派发**：L1（`outputs/` + `process_record/`）派 PM+Supervisor 双轮闭环；L2（`pm-workflow/*` + `CLAUDE.md` + `.claude/commands/*`）走 `workflow-evolution` skill 编排器直做；**混合任务拆两次 commit**（git pre-commit hook 拦截 L1+L2 混提）。
+- **L1 vs L2 派发**：L1（`outputs/` + `process_record/`）派 PM+Supervisor 双轮闭环；L2（`pm-workflow/*` + `CLAUDE.md` + `.claude/commands/*`）走 `workflow-evolution` skill 编排器直做（插件模式 L2 物理只读，贡献者须 clone 源仓 + PR；git-copy pre-commit hook 已退役）。
 - **职责切分**：PM = 生产 L1 业务产物 + 自审 + precheck 前置 + L2 缺陷只 NB 上报不自改；Supervisor = 只审不执行 + 4.0.1/4.0.2 前置门把关；项目维护者 = 走 workflow-evolution skill 改 L2 + 维护 SSOT 双锚清单（动态计数详见 ssot_anchors.md 头部）+ 每次 schema 升级跑 SSOT 5 要素 + 机械兜底 ROI 评估。
 - **范围评估硬约束**：任何"检查 / 排查 / 分析 / 是否一致 / 是否漂移"类排查意图，编排器**禁止自审**，必派 PM Agent / Explore subagent / general-purpose subagent 完成。
 - **组件库二元边界**（**本 §六 = pub 库分发政策权威源**；派生 3 处：`CLAUDE.md` L277 速查 + `bujue-design-system/` 13 文件顶部 banner + memory `pub_library_distribution_decision`；改本节必按 §五 对照行同步派生，禁反向）：

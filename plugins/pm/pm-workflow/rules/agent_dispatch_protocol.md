@@ -59,11 +59,11 @@
 > 2. **Supervisor Agent 审核清单**（`AI产品主管_Agent.md`）须将 PM 是否越界改 L2 文件作为 P0 审核项——一票否决，进入整改循环
 > 3. **编排器派发 prompt 必含此边界声明**：派发 PM/Supervisor Agent 时，prompt 末段须显式列出「PM 文件改动权限边界」+ 引用本节作为权威源（避免每次靠角色规范遗漏触发）
 > 4. **遇到必须改 L2 的合理需求** —— **NB 上报标准 SOP**（PM 暂停 + 编排器审根源 + 驳回机制 + 分级处置；详见下方第 6 条独立段）
-> 5. **机械兜底**（已落地）：git pre-commit hook 检测 L1+L2 混合 commit —— `pm-workflow/scripts/hooks/pre-commit` 在 commit 同时含 L1 路径（`outputs/` / `process_record/`）+ L2 路径（`pm-workflow/agents|rules|scripts|skills/*` / `CLAUDE.md` / `.claude/commands/*`）时拒绝 commit 并提示。新克隆的本地仓库须执行一次 `bash pm-workflow/scripts/install_hooks.sh` 安装。
+> 5. **L1/L2 边界保证（插件模式）**：插件模式下 L2 文件物理只读在插件缓存目录，用户仓库仅含 L1（`outputs/` / `process_record/`），边界由架构结构性保证。贡献者修改 L2 须 clone 源仓 + PR review；git-copy 模式及其 pre-commit hook 兜底已退役。
 
 #### `[Must]` 第 6 条：PM L2 修订诉求 NB 上报标准 SOP
 
-> **本节定位**：PM 在 L1 业务任务执行过程中，若**确认**当前 atomic step 卡点根因是 L2 文件本身有缺陷（precheck 漏检 / 模板字段不足 / 规范错位等），按本 SOP 执行。**禁止**在 L1 业务任务期间自行 Edit 任何 L2 文件——这是 git pre-commit hook 兜底的硬边界。
+> **本节定位**：PM 在 L1 业务任务执行过程中，若**确认**当前 atomic step 卡点根因是 L2 文件本身有缺陷（precheck 漏检 / 模板字段不足 / 规范错位等），按本 SOP 执行。**禁止**在 L1 业务任务期间自行 Edit 任何 L2 文件——插件模式下 L2 物理只读，无法修改；贡献者须 clone 源仓 + PR 路径。
 
 ##### 标准流程
 
@@ -123,7 +123,7 @@ PM 发现疑似需要 L2 修订
 ##### 与既有规则的关系
 
 - 取代旧第 4 条的简短版本（"NB 上报 → 编排器判断"），第 4 条改为指向本 SOP
-- 配合第 5 条 git pre-commit hook 形成双层防御：本 SOP 是**规范层**（PM 该怎么做），hook 是**机械层**（违规时硬拦）
+- 配合第 5 条 L1/L2 结构性边界保证：本 SOP 是**规范层**（PM 该怎么做），插件模式 L2 只读是**架构层**保证（git-copy pre-commit hook 已退役）
 - PM §二 准则 8 / §5.0 自审清单 / Supervisor §四.0 通用前置审核 须引用本 SOP（不重复正文，避免漂移）
 
 #### `[Must]` 第 7 条：派发接力基线同步纪律（subagent baton-pass freshness）
@@ -189,7 +189,7 @@ PM 发现疑似需要 L2 修订
   - 或 per-file：`stat -c "%Y %s %n" <file>` 取 mtime+size 元组比对
 - ✅ Supervisor 审核报告 / PM 自审报告若结论含"L1 未变更 / outputs 未触 / scaffold 未改"，**必须附 mtime 或 sha 基线证据**，不得仅引 `git diff` 空输出
 
-**Why（SSOT #31 hook 盲区根因）**：git pre-commit hook 用 `git diff --cached --name-only` 检 staged 文件；下游 `outputs/` 未 add 进 git、`process_record/` 整目录 .gitignore，**两类 L1 产物全程 untracked**。Hook L1+L2 混提兜底对这两类盲区——L1 改 50 次 hook 也看不到。**机械兜底缺位时，论证模式不能蹋空**；本条把"未变更"举证义务从 `git diff` 空（空真）升级到 mtime/sha 基线（实证）。
+**Why（untracked 产物论证盲区根因）**：`outputs/` 未 add 进 git、`process_record/` 整目录 .gitignore，**两类 L1 产物全程 untracked**；`git diff` 对这两类恒空 = 逻辑空真。**论证模式不能蹋空**；本条把"未变更"举证义务从 `git diff` 空（空真）升级到 mtime/sha 基线（实证）。（git-copy pre-commit hook 已退役；插件模式 L2 只读，L1/L2 边界结构性保证，本条专注于 L1 接力论证纪律。）
 
 **典型场景**：
 - 编排器同步 L2 时验证 L1 未污染 → 用 `find outputs process_record -type f | xargs sha256sum | sha256sum` 前后对比（已在 `downstream_l2_sync_procedure` memory Gotcha #6 修复路径落地）
@@ -200,7 +200,7 @@ PM 发现疑似需要 L2 修订
 
 - 取代旧"事后 reset 兜底"方案（事后兜底不可靠，且 reset 可能丢未 commit 的合理改动）
 - 与第 6 条 PM L2 NB SOP 互补：第 6 条解决"PM 越界改 L2"问题，本条解决"接力丢改"问题；两条都属于通用前置纪律，PM 自检 / Supervisor 审核均须遵守
-- 配合 `git pre-commit hook`（第 5 条）形成多层防御：hook 拦截 L1+L2 混提，本条防接力丢改
+- 与第 5 条 L1/L2 结构性边界保证互补：架构层保证 L2 只读，本条防 L1 接力丢改（git-copy pre-commit hook 已退役）
 - PM Agent `§二 核心行为准则` 准则 10 / Supervisor Agent `§4.0 通用前置审核` 4.0.3 须引用本条作为权威源（不复刻正文，避免漂移）
 
 派发 PM Agent 时，prompt 必须包含以下**路径清单与指令**（不得贴入文件完整内容）：

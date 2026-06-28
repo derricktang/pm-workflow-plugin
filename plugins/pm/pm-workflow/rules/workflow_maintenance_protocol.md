@@ -162,7 +162,7 @@
 | # | 维度 | 实证根因 | 治本建议 |
 |---|------|---------|--------|
 | 1 | **边界条件**（单帧/空 changelog/0 元素）| precheck check_frame_platform_tag 单帧静默跳过（issues #12 / SNB-005）| 边界路径显式 FAIL / WARN，不静默跳过 |
-| 2 | **untracked 文件覆盖** | pre-commit hook 仅扫 staged，untracked outputs/scaffold 0 命中（issues #15 / SNB-009）| 加 mtime/sha 基线 sidecar |
+| 2 | **untracked 文件覆盖** | pre-commit hook 仅扫 staged，untracked outputs/scaffold 0 命中（issues #15 / SNB-009；git-copy 已退役，插件模式 L2 只读）| 加 mtime/sha 基线 sidecar |
 | 3 | **多源对账**（spec vs prd / scaffold vs json）| SPEC_FOOTER 硬编码 vs build_changelog_page 消费 scaffold.json 二模板源不一致（issues #41）| 同源消费 + parity check |
 | 4 | **版本号合规**（SSOT #48 SemVer）| quotation-tool scaffold.json["changelog"] 9 条 v1.0-v2.0 违规历史散文（issues #42）| 升 fallback + precheck 拦截 |
 | 5 | **静态 vs 运行时**（mermaid SVG getBBox / cytoscape #cy）| 静态 HTML 查不到运行时动态注入 DOM（issues #40 #cy）| 调用方兜底 CSS / JS |
@@ -193,7 +193,7 @@ L2 文件按"是否参与 outputs 渲染"分两类，严格度不同：
 
 | 分类 | 严格度 | 适用文件 | 兜底 |
 |------|--------|---------|------|
-| **代码类**（[Must] 严格）| 注释**绝不**含运维痕迹 | 5 模板（PM fork 起点）+ pub 库 CSS / HTML 真源（`fb-fallback.css` / `prd_template.html` — 注入到 outputs） | 机械兜底 `precheck_template_purity.py` 6 文件白名单 + pre-commit hook FAIL |
+| **代码类**（[Must] 严格）| 注释**绝不**含运维痕迹 | 5 模板（PM fork 起点）+ pub 库 CSS / HTML 真源（`fb-fallback.css` / `prd_template.html` — 注入到 outputs） | 机械兜底 `precheck_template_purity.py` 6 文件白名单（git-copy 已退役；插件模式 L2 只读，pre-commit hook 不适用）|
 | **规范类**（[Should] 宽松）| 允许"来源历史"字面作为 SSOT 5 要素合法补充 | `ssot_anchors.md` 双锚清单 + `rule_hard_constraints.md` S/G 规则 + `proj_component_protocol.md` 等 — PM 读但不复制 | 人工自审 + 编排器 sync 时核查 |
 
 **代码类与规范类边界 grep**：文件是否会被 `assemble.py` / `gen_scaffold.py` / PM 复制粘贴到 outputs / process_record/tasks → 是即代码类，否即规范类。
@@ -219,7 +219,7 @@ L2 文件按"是否参与 outputs 渲染"分两类，严格度不同：
 **编排器 sync 拒绝边界**：
 - 下游 L2 改动经核查技术合理 → 同步进上游前**必须**先清运维痕迹
 - 清理范围按二元分类：代码类清干净（[Must]）/ 规范类保留"来源历史"但**不留** TODO 和 commit hash 跨文件引用
-- 清理后 pre-commit hook 对代码类自动兜底（precheck_template_purity 6 文件白名单）
+- 清理后 precheck_template_purity 对代码类自动检查（6 文件白名单；git-copy 已退役，pre-commit hook 不适用于插件模式）
 
 ### 与既有规则关系
 
@@ -276,11 +276,11 @@ L2 文件按"是否参与 outputs 渲染"分两类，严格度不同：
 
 ### 机械兜底
 
-`[Must]` `pm-workflow/scripts/precheck_template_purity.py`：扫 6 文件白名单（5 模板 + 1 兜底 CSS — `prd_template.html` + 3 个 `tmpl_*.md` + `task_card_template.md` + `fb-fallback.css`；2026-05-31 L2 矛盾审计 #6 修复，原文"5 个模板"基数与上方表格 6 行 + L157/L183/L187 描述统一为"6 文件白名单"）+ 检测红线 1 字面 + 白名单豁免（模板占位 `[YYYY-MM-DD]` / 版本号 `vN.N` / 行含 `.md` 路径引用且无修复动词）+ 集成到 `git pre-commit hook` 硬拦截。
+`[Must]` `pm-workflow/scripts/precheck_template_purity.py`：扫 6 文件白名单（5 模板 + 1 兜底 CSS — `prd_template.html` + 3 个 `tmpl_*.md` + `task_card_template.md` + `fb-fallback.css`；2026-05-31 L2 矛盾审计 #6 修复，原文"5 个模板"基数与上方表格 6 行 + L157/L183/L187 描述统一为"6 文件白名单"）+ 检测红线 1 字面 + 白名单豁免（模板占位 `[YYYY-MM-DD]` / 版本号 `vN.N` / 行含 `.md` 路径引用且无修复动词）。git-copy 已退役；插件模式 L2 只读，pre-commit hook 不适用，脚本可手动调用或由维护者在 PR CI 中集成。
 
 - 命令：`python3 pm-workflow/scripts/precheck_template_purity.py`
 - PASS：退出码 0 / FAIL：退出码 1 + 命中行号 + 字面
-- 集成：`pm-workflow/scripts/hooks/pre-commit` 调用本脚本，命中 FAIL 则阻止 commit
+- 集成：维护者可在 PR CI 中调用本脚本（git-copy pre-commit hook 已退役；插件模式 L2 只读）
 
 ### Skill 流程联动
 
@@ -450,7 +450,7 @@ if [ "$count" -ge 3 ]; then ...  # 正常
 `[Optional]` 新增 `pm-workflow/scripts/tests/test_new_check_dry_run.sh`：
 - 检测当前 commit 是否新增 / 改既有 `check_*` 函数（git diff）
 - 若是 → 强制要求 commit message 含 "dry-run:" 段落 + "人工核查:" 段落
-- 否则 pre-commit hook 拒绝 commit
+- 否则 pre-commit hook 拒绝 commit（git-copy 模式；插件模式 L2 只读，此约束不适用）
 
 `[Recommended]` 短期内由编排器在 `workflow-evolution` skill Step 6（机械自检）通过本节自查清单兜底，不立即建机械化脚本。
 

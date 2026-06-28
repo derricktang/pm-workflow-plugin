@@ -15,6 +15,19 @@ claude plugin marketplace add derricktang/pm-workflow-plugin
 
 > 仓库：https://github.com/derricktang/pm-workflow-plugin
 
+### 更新
+
+```bash
+/plugin update
+```
+
+`/plugin update` 升级后，若模板/脚本有变，手动重生产物：
+
+```bash
+python3 "${CLAUDE_PLUGIN_ROOT}/pm-workflow/scripts/assemble.py" spec --force-overwrite
+python3 "${CLAUDE_PLUGIN_ROOT}/pm-workflow/scripts/assemble.py" prd --force-overwrite
+```
+
 ### 命令（均以 `/pm:` 命名空间为前缀）
 
 | 命令 | 作用 |
@@ -25,19 +38,6 @@ claude plugin marketplace add derricktang/pm-workflow-plugin
 | `/pm:changeRequest` | 启动需求变更工作流 |
 | `/pm:retro` | 复盘最新未分析的调整意见，输出根因分析 + 机制改进建议 |
 | `/pm:investigate` | 临时排查专项（调研类子任务） |
-| `/pm:syncUpstream` | 从上游拉取最新 L2 升级（git-copy 模式，过渡期适用） |
-
----
-
-## 两种使用模式对照
-
-| 维度 | 插件模式（推荐） | git-copy 模式（**deprecated / 过渡**） |
-|------|-----------------|----------------------------------------|
-| **安装** | `claude plugin marketplace add derricktang/pm-workflow-plugin` + `/plugin install pm@pm-workflow-market` | clone 仓库 + `bash pm-workflow/scripts/install_hooks.sh` |
-| **更新 L2** | `/plugin update`（maintainer 推送后生效） | `bash pm-workflow/scripts/install_hooks.sh` + `/pm:syncUpstream` |
-| **L2 可写性** | 只读（插件文件在 Claude 缓存目录） | 本地可改（直接修改 pm-workflow/ 文件） |
-| **多产品复用** | 同一插件版本，多仓库共享 | 每个产品仓各自维护一份 L2 副本 |
-| **运行时产物** | `outputs/` + `process_record/` 落在用户项目根目录 | 同左 |
 
 ---
 
@@ -45,7 +45,7 @@ claude plugin marketplace add derricktang/pm-workflow-plugin
 
 - **插件用户 = 纯消费者**：L2 框架文件（规范/模板/脚本/角色定义）由 maintainer 维护，插件目录只读，用户不直接修改。
 - **改进反馈渠道**：通过源仓 **Issue 或 PR** 提交改进意见，maintainer 评审后硬化进下一版本，经 `/plugin update` 下发所有用户。
-- **贡献者 / 本地 L2 修改**：`git clone` 源仓，走 git-copy 通道（与 git-copy 模式复用），本地修改后可提 PR 回源。
+- **贡献者 / 本地 L2 修改**：`git clone` 源仓，本地修改后提 PR 回源；maintainer 审核合并后经 `/plugin update` 下发。
 - **参考**：详细 L2 演进历史见 [`CHANGELOG_L2.md`](CHANGELOG_L2.md)。
 
 ---
@@ -78,10 +78,6 @@ claude plugin marketplace add derricktang/pm-workflow-plugin
 ```
 
 AI 会自动开始 **阶段1：需求分析**，完成后等待你的审核，输入 `/pm:nextStage` 继续进入下一阶段。
-
-#### git-copy 模式（deprecated）
-
-clone 仓库并运行 `bash pm-workflow/scripts/install_hooks.sh` 安装 hooks 后启动 Claude Code，命令使用方式与插件模式相同（均以 `/pm:` 前缀）。详见上方「两种使用模式对照」表。
 
 ---
 
@@ -166,7 +162,7 @@ graph TD
 
 ---
 
-### 完整目录结构（git-copy 模式参考）
+### 完整目录结构（插件模式）
 
 ```
 /
@@ -211,8 +207,7 @@ graph TD
   │   ├── changeRequest.md
   │   ├── projectStatus.md
   │   ├── retro.md
-  │   ├── investigate.md
-  │   └── syncUpstream.md
+  │   └── investigate.md
   ├── outputs/                        # 各阶段最新交付物（运行时生成，不入 git）
   └── process_record/                 # 工作流执行过程记录（运行时生成，不入 git）
       ├── state.md
@@ -250,18 +245,6 @@ AI 会：
 - **AI 产品主管审核**：每次审核完成后，在 `process_record/reviews/` 生成审核报告（`stage[N]_review.md`），含通过/驳回理由及整改要求。
 - **人类 PM 审核**：通过对话直接反馈，状态记录在 `process_record/state.md`。
 - **调整意见记录**：产品总监在任何对话中提出的调整意见，自动记录至 `process_record/issues/`，可通过 `/pm:retro` 进行复盘分析。
-
----
-
-### 下游同步上游工作流升级（git-copy 模式）
-
-下游产品仓可随时把上游最新 L2 升级拉到本仓：
-
-```bash
-bash pm-workflow/scripts/sync_from_upstream.sh
-```
-
-**sync 后必看 [`CHANGELOG_L2.md`](CHANGELOG_L2.md)** —— 每条 L2 升级都写明升级类型、影响说明及 sync 后须知。
 
 ---
 
