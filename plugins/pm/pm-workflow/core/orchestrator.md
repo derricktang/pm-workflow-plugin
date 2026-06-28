@@ -17,22 +17,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ---
 
-## Setup（**clone 后必跑一次**）
-
-```bash
-bash pm-workflow/scripts/install_hooks.sh
-```
-
-`[Must]` clone 仓库后**第一时间**执行此脚本安装 git pre-commit hook。hook 用于阻止 L1（产品业务产物 `outputs/` / `process_record/`）+ L2（工作流框架文件 `pm-workflow/agents|rules|scripts|skills/*` / `CLAUDE.md` / `.claude/commands/*`）混合提交,是 SSOT 双锚 #31「PM L2 修订诉求 NB 上报 SOP」的机械兜底层。**未装 hook → SSOT #31 第 5 要素失效 → L1/L2 边界退化为单层自觉防御**。
-
-> **关于 [Must] 强度 vs 机械化兜底缺口的说明**（2026-05-31 L2 矛盾审计 #29 澄清）：[Must] 是**行为期望**（"clone 后必须装"），但**无强制机制能在 hook 安装前拦截 commit**——这是 chicken-and-egg 限制（hook 还没装，自然无法用 hook 拦截"未装 hook"）。下方"兜底兜底"是当前可行的最近防御。
-
-详细机制见 `pm-workflow/rules/agent_dispatch_protocol.md`「PM / Supervisor Agent 文件改动权限边界」第 5 条 + `pm-workflow/rules/ssot_anchors.md` #31。
-
-> **兜底兜底**：四个 precheck 脚本（`precheck_stage1/2/3/4.py`）启动时会检测 hook 是否安装,未装会 WARN 提示——但仍不替代 setup 的必要性（precheck 仅在 PM 自审时触发,非 commit 必经）。**WARN 不升 FAIL 的理由**：若 precheck 因未装 hook 直接 FAIL，会阻塞首次 clone 后 PM 测试 / 学习场景；保留 WARN + setup 自觉是当前 ROI 最佳的平衡（未来若实测漏装事故 ≥ 2 次再升 FAIL）。
-
----
-
 ## 斜杠命令
 
 | 命令 | 说明 |
@@ -43,7 +27,6 @@ bash pm-workflow/scripts/install_hooks.sh
 | `/changeRequest` | 启动需求变更工作流 |
 | `/retro` | 问题复盘：分析最新未分析的调整意见文件，找共性根因 + 提机制改进（避免同类问题再次发生），等产品总监确认后再标记为已分析 |
 | `/investigate` | 调查分析指令：对非平凡的调查 / 排查 / 评估 / 审计 / 逻辑缺陷检查走标准化三步（选执行者 → 取证 doc_query+命令实证 → 呈现前对抗 pass 5 段 checklist），杜绝单遍自评漏判。编排器给非平凡结论前亦自走 |
-| `/syncUpstream`（下游仓适用）| 从上游 claude-code-pm-workflow 拉取最新 L2 升级到当前下游产品仓；调用 `pm-workflow/scripts/sync_from_upstream.sh` 透传选项（`--dry-run` / `--no-commit` / `--no-push` / `--upstream-url` 等）|
 
 命令定义在 `.claude/commands/` 目录下，每个命令是一个 Markdown 文件。
 
@@ -70,21 +53,6 @@ bash pm-workflow/scripts/install_hooks.sh
 - /changeRequest 流程定义 → `.claude/commands/changeRequest.md`
 - 调整意见流程定义 → 本文件 §「调整意见自动记录规则」
 - 版本号纪律 → 本文件 §「文件命名规范」L412（PM 自审整改不动版本号 + 阶段 4 G-02 SemVer 触发点）
-
-### 下游仓 sync 上游 L2 的自然语义触发
-
-`[Recommended]` 用户在下游仓内说「同步上游 / sync upstream / 同步 L2 / sync L2 / 拉取 L2 / 拉取上游 / 更新工作流」等自然语言指令时，编排器视同 `/syncUpstream` 命令执行 — 详 `.claude/commands/syncUpstream.md`（真源含完整自然语义变体清单 + 执行步骤 + 选项透传 + 仓属性判定）。
-
-`[Must]` **上下游脚本归属区分（防错调）**：
-
-| 角色 | 仓 | 脚本 / 函数 | 方向 |
-|------|----|------------|------|
-| **下游**（产品仓）| bujue-business-circle / payment-module / private-domain-homepage-module / quotation-tool 等 | `bash pm-workflow/scripts/sync_from_upstream.sh` | pull from upstream |
-| **上游**（工作流框架仓）| claude-code-pm-workflow | `sync_l2_all` / `sync_l2` shell function（`~/.bash_functions`）| push to downstream |
-
-判定当前是上游还是下游：`git remote get-url origin` URL 含 `claude-code-pm-workflow` → 上游；含产品名 → 下游。
-
-**与上游同步约定对偶**：上游 L2 commit 后不再主动跑 `sync_l2_all` 推下游（除非用户显式指令）— 由下游主动用本命令 / 自然语义变体拉，给下游 PM 接入时机的自主权。详 memory `feedback_no_active_downstream_sync`（上游约定真源）。
 
 ---
 
@@ -427,7 +395,7 @@ PM 和 Supervisor 在执行时必须维护进度文件（`process_record/progres
 
 ### PM / Supervisor Agent 文件改动权限边界（速查）
 
-详细规则与 NB 上报 SOP 见 `pm-workflow/rules/agent_dispatch_protocol.md`「PM / Supervisor Agent 文件改动权限边界」+「第 6 条 PM L2 修订诉求 NB 上报标准 SOP」。L1 业务任务期间**禁止修改 L2 工作流维护层文件**——git pre-commit hook 硬拦截。
+详细规则与 NB 上报 SOP 见 `pm-workflow/rules/agent_dispatch_protocol.md`「PM / Supervisor Agent 文件改动权限边界」+「第 6 条 PM L2 修订诉求 NB 上报标准 SOP」。L1 业务任务期间**禁止修改 L2 工作流维护层文件**——插件模式下 L2 物理只读在插件缓存、不在用户仓，L1/L2 边界由架构结构性保证；贡献者改 L2 走 clone 源仓 + PR review（git-copy 模式及其 pre-commit 兜底已退役）。
 
 ## 工作流维护守则
 
