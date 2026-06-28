@@ -2,7 +2,9 @@
   "name": "pm",
   "description": "结构化 AI 产品经理工作流：需求分析→功能规划→产品定义→交付文档，多层审核、可控变更。",
   "version": "1.0.0",
-  "author": { "name": "TODO-填发布前" },
+  "author": { "name": "derricktang" },
+  "homepage": "https://github.com/derricktang/pm-workflow-plugin",
+  "repository": "https://github.com/derricktang/pm-workflow-plugin",
   "skills": "./pm-workflow/skills/",
   "commands": "./commands/",
   "hooks": "./hooks/hooks.json"

@@ -3,7 +3,7 @@
   "displayName": "PM Workflow Marketplace",
   "description": "AI 产品经理工作流插件市场",
   "version": "1.0.0",
-  "author": { "name": "TODO" },
+  "author": { "name": "derricktang" },
   "plugins": [
     {
       "name": "pm",

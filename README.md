@@ -9,11 +9,11 @@
 ### 安装
 
 ```bash
-claude plugin marketplace add <your-github-repo>
+claude plugin marketplace add derricktang/pm-workflow-plugin
 /plugin install pm@pm-workflow-market
 ```
 
-> 注：marketplace URL 和 repo 地址为预发布占位符，正式发布时更新。
+> 仓库：https://github.com/derricktang/pm-workflow-plugin
 
 ### 命令（均以 `/pm:` 命名空间为前缀）
 
@@ -33,7 +33,7 @@ claude plugin marketplace add <your-github-repo>
 
 | 维度 | 插件模式（推荐） | git-copy 模式（**deprecated / 过渡**） |
 |------|-----------------|----------------------------------------|
-| **安装** | `claude plugin marketplace add <repo>` + `/plugin install pm@pm-workflow-market` | clone 仓库 + `bash pm-workflow/scripts/install_hooks.sh` |
+| **安装** | `claude plugin marketplace add derricktang/pm-workflow-plugin` + `/plugin install pm@pm-workflow-market` | clone 仓库 + `bash pm-workflow/scripts/install_hooks.sh` |
 | **更新 L2** | `/plugin update`（maintainer 推送后生效） | `bash pm-workflow/scripts/install_hooks.sh` + `/pm:syncUpstream` |
 | **L2 可写性** | 只读（插件文件在 Claude 缓存目录） | 本地可改（直接修改 pm-workflow/ 文件） |
 | **多产品复用** | 同一插件版本，多仓库共享 | 每个产品仓各自维护一份 L2 副本 |
